@@ -1,0 +1,29 @@
+{
+  "name": "immutable-goban",
+  "version": "0.1.0",
+  "description": "Immutable data structures and utilities to represent Go",
+  "private": true,
+  "main": "src/utils.js",
+  "keywords": [],
+  "author": "Frank Lam",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "mori": "^0.3.2"
+  },
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.0.1"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify"
+      ]
+    ]
+  },
+  "scripts": {
+    "build": "browserify -o build/immutable-goban.js -r ./src/utils.js:immutable-goban",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
