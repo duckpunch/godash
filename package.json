@@ -13,7 +13,8 @@
   },
   "devDependencies": {
     "babelify": "^6.3.0",
-    "browserify": "^11.0.1"
+    "browserify": "^11.0.1",
+    "mochify": "^2.13.0"
   },
   "browserify": {
     "transform": [
@@ -24,6 +25,7 @@
   },
   "scripts": {
     "build": "browserify -o build/immutable-goban.js -r ./src/utils.js:immutable-goban",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mochify",
+    "watch-test": "mochify -w"
   }
 }
