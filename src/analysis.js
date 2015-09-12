@@ -26,7 +26,7 @@ export function emptySpaces(board) {
 
 export function adjacentPositions(board, position) {
     const size = mori.get(board, SIZE_KEY);
-    const [x, y] = [mori.first(v), mori.last(v)];
+    const [x, y] = [mori.first(position), mori.last(position)];
     const vector_xform = [
         [mori.identity, mori.inc],
         [mori.identity, mori.dec],
@@ -34,14 +34,14 @@ export function adjacentPositions(board, position) {
         [mori.dec, mori.identity],
     ];
     const check = mori.comp(
-        mori.curry(Math.min, size),
+        mori.curry(Math.min, size - 1),
         mori.curry(Math.max, 0)
     );
 
-    return mori.set(mori.map(
-        ([first, last]) => mori.vector(check(first(x)), check(last(x))),
+    return mori.disj(mori.set(mori.map(
+        ([first, last]) => mori.vector(check(first(x)), check(last(y))),
         vector_xform
-    ));
+    )), position);
 }
 
 
