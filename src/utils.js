@@ -6,33 +6,6 @@ export const BLACK = 'black';
 export const WHITE = 'white';
 
 
-export function emptyBoard(size) {
-    if (!isNumber(size) || size <= 0 || size !== parseInt(size)) {
-        throw 'An empty board must be created from a positive integer.';
-    }
-
-    return mori.hashMap('size', size);
-}
-
-
-export function emptySpaces(board) {
-    let size = mori.get(board, 'size');
-}
-
-
-export function addBlackMove(board, position) {
-    // should be legal position per size
-
-    // should be empty
-
-    // should either be outright legal or can kill
-
-    // remove any dead stones if applicable
-
-    return board.assoc(position, BLACK);
-}
-
-
 export default {
     addBlackMove: function(board, position) {
         // TODO

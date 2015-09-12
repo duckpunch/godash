@@ -1,35 +1,34 @@
 import assert from 'assert';
 import mori from 'mori';
 
-import {emptyBoard} from '../src/utils';
+import {emptyBoard} from '../src/transforms';
 
 
 describe('empty board', function() {
     it('has the size that is passed in and nothing else', function() {
-        let size = 19;
-        let board = emptyBoard(19);
+        const size = 19;
+        const board = emptyBoard(19);
 
         assert.ok(mori.hasKey(board, 'size'));
         assert.ok(mori.isEmpty(mori.dissoc(board, 'size')));
 
-        console.log(
-            mori.set(mori.reduce(mori.concat, mori.map(
-                function(t) {return mori.map(mori.vector, mori.last(t),mori.repeat(mori.first(t)))},
-                mori.seq(mori.zipmap(
-                    mori.range(5),
-                    mori.repeat(mori.range(5))
-                ))
-            )))
+        console.log(mori.vector(1, 2));
+        let v = mori.vector(2, 2);
+        let [x, y] = [mori.first(v), mori.last(v)];
+        let vector_xform = [
+            [mori.identity, mori.inc],
+            [mori.identity, mori.dec],
+            [mori.inc, mori.identity],
+            [mori.dec, mori.identity],
+        ];
+        let check = mori.comp(
+            mori.curry(Math.min, 5),
+            mori.curry(Math.max, 0)
         );
-
-        let rg = mori.range(5)
         console.log(
-            mori.set(mori.reduce(
-                mori.concat,
-                mori.map(
-                    i => mori.map(mori.vector, rg, mori.repeat(i)),
-                    rg
-                )
+            mori.set(mori.map(
+                ([first, last]) => mori.vector(check(first(x)), check(last(x))),
+                vector_xform
             ))
         );
     });
