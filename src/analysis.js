@@ -54,3 +54,23 @@ export function connected(board, position, callback) {
         queue = mori.pop(queue);
     }
 }
+
+
+export function equivalentBoards(board, positions) {
+    // TODO
+}
+
+
+export function adjacent(board, position) {
+    // TODO
+}
+
+
+export function illegalMoves(board) {
+    // TODO
+}
+
+
+export function isValidPosition(size, position) {
+    // TODO
+}

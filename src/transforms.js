@@ -24,3 +24,23 @@ export function addBlackMove(board, position) {
 
     return board.assoc(position, BLACK);
 }
+
+
+export function addWhiteMove(board, position) {
+    // TODO
+}
+
+
+export function addBlackMoves(board, positions) {
+    // TODO
+}
+
+
+export function addWhiteMoves(board, positions) {
+    // TODO
+}
+
+
+export function removeMoves(board, positions) {
+    // TODO
+}
