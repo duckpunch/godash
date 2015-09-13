@@ -1,9 +1,9 @@
 {
-  "name": "immutable-goban",
+  "name": "godash",
   "version": "0.1.0",
   "description": "Immutable data structures and utilities to represent Go",
   "private": true,
-  "main": "src/utils.js",
+  "main": "src/index.js",
   "keywords": [],
   "author": "Frank Lam",
   "license": "ISC",

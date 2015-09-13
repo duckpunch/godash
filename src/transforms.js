@@ -44,3 +44,6 @@ export function addWhiteMoves(board, positions) {
 export function removeMoves(board, positions) {
     // TODO
 }
+
+
+export default {};

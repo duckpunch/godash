@@ -74,3 +74,6 @@ export function illegalMoves(board) {
 export function isValidPosition(size, position) {
     // TODO
 }
+
+
+export default {};
