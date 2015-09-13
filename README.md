@@ -1,4 +1,4 @@
-immutable-goban
-===============
+godash
+======
 
-Immutable data structures and utilities to represent Go
+A Javascript utility library to handle go board manipulations in immutable data structures
