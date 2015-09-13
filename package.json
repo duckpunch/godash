@@ -24,7 +24,7 @@
     ]
   },
   "scripts": {
-    "build": "browserify -o build/immutable-goban.js -r ./src/utils.js:immutable-goban",
+    "build": "browserify -o build/godash.js -r ./src/utils.js:godash",
     "test": "mochify",
     "watch-test": "mochify -w"
   }
