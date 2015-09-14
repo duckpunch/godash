@@ -6,8 +6,26 @@ import {
     matchingAdjacentPositions, liberties, group
 } from './analysis';
 
+/**
+ * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map
+ */
 
-export function emptyBoard(size) {
+/**
+ * @external {List} http://facebook.github.io/immutable-js/docs/#/List
+ */
+
+/**
+ * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set
+ */
+
+/**
+ * Creates an empty board.
+ *
+ * @param {number} size the size of the board
+ * @throws {string} when size is not a positive integer
+ * @returns {Map}
+ */
+export function Board(size) {
     if (!isNumber(size) || size <= 0 || size !== parseInt(size)) {
         throw 'An empty board must be created from a positive integer.';
     }
@@ -15,7 +33,9 @@ export function emptyBoard(size) {
     return Map().set(SIZE_KEY, size);
 }
 
-
+/**
+ * @private
+ */
 export function addMove(board, position, color) {
     if (!isValidPosition(board, position, color)) {
         throw 'Not a valid position';
@@ -34,16 +54,41 @@ export function addMove(board, position, color) {
 }
 
 
+/**
+ * Adds a black move at the specified position.  Follows the rules of go
+ * which means dead stones will be removed.
+ *
+ * @param {Map} board
+ * @param {List} position
+ * @throws {string} when the move is not valid
+ * @returns {Map} board representing the new state
+ */
 export function addBlackMove(board, position) {
     return addMove(board, position, BLACK);
 }
 
 
+/**
+ * Adds a white move at the specified position.  Follows the rules of go
+ * which means dead stones will be removed.
+ *
+ * @param {Map} board
+ * @param {List} position
+ * @throws {string} when the move is not valid
+ * @returns {Map} board representing the new state
+ */
 export function addWhiteMove(board, position) {
     return addMove(board, position, WHITE);
 }
 
 
+/**
+ * Removes positions.  Positions that are not on the board are ignored.
+ *
+ * @param {Map} board
+ * @param {Set} positions
+ * @returns {Map} board representing the new state
+ */
 export function removeMoves(board, positions) {
     return positions.reduce(
         (acc, position) => acc.delete(position),
@@ -53,5 +98,5 @@ export function removeMoves(board, positions) {
 
 
 export default {
-    emptyBoard, addBlackMove, addWhiteMove, removeMoves
+    Board, addBlackMove, addWhiteMove, removeMoves
 };
