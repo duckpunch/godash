@@ -5,7 +5,7 @@
   "homepage": "https://github.com/duckpunch/godash",
   "repository": {
     "type": "git",
-    "url": "git://github.com/duckpunch/godash.git"
+    "url": "https://github.com/duckpunch/godash.git"
   },
   "main": "src/index.js",
   "keywords": [],
