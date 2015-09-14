@@ -25,7 +25,7 @@ import {
  * @throws {string} when size is not a positive integer
  * @returns {Map}
  */
-export function Board(size) {
+export function emptyBoard(size) {
     if (!isNumber(size) || size <= 0 || size !== parseInt(size)) {
         throw 'An empty board must be created from a positive integer.';
     }
@@ -98,5 +98,5 @@ export function removeMoves(board, positions) {
 
 
 export default {
-    Board, addBlackMove, addWhiteMove, removeMoves
+    emptyBoard, addBlackMove, addWhiteMove, removeMoves
 };

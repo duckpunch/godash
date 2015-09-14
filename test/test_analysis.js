@@ -1,14 +1,14 @@
 import assert from 'assert';
 import {List, Set} from 'immutable';
 
-import {Board} from '../src/transforms';
+import {emptyBoard} from '../src/transforms';
 import {adjacentPositions, allPossibleMoves, group, WHITE, BLACK, liberties} from '../src/analysis';
 
 
 describe('adjacent positions', function() {
     it('yields the correct 4 when position is in center', function() {
         const position = List.of(9, 9);
-        const board = Board(19);
+        const board = emptyBoard(19);
 
         assert.ok(
             adjacentPositions(board, position).equals(
@@ -24,7 +24,7 @@ describe('adjacent positions', function() {
 
     it('yields the correct 3 when position is on side', function() {
         const position = List.of(0, 9);
-        const board = Board(19);
+        const board = emptyBoard(19);
 
         assert.ok(
             adjacentPositions(board, position).equals(
@@ -39,7 +39,7 @@ describe('adjacent positions', function() {
 
     it('yields the correct 2 when position is corner', function() {
         const position = List.of(18, 18);
-        const board = Board(19);
+        const board = emptyBoard(19);
 
         assert.ok(
             adjacentPositions(board, position).equals(
@@ -55,7 +55,7 @@ describe('adjacent positions', function() {
 
 describe('all possible moves', function() {
     it('correctly calculates all moves for a simple board', function() {
-        const board = Board(3);
+        const board = emptyBoard(3);
         console.log();
         assert.ok(
             allPossibleMoves(board).equals(
@@ -78,7 +78,7 @@ describe('all possible moves', function() {
 
 describe('group', function() {
     it('finds a group of 1', function() {
-        const board = Board(5).set(List.of(2, 2), BLACK);
+        const board = emptyBoard(5).set(List.of(2, 2), BLACK);
         assert.ok(
             group(board, List.of(2, 2)).equals(
                 Set([
@@ -89,7 +89,7 @@ describe('group', function() {
     });
 
     it('finds a group of 2', function() {
-        const board = Board(5)
+        const board = emptyBoard(5)
             .set(List.of(2, 2), BLACK)
             .set(List.of(2, 1), BLACK);
 
@@ -104,7 +104,7 @@ describe('group', function() {
     });
 
     it('finds a group of 1 with adjacent opposite color', function() {
-        const board = Board(5)
+        const board = emptyBoard(5)
             .set(List.of(2, 2), BLACK)
             .set(List.of(2, 1), WHITE);
 
@@ -118,7 +118,7 @@ describe('group', function() {
     });
 
     it('finds empty triangle', function() {
-        const board = Board(5)
+        const board = emptyBoard(5)
             .set(List.of(2, 2), BLACK)
             .set(List.of(2, 1), BLACK)
             .set(List.of(1, 2), BLACK);
@@ -138,13 +138,13 @@ describe('group', function() {
 
 describe('liberties', function() {
     it('finds liberties for 1 stone', function() {
-        const board = Board(5).set(List.of(2, 2), BLACK);
+        const board = emptyBoard(5).set(List.of(2, 2), BLACK);
 
         assert.equal(liberties(board, List.of(2, 2)), 4);
     });
 
     it('evaluates for group of 2', function() {
-        const board = Board(5)
+        const board = emptyBoard(5)
             .set(List.of(2, 2), BLACK)
             .set(List.of(2, 1), BLACK);
 
@@ -152,7 +152,7 @@ describe('liberties', function() {
     });
 
     it('properly decrements liberty with opposite color adjacent', function() {
-        const board = Board(5)
+        const board = emptyBoard(5)
             .set(List.of(2, 2), BLACK)
             .set(List.of(2, 1), WHITE);
 
@@ -160,7 +160,7 @@ describe('liberties', function() {
     });
 
     it('counts shared liberties in empty triangle', function() {
-        const board = Board(5)
+        const board = emptyBoard(5)
             .set(List.of(2, 2), BLACK)
             .set(List.of(2, 1), BLACK)
             .set(List.of(1, 2), BLACK);
