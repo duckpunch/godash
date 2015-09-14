@@ -6,17 +6,6 @@ import {
     matchingAdjacentPositions, liberties, group
 } from './analysis';
 
-/**
- * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map
- */
-
-/**
- * @external {List} http://facebook.github.io/immutable-js/docs/#/List
- */
-
-/**
- * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set
- */
 
 /**
  * Creates an empty board.
