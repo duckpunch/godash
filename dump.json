@@ -58,13 +58,12 @@
     "name": "EMPTY",
     "memberof": "src/analysis.js",
     "longname": "src/analysis.js~EMPTY",
-    "access": null,
+    "access": "private",
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{EMPTY}",
     "description": null,
-    "lineNumber": 7,
-    "undocument": true,
+    "lineNumber": 11,
     "type": {
       "types": [
         "*"
@@ -78,13 +77,12 @@
     "name": "SIZE_KEY",
     "memberof": "src/analysis.js",
     "longname": "src/analysis.js~SIZE_KEY",
-    "access": null,
+    "access": "private",
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{SIZE_KEY}",
     "description": null,
-    "lineNumber": 8,
-    "undocument": true,
+    "lineNumber": 16,
     "type": {
       "types": [
         "string"
@@ -102,21 +100,33 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{allPossibleMoves}",
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
+    "description": "A set of all possible moves on the board, even the occupied ones.",
+    "lineNumber": 25,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Set}"
+      }
+    ],
     "params": [
       {
-        "name": "board",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Map"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "board",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Set"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -132,7 +142,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{emptyPositions}",
     "description": null,
-    "lineNumber": 24,
+    "lineNumber": 38,
     "undocument": true,
     "params": [
       {
@@ -160,27 +170,43 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{adjacentPositions}",
-    "description": null,
-    "lineNumber": 29,
-    "undocument": true,
+    "description": "Gets the spaces immediately touching the passed position.\n\nConsiders the board size and acts correctly on sides and corners.",
+    "lineNumber": 52,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Set}"
+      }
+    ],
     "params": [
       {
-        "name": "board",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Map"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "board",
+        "description": ""
       },
       {
-        "name": "position",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "List"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "position",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Set"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -196,7 +222,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{matchingAdjacentPositions}",
     "description": null,
-    "lineNumber": 50,
+    "lineNumber": 73,
     "undocument": true,
     "params": [
       {
@@ -236,27 +262,43 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{group}",
-    "description": null,
-    "lineNumber": 60,
-    "undocument": true,
+    "description": "Gets a set of positions of the logical group associated with the given position.",
+    "lineNumber": 90,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Set}"
+      }
+    ],
     "params": [
       {
-        "name": "board",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Map"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "board",
+        "description": ""
       },
       {
-        "name": "position",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "List"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "position",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Set"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -271,27 +313,43 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{liberties}",
-    "description": null,
-    "lineNumber": 76,
-    "undocument": true,
+    "description": "Counts liberties for the stone at the given position.",
+    "lineNumber": 113,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{number}"
+      }
+    ],
     "params": [
       {
-        "name": "board",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Map"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "board",
+        "description": ""
       },
       {
-        "name": "position",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "List"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "position",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -307,7 +365,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{oppositeColor}",
     "description": null,
-    "lineNumber": 84,
+    "lineNumber": 121,
     "undocument": true,
     "params": [
       {
@@ -336,7 +394,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{isValidPosition}",
     "description": null,
-    "lineNumber": 89,
+    "lineNumber": 126,
     "undocument": true,
     "params": [
       {
@@ -378,6 +436,40 @@
     "content": ""
   },
   {
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "http://facebook.github.io/immutable-js/docs/#/Map",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~Map",
+    "access": null,
+    "description": null
+  },
+  {
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "List",
+    "externalLink": "http://facebook.github.io/immutable-js/docs/#/List",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~List",
+    "access": null,
+    "description": null
+  },
+  {
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "http://facebook.github.io/immutable-js/docs/#/Set",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~Set",
+    "access": null,
+    "description": null,
+    "lineNumber": 20
+  },
+  {
     "kind": "file",
     "static": true,
     "variation": null,
@@ -388,39 +480,6 @@
     "description": null,
     "lineNumber": 1,
     "content": ""
-  },
-  {
-    "kind": "external",
-    "static": true,
-    "variation": null,
-    "name": "Map",
-    "externalLink": "http://facebook.github.io/immutable-js/docs/#/Map",
-    "memberof": "src/transforms.js",
-    "longname": "src/transforms.js~Map",
-    "access": null,
-    "description": null
-  },
-  {
-    "kind": "external",
-    "static": true,
-    "variation": null,
-    "name": "List",
-    "externalLink": "http://facebook.github.io/immutable-js/docs/#/List",
-    "memberof": "src/transforms.js",
-    "longname": "src/transforms.js~List",
-    "access": null,
-    "description": null
-  },
-  {
-    "kind": "external",
-    "static": true,
-    "variation": null,
-    "name": "Set",
-    "externalLink": "http://facebook.github.io/immutable-js/docs/#/Set",
-    "memberof": "src/transforms.js",
-    "longname": "src/transforms.js~Set",
-    "access": null,
-    "description": null
   },
   {
     "kind": "function",
@@ -434,7 +493,7 @@
     "importPath": "godash/src/transforms.js",
     "importStyle": "{emptyBoard}",
     "description": "Creates an empty board.",
-    "lineNumber": 28,
+    "lineNumber": 17,
     "unknown": [
       {
         "tagName": "@returns",
@@ -483,7 +542,7 @@
     "importPath": "godash/src/transforms.js",
     "importStyle": "{addMove}",
     "description": null,
-    "lineNumber": 39,
+    "lineNumber": 28,
     "params": [
       {
         "name": "board",
@@ -523,7 +582,7 @@
     "importPath": "godash/src/transforms.js",
     "importStyle": "{addBlackMove}",
     "description": "Adds a black move at the specified position.  Follows the rules of go\nwhich means dead stones will be removed.",
-    "lineNumber": 66,
+    "lineNumber": 55,
     "unknown": [
       {
         "tagName": "@returns",
@@ -582,7 +641,7 @@
     "importPath": "godash/src/transforms.js",
     "importStyle": "{addWhiteMove}",
     "description": "Adds a white move at the specified position.  Follows the rules of go\nwhich means dead stones will be removed.",
-    "lineNumber": 80,
+    "lineNumber": 69,
     "unknown": [
       {
         "tagName": "@returns",
@@ -641,7 +700,7 @@
     "importPath": "godash/src/transforms.js",
     "importStyle": "{removeMoves}",
     "description": "Removes positions.  Positions that are not on the board are ignored.",
-    "lineNumber": 92,
+    "lineNumber": 81,
     "unknown": [
       {
         "tagName": "@returns",

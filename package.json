@@ -1,11 +1,18 @@
 {
   "name": "godash",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Immutable data structures and utilities to represent Go",
-  "private": true,
+  "homepage": "https://github.com/duckpunch/godash",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/duckpunch/godash.git"
+  },
   "main": "src/index.js",
   "keywords": [],
-  "author": "duckpunch",
+  "author": {
+    "name": "duckpunch",
+    "url": "https://github.com/duckpunch"
+  },
   "license": "ISC",
   "dependencies": {
     "immutable": "^3.7.5",

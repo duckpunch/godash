@@ -6,18 +6,6 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "godash/src/analysis.js~empty",
-    "variable/index.html#static-variable-EMPTY",
-    "<span>EMPTY</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "variable"
-  ],
-  [
-    "godash/src/analysis.js~size_key",
-    "variable/index.html#static-variable-SIZE_KEY",
-    "<span>SIZE_KEY</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "variable"
-  ],
-  [
     "godash/src/analysis.js~white",
     "variable/index.html#static-variable-WHITE",
     "<span>WHITE</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
@@ -432,27 +420,27 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/index.js~list",
+    "external/index.html",
+    "src/index.js~List",
+    "external"
+  ],
+  [
+    "src/index.js~map",
+    "external/index.html",
+    "src/index.js~Map",
+    "external"
+  ],
+  [
+    "src/index.js~set",
+    "external/index.html",
+    "src/index.js~Set",
+    "external"
+  ],
+  [
     "src/transforms.js",
     "file/src/transforms.js.html",
     "src/transforms.js",
     "file"
-  ],
-  [
-    "src/transforms.js~list",
-    "external/index.html",
-    "src/transforms.js~List",
-    "external"
-  ],
-  [
-    "src/transforms.js~map",
-    "external/index.html",
-    "src/transforms.js~Map",
-    "external"
-  ],
-  [
-    "src/transforms.js~set",
-    "external/index.html",
-    "src/transforms.js~Set",
-    "external"
   ]
 ]
