@@ -2,7 +2,7 @@ import assert from 'assert';
 import {List, Set} from 'immutable';
 
 import {emptyBoard} from '../src/transforms';
-import {adjacentPositions, allPossibleMoves} from '../src/analysis';
+import {adjacentPositions, allPossibleMoves, group, WHITE, BLACK} from '../src/analysis';
 
 
 describe('adjacent positions', function() {
@@ -69,6 +69,66 @@ describe('all possible moves', function() {
                     List.of(0, 2),
                     List.of(1, 2),
                     List.of(2, 2),
+                ])
+            )
+        );
+    });
+});
+
+
+describe('group', function() {
+    it('finds a group of 1', function() {
+        const board = emptyBoard(5).set(List.of(2, 2), BLACK);
+        assert.ok(
+            group(board, List.of(2, 2)).equals(
+                Set([
+                    List.of(2, 2),
+                ])
+            )
+        );
+    });
+
+    it('finds a group of 2', function() {
+        const board = emptyBoard(5)
+            .set(List.of(2, 2), BLACK)
+            .set(List.of(2, 1), BLACK);
+
+        assert.ok(
+            group(board, List.of(2, 2)).equals(
+                Set([
+                    List.of(2, 2),
+                    List.of(2, 1),
+                ])
+            )
+        );
+    });
+
+    it('finds a group of 1 with adjacent opposite color', function() {
+        const board = emptyBoard(5)
+            .set(List.of(2, 2), BLACK)
+            .set(List.of(2, 1), WHITE);
+
+        assert.ok(
+            group(board, List.of(2, 2)).equals(
+                Set([
+                    List.of(2, 2),
+                ])
+            )
+        );
+    });
+
+    it('finds empty triangle', function() {
+        const board = emptyBoard(5)
+            .set(List.of(2, 2), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(1, 2), BLACK);
+
+        assert.ok(
+            group(board, List.of(2, 2)).equals(
+                Set([
+                    List.of(2, 2),
+                    List.of(1, 2),
+                    List.of(2, 1),
                 ])
             )
         );

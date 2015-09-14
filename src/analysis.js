@@ -51,8 +51,8 @@ export function matchingAdjacentPositions(board, position, state) {
         state = board.get(position, EMPTY);
     }
 
-    return adjacentPositions(board, positions)
-        .filter(pos => board.get(pos, EMPTY) === position_state);
+    return adjacentPositions(board, position)
+        .filter(pos => board.get(pos, EMPTY) === state);
 }
 
 
