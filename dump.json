@@ -22,9 +22,8 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{BLACK}",
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "Value on a board representing a black stone.",
+    "lineNumber": 8,
     "type": {
       "types": [
         "string"
@@ -42,9 +41,8 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{WHITE}",
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
+    "description": "Value on a board representing a white stone.",
+    "lineNumber": 14,
     "type": {
       "types": [
         "string"
@@ -63,7 +61,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{EMPTY}",
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 20,
     "type": {
       "types": [
         "*"
@@ -82,7 +80,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{SIZE_KEY}",
     "description": null,
-    "lineNumber": 16,
+    "lineNumber": 26,
     "type": {
       "types": [
         "string"
@@ -101,7 +99,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{allPossibleMoves}",
     "description": "A set of all possible moves on the board, even the occupied ones.",
-    "lineNumber": 25,
+    "lineNumber": 35,
     "unknown": [
       {
         "tagName": "@returns",
@@ -142,7 +140,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{emptyPositions}",
     "description": null,
-    "lineNumber": 38,
+    "lineNumber": 48,
     "undocument": true,
     "params": [
       {
@@ -171,7 +169,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{adjacentPositions}",
     "description": "Gets the spaces immediately touching the passed position.\n\nConsiders the board size and acts correctly on sides and corners.",
-    "lineNumber": 52,
+    "lineNumber": 62,
     "unknown": [
       {
         "tagName": "@returns",
@@ -222,7 +220,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{matchingAdjacentPositions}",
     "description": null,
-    "lineNumber": 73,
+    "lineNumber": 83,
     "undocument": true,
     "params": [
       {
@@ -263,7 +261,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{group}",
     "description": "Gets a set of positions of the logical group associated with the given position.",
-    "lineNumber": 90,
+    "lineNumber": 100,
     "unknown": [
       {
         "tagName": "@returns",
@@ -314,7 +312,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{liberties}",
     "description": "Counts liberties for the stone at the given position.",
-    "lineNumber": 113,
+    "lineNumber": 123,
     "unknown": [
       {
         "tagName": "@returns",
@@ -365,7 +363,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{oppositeColor}",
     "description": null,
-    "lineNumber": 121,
+    "lineNumber": 131,
     "undocument": true,
     "params": [
       {
@@ -394,7 +392,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{isValidPosition}",
     "description": null,
-    "lineNumber": 126,
+    "lineNumber": 136,
     "undocument": true,
     "params": [
       {
