@@ -86,11 +86,6 @@ export function oppositeColor(color) {
 }
 
 
-export function equivalentBoards(board) {
-    // TODO
-}
-
-
 export function isValidPosition(board, position, color) {
     const will_have_liberty = matchingAdjacentPositions(board, position, EMPTY).size > 0;
     const will_kill_something = matchingAdjacentPositions(board, position, oppositeColor(color))
@@ -101,4 +96,6 @@ export function isValidPosition(board, position, color) {
 }
 
 
-export default {};
+export default {
+    isValidPosition, oppositeColor, liberties, group
+};

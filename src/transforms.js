@@ -2,7 +2,8 @@ import {isNumber} from 'lodash';
 import {Map} from 'immutable';
 
 import {
-    BLACK, WHITE, SIZE_KEY, isValidPosition, oppositeColor, matchingAdjacentPositions, liberties, group
+    BLACK, WHITE, SIZE_KEY, isValidPosition, oppositeColor,
+    matchingAdjacentPositions, liberties, group
 } from './analysis';
 
 
@@ -43,16 +44,6 @@ export function addWhiteMove(board, position) {
 }
 
 
-export function addBlackMoves(board, positions) {
-    // TODO
-}
-
-
-export function addWhiteMoves(board, positions) {
-    // TODO
-}
-
-
 export function removeMoves(board, positions) {
     return positions.reduce(
         (acc, position) => acc.delete(position),
@@ -62,5 +53,5 @@ export function removeMoves(board, positions) {
 
 
 export default {
-    emptyBoard
+    emptyBoard, addBlackMove, addWhiteMove, removeMoves
 };
