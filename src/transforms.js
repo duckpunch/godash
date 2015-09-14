@@ -1,4 +1,5 @@
 import {isNumber} from 'lodash';
+import {Map} from 'immutable';
 import mori from 'mori';
 
 import {SIZE_KEY} from './analysis';
@@ -9,7 +10,7 @@ export function emptyBoard(size) {
         throw 'An empty board must be created from a positive integer.';
     }
 
-    return mori.hashMap(SIZE_KEY, size);
+    return Map().set(SIZE_KEY, size);
 }
 
 
@@ -46,4 +47,6 @@ export function removeMoves(board, positions) {
 }
 
 
-export default {};
+export default {
+    emptyBoard
+};

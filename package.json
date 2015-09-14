@@ -25,7 +25,7 @@
     ]
   },
   "scripts": {
-    "build": "browserify -o build/godash.js -r ./src/utils.js:godash",
+    "build": "browserify -o build/godash.js -r ./src/index.js:godash",
     "test": "mochify",
     "watch-test": "mochify -w"
   }
