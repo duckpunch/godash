@@ -1,6 +1,5 @@
 import {isNumber} from 'lodash';
 import {Map} from 'immutable';
-import mori from 'mori';
 
 import {SIZE_KEY} from './analysis';
 

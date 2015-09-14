@@ -1,5 +1,4 @@
-import mori from 'mori';
-import {map, fill, zip, range, identity, flatten} from 'lodash';
+import {curry, compose, map, fill, zip, range, identity, flatten} from 'lodash';
 import {List, Set} from 'immutable';
 
 
@@ -22,24 +21,21 @@ export function allPossibleMoves(board) {
 }
 
 
-//export function emptySpaces(board) {
-    //return mori.difference(mori.keys(board), allPossibleMoves(board));
-//}
-
-
 export function adjacentPositions(board, position) {
+    const inc = i => i + 1;
+    const dec = i => i - 1;
     const size = board.get(SIZE_KEY);
     const [x, y] = [position.first(), position.last()];
-    const check = mori.comp(
-        mori.curry(Math.min, size - 1),
-        mori.curry(Math.max, 0)
+    const check = compose(
+        curry(Math.min, 2)(size - 1),
+        curry(Math.max, 2)(0)
     );
 
     return Set([
-        [identity, mori.inc],
-        [identity, mori.dec],
-        [mori.inc, identity],
-        [mori.dec, identity],
+        [identity, inc],
+        [identity, dec],
+        [inc, identity],
+        [dec, identity],
     ].map(
         ([first, last]) => List.of(check(first(x)), check(last(y)))
     )).subtract(Set.of(position));
@@ -70,31 +66,6 @@ export function group(board, position) {
 
     return found;
 }
-
-
-//export function connected(board, position, callback) {
-    //let queue = mori.queue(position);
-    //let visited = mori.set();
-
-    //const color = mori.get(board, position);
-
-    //while (mori.count(queue) > 0) {
-        //const current = mori.peek(queue);
-        //const adjacent = mori.filter(
-            //adj => mori.get(board, adj, null) === color,
-            //adjacentPositions(board, current)
-        //);
-        //const visited_adjacent = mori.intersection(adjacent, visited);
-
-        //queue = mori.union(
-            //mori.pop(queue),
-            //mori.difference(visited_adjacent, adjacent)
-        //);
-
-        //callback(current);
-        //visited = mori.conj(visited, current);
-    //}
-//}
 
 
 export function equivalentBoards(board, positions) {

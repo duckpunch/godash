@@ -9,8 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "immutable": "^3.7.5",
-    "lodash": "^3.10.1",
-    "mori": "^0.3.2"
+    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "babelify": "^6.3.0",
