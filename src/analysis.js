@@ -49,9 +49,23 @@ export function connected(board, position, callback) {
     let queue = mori.queue(position);
     let visited = mori.set();
 
+    const color = mori.get(board, position);
+
     while (mori.count(queue) > 0) {
         const current = mori.peek(queue);
-        queue = mori.pop(queue);
+        const adjacent = mori.filter(
+            adj => mori.get(board, adj, null) === color,
+            adjacentPositions(board, current)
+        );
+        const visited_adjacent = mori.intersection(adjacent, visited);
+
+        queue = mori.union(
+            mori.pop(queue),
+            mori.difference(visited_adjacent, adjacent)
+        );
+
+        callback(current);
+        visited = mori.conj(visited, current);
     }
 }
 

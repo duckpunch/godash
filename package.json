@@ -8,6 +8,7 @@
   "author": "Frank Lam",
   "license": "ISC",
   "dependencies": {
+    "immutable": "^3.7.5",
     "lodash": "^3.10.1",
     "mori": "^0.3.2"
   },
