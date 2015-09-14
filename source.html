@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">godash API Document</title>
+  <base data-ice="baseUrl" href="">
+  <title data-ice="title">Source | godash API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -74,19 +74,61 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="godash">godash</h1>
-<p><a href="https://travis-ci.org/duckpunch/godash"><img src="https://travis-ci.org/duckpunch/godash.svg" alt="Build Status"></a></p>
-<p>A Javascript utility library to handle go board manipulations in immutable data structures.</p>
-<p>This library is entirely frontend agnostic and strives only to represent the rules of <a href="https://en.wikipedia.org/wiki/Go_%28game%29">Go</a> and corresponding basic analysis.  Immutability is delivered by <a href="http://facebook.github.io/immutable-js/">ImmutableJS</a> and other basic javascript manipulations are done with <a href="https://lodash.com/">lodash</a>, this library&apos;s namesake.</p>
-<h2 id="roadmap">Roadmap</h2>
-<p>In no particular order.</p>
-<ul>
-<li>SGF support (import and export)</li>
-<li>Sequences (like games)</li>
-<li>Variations</li>
-<li>Annotations (comments and marks)</li>
-</ul>
-</div>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">4/16</span></h1>
+
+<table class="files-summary" data-ice="files" data-use-coverage="true">
+  <thead>
+    <tr>
+      <td>File</td>
+      <td>Identifier</td>
+      <td class="coverage">Document</td>
+      <td style="display: none;">Size</td>
+      <td style="display: none;">Lines</td>
+      <td style="display: none;">Updated</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+  <tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/analysis.js.html#errorLines=11,24,29,5,50,6,60,7,76,8,84,89">src/analysis.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-BLACK">BLACK</a></span>
+<span><a href="variable/index.html#static-variable-EMPTY">EMPTY</a></span>
+<span><a href="variable/index.html#static-variable-SIZE_KEY">SIZE_KEY</a></span>
+<span><a href="variable/index.html#static-variable-WHITE">WHITE</a></span>
+<span><a href="function/index.html#static-function-adjacentPositions">adjacentPositions</a></span>
+<span><a href="function/index.html#static-function-allPossibleMoves">allPossibleMoves</a></span>
+<span><a href="function/index.html#static-function-emptyPositions">emptyPositions</a></span>
+<span><a href="function/index.html#static-function-group">group</a></span>
+<span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span>
+<span><a href="function/index.html#static-function-liberties">liberties</a></span>
+<span><a href="function/index.html#static-function-matchingAdjacentPositions">matchingAdjacentPositions</a></span>
+<span><a href="function/index.html#static-function-oppositeColor">oppositeColor</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/12</span></td>
+      <td style="display: none;" data-ice="size">2566 byte</td>
+      <td style="display: none;" data-ice="lines">101</td>
+      <td style="display: none;" data-ice="updated">2015-09-02 07:48:40 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/index.js.html">src/index.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">146 byte</td>
+      <td style="display: none;" data-ice="lines">6</td>
+      <td style="display: none;" data-ice="updated">2015-09-02 00:44:21 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/transforms.js.html">src/transforms.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-addBlackMove">addBlackMove</a></span>
+<span><a href="function/index.html#static-function-addWhiteMove">addWhiteMove</a></span>
+<span><a href="function/index.html#static-function-emptyBoard">emptyBoard</a></span>
+<span><a href="function/index.html#static-function-removeMoves">removeMoves</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">4/4</span></td>
+      <td style="display: none;" data-ice="size">2484 byte</td>
+      <td style="display: none;" data-ice="lines">102</td>
+      <td style="display: none;" data-ice="updated">2015-09-02 08:26:32 (UTC)</td>
+    </tr>
+</tbody>
+</table>
 </div>
 
 <footer class="footer">

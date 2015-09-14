@@ -1,0 +1,30 @@
+{
+  "coverage": "25%",
+  "expectCount": 16,
+  "actualCount": 4,
+  "files": {
+    "src/analysis.js": {
+      "expectCount": 12,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        7,
+        8,
+        6,
+        29,
+        11,
+        24,
+        60,
+        89,
+        76,
+        50,
+        84
+      ]
+    },
+    "src/transforms.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    }
+  }
+}
