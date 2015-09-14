@@ -5,7 +5,7 @@
   "private": true,
   "main": "src/index.js",
   "keywords": [],
-  "author": "Frank Lam",
+  "author": "duckpunch",
   "license": "ISC",
   "dependencies": {
     "immutable": "^3.7.5",
