@@ -2,7 +2,7 @@ import assert from 'assert';
 import {List, Set} from 'immutable';
 
 import {emptyBoard} from '../src/transforms';
-import {adjacentPositions} from '../src/analysis';
+import {adjacentPositions, allPossibleMoves} from '../src/analysis';
 
 
 describe('adjacent positions', function() {
@@ -46,6 +46,29 @@ describe('adjacent positions', function() {
                 Set([
                     List.of(18, 17),
                     List.of(17, 18),
+                ])
+            )
+        );
+    });
+});
+
+
+describe('all possible moves', function() {
+    it('correctly calculates all moves for a simple board', function() {
+        const board = emptyBoard(3);
+        console.log();
+        assert.ok(
+            allPossibleMoves(board).equals(
+                Set([
+                    List.of(0, 0),
+                    List.of(1, 0),
+                    List.of(2, 0),
+                    List.of(0, 1),
+                    List.of(1, 1),
+                    List.of(2, 1),
+                    List.of(0, 2),
+                    List.of(1, 2),
+                    List.of(2, 2),
                 ])
             )
         );

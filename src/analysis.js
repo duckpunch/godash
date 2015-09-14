@@ -1,5 +1,5 @@
 import mori from 'mori';
-import _ from 'lodash';
+import {map, fill, zip, range, identity, flatten} from 'lodash';
 import {List, Set} from 'immutable';
 
 
@@ -8,17 +8,17 @@ export const WHITE = 'white';
 export const SIZE_KEY = 'size';
 
 
-//export function allPossibleMoves(board) {
-    //const size = mori.get(board, SIZE_KEY);
+export function allPossibleMoves(board) {
+    const size = board.get(SIZE_KEY);
 
-    //return mori.set(mori.reduce(
-        //mori.concat,
-        //mori.map(
-            //i => mori.map(mori.vector, mori.range(size), mori.repeat(i)),
-            //mori.range(size)
-        //)
-    //));
-//}
+    return Set(flatten(map(
+        range(size),
+        i => map(
+            zip(range(size), fill(Array(size), i)),
+            List
+        )
+    )));
+}
 
 
 //export function emptySpaces(board) {
@@ -35,10 +35,10 @@ export function adjacentPositions(board, position) {
     );
 
     return Set([
-        [_.identity, mori.inc],
-        [_.identity, mori.dec],
-        [mori.inc, _.identity],
-        [mori.dec, _.identity],
+        [identity, mori.inc],
+        [identity, mori.dec],
+        [mori.inc, identity],
+        [mori.dec, identity],
     ].map(
         ([first, last]) => List.of(check(first(x)), check(last(y)))
     )).subtract(Set.of(position));
