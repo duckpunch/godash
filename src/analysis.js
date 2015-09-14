@@ -5,6 +5,7 @@ import {List, Set} from 'immutable';
 
 export const BLACK = 'black';
 export const WHITE = 'white';
+export const EMPTY = null;
 export const SIZE_KEY = 'size';
 
 
@@ -42,6 +43,32 @@ export function adjacentPositions(board, position) {
     ].map(
         ([first, last]) => List.of(check(first(x)), check(last(y)))
     )).subtract(Set.of(position));
+}
+
+
+export function matchingAdjacentPositions(board, position, state) {
+    if (state === undefined) {
+        state = board.get(position, EMPTY);
+    }
+
+    return adjacentPositions(board, positions)
+        .filter(pos => board.get(pos, EMPTY) === position_state);
+}
+
+
+export function group(board, position) {
+    let found = Set();
+    let queue = Set.of(position);
+
+    while (!queue.isEmpty()) {
+        const current = queue.first();
+        const more_matching = matchingAdjacentPositions(board, position);
+
+        queue = queue.rest().union(more_matching.subtract(found));
+        found = found.add(current);
+    }
+
+    return found;
 }
 
 
