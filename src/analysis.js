@@ -2,13 +2,23 @@ import {curry, compose, map, fill, zip, range, identity, flatten} from 'lodash';
 import {List, Set} from 'immutable';
 
 
+/**
+ * Value on a board representing a black stone.
+ */
 export const BLACK = 'black';
+
+
+/**
+ * Value on a board representing a white stone.
+ */
 export const WHITE = 'white';
+
 
 /**
  * @private
  */
 export const EMPTY = null;
+
 
 /**
  * @private
