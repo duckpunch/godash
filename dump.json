@@ -139,21 +139,33 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{emptyPositions}",
-    "description": null,
-    "lineNumber": 48,
-    "undocument": true,
+    "description": "Returns unoccupied positions on the board.",
+    "lineNumber": 54,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Set}"
+      }
+    ],
     "params": [
       {
-        "name": "board",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Map"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "board",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Set"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -169,7 +181,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{adjacentPositions}",
     "description": "Gets the spaces immediately touching the passed position.\n\nConsiders the board size and acts correctly on sides and corners.",
-    "lineNumber": 62,
+    "lineNumber": 68,
     "unknown": [
       {
         "tagName": "@returns",
@@ -219,33 +231,53 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{matchingAdjacentPositions}",
-    "description": null,
-    "lineNumber": 83,
-    "undocument": true,
+    "description": "Similar to {@link adjacentPositions}, but filters on a state.",
+    "lineNumber": 97,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Set}"
+      }
+    ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Map"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "board",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
+        "nullable": null,
+        "types": [
+          "List"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "position",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
-        "name": "state",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "color",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Set"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -261,7 +293,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{group}",
     "description": "Gets a set of positions of the logical group associated with the given position.",
-    "lineNumber": 100,
+    "lineNumber": 114,
     "unknown": [
       {
         "tagName": "@returns",
@@ -312,7 +344,7 @@
     "importPath": "godash/src/analysis.js",
     "importStyle": "{liberties}",
     "description": "Counts liberties for the stone at the given position.",
-    "lineNumber": 123,
+    "lineNumber": 137,
     "unknown": [
       {
         "tagName": "@returns",
@@ -362,22 +394,42 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{oppositeColor}",
-    "description": null,
-    "lineNumber": 131,
-    "undocument": true,
+    "description": "Returns {@link BLACK} if {@link WHITE}, {@link WHITE} if {@link BLACK}.",
+    "lineNumber": 152,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string}"
+      }
+    ],
     "params": [
       {
-        "name": "color",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "color",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": ""
     },
+    "throws": [
+      {
+        "types": [
+          "string"
+        ],
+        "description": "when color is neither black nor white"
+      }
+    ],
     "generator": false
   },
   {
@@ -391,33 +443,53 @@
     "export": true,
     "importPath": "godash/src/analysis.js",
     "importStyle": "{isValidPosition}",
-    "description": null,
-    "lineNumber": 136,
-    "undocument": true,
+    "description": "Checks if given position is a valid play for the given color.",
+    "lineNumber": 168,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Map"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "board",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
+        "nullable": null,
+        "types": [
+          "List"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "position",
-        "types": [
-          "*"
-        ]
+        "description": ""
       },
       {
-        "name": "color",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "List"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "color",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },

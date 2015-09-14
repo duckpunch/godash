@@ -214,13 +214,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="function/index.html#static-function-emptyPositions">emptyPositions</a></span></span><span data-ice="signature">(board: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="function/index.html#static-function-emptyPositions">emptyPositions</a></span></span><span data-ice="signature">(board: <span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns unoccupied positions on the board.</p></div>
       </div>
     </td>
     <td>
@@ -264,13 +264,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></span><span data-ice="signature">(board: <span>*</span>, position: <span>*</span>, color: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></span><span data-ice="signature">(board: <span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span>, position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>, color: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Checks if given position is a valid play for the given color.</p></div>
       </div>
     </td>
     <td>
@@ -314,13 +314,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="function/index.html#static-function-matchingAdjacentPositions">matchingAdjacentPositions</a></span></span><span data-ice="signature">(board: <span>*</span>, position: <span>*</span>, state: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="function/index.html#static-function-matchingAdjacentPositions">matchingAdjacentPositions</a></span></span><span data-ice="signature">(board: <span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span>, position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>, color: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Similar to <span><a href="function/index.html#static-function-adjacentPositions">adjacentPositions</a></span>, but filters on a state.</p></div>
       </div>
     </td>
     <td>
@@ -339,13 +339,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="function/index.html#static-function-oppositeColor">oppositeColor</a></span></span><span data-ice="signature">(color: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="function/index.html#static-function-oppositeColor">oppositeColor</a></span></span><span data-ice="signature">(color: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns <span><a href="variable/index.html#static-variable-BLACK">BLACK</a></span> if <span><a href="variable/index.html#static-variable-WHITE">WHITE</a></span>, <span><a href="variable/index.html#static-variable-WHITE">WHITE</a></span> if <span><a href="variable/index.html#static-variable-BLACK">BLACK</a></span>.</p></div>
       </div>
     </td>
     <td>
@@ -568,11 +568,11 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber62">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber68">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {adjacentPositions} from &apos;<span><a href="file/src/analysis.js.html#lineNumber62">godash/src/analysis.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {adjacentPositions} from &apos;<span><a href="file/src/analysis.js.html#lineNumber68">godash/src/analysis.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Gets the spaces immediately touching the passed position.</p>
@@ -785,18 +785,19 @@ which means dead stones will be removed.</p>
     
     
     
-    <span data-ice="name">emptyPositions</span><span data-ice="signature">(board: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">emptyPositions</span><span data-ice="signature">(board: <span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber48">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber54">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {emptyPositions} from &apos;<span><a href="file/src/analysis.js.html#lineNumber48">godash/src/analysis.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {emptyPositions} from &apos;<span><a href="file/src/analysis.js.html#lineNumber54">godash/src/analysis.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Returns unoccupied positions on the board.</p>
+</div>
 
   
 
@@ -810,7 +811,7 @@ which means dead stones will be removed.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">board</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -823,7 +824,7 @@ which means dead stones will be removed.</p>
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></td>
         
       </tr>
     </table>
@@ -855,11 +856,11 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber100">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber114">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {group} from &apos;<span><a href="file/src/analysis.js.html#lineNumber100">godash/src/analysis.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {group} from &apos;<span><a href="file/src/analysis.js.html#lineNumber114">godash/src/analysis.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Gets a set of positions of the logical group associated with the given position.</p>
@@ -924,18 +925,19 @@ which means dead stones will be removed.</p>
     
     
     
-    <span data-ice="name">isValidPosition</span><span data-ice="signature">(board: <span>*</span>, position: <span>*</span>, color: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">isValidPosition</span><span data-ice="signature">(board: <span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span>, position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>, color: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber168">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isValidPosition} from &apos;<span><a href="file/src/analysis.js.html#lineNumber136">godash/src/analysis.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isValidPosition} from &apos;<span><a href="file/src/analysis.js.html#lineNumber168">godash/src/analysis.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Checks if given position is a valid play for the given color.</p>
+</div>
 
   
 
@@ -949,19 +951,19 @@ which means dead stones will be removed.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">board</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">position</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">color</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -974,7 +976,7 @@ which means dead stones will be removed.</p>
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
         
       </tr>
     </table>
@@ -1006,11 +1008,11 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber123">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber137">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {liberties} from &apos;<span><a href="file/src/analysis.js.html#lineNumber123">godash/src/analysis.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {liberties} from &apos;<span><a href="file/src/analysis.js.html#lineNumber137">godash/src/analysis.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Counts liberties for the stone at the given position.</p>
@@ -1075,18 +1077,19 @@ which means dead stones will be removed.</p>
     
     
     
-    <span data-ice="name">matchingAdjacentPositions</span><span data-ice="signature">(board: <span>*</span>, position: <span>*</span>, state: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">matchingAdjacentPositions</span><span data-ice="signature">(board: <span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span>, position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>, color: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber83">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber97">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {matchingAdjacentPositions} from &apos;<span><a href="file/src/analysis.js.html#lineNumber83">godash/src/analysis.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {matchingAdjacentPositions} from &apos;<span><a href="file/src/analysis.js.html#lineNumber97">godash/src/analysis.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Similar to <span><a href="function/index.html#static-function-adjacentPositions">adjacentPositions</a></span>, but filters on a state.</p>
+</div>
 
   
 
@@ -1100,19 +1103,19 @@ which means dead stones will be removed.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">board</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/Map">Map</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">position</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">state</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" data-depth="0">color</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1125,7 +1128,7 @@ which means dead stones will be removed.</p>
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></td>
         
       </tr>
     </table>
@@ -1153,18 +1156,19 @@ which means dead stones will be removed.</p>
     
     
     
-    <span data-ice="name">oppositeColor</span><span data-ice="signature">(color: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">oppositeColor</span><span data-ice="signature">(color: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber131">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/analysis.js.html#lineNumber152">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {oppositeColor} from &apos;<span><a href="file/src/analysis.js.html#lineNumber131">godash/src/analysis.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {oppositeColor} from &apos;<span><a href="file/src/analysis.js.html#lineNumber152">godash/src/analysis.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Returns <span><a href="variable/index.html#static-variable-BLACK">BLACK</a></span> if <span><a href="variable/index.html#static-variable-WHITE">WHITE</a></span>, <span><a href="variable/index.html#static-variable-WHITE">WHITE</a></span> if <span><a href="variable/index.html#static-variable-BLACK">BLACK</a></span>.</p>
+</div>
 
   
 
@@ -1178,7 +1182,7 @@ which means dead stones will be removed.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">color</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1191,7 +1195,7 @@ which means dead stones will be removed.</p>
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
         
       </tr>
     </table>
@@ -1203,7 +1207,19 @@ which means dead stones will be removed.</p>
 
   
 
-  
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></p></td>
+        <td data-ice="throwDesc"><p>when color is neither black nor white</p>
+</td>
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   
 

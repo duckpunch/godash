@@ -1,17 +1,12 @@
 {
-  "coverage": "71.42%",
+  "coverage": "100%",
   "expectCount": 14,
-  "actualCount": 10,
+  "actualCount": 14,
   "files": {
     "src/analysis.js": {
       "expectCount": 10,
-      "actualCount": 6,
-      "undocumentLines": [
-        48,
-        136,
-        83,
-        131
-      ]
+      "actualCount": 10,
+      "undocumentLines": []
     },
     "src/transforms.js": {
       "expectCount": 4,
