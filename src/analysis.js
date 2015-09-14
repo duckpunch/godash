@@ -45,6 +45,12 @@ export function allPossibleMoves(board) {
 }
 
 
+/**
+ * Returns unoccupied positions on the board.
+ *
+ * @param {Map} board
+ * @returns {Set}
+ */
 export function emptyPositions(board) {
     return allPossibleMoves(board).subtract(board.keys());
 }
@@ -80,13 +86,21 @@ export function adjacentPositions(board, position) {
 }
 
 
-export function matchingAdjacentPositions(board, position, state) {
-    if (state === undefined) {
-        state = board.get(position, EMPTY);
+/**
+ * Similar to {@link adjacentPositions}, but filters on a state.
+ *
+ * @param {Map} board
+ * @param {List} position
+ * @param {string} color
+ * @returns {Set}
+ */
+export function matchingAdjacentPositions(board, position, color) {
+    if (color === undefined) {
+        color = board.get(position, EMPTY);
     }
 
     return adjacentPositions(board, position)
-        .filter(pos => board.get(pos, EMPTY) === state);
+        .filter(pos => board.get(pos, EMPTY) === color);
 }
 
 
@@ -128,11 +142,29 @@ export function liberties(board, position) {
 }
 
 
+/**
+ * Returns {@link BLACK} if {@link WHITE}, {@link WHITE} if {@link BLACK}.
+ *
+ * @param {string} color
+ * @throws {string} when color is neither black nor white
+ * @returns {string}
+ */
 export function oppositeColor(color) {
+    if (color !== BLACK && color !== WHITE) {
+        throw 'Must pass in a color';
+    }
     return color === BLACK ? WHITE : BLACK;
 }
 
 
+/**
+ * Checks if given position is a valid play for the given color.
+ *
+ * @param {Map} board
+ * @param {List} position
+ * @param {List} color
+ * @returns {boolean}
+ */
 export function isValidPosition(board, position, color) {
     const will_have_liberty = matchingAdjacentPositions(board, position, EMPTY).size > 0;
     const will_kill_something = matchingAdjacentPositions(board, position, oppositeColor(color))

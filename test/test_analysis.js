@@ -2,7 +2,10 @@ import assert from 'assert';
 import {List, Set} from 'immutable';
 
 import {emptyBoard} from '../src/transforms';
-import {adjacentPositions, allPossibleMoves, group, WHITE, BLACK, liberties} from '../src/analysis';
+import {
+    adjacentPositions, allPossibleMoves, group,
+    WHITE, BLACK, liberties, emptyPositions
+} from '../src/analysis';
 
 
 describe('adjacent positions', function() {
@@ -166,5 +169,26 @@ describe('liberties', function() {
             .set(List.of(1, 2), BLACK);
 
         assert.equal(liberties(board, List.of(2, 2)), 7);
+    });
+});
+
+
+describe('empty positions', function() {
+    it('correctly determines empty positions', function() {
+        const board = emptyBoard(3)
+            .set(List.of(1, 1), BLACK)
+            .set(List.of(2, 1), WHITE)
+            .set(List.of(1, 2), BLACK);
+
+        assert.ok(emptyPositions(board).equals(
+            Set([
+                List.of(0, 0),
+                List.of(0, 1),
+                List.of(0, 2),
+                List.of(1, 0),
+                List.of(2, 0),
+                List.of(2, 2),
+            ])
+        ));
     });
 });
