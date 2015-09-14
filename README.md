@@ -14,6 +14,6 @@ Roadmap
 In no particular order.
 
 - SGF support (import and export)
-- Sequences (like games)
+- Sequences (games)
 - Variations
 - Annotations (comments and marks)
