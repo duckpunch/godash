@@ -21,6 +21,11 @@ export function allPossibleMoves(board) {
 }
 
 
+export function emptyPositions(board) {
+    return allPossibleMoves(board).subtract(board.keys());
+}
+
+
 export function adjacentPositions(board, position) {
     const inc = i => i + 1;
     const dec = i => i - 1;
@@ -76,18 +81,23 @@ export function liberties(board, position) {
 }
 
 
-export function equivalentBoards(board, positions) {
+export function oppositeColor(color) {
+    return color === BLACK ? WHITE : BLACK;
+}
+
+
+export function equivalentBoards(board) {
     // TODO
 }
 
 
-export function illegalMoves(board) {
-    // TODO
-}
+export function isValidPosition(board, position, color) {
+    const will_have_liberty = matchingAdjacentPositions(board, position, EMPTY).size > 0;
+    const will_kill_something = matchingAdjacentPositions(board, position, oppositeColor(color))
+        .some(pos => liberties(board, pos) === 1);
+    const wont_suicide = liberties(board.set(position, color), position) !== 0;
 
-
-export function isValidPosition(size, position) {
-    // TODO
+    return wont_suicide && (will_have_liberty || will_kill_something);
 }
 
 

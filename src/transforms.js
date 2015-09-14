@@ -1,7 +1,9 @@
 import {isNumber} from 'lodash';
 import {Map} from 'immutable';
 
-import {SIZE_KEY} from './analysis';
+import {
+    BLACK, WHITE, SIZE_KEY, isValidPosition, oppositeColor, matchingAdjacentPositions, liberties, group
+} from './analysis';
 
 
 export function emptyBoard(size) {
@@ -13,21 +15,31 @@ export function emptyBoard(size) {
 }
 
 
+export function addMove(board, position, color) {
+    if (!isValidPosition(board, position, color)) {
+        throw 'Not a valid position';
+    }
+
+    if (board.has(position)) {
+        throw 'There is already a stone there';
+    }
+
+    const killed = matchingAdjacentPositions(board, position, oppositeColor(color)).reduce(
+        (acc, pos) => acc.union(liberties(board, pos) === 1 ? group(pos) : Set()),
+        Set()
+    );
+
+    return removeMoves(board, killed).set(position, color);
+}
+
+
 export function addBlackMove(board, position) {
-    // should be legal position per size
-
-    // should be empty
-
-    // should either be outright legal or can kill
-
-    // remove any dead stones if applicable
-
-    return board.assoc(position, BLACK);
+    return addMove(board, position, BLACK);
 }
 
 
 export function addWhiteMove(board, position) {
-    // TODO
+    return addMove(board, position, WHITE);
 }
 
 
@@ -42,7 +54,10 @@ export function addWhiteMoves(board, positions) {
 
 
 export function removeMoves(board, positions) {
-    // TODO
+    return positions.reduce(
+        (acc, position) => acc.delete(position),
+        board
+    );
 }
 
 
