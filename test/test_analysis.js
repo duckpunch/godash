@@ -2,7 +2,7 @@ import assert from 'assert';
 import {List, Set} from 'immutable';
 
 import {emptyBoard} from '../src/transforms';
-import {adjacentPositions, allPossibleMoves, group, WHITE, BLACK} from '../src/analysis';
+import {adjacentPositions, allPossibleMoves, group, WHITE, BLACK, liberties} from '../src/analysis';
 
 
 describe('adjacent positions', function() {
@@ -132,5 +132,39 @@ describe('group', function() {
                 ])
             )
         );
+    });
+});
+
+
+describe('liberties', function() {
+    it('finds liberties for 1 stone', function() {
+        const board = emptyBoard(5).set(List.of(2, 2), BLACK);
+
+        assert.equal(liberties(board, List.of(2, 2)), 4);
+    });
+
+    it('evaluates for group of 2', function() {
+        const board = emptyBoard(5)
+            .set(List.of(2, 2), BLACK)
+            .set(List.of(2, 1), BLACK);
+
+        assert.equal(liberties(board, List.of(2, 2)), 6);
+    });
+
+    it('properly decrements liberty with opposite color adjacent', function() {
+        const board = emptyBoard(5)
+            .set(List.of(2, 2), BLACK)
+            .set(List.of(2, 1), WHITE);
+
+        assert.equal(liberties(board, List.of(2, 2)), 3);
+    });
+
+    it('counts shared liberties in empty triangle', function() {
+        const board = emptyBoard(5)
+            .set(List.of(2, 2), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(1, 2), BLACK);
+
+        assert.equal(liberties(board, List.of(2, 2)), 7);
     });
 });

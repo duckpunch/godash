@@ -68,12 +68,15 @@ export function group(board, position) {
 }
 
 
-export function equivalentBoards(board, positions) {
-    // TODO
+export function liberties(board, position) {
+    return group(board, position).reduce(
+        (acc, pos) => acc.union(matchingAdjacentPositions(board, pos, EMPTY)),
+        Set()
+    ).size;
 }
 
 
-export function adjacent(board, position) {
+export function equivalentBoards(board, positions) {
     // TODO
 }
 
