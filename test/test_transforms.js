@@ -1,7 +1,7 @@
 import assert from 'assert';
 import {List, Set} from 'immutable';
 
-import {emptyBoard, addMove} from '../src/transforms';
+import {emptyBoard, addMove, removeMoves} from '../src/transforms';
 import {SIZE_KEY, BLACK, WHITE} from '../src/analysis';
 
 
@@ -67,6 +67,32 @@ describe('add move', function() {
                 List.of(1, 0),
                 List.of(1, 1),
                 List.of(2, 2),
+                List.of(1, 2),
+            ]).equals(Set(new_board.keys()))
+        );
+    });
+});
+
+
+describe('remove moves', function() {
+    it('removes as expected', function() {
+        const board = emptyBoard(3)
+            .set(List.of(1, 0), WHITE)
+            .set(List.of(1, 1), WHITE)
+            .set(List.of(2, 0), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(1, 2), BLACK);
+
+        const new_board = removeMoves(board, Set([
+            List.of(1, 1),
+            List.of(2, 0),
+            List.of(2, 1),
+        ]));
+
+        assert.ok(
+            Set([
+                SIZE_KEY,
+                List.of(1, 0),
                 List.of(1, 2),
             ]).equals(Set(new_board.keys()))
         );
