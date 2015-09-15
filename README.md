@@ -1,6 +1,12 @@
 godash
 ======
 
+There have been a few dozen downloads on the [npm page](https://www.npmjs.com/package/godash).  I didn't really expect any at all.  This stuff is still very much in prerelease until I land on an API I like.  As such, I won't be following [semver](http://semver.org/) until then.
+
+> __*That is, I'll be committing API breaking changes in minor releases.*__
+
+Things will work sometimes, but your mileage may vary.
+
 [![Build Status](https://travis-ci.org/duckpunch/godash.svg)](https://travis-ci.org/duckpunch/godash)
 [![Document](http://duckpunch.github.io/godash/badge.svg)](http://duckpunch.github.io/godash/)
 
