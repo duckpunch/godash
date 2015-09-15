@@ -7934,87 +7934,13 @@
                     "type": "BinaryExpression",
                     "operator": ">",
                     "left": {
-                      "type": "MemberExpression",
-                      "computed": false,
-                      "object": {
-                        "type": "CallExpression",
-                        "callee": {
-                          "type": "Identifier",
-                          "name": "matchingAdjacentPositions",
-                          "range": [
-                            3628,
-                            3653
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 169,
-                              "column": 30
-                            },
-                            "end": {
-                              "line": 169,
-                              "column": 55
-                            }
-                          }
-                        },
-                        "arguments": [
-                          {
-                            "type": "Identifier",
-                            "name": "board",
-                            "range": [
-                              3654,
-                              3659
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 169,
-                                "column": 56
-                              },
-                              "end": {
-                                "line": 169,
-                                "column": 61
-                              }
-                            }
-                          },
-                          {
-                            "type": "Identifier",
-                            "name": "position",
-                            "range": [
-                              3661,
-                              3669
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 169,
-                                "column": 63
-                              },
-                              "end": {
-                                "line": 169,
-                                "column": 71
-                              }
-                            }
-                          },
-                          {
-                            "type": "Identifier",
-                            "name": "EMPTY",
-                            "range": [
-                              3671,
-                              3676
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 169,
-                                "column": 73
-                              },
-                              "end": {
-                                "line": 169,
-                                "column": 78
-                              }
-                            }
-                          }
-                        ],
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "liberties",
                         "range": [
                           3628,
-                          3677
+                          3637
                         ],
                         "loc": {
                           "start": {
@@ -8023,31 +7949,142 @@
                           },
                           "end": {
                             "line": 169,
-                            "column": 79
+                            "column": 39
                           }
                         }
                       },
-                      "property": {
-                        "type": "Identifier",
-                        "name": "size",
-                        "range": [
-                          3678,
-                          3682
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 169,
-                            "column": 80
+                      "arguments": [
+                        {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "board",
+                              "range": [
+                                3638,
+                                3643
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 169,
+                                  "column": 40
+                                },
+                                "end": {
+                                  "line": 169,
+                                  "column": 45
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "set",
+                              "range": [
+                                3644,
+                                3647
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 169,
+                                  "column": 46
+                                },
+                                "end": {
+                                  "line": 169,
+                                  "column": 49
+                                }
+                              }
+                            },
+                            "range": [
+                              3638,
+                              3647
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 169,
+                                "column": 40
+                              },
+                              "end": {
+                                "line": 169,
+                                "column": 49
+                              }
+                            }
                           },
-                          "end": {
-                            "line": 169,
-                            "column": 84
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "name": "position",
+                              "range": [
+                                3648,
+                                3656
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 169,
+                                  "column": 50
+                                },
+                                "end": {
+                                  "line": 169,
+                                  "column": 58
+                                }
+                              }
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "color",
+                              "range": [
+                                3658,
+                                3663
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 169,
+                                  "column": 60
+                                },
+                                "end": {
+                                  "line": 169,
+                                  "column": 65
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+                            3638,
+                            3664
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 169,
+                              "column": 40
+                            },
+                            "end": {
+                              "line": 169,
+                              "column": 66
+                            }
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "position",
+                          "range": [
+                            3666,
+                            3674
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 169,
+                              "column": 68
+                            },
+                            "end": {
+                              "line": 169,
+                              "column": 76
+                            }
                           }
                         }
-                      },
+                      ],
                       "range": [
                         3628,
-                        3682
+                        3675
                       ],
                       "loc": {
                         "start": {
@@ -8056,7 +8093,7 @@
                         },
                         "end": {
                           "line": 169,
-                          "column": 84
+                          "column": 77
                         }
                       }
                     },
@@ -8065,23 +8102,23 @@
                       "value": 0,
                       "raw": "0",
                       "range": [
-                        3685,
-                        3686
+                        3678,
+                        3679
                       ],
                       "loc": {
                         "start": {
                           "line": 169,
-                          "column": 87
+                          "column": 80
                         },
                         "end": {
                           "line": 169,
-                          "column": 88
+                          "column": 81
                         }
                       }
                     },
                     "range": [
                       3628,
-                      3686
+                      3679
                     ],
                     "loc": {
                       "start": {
@@ -8090,13 +8127,13 @@
                       },
                       "end": {
                         "line": 169,
-                        "column": 88
+                        "column": 81
                       }
                     }
                   },
                   "range": [
                     3608,
-                    3686
+                    3679
                   ],
                   "loc": {
                     "start": {
@@ -8105,7 +8142,7 @@
                     },
                     "end": {
                       "line": 169,
-                      "column": 88
+                      "column": 81
                     }
                   }
                 }
@@ -8113,7 +8150,7 @@
               "kind": "const",
               "range": [
                 3602,
-                3687
+                3680
               ],
               "loc": {
                 "start": {
@@ -8122,7 +8159,7 @@
                 },
                 "end": {
                   "line": 169,
-                  "column": 89
+                  "column": 82
                 }
               }
             },
@@ -8135,8 +8172,8 @@
                     "type": "Identifier",
                     "name": "will_kill_something",
                     "range": [
-                      3698,
-                      3717
+                      3691,
+                      3710
                     ],
                     "loc": {
                       "start": {
@@ -8160,8 +8197,8 @@
                           "type": "Identifier",
                           "name": "matchingAdjacentPositions",
                           "range": [
-                            3720,
-                            3745
+                            3713,
+                            3738
                           ],
                           "loc": {
                             "start": {
@@ -8179,8 +8216,8 @@
                             "type": "Identifier",
                             "name": "board",
                             "range": [
-                              3746,
-                              3751
+                              3739,
+                              3744
                             ],
                             "loc": {
                               "start": {
@@ -8197,8 +8234,8 @@
                             "type": "Identifier",
                             "name": "position",
                             "range": [
-                              3753,
-                              3761
+                              3746,
+                              3754
                             ],
                             "loc": {
                               "start": {
@@ -8217,8 +8254,8 @@
                               "type": "Identifier",
                               "name": "oppositeColor",
                               "range": [
-                                3763,
-                                3776
+                                3756,
+                                3769
                               ],
                               "loc": {
                                 "start": {
@@ -8236,8 +8273,8 @@
                                 "type": "Identifier",
                                 "name": "color",
                                 "range": [
-                                  3777,
-                                  3782
+                                  3770,
+                                  3775
                                 ],
                                 "loc": {
                                   "start": {
@@ -8252,8 +8289,8 @@
                               }
                             ],
                             "range": [
-                              3763,
-                              3783
+                              3756,
+                              3776
                             ],
                             "loc": {
                               "start": {
@@ -8268,8 +8305,8 @@
                           }
                         ],
                         "range": [
-                          3720,
-                          3784
+                          3713,
+                          3777
                         ],
                         "loc": {
                           "start": {
@@ -8286,8 +8323,8 @@
                         "type": "Identifier",
                         "name": "some",
                         "range": [
-                          3794,
-                          3798
+                          3787,
+                          3791
                         ],
                         "loc": {
                           "start": {
@@ -8301,8 +8338,8 @@
                         }
                       },
                       "range": [
-                        3720,
-                        3798
+                        3713,
+                        3791
                       ],
                       "loc": {
                         "start": {
@@ -8324,8 +8361,8 @@
                             "type": "Identifier",
                             "name": "pos",
                             "range": [
-                              3799,
-                              3802
+                              3792,
+                              3795
                             ],
                             "loc": {
                               "start": {
@@ -8348,8 +8385,8 @@
                               "type": "Identifier",
                               "name": "liberties",
                               "range": [
-                                3806,
-                                3815
+                                3799,
+                                3808
                               ],
                               "loc": {
                                 "start": {
@@ -8367,8 +8404,8 @@
                                 "type": "Identifier",
                                 "name": "board",
                                 "range": [
-                                  3816,
-                                  3821
+                                  3809,
+                                  3814
                                 ],
                                 "loc": {
                                   "start": {
@@ -8385,8 +8422,8 @@
                                 "type": "Identifier",
                                 "name": "pos",
                                 "range": [
-                                  3823,
-                                  3826
+                                  3816,
+                                  3819
                                 ],
                                 "loc": {
                                   "start": {
@@ -8401,8 +8438,8 @@
                               }
                             ],
                             "range": [
-                              3806,
-                              3827
+                              3799,
+                              3820
                             ],
                             "loc": {
                               "start": {
@@ -8420,8 +8457,8 @@
                             "value": 1,
                             "raw": "1",
                             "range": [
-                              3832,
-                              3833
+                              3825,
+                              3826
                             ],
                             "loc": {
                               "start": {
@@ -8435,8 +8472,8 @@
                             }
                           },
                           "range": [
-                            3806,
-                            3833
+                            3799,
+                            3826
                           ],
                           "loc": {
                             "start": {
@@ -8452,8 +8489,8 @@
                         "generator": false,
                         "expression": true,
                         "range": [
-                          3799,
-                          3833
+                          3792,
+                          3826
                         ],
                         "loc": {
                           "start": {
@@ -8468,8 +8505,8 @@
                       }
                     ],
                     "range": [
-                      3720,
-                      3834
+                      3713,
+                      3827
                     ],
                     "loc": {
                       "start": {
@@ -8483,8 +8520,8 @@
                     }
                   },
                   "range": [
-                    3698,
-                    3834
+                    3691,
+                    3827
                   ],
                   "loc": {
                     "start": {
@@ -8500,8 +8537,8 @@
               ],
               "kind": "const",
               "range": [
-                3692,
-                3835
+                3685,
+                3828
               ],
               "loc": {
                 "start": {
@@ -8515,372 +8552,80 @@
               }
             },
             {
-              "type": "VariableDeclaration",
-              "declarations": [
-                {
-                  "type": "VariableDeclarator",
-                  "id": {
-                    "type": "Identifier",
-                    "name": "wont_suicide",
-                    "range": [
-                      3846,
-                      3858
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 172,
-                        "column": 10
-                      },
-                      "end": {
-                        "line": 172,
-                        "column": 22
-                      }
-                    }
-                  },
-                  "init": {
-                    "type": "BinaryExpression",
-                    "operator": "!==",
-                    "left": {
-                      "type": "CallExpression",
-                      "callee": {
-                        "type": "Identifier",
-                        "name": "liberties",
-                        "range": [
-                          3861,
-                          3870
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 172,
-                            "column": 25
-                          },
-                          "end": {
-                            "line": 172,
-                            "column": 34
-                          }
-                        }
-                      },
-                      "arguments": [
-                        {
-                          "type": "CallExpression",
-                          "callee": {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "Identifier",
-                              "name": "board",
-                              "range": [
-                                3871,
-                                3876
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 172,
-                                  "column": 35
-                                },
-                                "end": {
-                                  "line": 172,
-                                  "column": 40
-                                }
-                              }
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "set",
-                              "range": [
-                                3877,
-                                3880
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 172,
-                                  "column": 41
-                                },
-                                "end": {
-                                  "line": 172,
-                                  "column": 44
-                                }
-                              }
-                            },
-                            "range": [
-                              3871,
-                              3880
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 172,
-                                "column": 35
-                              },
-                              "end": {
-                                "line": 172,
-                                "column": 44
-                              }
-                            }
-                          },
-                          "arguments": [
-                            {
-                              "type": "Identifier",
-                              "name": "position",
-                              "range": [
-                                3881,
-                                3889
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 172,
-                                  "column": 45
-                                },
-                                "end": {
-                                  "line": 172,
-                                  "column": 53
-                                }
-                              }
-                            },
-                            {
-                              "type": "Identifier",
-                              "name": "color",
-                              "range": [
-                                3891,
-                                3896
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 172,
-                                  "column": 55
-                                },
-                                "end": {
-                                  "line": 172,
-                                  "column": 60
-                                }
-                              }
-                            }
-                          ],
-                          "range": [
-                            3871,
-                            3897
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 172,
-                              "column": 35
-                            },
-                            "end": {
-                              "line": 172,
-                              "column": 61
-                            }
-                          }
-                        },
-                        {
-                          "type": "Identifier",
-                          "name": "position",
-                          "range": [
-                            3899,
-                            3907
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 172,
-                              "column": 63
-                            },
-                            "end": {
-                              "line": 172,
-                              "column": 71
-                            }
-                          }
-                        }
-                      ],
-                      "range": [
-                        3861,
-                        3908
-                      ],
-                      "loc": {
-                        "start": {
-                          "line": 172,
-                          "column": 25
-                        },
-                        "end": {
-                          "line": 172,
-                          "column": 72
-                        }
-                      }
-                    },
-                    "right": {
-                      "type": "Literal",
-                      "value": 0,
-                      "raw": "0",
-                      "range": [
-                        3913,
-                        3914
-                      ],
-                      "loc": {
-                        "start": {
-                          "line": 172,
-                          "column": 77
-                        },
-                        "end": {
-                          "line": 172,
-                          "column": 78
-                        }
-                      }
-                    },
-                    "range": [
-                      3861,
-                      3914
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 172,
-                        "column": 25
-                      },
-                      "end": {
-                        "line": 172,
-                        "column": 78
-                      }
-                    }
-                  },
-                  "range": [
-                    3846,
-                    3914
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 172,
-                      "column": 10
-                    },
-                    "end": {
-                      "line": 172,
-                      "column": 78
-                    }
-                  }
-                }
-              ],
-              "kind": "const",
-              "range": [
-                3840,
-                3915
-              ],
-              "loc": {
-                "start": {
-                  "line": 172,
-                  "column": 4
-                },
-                "end": {
-                  "line": 172,
-                  "column": 79
-                }
-              }
-            },
-            {
               "type": "ReturnStatement",
               "argument": {
                 "type": "LogicalExpression",
-                "operator": "&&",
+                "operator": "||",
                 "left": {
                   "type": "Identifier",
-                  "name": "wont_suicide",
+                  "name": "will_have_liberty",
                   "range": [
-                    3928,
-                    3940
+                    3841,
+                    3858
                   ],
                   "loc": {
                     "start": {
-                      "line": 174,
+                      "line": 173,
                       "column": 11
                     },
                     "end": {
-                      "line": 174,
-                      "column": 23
+                      "line": 173,
+                      "column": 28
                     }
                   }
                 },
                 "right": {
-                  "type": "LogicalExpression",
-                  "operator": "||",
-                  "left": {
-                    "type": "Identifier",
-                    "name": "will_have_liberty",
-                    "range": [
-                      3945,
-                      3962
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 174,
-                        "column": 28
-                      },
-                      "end": {
-                        "line": 174,
-                        "column": 45
-                      }
-                    }
-                  },
-                  "right": {
-                    "type": "Identifier",
-                    "name": "will_kill_something",
-                    "range": [
-                      3966,
-                      3985
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 174,
-                        "column": 49
-                      },
-                      "end": {
-                        "line": 174,
-                        "column": 68
-                      }
-                    }
-                  },
+                  "type": "Identifier",
+                  "name": "will_kill_something",
                   "range": [
-                    3945,
-                    3985
+                    3862,
+                    3881
                   ],
                   "loc": {
                     "start": {
-                      "line": 174,
-                      "column": 28
+                      "line": 173,
+                      "column": 32
                     },
                     "end": {
-                      "line": 174,
-                      "column": 68
+                      "line": 173,
+                      "column": 51
                     }
                   }
                 },
                 "range": [
-                  3928,
-                  3986
+                  3841,
+                  3881
                 ],
                 "loc": {
                   "start": {
-                    "line": 174,
+                    "line": 173,
                     "column": 11
                   },
                   "end": {
-                    "line": 174,
-                    "column": 69
+                    "line": 173,
+                    "column": 51
                   }
                 }
               },
               "range": [
-                3921,
-                3987
+                3834,
+                3882
               ],
               "loc": {
                 "start": {
-                  "line": 174,
+                  "line": 173,
                   "column": 4
                 },
                 "end": {
-                  "line": 174,
-                  "column": 70
+                  "line": 173,
+                  "column": 52
                 }
               }
             }
           ],
           "range": [
             3596,
-            3989
+            3884
           ],
           "loc": {
             "start": {
@@ -8888,7 +8633,7 @@
               "column": 56
             },
             "end": {
-              "line": 175,
+              "line": 174,
               "column": 1
             }
           }
@@ -8897,7 +8642,7 @@
         "expression": false,
         "range": [
           3547,
-          3989
+          3884
         ],
         "loc": {
           "start": {
@@ -8905,7 +8650,7 @@
             "column": 7
           },
           "end": {
-            "line": 175,
+            "line": 174,
             "column": 1
           }
         },
@@ -8935,7 +8680,7 @@
       "source": null,
       "range": [
         3540,
-        3989
+        3884
       ],
       "loc": {
         "start": {
@@ -8943,7 +8688,7 @@
           "column": 0
         },
         "end": {
-          "line": 175,
+          "line": 174,
           "column": 1
         }
       },
@@ -8979,16 +8724,16 @@
               "type": "Identifier",
               "name": "isValidPosition",
               "range": [
-                4013,
-                4028
+                3908,
+                3923
               ],
               "loc": {
                 "start": {
-                  "line": 179,
+                  "line": 178,
                   "column": 4
                 },
                 "end": {
-                  "line": 179,
+                  "line": 178,
                   "column": 19
                 }
               }
@@ -8997,16 +8742,16 @@
               "type": "Identifier",
               "name": "isValidPosition",
               "range": [
-                4013,
-                4028
+                3908,
+                3923
               ],
               "loc": {
                 "start": {
-                  "line": 179,
+                  "line": 178,
                   "column": 4
                 },
                 "end": {
-                  "line": 179,
+                  "line": 178,
                   "column": 19
                 }
               }
@@ -9016,16 +8761,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              4013,
-              4028
+              3908,
+              3923
             ],
             "loc": {
               "start": {
-                "line": 179,
+                "line": 178,
                 "column": 4
               },
               "end": {
-                "line": 179,
+                "line": 178,
                 "column": 19
               }
             }
@@ -9036,16 +8781,16 @@
               "type": "Identifier",
               "name": "oppositeColor",
               "range": [
-                4030,
-                4043
+                3925,
+                3938
               ],
               "loc": {
                 "start": {
-                  "line": 179,
+                  "line": 178,
                   "column": 21
                 },
                 "end": {
-                  "line": 179,
+                  "line": 178,
                   "column": 34
                 }
               }
@@ -9054,16 +8799,16 @@
               "type": "Identifier",
               "name": "oppositeColor",
               "range": [
-                4030,
-                4043
+                3925,
+                3938
               ],
               "loc": {
                 "start": {
-                  "line": 179,
+                  "line": 178,
                   "column": 21
                 },
                 "end": {
-                  "line": 179,
+                  "line": 178,
                   "column": 34
                 }
               }
@@ -9073,16 +8818,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              4030,
-              4043
+              3925,
+              3938
             ],
             "loc": {
               "start": {
-                "line": 179,
+                "line": 178,
                 "column": 21
               },
               "end": {
-                "line": 179,
+                "line": 178,
                 "column": 34
               }
             }
@@ -9093,16 +8838,16 @@
               "type": "Identifier",
               "name": "liberties",
               "range": [
-                4045,
-                4054
+                3940,
+                3949
               ],
               "loc": {
                 "start": {
-                  "line": 179,
+                  "line": 178,
                   "column": 36
                 },
                 "end": {
-                  "line": 179,
+                  "line": 178,
                   "column": 45
                 }
               }
@@ -9111,16 +8856,16 @@
               "type": "Identifier",
               "name": "liberties",
               "range": [
-                4045,
-                4054
+                3940,
+                3949
               ],
               "loc": {
                 "start": {
-                  "line": 179,
+                  "line": 178,
                   "column": 36
                 },
                 "end": {
-                  "line": 179,
+                  "line": 178,
                   "column": 45
                 }
               }
@@ -9130,16 +8875,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              4045,
-              4054
+              3940,
+              3949
             ],
             "loc": {
               "start": {
-                "line": 179,
+                "line": 178,
                 "column": 36
               },
               "end": {
-                "line": 179,
+                "line": 178,
                 "column": 45
               }
             }
@@ -9150,16 +8895,16 @@
               "type": "Identifier",
               "name": "group",
               "range": [
-                4056,
-                4061
+                3951,
+                3956
               ],
               "loc": {
                 "start": {
-                  "line": 179,
+                  "line": 178,
                   "column": 47
                 },
                 "end": {
-                  "line": 179,
+                  "line": 178,
                   "column": 52
                 }
               }
@@ -9168,16 +8913,16 @@
               "type": "Identifier",
               "name": "group",
               "range": [
-                4056,
-                4061
+                3951,
+                3956
               ],
               "loc": {
                 "start": {
-                  "line": 179,
+                  "line": 178,
                   "column": 47
                 },
                 "end": {
-                  "line": 179,
+                  "line": 178,
                   "column": 52
                 }
               }
@@ -9187,32 +8932,32 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              4056,
-              4061
+              3951,
+              3956
             ],
             "loc": {
               "start": {
-                "line": 179,
+                "line": 178,
                 "column": 47
               },
               "end": {
-                "line": 179,
+                "line": 178,
                 "column": 52
               }
             }
           }
         ],
         "range": [
-          4007,
-          4063
+          3902,
+          3958
         ],
         "loc": {
           "start": {
-            "line": 178,
+            "line": 177,
             "column": 15
           },
           "end": {
-            "line": 180,
+            "line": 179,
             "column": 1
           }
         },
@@ -9220,16 +8965,16 @@
         "trailingComments": []
       },
       "range": [
-        3992,
-        4064
+        3887,
+        3959
       ],
       "loc": {
         "start": {
-          "line": 178,
+          "line": 177,
           "column": 0
         },
         "end": {
-          "line": 180,
+          "line": 179,
           "column": 2
         }
       }
@@ -9238,7 +8983,7 @@
   "sourceType": "module",
   "range": [
     0,
-    4064
+    3959
   ],
   "loc": {
     "start": {
@@ -9246,7 +8991,7 @@
       "column": 0
     },
     "end": {
-      "line": 180,
+      "line": 179,
       "column": 2
     }
   },

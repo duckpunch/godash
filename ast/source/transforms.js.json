@@ -147,6 +147,59 @@
               "column": 11
             }
           }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Set",
+            "range": [
+              46,
+              49
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 13
+              },
+              "end": {
+                "line": 2,
+                "column": 16
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Set",
+            "range": [
+              46,
+              49
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 13
+              },
+              "end": {
+                "line": 2,
+                "column": 16
+              }
+            }
+          },
+          "range": [
+            46,
+            49
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 13
+            },
+            "end": {
+              "line": 2,
+              "column": 16
+            }
+          }
         }
       ],
       "source": {
@@ -154,23 +207,23 @@
         "value": "immutable",
         "raw": "'immutable'",
         "range": [
-          51,
-          62
+          56,
+          67
         ],
         "loc": {
           "start": {
             "line": 2,
-            "column": 18
+            "column": 23
           },
           "end": {
             "line": 2,
-            "column": 29
+            "column": 34
           }
         }
       },
       "range": [
         33,
-        63
+        68
       ],
       "loc": {
         "start": {
@@ -179,7 +232,7 @@
         },
         "end": {
           "line": 2,
-          "column": 30
+          "column": 35
         }
       }
     },
@@ -192,8 +245,8 @@
             "type": "Identifier",
             "name": "BLACK",
             "range": [
-              78,
-              83
+              83,
+              88
             ],
             "loc": {
               "start": {
@@ -210,8 +263,8 @@
             "type": "Identifier",
             "name": "BLACK",
             "range": [
-              78,
-              83
+              83,
+              88
             ],
             "loc": {
               "start": {
@@ -225,8 +278,8 @@
             }
           },
           "range": [
-            78,
-            83
+            83,
+            88
           ],
           "loc": {
             "start": {
@@ -245,8 +298,8 @@
             "type": "Identifier",
             "name": "WHITE",
             "range": [
-              85,
-              90
+              90,
+              95
             ],
             "loc": {
               "start": {
@@ -263,8 +316,8 @@
             "type": "Identifier",
             "name": "WHITE",
             "range": [
-              85,
-              90
+              90,
+              95
             ],
             "loc": {
               "start": {
@@ -278,8 +331,8 @@
             }
           },
           "range": [
-            85,
-            90
+            90,
+            95
           ],
           "loc": {
             "start": {
@@ -298,8 +351,8 @@
             "type": "Identifier",
             "name": "SIZE_KEY",
             "range": [
-              92,
-              100
+              97,
+              105
             ],
             "loc": {
               "start": {
@@ -316,8 +369,8 @@
             "type": "Identifier",
             "name": "SIZE_KEY",
             "range": [
-              92,
-              100
+              97,
+              105
             ],
             "loc": {
               "start": {
@@ -331,8 +384,8 @@
             }
           },
           "range": [
-            92,
-            100
+            97,
+            105
           ],
           "loc": {
             "start": {
@@ -351,8 +404,8 @@
             "type": "Identifier",
             "name": "isValidPosition",
             "range": [
-              102,
-              117
+              107,
+              122
             ],
             "loc": {
               "start": {
@@ -369,8 +422,8 @@
             "type": "Identifier",
             "name": "isValidPosition",
             "range": [
-              102,
-              117
+              107,
+              122
             ],
             "loc": {
               "start": {
@@ -384,8 +437,8 @@
             }
           },
           "range": [
-            102,
-            117
+            107,
+            122
           ],
           "loc": {
             "start": {
@@ -404,8 +457,8 @@
             "type": "Identifier",
             "name": "oppositeColor",
             "range": [
-              119,
-              132
+              124,
+              137
             ],
             "loc": {
               "start": {
@@ -422,8 +475,8 @@
             "type": "Identifier",
             "name": "oppositeColor",
             "range": [
-              119,
-              132
+              124,
+              137
             ],
             "loc": {
               "start": {
@@ -437,8 +490,8 @@
             }
           },
           "range": [
-            119,
-            132
+            124,
+            137
           ],
           "loc": {
             "start": {
@@ -457,8 +510,8 @@
             "type": "Identifier",
             "name": "matchingAdjacentPositions",
             "range": [
-              138,
-              163
+              143,
+              168
             ],
             "loc": {
               "start": {
@@ -475,8 +528,8 @@
             "type": "Identifier",
             "name": "matchingAdjacentPositions",
             "range": [
-              138,
-              163
+              143,
+              168
             ],
             "loc": {
               "start": {
@@ -490,8 +543,8 @@
             }
           },
           "range": [
-            138,
-            163
+            143,
+            168
           ],
           "loc": {
             "start": {
@@ -510,8 +563,8 @@
             "type": "Identifier",
             "name": "liberties",
             "range": [
-              165,
-              174
+              170,
+              179
             ],
             "loc": {
               "start": {
@@ -528,8 +581,8 @@
             "type": "Identifier",
             "name": "liberties",
             "range": [
-              165,
-              174
+              170,
+              179
             ],
             "loc": {
               "start": {
@@ -543,8 +596,8 @@
             }
           },
           "range": [
-            165,
-            174
+            170,
+            179
           ],
           "loc": {
             "start": {
@@ -563,8 +616,8 @@
             "type": "Identifier",
             "name": "group",
             "range": [
-              176,
-              181
+              181,
+              186
             ],
             "loc": {
               "start": {
@@ -581,8 +634,8 @@
             "type": "Identifier",
             "name": "group",
             "range": [
-              176,
-              181
+              181,
+              186
             ],
             "loc": {
               "start": {
@@ -596,8 +649,8 @@
             }
           },
           "range": [
-            176,
-            181
+            181,
+            186
           ],
           "loc": {
             "start": {
@@ -616,8 +669,8 @@
         "value": "./analysis",
         "raw": "'./analysis'",
         "range": [
-          189,
-          201
+          194,
+          206
         ],
         "loc": {
           "start": {
@@ -631,8 +684,8 @@
         }
       },
       "range": [
-        65,
-        202
+        70,
+        207
       ],
       "loc": {
         "start": {
@@ -649,8 +702,8 @@
           "type": "Block",
           "value": "*\n * Creates an empty board.\n *\n * @param {number} size the size of the board\n * @throws {string} when size is not a positive integer\n * @returns {Map}\n ",
           "range": [
-            205,
-            362
+            210,
+            367
           ],
           "loc": {
             "start": {
@@ -673,8 +726,8 @@
           "type": "Identifier",
           "name": "emptyBoard",
           "range": [
-            379,
-            389
+            384,
+            394
           ],
           "loc": {
             "start": {
@@ -692,8 +745,8 @@
             "type": "Identifier",
             "name": "size",
             "range": [
-              390,
-              394
+              395,
+              399
             ],
             "loc": {
               "start": {
@@ -727,8 +780,8 @@
                         "type": "Identifier",
                         "name": "isNumber",
                         "range": [
-                          407,
-                          415
+                          412,
+                          420
                         ],
                         "loc": {
                           "start": {
@@ -746,8 +799,8 @@
                           "type": "Identifier",
                           "name": "size",
                           "range": [
-                            416,
-                            420
+                            421,
+                            425
                           ],
                           "loc": {
                             "start": {
@@ -762,8 +815,8 @@
                         }
                       ],
                       "range": [
-                        407,
-                        421
+                        412,
+                        426
                       ],
                       "loc": {
                         "start": {
@@ -778,8 +831,8 @@
                     },
                     "prefix": true,
                     "range": [
-                      406,
-                      421
+                      411,
+                      426
                     ],
                     "loc": {
                       "start": {
@@ -799,8 +852,8 @@
                       "type": "Identifier",
                       "name": "size",
                       "range": [
-                        425,
-                        429
+                        430,
+                        434
                       ],
                       "loc": {
                         "start": {
@@ -818,8 +871,8 @@
                       "value": 0,
                       "raw": "0",
                       "range": [
-                        433,
-                        434
+                        438,
+                        439
                       ],
                       "loc": {
                         "start": {
@@ -833,8 +886,8 @@
                       }
                     },
                     "range": [
-                      425,
-                      434
+                      430,
+                      439
                     ],
                     "loc": {
                       "start": {
@@ -848,8 +901,8 @@
                     }
                   },
                   "range": [
-                    406,
-                    434
+                    411,
+                    439
                   ],
                   "loc": {
                     "start": {
@@ -869,8 +922,8 @@
                     "type": "Identifier",
                     "name": "size",
                     "range": [
-                      438,
-                      442
+                      443,
+                      447
                     ],
                     "loc": {
                       "start": {
@@ -889,8 +942,8 @@
                       "type": "Identifier",
                       "name": "parseInt",
                       "range": [
-                        447,
-                        455
+                        452,
+                        460
                       ],
                       "loc": {
                         "start": {
@@ -908,8 +961,8 @@
                         "type": "Identifier",
                         "name": "size",
                         "range": [
-                          456,
-                          460
+                          461,
+                          465
                         ],
                         "loc": {
                           "start": {
@@ -924,8 +977,8 @@
                       }
                     ],
                     "range": [
-                      447,
-                      461
+                      452,
+                      466
                     ],
                     "loc": {
                       "start": {
@@ -939,8 +992,8 @@
                     }
                   },
                   "range": [
-                    438,
-                    461
+                    443,
+                    466
                   ],
                   "loc": {
                     "start": {
@@ -954,8 +1007,8 @@
                   }
                 },
                 "range": [
-                  406,
-                  461
+                  411,
+                  466
                 ],
                 "loc": {
                   "start": {
@@ -978,8 +1031,8 @@
                       "value": "An empty board must be created from a positive integer.",
                       "raw": "'An empty board must be created from a positive integer.'",
                       "range": [
-                        479,
-                        536
+                        484,
+                        541
                       ],
                       "loc": {
                         "start": {
@@ -993,8 +1046,8 @@
                       }
                     },
                     "range": [
-                      473,
-                      537
+                      478,
+                      542
                     ],
                     "loc": {
                       "start": {
@@ -1009,8 +1062,8 @@
                   }
                 ],
                 "range": [
-                  463,
-                  543
+                  468,
+                  548
                 ],
                 "loc": {
                   "start": {
@@ -1025,8 +1078,8 @@
               },
               "alternate": null,
               "range": [
-                402,
-                543
+                407,
+                548
               ],
               "loc": {
                 "start": {
@@ -1052,8 +1105,8 @@
                       "type": "Identifier",
                       "name": "Map",
                       "range": [
-                        556,
-                        559
+                        561,
+                        564
                       ],
                       "loc": {
                         "start": {
@@ -1068,8 +1121,8 @@
                     },
                     "arguments": [],
                     "range": [
-                      556,
-                      561
+                      561,
+                      566
                     ],
                     "loc": {
                       "start": {
@@ -1086,8 +1139,8 @@
                     "type": "Identifier",
                     "name": "set",
                     "range": [
-                      562,
-                      565
+                      567,
+                      570
                     ],
                     "loc": {
                       "start": {
@@ -1101,8 +1154,8 @@
                     }
                   },
                   "range": [
-                    556,
-                    565
+                    561,
+                    570
                   ],
                   "loc": {
                     "start": {
@@ -1120,8 +1173,8 @@
                     "type": "Identifier",
                     "name": "SIZE_KEY",
                     "range": [
-                      566,
-                      574
+                      571,
+                      579
                     ],
                     "loc": {
                       "start": {
@@ -1138,8 +1191,8 @@
                     "type": "Identifier",
                     "name": "size",
                     "range": [
-                      576,
-                      580
+                      581,
+                      585
                     ],
                     "loc": {
                       "start": {
@@ -1154,8 +1207,8 @@
                   }
                 ],
                 "range": [
-                  556,
-                  581
+                  561,
+                  586
                 ],
                 "loc": {
                   "start": {
@@ -1169,8 +1222,8 @@
                 }
               },
               "range": [
-                549,
-                582
+                554,
+                587
               ],
               "loc": {
                 "start": {
@@ -1185,8 +1238,8 @@
             }
           ],
           "range": [
-            396,
-            584
+            401,
+            589
           ],
           "loc": {
             "start": {
@@ -1202,8 +1255,8 @@
         "generator": false,
         "expression": false,
         "range": [
-          370,
-          584
+          375,
+          589
         ],
         "loc": {
           "start": {
@@ -1220,8 +1273,8 @@
             "type": "Block",
             "value": "*\n * Creates an empty board.\n *\n * @param {number} size the size of the board\n * @throws {string} when size is not a positive integer\n * @returns {Map}\n ",
             "range": [
-              205,
-              362
+              210,
+              367
             ],
             "loc": {
               "start": {
@@ -1240,8 +1293,8 @@
             "type": "Block",
             "value": "*\n * @private\n ",
             "range": [
-              586,
-              605
+              591,
+              610
             ],
             "loc": {
               "start": {
@@ -1259,8 +1312,8 @@
       "specifiers": [],
       "source": null,
       "range": [
-        363,
-        584
+        368,
+        589
       ],
       "loc": {
         "start": {
@@ -1277,8 +1330,8 @@
           "type": "Block",
           "value": "*\n * Creates an empty board.\n *\n * @param {number} size the size of the board\n * @throws {string} when size is not a positive integer\n * @returns {Map}\n ",
           "range": [
-            205,
-            362
+            210,
+            367
           ],
           "loc": {
             "start": {
@@ -1297,8 +1350,8 @@
           "type": "Block",
           "value": "*\n * @private\n ",
           "range": [
-            586,
-            605
+            591,
+            610
           ],
           "loc": {
             "start": {
@@ -1321,8 +1374,8 @@
           "type": "Identifier",
           "name": "addMove",
           "range": [
-            622,
-            629
+            627,
+            634
           ],
           "loc": {
             "start": {
@@ -1340,8 +1393,8 @@
             "type": "Identifier",
             "name": "board",
             "range": [
-              630,
-              635
+              635,
+              640
             ],
             "loc": {
               "start": {
@@ -1358,8 +1411,8 @@
             "type": "Identifier",
             "name": "position",
             "range": [
-              637,
-              645
+              642,
+              650
             ],
             "loc": {
               "start": {
@@ -1376,8 +1429,8 @@
             "type": "Identifier",
             "name": "color",
             "range": [
-              647,
-              652
+              652,
+              657
             ],
             "loc": {
               "start": {
@@ -1405,8 +1458,8 @@
                     "type": "Identifier",
                     "name": "isValidPosition",
                     "range": [
-                      665,
-                      680
+                      670,
+                      685
                     ],
                     "loc": {
                       "start": {
@@ -1424,8 +1477,8 @@
                       "type": "Identifier",
                       "name": "board",
                       "range": [
-                        681,
-                        686
+                        686,
+                        691
                       ],
                       "loc": {
                         "start": {
@@ -1442,8 +1495,8 @@
                       "type": "Identifier",
                       "name": "position",
                       "range": [
-                        688,
-                        696
+                        693,
+                        701
                       ],
                       "loc": {
                         "start": {
@@ -1460,8 +1513,8 @@
                       "type": "Identifier",
                       "name": "color",
                       "range": [
-                        698,
-                        703
+                        703,
+                        708
                       ],
                       "loc": {
                         "start": {
@@ -1476,8 +1529,8 @@
                     }
                   ],
                   "range": [
-                    665,
-                    704
+                    670,
+                    709
                   ],
                   "loc": {
                     "start": {
@@ -1492,8 +1545,8 @@
                 },
                 "prefix": true,
                 "range": [
-                  664,
-                  704
+                  669,
+                  709
                 ],
                 "loc": {
                   "start": {
@@ -1516,8 +1569,8 @@
                       "value": "Not a valid position",
                       "raw": "'Not a valid position'",
                       "range": [
-                        722,
-                        744
+                        727,
+                        749
                       ],
                       "loc": {
                         "start": {
@@ -1531,8 +1584,8 @@
                       }
                     },
                     "range": [
-                      716,
-                      745
+                      721,
+                      750
                     ],
                     "loc": {
                       "start": {
@@ -1547,8 +1600,8 @@
                   }
                 ],
                 "range": [
-                  706,
-                  751
+                  711,
+                  756
                 ],
                 "loc": {
                   "start": {
@@ -1563,8 +1616,8 @@
               },
               "alternate": null,
               "range": [
-                660,
-                751
+                665,
+                756
               ],
               "loc": {
                 "start": {
@@ -1588,8 +1641,8 @@
                     "type": "Identifier",
                     "name": "board",
                     "range": [
-                      761,
-                      766
+                      766,
+                      771
                     ],
                     "loc": {
                       "start": {
@@ -1606,8 +1659,8 @@
                     "type": "Identifier",
                     "name": "has",
                     "range": [
-                      767,
-                      770
+                      772,
+                      775
                     ],
                     "loc": {
                       "start": {
@@ -1621,8 +1674,8 @@
                     }
                   },
                   "range": [
-                    761,
-                    770
+                    766,
+                    775
                   ],
                   "loc": {
                     "start": {
@@ -1640,8 +1693,8 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      771,
-                      779
+                      776,
+                      784
                     ],
                     "loc": {
                       "start": {
@@ -1656,8 +1709,8 @@
                   }
                 ],
                 "range": [
-                  761,
-                  780
+                  766,
+                  785
                 ],
                 "loc": {
                   "start": {
@@ -1680,8 +1733,8 @@
                       "value": "There is already a stone there",
                       "raw": "'There is already a stone there'",
                       "range": [
-                        798,
-                        830
+                        803,
+                        835
                       ],
                       "loc": {
                         "start": {
@@ -1695,8 +1748,8 @@
                       }
                     },
                     "range": [
-                      792,
-                      831
+                      797,
+                      836
                     ],
                     "loc": {
                       "start": {
@@ -1711,8 +1764,8 @@
                   }
                 ],
                 "range": [
-                  782,
-                  837
+                  787,
+                  842
                 ],
                 "loc": {
                   "start": {
@@ -1727,8 +1780,8 @@
               },
               "alternate": null,
               "range": [
-                757,
-                837
+                762,
+                842
               ],
               "loc": {
                 "start": {
@@ -1750,8 +1803,8 @@
                     "type": "Identifier",
                     "name": "killed",
                     "range": [
-                      849,
-                      855
+                      854,
+                      860
                     ],
                     "loc": {
                       "start": {
@@ -1775,8 +1828,8 @@
                           "type": "Identifier",
                           "name": "matchingAdjacentPositions",
                           "range": [
-                            858,
-                            883
+                            863,
+                            888
                           ],
                           "loc": {
                             "start": {
@@ -1794,8 +1847,8 @@
                             "type": "Identifier",
                             "name": "board",
                             "range": [
-                              884,
-                              889
+                              889,
+                              894
                             ],
                             "loc": {
                               "start": {
@@ -1812,8 +1865,8 @@
                             "type": "Identifier",
                             "name": "position",
                             "range": [
-                              891,
-                              899
+                              896,
+                              904
                             ],
                             "loc": {
                               "start": {
@@ -1832,8 +1885,8 @@
                               "type": "Identifier",
                               "name": "oppositeColor",
                               "range": [
-                                901,
-                                914
+                                906,
+                                919
                               ],
                               "loc": {
                                 "start": {
@@ -1851,8 +1904,8 @@
                                 "type": "Identifier",
                                 "name": "color",
                                 "range": [
-                                  915,
-                                  920
+                                  920,
+                                  925
                                 ],
                                 "loc": {
                                   "start": {
@@ -1867,8 +1920,8 @@
                               }
                             ],
                             "range": [
-                              901,
-                              921
+                              906,
+                              926
                             ],
                             "loc": {
                               "start": {
@@ -1883,8 +1936,8 @@
                           }
                         ],
                         "range": [
-                          858,
-                          922
+                          863,
+                          927
                         ],
                         "loc": {
                           "start": {
@@ -1901,8 +1954,8 @@
                         "type": "Identifier",
                         "name": "reduce",
                         "range": [
-                          923,
-                          929
+                          928,
+                          934
                         ],
                         "loc": {
                           "start": {
@@ -1916,8 +1969,8 @@
                         }
                       },
                       "range": [
-                        858,
-                        929
+                        863,
+                        934
                       ],
                       "loc": {
                         "start": {
@@ -1939,8 +1992,8 @@
                             "type": "Identifier",
                             "name": "acc",
                             "range": [
-                              940,
-                              943
+                              945,
+                              948
                             ],
                             "loc": {
                               "start": {
@@ -1957,8 +2010,8 @@
                             "type": "Identifier",
                             "name": "pos",
                             "range": [
-                              945,
-                              948
+                              950,
+                              953
                             ],
                             "loc": {
                               "start": {
@@ -1981,8 +2034,8 @@
                               "type": "Identifier",
                               "name": "acc",
                               "range": [
-                                953,
-                                956
+                                958,
+                                961
                               ],
                               "loc": {
                                 "start": {
@@ -1999,8 +2052,8 @@
                               "type": "Identifier",
                               "name": "union",
                               "range": [
-                                957,
-                                962
+                                962,
+                                967
                               ],
                               "loc": {
                                 "start": {
@@ -2014,8 +2067,8 @@
                               }
                             },
                             "range": [
-                              953,
-                              962
+                              958,
+                              967
                             ],
                             "loc": {
                               "start": {
@@ -2040,8 +2093,8 @@
                                     "type": "Identifier",
                                     "name": "liberties",
                                     "range": [
-                                      963,
-                                      972
+                                      968,
+                                      977
                                     ],
                                     "loc": {
                                       "start": {
@@ -2059,8 +2112,8 @@
                                       "type": "Identifier",
                                       "name": "board",
                                       "range": [
-                                        973,
-                                        978
+                                        978,
+                                        983
                                       ],
                                       "loc": {
                                         "start": {
@@ -2077,8 +2130,8 @@
                                       "type": "Identifier",
                                       "name": "pos",
                                       "range": [
-                                        980,
-                                        983
+                                        985,
+                                        988
                                       ],
                                       "loc": {
                                         "start": {
@@ -2093,8 +2146,8 @@
                                     }
                                   ],
                                   "range": [
-                                    963,
-                                    984
+                                    968,
+                                    989
                                   ],
                                   "loc": {
                                     "start": {
@@ -2112,8 +2165,8 @@
                                   "value": 1,
                                   "raw": "1",
                                   "range": [
-                                    989,
-                                    990
+                                    994,
+                                    995
                                   ],
                                   "loc": {
                                     "start": {
@@ -2127,8 +2180,8 @@
                                   }
                                 },
                                 "range": [
-                                  963,
-                                  990
+                                  968,
+                                  995
                                 ],
                                 "loc": {
                                   "start": {
@@ -2147,8 +2200,8 @@
                                   "type": "Identifier",
                                   "name": "group",
                                   "range": [
-                                    993,
-                                    998
+                                    998,
+                                    1003
                                   ],
                                   "loc": {
                                     "start": {
@@ -2164,10 +2217,10 @@
                                 "arguments": [
                                   {
                                     "type": "Identifier",
-                                    "name": "pos",
+                                    "name": "board",
                                     "range": [
-                                      999,
-                                      1002
+                                      1004,
+                                      1009
                                     ],
                                     "loc": {
                                       "start": {
@@ -2176,14 +2229,32 @@
                                       },
                                       "end": {
                                         "line": 38,
-                                        "column": 71
+                                        "column": 73
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "Identifier",
+                                    "name": "pos",
+                                    "range": [
+                                      1011,
+                                      1014
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 38,
+                                        "column": 75
+                                      },
+                                      "end": {
+                                        "line": 38,
+                                        "column": 78
                                       }
                                     }
                                   }
                                 ],
                                 "range": [
-                                  993,
-                                  1003
+                                  998,
+                                  1015
                                 ],
                                 "loc": {
                                   "start": {
@@ -2192,7 +2263,7 @@
                                   },
                                   "end": {
                                     "line": 38,
-                                    "column": 72
+                                    "column": 79
                                   }
                                 }
                               },
@@ -2202,39 +2273,39 @@
                                   "type": "Identifier",
                                   "name": "Set",
                                   "range": [
-                                    1006,
-                                    1009
+                                    1018,
+                                    1021
                                   ],
                                   "loc": {
                                     "start": {
                                       "line": 38,
-                                      "column": 75
+                                      "column": 82
                                     },
                                     "end": {
                                       "line": 38,
-                                      "column": 78
+                                      "column": 85
                                     }
                                   }
                                 },
                                 "arguments": [],
                                 "range": [
-                                  1006,
-                                  1011
+                                  1018,
+                                  1023
                                 ],
                                 "loc": {
                                   "start": {
                                     "line": 38,
-                                    "column": 75
+                                    "column": 82
                                   },
                                   "end": {
                                     "line": 38,
-                                    "column": 80
+                                    "column": 87
                                   }
                                 }
                               },
                               "range": [
-                                963,
-                                1011
+                                968,
+                                1023
                               ],
                               "loc": {
                                 "start": {
@@ -2243,14 +2314,14 @@
                                 },
                                 "end": {
                                   "line": 38,
-                                  "column": 80
+                                  "column": 87
                                 }
                               }
                             }
                           ],
                           "range": [
-                            953,
-                            1012
+                            958,
+                            1024
                           ],
                           "loc": {
                             "start": {
@@ -2259,15 +2330,15 @@
                             },
                             "end": {
                               "line": 38,
-                              "column": 81
+                              "column": 88
                             }
                           }
                         },
                         "generator": false,
                         "expression": true,
                         "range": [
-                          939,
-                          1012
+                          944,
+                          1024
                         ],
                         "loc": {
                           "start": {
@@ -2276,7 +2347,7 @@
                           },
                           "end": {
                             "line": 38,
-                            "column": 81
+                            "column": 88
                           }
                         }
                       },
@@ -2286,8 +2357,8 @@
                           "type": "Identifier",
                           "name": "Set",
                           "range": [
-                            1022,
-                            1025
+                            1034,
+                            1037
                           ],
                           "loc": {
                             "start": {
@@ -2302,8 +2373,8 @@
                         },
                         "arguments": [],
                         "range": [
-                          1022,
-                          1027
+                          1034,
+                          1039
                         ],
                         "loc": {
                           "start": {
@@ -2318,8 +2389,8 @@
                       }
                     ],
                     "range": [
-                      858,
-                      1033
+                      863,
+                      1045
                     ],
                     "loc": {
                       "start": {
@@ -2333,8 +2404,8 @@
                     }
                   },
                   "range": [
-                    849,
-                    1033
+                    854,
+                    1045
                   ],
                   "loc": {
                     "start": {
@@ -2350,8 +2421,8 @@
               ],
               "kind": "const",
               "range": [
-                843,
-                1034
+                848,
+                1046
               ],
               "loc": {
                 "start": {
@@ -2377,8 +2448,8 @@
                       "type": "Identifier",
                       "name": "removeMoves",
                       "range": [
-                        1047,
-                        1058
+                        1059,
+                        1070
                       ],
                       "loc": {
                         "start": {
@@ -2396,8 +2467,8 @@
                         "type": "Identifier",
                         "name": "board",
                         "range": [
-                          1059,
-                          1064
+                          1071,
+                          1076
                         ],
                         "loc": {
                           "start": {
@@ -2414,8 +2485,8 @@
                         "type": "Identifier",
                         "name": "killed",
                         "range": [
-                          1066,
-                          1072
+                          1078,
+                          1084
                         ],
                         "loc": {
                           "start": {
@@ -2430,8 +2501,8 @@
                       }
                     ],
                     "range": [
-                      1047,
-                      1073
+                      1059,
+                      1085
                     ],
                     "loc": {
                       "start": {
@@ -2448,8 +2519,8 @@
                     "type": "Identifier",
                     "name": "set",
                     "range": [
-                      1074,
-                      1077
+                      1086,
+                      1089
                     ],
                     "loc": {
                       "start": {
@@ -2463,8 +2534,8 @@
                     }
                   },
                   "range": [
-                    1047,
-                    1077
+                    1059,
+                    1089
                   ],
                   "loc": {
                     "start": {
@@ -2482,8 +2553,8 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      1078,
-                      1086
+                      1090,
+                      1098
                     ],
                     "loc": {
                       "start": {
@@ -2500,8 +2571,8 @@
                     "type": "Identifier",
                     "name": "color",
                     "range": [
-                      1088,
-                      1093
+                      1100,
+                      1105
                     ],
                     "loc": {
                       "start": {
@@ -2516,8 +2587,8 @@
                   }
                 ],
                 "range": [
-                  1047,
-                  1094
+                  1059,
+                  1106
                 ],
                 "loc": {
                   "start": {
@@ -2531,8 +2602,8 @@
                 }
               },
               "range": [
-                1040,
-                1095
+                1052,
+                1107
               ],
               "loc": {
                 "start": {
@@ -2547,8 +2618,8 @@
             }
           ],
           "range": [
-            654,
-            1097
+            659,
+            1109
           ],
           "loc": {
             "start": {
@@ -2564,8 +2635,8 @@
         "generator": false,
         "expression": false,
         "range": [
-          613,
-          1097
+          618,
+          1109
         ],
         "loc": {
           "start": {
@@ -2582,8 +2653,8 @@
             "type": "Block",
             "value": "*\n * @private\n ",
             "range": [
-              586,
-              605
+              591,
+              610
             ],
             "loc": {
               "start": {
@@ -2602,8 +2673,8 @@
             "type": "Block",
             "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1100,
-              1373
+              1112,
+              1385
             ],
             "loc": {
               "start": {
@@ -2621,8 +2692,8 @@
       "specifiers": [],
       "source": null,
       "range": [
-        606,
-        1097
+        611,
+        1109
       ],
       "loc": {
         "start": {
@@ -2639,8 +2710,8 @@
           "type": "Block",
           "value": "*\n * @private\n ",
           "range": [
-            586,
-            605
+            591,
+            610
           ],
           "loc": {
             "start": {
@@ -2659,8 +2730,8 @@
           "type": "Block",
           "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1100,
-            1373
+            1112,
+            1385
           ],
           "loc": {
             "start": {
@@ -2683,8 +2754,8 @@
           "type": "Identifier",
           "name": "addBlackMove",
           "range": [
-            1390,
-            1402
+            1402,
+            1414
           ],
           "loc": {
             "start": {
@@ -2702,8 +2773,8 @@
             "type": "Identifier",
             "name": "board",
             "range": [
-              1403,
-              1408
+              1415,
+              1420
             ],
             "loc": {
               "start": {
@@ -2720,8 +2791,8 @@
             "type": "Identifier",
             "name": "position",
             "range": [
-              1410,
-              1418
+              1422,
+              1430
             ],
             "loc": {
               "start": {
@@ -2746,8 +2817,8 @@
                   "type": "Identifier",
                   "name": "addMove",
                   "range": [
-                    1433,
-                    1440
+                    1445,
+                    1452
                   ],
                   "loc": {
                     "start": {
@@ -2765,8 +2836,8 @@
                     "type": "Identifier",
                     "name": "board",
                     "range": [
-                      1441,
-                      1446
+                      1453,
+                      1458
                     ],
                     "loc": {
                       "start": {
@@ -2783,8 +2854,8 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      1448,
-                      1456
+                      1460,
+                      1468
                     ],
                     "loc": {
                       "start": {
@@ -2801,8 +2872,8 @@
                     "type": "Identifier",
                     "name": "BLACK",
                     "range": [
-                      1458,
-                      1463
+                      1470,
+                      1475
                     ],
                     "loc": {
                       "start": {
@@ -2817,8 +2888,8 @@
                   }
                 ],
                 "range": [
-                  1433,
-                  1464
+                  1445,
+                  1476
                 ],
                 "loc": {
                   "start": {
@@ -2832,8 +2903,8 @@
                 }
               },
               "range": [
-                1426,
-                1465
+                1438,
+                1477
               ],
               "loc": {
                 "start": {
@@ -2848,8 +2919,8 @@
             }
           ],
           "range": [
-            1420,
-            1467
+            1432,
+            1479
           ],
           "loc": {
             "start": {
@@ -2865,8 +2936,8 @@
         "generator": false,
         "expression": false,
         "range": [
-          1381,
-          1467
+          1393,
+          1479
         ],
         "loc": {
           "start": {
@@ -2883,8 +2954,8 @@
             "type": "Block",
             "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1100,
-              1373
+              1112,
+              1385
             ],
             "loc": {
               "start": {
@@ -2903,8 +2974,8 @@
             "type": "Block",
             "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1470,
-              1743
+              1482,
+              1755
             ],
             "loc": {
               "start": {
@@ -2922,8 +2993,8 @@
       "specifiers": [],
       "source": null,
       "range": [
-        1374,
-        1467
+        1386,
+        1479
       ],
       "loc": {
         "start": {
@@ -2940,8 +3011,8 @@
           "type": "Block",
           "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1100,
-            1373
+            1112,
+            1385
           ],
           "loc": {
             "start": {
@@ -2960,8 +3031,8 @@
           "type": "Block",
           "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1470,
-            1743
+            1482,
+            1755
           ],
           "loc": {
             "start": {
@@ -2984,8 +3055,8 @@
           "type": "Identifier",
           "name": "addWhiteMove",
           "range": [
-            1760,
-            1772
+            1772,
+            1784
           ],
           "loc": {
             "start": {
@@ -3003,8 +3074,8 @@
             "type": "Identifier",
             "name": "board",
             "range": [
-              1773,
-              1778
+              1785,
+              1790
             ],
             "loc": {
               "start": {
@@ -3021,8 +3092,8 @@
             "type": "Identifier",
             "name": "position",
             "range": [
-              1780,
-              1788
+              1792,
+              1800
             ],
             "loc": {
               "start": {
@@ -3047,8 +3118,8 @@
                   "type": "Identifier",
                   "name": "addMove",
                   "range": [
-                    1803,
-                    1810
+                    1815,
+                    1822
                   ],
                   "loc": {
                     "start": {
@@ -3066,8 +3137,8 @@
                     "type": "Identifier",
                     "name": "board",
                     "range": [
-                      1811,
-                      1816
+                      1823,
+                      1828
                     ],
                     "loc": {
                       "start": {
@@ -3084,8 +3155,8 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      1818,
-                      1826
+                      1830,
+                      1838
                     ],
                     "loc": {
                       "start": {
@@ -3102,8 +3173,8 @@
                     "type": "Identifier",
                     "name": "WHITE",
                     "range": [
-                      1828,
-                      1833
+                      1840,
+                      1845
                     ],
                     "loc": {
                       "start": {
@@ -3118,8 +3189,8 @@
                   }
                 ],
                 "range": [
-                  1803,
-                  1834
+                  1815,
+                  1846
                 ],
                 "loc": {
                   "start": {
@@ -3133,8 +3204,8 @@
                 }
               },
               "range": [
-                1796,
-                1835
+                1808,
+                1847
               ],
               "loc": {
                 "start": {
@@ -3149,8 +3220,8 @@
             }
           ],
           "range": [
-            1790,
-            1837
+            1802,
+            1849
           ],
           "loc": {
             "start": {
@@ -3166,8 +3237,8 @@
         "generator": false,
         "expression": false,
         "range": [
-          1751,
-          1837
+          1763,
+          1849
         ],
         "loc": {
           "start": {
@@ -3184,8 +3255,8 @@
             "type": "Block",
             "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1470,
-              1743
+              1482,
+              1755
             ],
             "loc": {
               "start": {
@@ -3204,8 +3275,8 @@
             "type": "Block",
             "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1840,
-              2021
+              1852,
+              2033
             ],
             "loc": {
               "start": {
@@ -3223,8 +3294,8 @@
       "specifiers": [],
       "source": null,
       "range": [
-        1744,
-        1837
+        1756,
+        1849
       ],
       "loc": {
         "start": {
@@ -3241,8 +3312,8 @@
           "type": "Block",
           "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1470,
-            1743
+            1482,
+            1755
           ],
           "loc": {
             "start": {
@@ -3261,8 +3332,8 @@
           "type": "Block",
           "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1840,
-            2021
+            1852,
+            2033
           ],
           "loc": {
             "start": {
@@ -3285,8 +3356,8 @@
           "type": "Identifier",
           "name": "removeMoves",
           "range": [
-            2038,
-            2049
+            2050,
+            2061
           ],
           "loc": {
             "start": {
@@ -3304,8 +3375,8 @@
             "type": "Identifier",
             "name": "board",
             "range": [
-              2050,
-              2055
+              2062,
+              2067
             ],
             "loc": {
               "start": {
@@ -3322,8 +3393,8 @@
             "type": "Identifier",
             "name": "positions",
             "range": [
-              2057,
-              2066
+              2069,
+              2078
             ],
             "loc": {
               "start": {
@@ -3351,8 +3422,8 @@
                     "type": "Identifier",
                     "name": "positions",
                     "range": [
-                      2081,
-                      2090
+                      2093,
+                      2102
                     ],
                     "loc": {
                       "start": {
@@ -3369,8 +3440,8 @@
                     "type": "Identifier",
                     "name": "reduce",
                     "range": [
-                      2091,
-                      2097
+                      2103,
+                      2109
                     ],
                     "loc": {
                       "start": {
@@ -3384,8 +3455,8 @@
                     }
                   },
                   "range": [
-                    2081,
-                    2097
+                    2093,
+                    2109
                   ],
                   "loc": {
                     "start": {
@@ -3407,8 +3478,8 @@
                         "type": "Identifier",
                         "name": "acc",
                         "range": [
-                          2108,
-                          2111
+                          2120,
+                          2123
                         ],
                         "loc": {
                           "start": {
@@ -3425,8 +3496,8 @@
                         "type": "Identifier",
                         "name": "position",
                         "range": [
-                          2113,
-                          2121
+                          2125,
+                          2133
                         ],
                         "loc": {
                           "start": {
@@ -3449,8 +3520,8 @@
                           "type": "Identifier",
                           "name": "acc",
                           "range": [
-                            2126,
-                            2129
+                            2138,
+                            2141
                           ],
                           "loc": {
                             "start": {
@@ -3467,8 +3538,8 @@
                           "type": "Identifier",
                           "name": "delete",
                           "range": [
-                            2130,
-                            2136
+                            2142,
+                            2148
                           ],
                           "loc": {
                             "start": {
@@ -3482,8 +3553,8 @@
                           }
                         },
                         "range": [
-                          2126,
-                          2136
+                          2138,
+                          2148
                         ],
                         "loc": {
                           "start": {
@@ -3501,8 +3572,8 @@
                           "type": "Identifier",
                           "name": "position",
                           "range": [
-                            2137,
-                            2145
+                            2149,
+                            2157
                           ],
                           "loc": {
                             "start": {
@@ -3517,8 +3588,8 @@
                         }
                       ],
                       "range": [
-                        2126,
-                        2146
+                        2138,
+                        2158
                       ],
                       "loc": {
                         "start": {
@@ -3534,8 +3605,8 @@
                     "generator": false,
                     "expression": true,
                     "range": [
-                      2107,
-                      2146
+                      2119,
+                      2158
                     ],
                     "loc": {
                       "start": {
@@ -3552,8 +3623,8 @@
                     "type": "Identifier",
                     "name": "board",
                     "range": [
-                      2156,
-                      2161
+                      2168,
+                      2173
                     ],
                     "loc": {
                       "start": {
@@ -3568,8 +3639,8 @@
                   }
                 ],
                 "range": [
-                  2081,
-                  2167
+                  2093,
+                  2179
                 ],
                 "loc": {
                   "start": {
@@ -3583,8 +3654,8 @@
                 }
               },
               "range": [
-                2074,
-                2168
+                2086,
+                2180
               ],
               "loc": {
                 "start": {
@@ -3599,8 +3670,8 @@
             }
           ],
           "range": [
-            2068,
-            2170
+            2080,
+            2182
           ],
           "loc": {
             "start": {
@@ -3616,8 +3687,8 @@
         "generator": false,
         "expression": false,
         "range": [
-          2029,
-          2170
+          2041,
+          2182
         ],
         "loc": {
           "start": {
@@ -3634,8 +3705,8 @@
             "type": "Block",
             "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1840,
-              2021
+              1852,
+              2033
             ],
             "loc": {
               "start": {
@@ -3654,8 +3725,8 @@
       "specifiers": [],
       "source": null,
       "range": [
-        2022,
-        2170
+        2034,
+        2182
       ],
       "loc": {
         "start": {
@@ -3672,8 +3743,8 @@
           "type": "Block",
           "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1840,
-            2021
+            1852,
+            2033
           ],
           "loc": {
             "start": {
@@ -3699,8 +3770,8 @@
               "type": "Identifier",
               "name": "emptyBoard",
               "range": [
-                2194,
-                2204
+                2206,
+                2216
               ],
               "loc": {
                 "start": {
@@ -3717,8 +3788,8 @@
               "type": "Identifier",
               "name": "emptyBoard",
               "range": [
-                2194,
-                2204
+                2206,
+                2216
               ],
               "loc": {
                 "start": {
@@ -3736,8 +3807,8 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              2194,
-              2204
+              2206,
+              2216
             ],
             "loc": {
               "start": {
@@ -3756,8 +3827,8 @@
               "type": "Identifier",
               "name": "addBlackMove",
               "range": [
-                2206,
-                2218
+                2218,
+                2230
               ],
               "loc": {
                 "start": {
@@ -3774,8 +3845,8 @@
               "type": "Identifier",
               "name": "addBlackMove",
               "range": [
-                2206,
-                2218
+                2218,
+                2230
               ],
               "loc": {
                 "start": {
@@ -3793,8 +3864,8 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              2206,
-              2218
+              2218,
+              2230
             ],
             "loc": {
               "start": {
@@ -3813,8 +3884,8 @@
               "type": "Identifier",
               "name": "addWhiteMove",
               "range": [
-                2220,
-                2232
+                2232,
+                2244
               ],
               "loc": {
                 "start": {
@@ -3831,8 +3902,8 @@
               "type": "Identifier",
               "name": "addWhiteMove",
               "range": [
-                2220,
-                2232
+                2232,
+                2244
               ],
               "loc": {
                 "start": {
@@ -3850,8 +3921,8 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              2220,
-              2232
+              2232,
+              2244
             ],
             "loc": {
               "start": {
@@ -3870,8 +3941,8 @@
               "type": "Identifier",
               "name": "removeMoves",
               "range": [
-                2234,
-                2245
+                2246,
+                2257
               ],
               "loc": {
                 "start": {
@@ -3888,8 +3959,8 @@
               "type": "Identifier",
               "name": "removeMoves",
               "range": [
-                2234,
-                2245
+                2246,
+                2257
               ],
               "loc": {
                 "start": {
@@ -3907,8 +3978,8 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              2234,
-              2245
+              2246,
+              2257
             ],
             "loc": {
               "start": {
@@ -3923,8 +3994,8 @@
           }
         ],
         "range": [
-          2188,
-          2247
+          2200,
+          2259
         ],
         "loc": {
           "start": {
@@ -3940,8 +4011,8 @@
         "trailingComments": []
       },
       "range": [
-        2173,
-        2248
+        2185,
+        2260
       ],
       "loc": {
         "start": {
@@ -3958,7 +4029,7 @@
   "sourceType": "module",
   "range": [
     0,
-    2248
+    2260
   ],
   "loc": {
     "start": {
@@ -3975,8 +4046,8 @@
       "type": "Block",
       "value": "*\n * Creates an empty board.\n *\n * @param {number} size the size of the board\n * @throws {string} when size is not a positive integer\n * @returns {Map}\n ",
       "range": [
-        205,
-        362
+        210,
+        367
       ],
       "loc": {
         "start": {
@@ -3993,8 +4064,8 @@
       "type": "Block",
       "value": "*\n * @private\n ",
       "range": [
-        586,
-        605
+        591,
+        610
       ],
       "loc": {
         "start": {
@@ -4011,8 +4082,8 @@
       "type": "Block",
       "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
       "range": [
-        1100,
-        1373
+        1112,
+        1385
       ],
       "loc": {
         "start": {
@@ -4029,8 +4100,8 @@
       "type": "Block",
       "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
       "range": [
-        1470,
-        1743
+        1482,
+        1755
       ],
       "loc": {
         "start": {
@@ -4047,8 +4118,8 @@
       "type": "Block",
       "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
       "range": [
-        1840,
-        2021
+        1852,
+        2033
       ],
       "loc": {
         "start": {

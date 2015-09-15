@@ -75,7 +75,7 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/transforms.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {isNumber} from &apos;lodash&apos;;
-import {Map} from &apos;immutable&apos;;
+import {Map, Set} from &apos;immutable&apos;;
 
 import {
     BLACK, WHITE, SIZE_KEY, isValidPosition, oppositeColor,
@@ -111,7 +111,7 @@ export function addMove(board, position, color) {
     }
 
     const killed = matchingAdjacentPositions(board, position, oppositeColor(color)).reduce(
-        (acc, pos) =&gt; acc.union(liberties(board, pos) === 1 ? group(pos) : Set()),
+        (acc, pos) =&gt; acc.union(liberties(board, pos) === 1 ? group(board, pos) : Set()),
         Set()
     );
 

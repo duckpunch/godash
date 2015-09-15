@@ -242,12 +242,11 @@ export function oppositeColor(color) {
  * @returns {boolean}
  */
 export function isValidPosition(board, position, color) {
-    const will_have_liberty = matchingAdjacentPositions(board, position, EMPTY).size &gt; 0;
+    const will_have_liberty = liberties(board.set(position, color), position) &gt; 0;
     const will_kill_something = matchingAdjacentPositions(board, position, oppositeColor(color))
         .some(pos =&gt; liberties(board, pos) === 1);
-    const wont_suicide = liberties(board.set(position, color), position) !== 0;
 
-    return wont_suicide &amp;&amp; (will_have_liberty || will_kill_something);
+    return will_have_liberty || will_kill_something;
 }
 
 
