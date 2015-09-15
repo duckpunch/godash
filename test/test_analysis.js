@@ -4,7 +4,7 @@ import {List, Set} from 'immutable';
 import {emptyBoard} from '../src/transforms';
 import {
     adjacentPositions, allPossibleMoves, group,
-    WHITE, BLACK, liberties, emptyPositions
+    WHITE, BLACK, liberties, emptyPositions, isValidPosition
 } from '../src/analysis';
 
 
@@ -190,5 +190,48 @@ describe('empty positions', function() {
                 List.of(2, 2),
             ])
         ));
+    });
+});
+
+
+describe('is valid position', function() {
+    it('identifies suicide moves as invalid', function() {
+        const board = emptyBoard(3)
+            .set(List.of(1, 0), BLACK)
+            .set(List.of(0, 1), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(1, 2), BLACK);
+
+        assert.ok(!isValidPosition(board, List.of(1, 1), WHITE));
+    });
+
+    it('allows filling in a ponnuki', function() {
+        const board = emptyBoard(3)
+            .set(List.of(1, 0), BLACK)
+            .set(List.of(0, 1), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(1, 2), BLACK);
+
+        assert.ok(isValidPosition(board, List.of(1, 1), BLACK));
+    });
+
+    it('marks suicide in corner as invalid', function() {
+        const board = emptyBoard(3)
+            .set(List.of(2, 0), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(1, 2), BLACK);
+
+        assert.ok(!isValidPosition(board, List.of(2, 2), WHITE));
+    });
+
+    it('marks suicide in corner that kills first as valid', function() {
+        const board = emptyBoard(3)
+            .set(List.of(1, 0), WHITE)
+            .set(List.of(1, 1), WHITE)
+            .set(List.of(2, 0), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(1, 2), BLACK);
+
+        assert.ok(isValidPosition(board, List.of(2, 2), WHITE));
     });
 });
