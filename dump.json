@@ -497,6 +497,18 @@
     "kind": "file",
     "static": true,
     "variation": null,
+    "name": "src/browser.js",
+    "memberof": null,
+    "longname": "src/browser.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import index from './index.js';\n\n\nif (!window.godash) {\n    window.godash = index;\n}\n"
+  },
+  {
+    "kind": "file",
+    "static": true,
+    "variation": null,
     "name": "src/index.js",
     "memberof": null,
     "longname": "src/index.js",

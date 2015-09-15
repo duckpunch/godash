@@ -21,7 +21,8 @@
   "devDependencies": {
     "babelify": "^6.3.0",
     "browserify": "^11.0.1",
-    "mochify": "^2.13.0"
+    "mochify": "^2.13.0",
+    "uglify-js": "^2.4.24"
   },
   "browserify": {
     "transform": [
@@ -31,7 +32,7 @@
     ]
   },
   "scripts": {
-    "build": "browserify -o build/godash.js -r ./src/index.js:godash",
+    "build": "browserify -o ./build/godash.js -e ./src/browser.js && uglifyjs --compress --mangle --output build/godash.min.js -- build/godash.js",
     "test": "mochify",
     "watch-test": "mochify -w"
   }
