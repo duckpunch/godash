@@ -11,7 +11,13 @@ This library is entirely frontend agnostic and strives only to represent the rul
 Roadmap
 -------
 
-In no particular order.
+First things first.
+
+- Start actually using it.
+- Make some examples from it.
+- Tweak the API accordingly.
+
+Then, in no particular order.
 
 - SGF support (import and export)
 - Sequences (games)
