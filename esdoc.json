@@ -4,6 +4,5 @@
   "title": "godash",
   "index": "../godash/README.md",
   "package": "../godash/package.json",
-  "includeSource": false,
   "styles": ["./manual_overrides.css"]
 }
