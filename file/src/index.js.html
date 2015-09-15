@@ -74,8 +74,28 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
-<pre class="source-code line-number raw-source-code"></pre>
-<p data-ice="emptySourceCode">Sorry, this documentation does not provide source code.</p>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import _ from &apos;lodash&apos;;
+
+import analysis from &apos;./analysis&apos;;
+import transforms from &apos;./transforms&apos;;
+
+
+/**
+ * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map
+ */
+
+/**
+ * @external {List} http://facebook.github.io/immutable-js/docs/#/List
+ */
+
+/**
+ * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set
+ */
+
+
+export default _.merge(analysis, transforms);
+</code></pre>
+
 </div>
 
 <footer class="footer">

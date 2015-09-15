@@ -74,8 +74,99 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/transforms.js</h1>
-<pre class="source-code line-number raw-source-code"></pre>
-<p data-ice="emptySourceCode">Sorry, this documentation does not provide source code.</p>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {isNumber} from &apos;lodash&apos;;
+import {Map} from &apos;immutable&apos;;
+
+import {
+    BLACK, WHITE, SIZE_KEY, isValidPosition, oppositeColor,
+    matchingAdjacentPositions, liberties, group
+} from &apos;./analysis&apos;;
+
+
+/**
+ * Creates an empty board.
+ *
+ * @param {number} size the size of the board
+ * @throws {string} when size is not a positive integer
+ * @returns {Map}
+ */
+export function emptyBoard(size) {
+    if (!isNumber(size) || size &lt;= 0 || size !== parseInt(size)) {
+        throw &apos;An empty board must be created from a positive integer.&apos;;
+    }
+
+    return Map().set(SIZE_KEY, size);
+}
+
+/**
+ * @private
+ */
+export function addMove(board, position, color) {
+    if (!isValidPosition(board, position, color)) {
+        throw &apos;Not a valid position&apos;;
+    }
+
+    if (board.has(position)) {
+        throw &apos;There is already a stone there&apos;;
+    }
+
+    const killed = matchingAdjacentPositions(board, position, oppositeColor(color)).reduce(
+        (acc, pos) =&gt; acc.union(liberties(board, pos) === 1 ? group(pos) : Set()),
+        Set()
+    );
+
+    return removeMoves(board, killed).set(position, color);
+}
+
+
+/**
+ * Adds a black move at the specified position.  Follows the rules of go
+ * which means dead stones will be removed.
+ *
+ * @param {Map} board
+ * @param {List} position
+ * @throws {string} when the move is not valid
+ * @returns {Map} board representing the new state
+ */
+export function addBlackMove(board, position) {
+    return addMove(board, position, BLACK);
+}
+
+
+/**
+ * Adds a white move at the specified position.  Follows the rules of go
+ * which means dead stones will be removed.
+ *
+ * @param {Map} board
+ * @param {List} position
+ * @throws {string} when the move is not valid
+ * @returns {Map} board representing the new state
+ */
+export function addWhiteMove(board, position) {
+    return addMove(board, position, WHITE);
+}
+
+
+/**
+ * Removes positions.  Positions that are not on the board are ignored.
+ *
+ * @param {Map} board
+ * @param {Set} positions
+ * @returns {Map} board representing the new state
+ */
+export function removeMoves(board, positions) {
+    return positions.reduce(
+        (acc, position) =&gt; acc.delete(position),
+        board
+    );
+}
+
+
+export default {
+    emptyBoard, addBlackMove, addWhiteMove, removeMoves
+};
+</code></pre>
+
 </div>
 
 <footer class="footer">
