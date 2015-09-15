@@ -1,5 +1,5 @@
 import {isNumber} from 'lodash';
-import {Map} from 'immutable';
+import {Map, Set} from 'immutable';
 
 import {
     BLACK, WHITE, SIZE_KEY, isValidPosition, oppositeColor,
@@ -35,7 +35,7 @@ export function addMove(board, position, color) {
     }
 
     const killed = matchingAdjacentPositions(board, position, oppositeColor(color)).reduce(
-        (acc, pos) => acc.union(liberties(board, pos) === 1 ? group(pos) : Set()),
+        (acc, pos) => acc.union(liberties(board, pos) === 1 ? group(board, pos) : Set()),
         Set()
     );
 

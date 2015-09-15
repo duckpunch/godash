@@ -1,7 +1,8 @@
 import assert from 'assert';
+import {List, Set} from 'immutable';
 
-import {emptyBoard} from '../src/transforms';
-import {SIZE_KEY} from '../src/analysis';
+import {emptyBoard, addMove} from '../src/transforms';
+import {SIZE_KEY, BLACK, WHITE} from '../src/analysis';
 
 
 describe('empty board', function() {
@@ -26,5 +27,48 @@ describe('empty board', function() {
         assert.throws(function() {
             emptyBoard(5.5);
         });
+    });
+});
+
+
+describe('add move', function() {
+    it('adds a move to simple empty board', function() {
+        const board = emptyBoard(19);
+
+        assert.equal(
+            addMove(board, List.of(9, 9), BLACK).get(List.of(9, 9)),
+            BLACK
+        );
+    });
+
+    it('throws if adding same move twice', function() {
+        const board = emptyBoard(19);
+
+        assert.throws(function() {
+            const position = List.of(9, 9);
+
+            addMove(addMove(board, position, BLACK), position, WHITE);
+        });
+    });
+
+    it('kills groups that run out of liberties', function() {
+        const board = emptyBoard(3)
+            .set(List.of(1, 0), WHITE)
+            .set(List.of(1, 1), WHITE)
+            .set(List.of(2, 0), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(1, 2), BLACK);
+
+        const new_board = addMove(board, List.of(2, 2), WHITE);
+
+        assert.ok(
+            Set([
+                SIZE_KEY,
+                List.of(1, 0),
+                List.of(1, 1),
+                List.of(2, 2),
+                List.of(1, 2),
+            ]).equals(Set(new_board.keys()))
+        );
     });
 });
