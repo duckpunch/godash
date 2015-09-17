@@ -71,13 +71,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Board} from &apos;<span><a href="file/src/board.js.html#lineNumber22">godash/src/board.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Board} from &apos;<span><a href="file/src/board.js.html#lineNumber29">godash/src/board.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/board.js.html#lineNumber22">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/board.js.html#lineNumber29">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -107,7 +107,13 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">Board(19);</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">var Immutable = require(&apos;immutable&apos;);
+
+var board1 = Board(19);
+var board2_data = Immutable.Map().set(&apos;size&apos;, 19);
+var board2 = Board(board2_data);
+
+assert(board1.equals(board2));</code></pre>
     </div>
 </div>
 
@@ -322,6 +328,31 @@
     <td>
       <div>
         <p>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-equals">equals</a></span></span><span data-ice="signature">(other_board: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Compare with another board.</p></div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
            <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-group">group</a></span></span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
         </p>
       </div>
@@ -438,6 +469,31 @@
       
     </td>
   </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-toPrettyString">toPrettyString</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
 </tbody>
 </table>
 </div>
@@ -459,7 +515,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber27">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber34">source</a></span></span>
     </span>
   </h3>
 
@@ -531,7 +587,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber51">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber58">source</a></span></span>
     </span>
   </h3>
 
@@ -582,7 +638,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber42">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber49">source</a></span></span>
     </span>
   </h3>
 
@@ -636,7 +692,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber63">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber71">source</a></span></span>
     </span>
   </h3>
 
@@ -702,7 +758,7 @@ which means dead stones will be removed.</p>
 
   
 
-  
+  <div data-ice="see"><h4>See:</h4><ul><li><span><span><a href="class/src/board.js~Board.html#instance-method-addMove">addMove</a></span></span></li></ul></div>
   
 </div>
 <div class="detail" data-ice="detail">
@@ -716,7 +772,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber88">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber126">source</a></span></span>
     </span>
   </h3>
 
@@ -784,7 +840,42 @@ which means dead stones will be removed.</p>
     </table>
   </div>
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">var board = Board(3);
+var new_board = board.addBlackMove(position(1, 0));
+
+console.log(board.toPrettyString());
+// +++
+// +++
+// +++
+console.log(new_board.toPrettyString());
+// +++
+// O++
+// +++</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">var board = Board(3)
+    .addBlackMove(position(0, 1))
+    .addBlackMove(position(2, 1))
+    .addBlackMove(position(1, 2))
+    .addWhiteMove(position(1, 1));
+var new_board.addBlackMove(position(1, 0));
+
+console.log(board.toPrettyString());
+// +O+
+// +XO
+// +O+
+console.log(new_board.toPrettyString());
+// +O+
+// O+O
+// +O+</code></pre>
+    </div>
+</div>
 
   
 
@@ -802,7 +893,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber84">source</a></span></span>
     </span>
   </h3>
 
@@ -868,7 +959,7 @@ which means dead stones will be removed.</p>
 
   
 
-  
+  <div data-ice="see"><h4>See:</h4><ul><li><span><span><a href="class/src/board.js~Board.html#instance-method-addMove">addMove</a></span></span></li></ul></div>
   
 </div>
 <div class="detail" data-ice="detail">
@@ -882,7 +973,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber107">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber145">source</a></span></span>
     </span>
   </h3>
 
@@ -924,6 +1015,74 @@ which means dead stones will be removed.</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-equals">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">equals</span><span data-ice="signature">(other_board: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber195">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Compare with another board.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">other_board</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Board or Board.data</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-group">
     <span class="access" data-ice="access">public</span>
     
@@ -934,7 +1093,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber117">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber155">source</a></span></span>
     </span>
   </h3>
 
@@ -1001,7 +1160,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber127">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber165">source</a></span></span>
     </span>
   </h3>
 
@@ -1068,7 +1227,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber137">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber175">source</a></span></span>
     </span>
   </h3>
 
@@ -1135,7 +1294,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber147">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber185">source</a></span></span>
     </span>
   </h3>
 
@@ -1202,7 +1361,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber98">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber136">source</a></span></span>
     </span>
   </h3>
 
@@ -1239,6 +1398,57 @@ which means dead stones will be removed.</p>
       <tr>
         <td class="return-type" data-ice="returnType"><span><a href="class/src/board.js~Board.html">Board</a></span></td>
         
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-toPrettyString">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">toPrettyString</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber206">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>ASCII board</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">

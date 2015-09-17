@@ -414,6 +414,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/board.js~board#equals",
+    "class/src/board.js~Board.html#instance-method-equals",
+    "src/board.js~Board#equals",
+    "method"
+  ],
+  [
     "src/board.js~board#group",
     "class/src/board.js~Board.html#instance-method-group",
     "src/board.js~Board#group",
@@ -441,6 +447,12 @@ window.esdocSearchIndex = [
     "src/board.js~board#removemoves",
     "class/src/board.js~Board.html#instance-method-removeMoves",
     "src/board.js~Board#removeMoves",
+    "method"
+  ],
+  [
+    "src/board.js~board#toprettystring",
+    "class/src/board.js~Board.html#instance-method-toPrettyString",
+    "src/board.js~Board#toPrettyString",
     "method"
   ],
   [
