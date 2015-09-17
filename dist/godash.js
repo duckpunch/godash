@@ -17331,6 +17331,7 @@ exports.group = group;
 exports.liberties = liberties;
 exports.oppositeColor = oppositeColor;
 exports.isLegalMove = isLegalMove;
+exports.prettyString = prettyString;
 
 var _lodash = require('lodash');
 
@@ -17450,10 +17451,10 @@ function group(board, position) {
 
     while (!queue.isEmpty()) {
         var current = queue.first();
-        var more_matching = matchingAdjacentPositions(board, position);
+        var more_matching = matchingAdjacentPositions(board, current);
 
-        queue = queue.rest().union(more_matching.subtract(found));
         found = found.add(current);
+        queue = queue.rest().union(more_matching.subtract(found));
     }
 
     return found;
@@ -17507,6 +17508,34 @@ function isLegalMove(board, position, color) {
     });
 
     return will_have_liberty || will_kill_something;
+}
+
+/**
+ * @private
+ */
+
+function prettyString(board) {
+    var size = board.get(SIZE_KEY);
+    var pretty_string = '';
+
+    for (var i = 0; i < size; i++) {
+        for (var j = 0; j < size; j++) {
+            var color = board.get(_immutable.List.of(i, j), EMPTY);
+            switch (color) {
+                case BLACK:
+                    pretty_string += 'O';
+                    break;
+                case WHITE:
+                    pretty_string += 'X';
+                    break;
+                case EMPTY:
+                    pretty_string += '+';
+                    break;
+            }
+        }
+        pretty_string += '\n';
+    }
+    return pretty_string;
 }
 
 exports['default'] = {
@@ -17740,27 +17769,7 @@ var Board = (function () {
     }, {
         key: 'toPrettyString',
         value: function toPrettyString() {
-            var size = this.board_size;
-            var pretty_string = '';
-
-            for (var i = 0; i < this.board_size; i++) {
-                for (var j = 0; j < this.board_size; j++) {
-                    var color = this.positions.get(_immutable.List.of(i, j), _analysis.EMPTY);
-                    switch (color) {
-                        case _analysis.BLACK:
-                            pretty_string += 'O';
-                            break;
-                        case _analysis.WHITE:
-                            pretty_string += 'X';
-                            break;
-                        case _analysis.EMPTY:
-                            pretty_string += '+';
-                            break;
-                    }
-                }
-                pretty_string += '\n';
-            }
-            return pretty_string;
+            return (0, _analysis.prettyString)(this.positions);
         }
     }, {
         key: 'positions',
