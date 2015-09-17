@@ -24,6 +24,9 @@ export function position(x, y) {
 
 /**
  * Validates a position with a board size.
+ *
+ * @returns {boolean}
  */
 export function isValidPosition(position, board_size) {
+    // TODO
 }

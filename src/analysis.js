@@ -27,15 +27,9 @@ export const SIZE_KEY = 'size';
 
 
 /**
- * A set of all possible moves on the board, even the occupied ones.
- *
  * @private
- * @param {Map} board
- * @returns {Set}
  */
-export function allPossibleMoves(board) {
-    const size = board.get(SIZE_KEY);
-
+export function allPossibleMoves(size) {
     return Set(flatten(map(
         range(size),
         i => map(
@@ -54,7 +48,7 @@ export function allPossibleMoves(board) {
  * @returns {Set}
  */
 export function emptyPositions(board) {
-    return allPossibleMoves(board).subtract(board.keys());
+    return allPossibleMoves(board.get(SIZE_KEY)).subtract(board.keys());
 }
 
 

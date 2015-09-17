@@ -58,10 +58,8 @@ describe('adjacent positions', function() {
 
 describe('all possible moves', function() {
     it('correctly calculates all moves for a simple board', function() {
-        const board = emptyBoard(3);
-        console.log();
         assert.ok(
-            allPossibleMoves(board).equals(
+            allPossibleMoves(3).equals(
                 Set([
                     List.of(0, 0),
                     List.of(1, 0),
