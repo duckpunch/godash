@@ -1,8 +1,9 @@
-import {Map} from 'immutable';
+import {Map, List} from 'immutable';
 
 import {isPositiveInteger} from './utils';
 import {
     SIZE_KEY, allPossibleMoves, group, liberties, isLegalMove,
+    BLACK, WHITE, EMPTY,
 } from './analysis';
 import {
     emptyBoard, addBlackMove, addWhiteMove, addMove, removeMoves,
@@ -17,7 +18,13 @@ function isValidBoardMap(board) {
 /**
  * Represents a board state.
  * @example
- * Board(19);
+ * var Immutable = require('immutable');
+ *
+ * var board1 = Board(19);
+ * var board2_data = Immutable.Map().set('size', 19);
+ * var board2 = Board(board2_data);
+ *
+ * assert(board1.equals(board2));
  */
 export class Board {
     /**
@@ -59,6 +66,7 @@ export class Board {
      * @param {List} position
      * @throws {string} when the move is not valid
      * @returns {Board}
+     * @see {@link addMove}
      */
     addBlackMove(position) {
         return new Board(addBlackMove(this.data, position));
@@ -71,6 +79,7 @@ export class Board {
      * @param {List} position
      * @throws {string} when the move is not valid
      * @returns {Board}
+     * @see {@link addMove}
      */
     addWhiteMove(position) {
         return new Board(addWhiteMove(this.data, position));
@@ -84,6 +93,35 @@ export class Board {
      * @param {string} color
      * @throws {string} when the move is not valid
      * @returns {Board}
+     * @example
+     * var board = Board(3);
+     * var new_board = board.addBlackMove(position(1, 0));
+     *
+     * console.log(board.toPrettyString());
+     * // +++
+     * // +++
+     * // +++
+     * console.log(new_board.toPrettyString());
+     * // +++
+     * // O++
+     * // +++
+     *
+     * @example
+     * var board = Board(3)
+     *     .addBlackMove(position(0, 1))
+     *     .addBlackMove(position(2, 1))
+     *     .addBlackMove(position(1, 2))
+     *     .addWhiteMove(position(1, 1));
+     * var new_board.addBlackMove(position(1, 0));
+     *
+     * console.log(board.toPrettyString());
+     * // +O+
+     * // +XO
+     * // +O+
+     * console.log(new_board.toPrettyString());
+     * // +O+
+     * // O+O
+     * // +O+
      */
     addMove(position, color) {
         return new Board(addMove(this.data, position, color));
@@ -146,5 +184,46 @@ export class Board {
      */
     liberties(position) {
         return liberties(this.data, position);
+    }
+
+    /**
+     * Compare with another board.
+     *
+     * @param {*} other_board Board or Board.data
+     * @returns {boolean}
+     */
+    equals(other_board) {
+        if (!other_board) {
+            throw TypeError('Pass in another board to compare');
+        }
+
+        return this.data.equals(other_board.data || other_board);
+    }
+
+    /**
+     * @returns {string} ASCII board
+     */
+    toPrettyString() {
+        const size = this.board_size;
+        let pretty_string = '';
+
+        for (var i = 0; i < this.board_size; i++) {
+            for (var j = 0; j < this.board_size; j++) {
+                let color = this.data.get(List.of(i, j), EMPTY);
+                switch(color) {
+                    case BLACK:
+                        pretty_string += 'O';
+                        break;
+                    case WHITE:
+                        pretty_string += 'X';
+                        break;
+                    case EMPTY:
+                        pretty_string += '+';
+                        break;
+                }
+            }
+            pretty_string += '\n';
+        }
+        return pretty_string;
     }
 }
