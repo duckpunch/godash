@@ -11,7 +11,23 @@ This library is entirely frontend agnostic and strives only to represent the rul
 Getting Started
 ---------------
 
-TODO
+Install `godash` via [npm](https://www.npmjs.com/package/godash).
+
+    npm install godash
+
+`require` and use it in your modules.
+
+    var godash = require('godash');
+    godash.Board(19);
+
+### Browser
+
+Grab the [compiled script](https://github.com/duckpunch/godash/blob/master/dist/godash.min.js) and just use it.
+
+    <script src="godash.min.js"></script>
+    <script>
+        godash.Board(19);
+    </script>
 
 Roadmap
 -------
