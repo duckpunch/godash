@@ -28,7 +28,11 @@ export function position(x, y) {
  * @returns {boolean}
  */
 export function isValidPosition(position, board_size) {
-    // TODO
+    return matchesPositionType(position) && position.every(val => val < board_size);
+}
+
+function matchesPositionType(position) {
+    return List.isList(position) && position.size === 2 && position.every(isPositiveInteger);
 }
 
 
@@ -42,7 +46,10 @@ export function isValidPosition(position, board_size) {
 export function positions(raw_positions) {
     const position_set = Set(raw_positions);
 
-    // TODO - check validity of each position
+    if (!position_set.every(matchesPositionType)) {
+        throw TypeError('Must pass an iterable of positions,' +
+            ' Immutable.List types of length 2, containing non-negative integers');
+    }
 
     return position_set;
 }

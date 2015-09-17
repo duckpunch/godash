@@ -116,10 +116,22 @@ export class Board {
         return group(this.data, position);
     }
 
+    /**
+     * Check if a move is legal for black
+     *
+     * @param {List} position
+     * @returns {boolean}
+     */
     isLegalBlackMove(position) {
         return isLegalMove(this.data, position, BLACK);
     }
 
+    /**
+     * Check if a move is legal for white
+     *
+     * @param {List} position
+     * @returns {boolean}
+     */
     isLegalWhiteMove(position) {
         return isLegalMove(this.data, position, WHITE);
     }
