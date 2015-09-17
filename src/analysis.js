@@ -29,6 +29,7 @@ export const SIZE_KEY = 'size';
 /**
  * A set of all possible moves on the board, even the occupied ones.
  *
+ * @private
  * @param {Map} board
  * @returns {Set}
  */
@@ -48,6 +49,7 @@ export function allPossibleMoves(board) {
 /**
  * Returns unoccupied positions on the board.
  *
+ * @private
  * @param {Map} board
  * @returns {Set}
  */
@@ -61,6 +63,7 @@ export function emptyPositions(board) {
  *
  * Considers the board size and acts correctly on sides and corners.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @returns {Set}
@@ -89,6 +92,7 @@ export function adjacentPositions(board, position) {
 /**
  * Similar to {@link adjacentPositions}, but filters on a state.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @param {string} color
@@ -107,6 +111,7 @@ export function matchingAdjacentPositions(board, position, color) {
 /**
  * Gets a set of positions of the logical group associated with the given position.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @returns {Set}
@@ -130,6 +135,7 @@ export function group(board, position) {
 /**
  * Counts liberties for the stone at the given position.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @returns {number}
@@ -145,6 +151,7 @@ export function liberties(board, position) {
 /**
  * Returns {@link BLACK} if {@link WHITE}, {@link WHITE} if {@link BLACK}.
  *
+ * @private
  * @param {string} color
  * @throws {string} when color is neither black nor white
  * @returns {string}
@@ -160,6 +167,7 @@ export function oppositeColor(color) {
 /**
  * Checks if given position is a valid play for the given color.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @param {List} color

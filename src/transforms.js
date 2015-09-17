@@ -10,6 +10,7 @@ import {
 /**
  * Creates an empty board.
  *
+ * @private
  * @param {number} size the size of the board
  * @throws {string} when size is not a positive integer
  * @returns {Map}
@@ -47,6 +48,7 @@ export function addMove(board, position, color) {
  * Adds a black move at the specified position.  Follows the rules of go
  * which means dead stones will be removed.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @throws {string} when the move is not valid
@@ -61,6 +63,7 @@ export function addBlackMove(board, position) {
  * Adds a white move at the specified position.  Follows the rules of go
  * which means dead stones will be removed.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @throws {string} when the move is not valid
@@ -74,6 +77,7 @@ export function addWhiteMove(board, position) {
 /**
  * Removes positions.  Positions that are not on the board are ignored.
  *
+ * @private
  * @param {Map} board
  * @param {Set} positions
  * @returns {Map} board representing the new state
