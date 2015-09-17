@@ -79,20 +79,23 @@
 <p>Install <code>godash</code> via <a href="https://www.npmjs.com/package/godash">npm</a>.</p>
 <pre><code><code class="source-code prettyprint">npm install godash</code>
 </code></pre><p><code>require</code> and use it in your modules.</p>
-<pre><code><code class="source-code prettyprint">var godash = require(&apos;godash&apos;);
+<pre><code class="lang-javascript"><code class="source-code prettyprint">var godash = require(&apos;godash&apos;);
 var board = godash.Board(19);
 var tengen = godash.position(8, 8); // 0-based
+
 board.positions.has(tengen); // false
 
 var standard_opening = board.addBlackMove(tengen);
 standard_opening.positions.has(tengen); // true</code>
-</code></pre><h3 id="browser">Browser</h3>
+</code></pre>
+<h3 id="browser">Browser</h3>
 <p>Grab the <a href="https://github.com/duckpunch/godash/blob/master/dist/godash.min.js">compiled script</a> and just use it.</p>
-<pre><code><code class="source-code prettyprint">&lt;script src=&quot;godash.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-html"><code class="source-code prettyprint">&lt;script src=&quot;godash.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
     godash.Board(19);
 &lt;/script&gt;</code>
-</code></pre><h2 id="roadmap">Roadmap</h2>
+</code></pre>
+<h2 id="roadmap">Roadmap</h2>
 <p>First things first.</p>
 <ul>
 <li>Start actually using it.</li>

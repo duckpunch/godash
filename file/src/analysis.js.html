@@ -189,10 +189,10 @@ export function group(board, position) {
 
     while (!queue.isEmpty()) {
         const current = queue.first();
-        const more_matching = matchingAdjacentPositions(board, position);
+        const more_matching = matchingAdjacentPositions(board, current);
 
-        queue = queue.rest().union(more_matching.subtract(found));
         found = found.add(current);
+        queue = queue.rest().union(more_matching.subtract(found));
     }
 
     return found;
@@ -246,6 +246,34 @@ export function isLegalMove(board, position, color) {
         .some(pos =&gt; liberties(board, pos) === 1);
 
     return will_have_liberty || will_kill_something;
+}
+
+
+/**
+ * @private
+ */
+export function prettyString(board) {
+    const size = board.get(SIZE_KEY);
+    let pretty_string = &apos;&apos;;
+
+    for (var i = 0; i &lt; size; i++) {
+        for (var j = 0; j &lt; size; j++) {
+            let color = board.get(List.of(i, j), EMPTY);
+            switch(color) {
+                case BLACK:
+                    pretty_string += &apos;O&apos;;
+                    break;
+                case WHITE:
+                    pretty_string += &apos;X&apos;;
+                    break;
+                case EMPTY:
+                    pretty_string += &apos;+&apos;;
+                    break;
+            }
+        }
+        pretty_string += &apos;\n&apos;;
+    }
+    return pretty_string;
 }
 
 

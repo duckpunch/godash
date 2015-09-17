@@ -76,7 +76,7 @@
 import {isPositiveInteger} from &apos;./utils&apos;;
 import {
     SIZE_KEY, allPossibleMoves, group, liberties, isLegalMove,
-    BLACK, WHITE, EMPTY,
+    BLACK, WHITE, EMPTY, prettyString,
 } from &apos;./analysis&apos;;
 import {
     emptyBoard, addBlackMove, addWhiteMove, addMove, removeMoves,
@@ -277,27 +277,7 @@ export class Board {
      * @returns {string} ASCII board
      */
     toPrettyString() {
-        const size = this.board_size;
-        let pretty_string = &apos;&apos;;
-
-        for (var i = 0; i &lt; this.board_size; i++) {
-            for (var j = 0; j &lt; this.board_size; j++) {
-                let color = this.positions.get(List.of(i, j), EMPTY);
-                switch(color) {
-                    case BLACK:
-                        pretty_string += &apos;O&apos;;
-                        break;
-                    case WHITE:
-                        pretty_string += &apos;X&apos;;
-                        break;
-                    case EMPTY:
-                        pretty_string += &apos;+&apos;;
-                        break;
-                }
-            }
-            pretty_string += &apos;\n&apos;;
-        }
-        return pretty_string;
+        return prettyString(this.positions);
     }
 }
 </code></pre>
