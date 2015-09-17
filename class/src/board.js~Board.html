@@ -44,6 +44,7 @@
     
   <li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
 <li data-ice="functionDoc"><span><a href="function/index.html#static-function-position">position</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-positions">positions</a></span></li>
 </ul>
 </div>
 
@@ -314,13 +315,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-group">group</a></span></span><span data-ice="signature">(position: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-group">group</a></span></span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Gets a set of positions of the logical group associated with the given position.</p></div>
       </div>
     </td>
     <td>
@@ -339,13 +340,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-isLegalMove">isLegalMove</a></span></span><span data-ice="signature">(position: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-isLegalBlackMove">isLegalBlackMove</a></span></span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Check if a move is legal for black</p>
+</div>
       </div>
     </td>
     <td>
@@ -364,13 +366,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-liberties">liberties</a></span></span><span data-ice="signature">(position: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-isLegalWhiteMove">isLegalWhiteMove</a></span></span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Check if a move is legal for white</p>
+</div>
       </div>
     </td>
     <td>
@@ -389,13 +392,38 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-removeMoves">removeMoves</a></span></span><span data-ice="signature">(positions: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-liberties">liberties</a></span></span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>Counts liberties for the stone at the given position.</p></div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-removeMoves">removeMoves</a></span></span><span data-ice="signature">(positions: <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span>): <span><a href="class/src/board.js~Board.html">Board</a></span></span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>Removes positions.</p></div>
       </div>
     </td>
     <td>
@@ -847,7 +875,7 @@ which means dead stones will be removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber95">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber105">source</a></span></span>
     </span>
   </h3>
 
@@ -895,18 +923,19 @@ which means dead stones will be removed.</p>
     
     
     
-    <span data-ice="name">group</span><span data-ice="signature">(position: <span>*</span>)</span>
+    <span data-ice="name">group</span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber99">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber115">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Gets a set of positions of the logical group associated with the given position.</p>
+</div>
 
   
 
@@ -920,7 +949,7 @@ which means dead stones will be removed.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">position</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -929,7 +958,17 @@ which means dead stones will be removed.</p>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -945,24 +984,25 @@ which means dead stones will be removed.</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-isLegalMove">
+  <h3 data-ice="anchor" id="instance-method-isLegalBlackMove">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">isLegalMove</span><span data-ice="signature">(position: <span>*</span>)</span>
+    <span data-ice="name">isLegalBlackMove</span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber102">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber125">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Check if a move is legal for black</p>
+</div>
 
   
 
@@ -976,7 +1016,7 @@ which means dead stones will be removed.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">position</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -985,7 +1025,84 @@ which means dead stones will be removed.</p>
 </div>
 </div>
 
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
   
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-isLegalWhiteMove">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">isLegalWhiteMove</span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber135">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Check if a move is legal for white</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">position</td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1007,18 +1124,19 @@ which means dead stones will be removed.</p>
     
     
     
-    <span data-ice="name">liberties</span><span data-ice="signature">(position: <span>*</span>)</span>
+    <span data-ice="name">liberties</span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber105">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber145">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Counts liberties for the stone at the given position.</p>
+</div>
 
   
 
@@ -1032,7 +1150,7 @@ which means dead stones will be removed.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">position</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1041,7 +1159,17 @@ which means dead stones will be removed.</p>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1063,18 +1191,19 @@ which means dead stones will be removed.</p>
     
     
     
-    <span data-ice="name">removeMoves</span><span data-ice="signature">(positions: <span>*</span>)</span>
+    <span data-ice="name">removeMoves</span><span data-ice="signature">(positions: <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span>): <span><a href="class/src/board.js~Board.html">Board</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber108">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber96">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Removes positions.  Positions that are not on the board are ignored.</p>
+</div>
 
   
 
@@ -1088,7 +1217,7 @@ which means dead stones will be removed.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">positions</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1097,7 +1226,17 @@ which means dead stones will be removed.</p>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/src/board.js~Board.html">Board</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 

@@ -1,7 +1,7 @@
 {
-  "coverage": "75%",
-  "expectCount": 16,
-  "actualCount": 12,
+  "coverage": "100%",
+  "expectCount": 18,
+  "actualCount": 18,
   "files": {
     "src/analysis.js": {
       "expectCount": 2,
@@ -9,18 +9,13 @@
       "undocumentLines": []
     },
     "src/board.js": {
-      "expectCount": 12,
-      "actualCount": 8,
-      "undocumentLines": [
-        99,
-        102,
-        105,
-        108
-      ]
+      "expectCount": 13,
+      "actualCount": 13,
+      "undocumentLines": []
     },
     "src/position.js": {
-      "expectCount": 2,
-      "actualCount": 2,
+      "expectCount": 3,
+      "actualCount": 3,
       "undocumentLines": []
     }
   }

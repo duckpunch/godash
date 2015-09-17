@@ -44,6 +44,7 @@
     
   <li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
 <li data-ice="functionDoc"><span><a href="function/index.html#static-function-position">position</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-positions">positions</a></span></li>
 </ul>
 </div>
 
@@ -70,7 +71,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/position.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {List} from &apos;immutable&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Set, List} from &apos;immutable&apos;;
 import {isPositiveInteger} from &apos;./utils&apos;;
 
 
@@ -100,7 +101,30 @@ export function position(x, y) {
  * @returns {boolean}
  */
 export function isValidPosition(position, board_size) {
-    // TODO
+    return matchesPositionType(position) &amp;&amp; position.every(val =&gt; val &lt; board_size);
+}
+
+function matchesPositionType(position) {
+    return List.isList(position) &amp;&amp; position.size === 2 &amp;&amp; position.every(isPositiveInteger);
+}
+
+
+/**
+ * Returns a {@link Set} of positions compatible with areas of godash that need a collection
+ * of positions.
+ *
+ * @param {*} raw_positions anything that is compatible with the constructor arguments for Set
+ * @returns {Set}
+ */
+export function positions(raw_positions) {
+    const position_set = Set(raw_positions);
+
+    if (!position_set.every(matchesPositionType)) {
+        throw TypeError(&apos;Must pass an iterable of positions,&apos; +
+            &apos; Immutable.List types of length 2, containing non-negative integers&apos;);
+    }
+
+    return position_set;
 }
 </code></pre>
 

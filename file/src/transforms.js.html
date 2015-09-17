@@ -44,6 +44,7 @@
     
   <li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
 <li data-ice="functionDoc"><span><a href="function/index.html#static-function-position">position</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-positions">positions</a></span></li>
 </ul>
 </div>
 
@@ -74,18 +75,13 @@
 import {Map, Set} from &apos;immutable&apos;;
 
 import {
-    BLACK, WHITE, SIZE_KEY, isValidPosition, oppositeColor,
+    BLACK, WHITE, SIZE_KEY, isLegalMove, oppositeColor,
     matchingAdjacentPositions, liberties, group
 } from &apos;./analysis&apos;;
 
 
 /**
- * Creates an empty board.
- *
  * @private
- * @param {number} size the size of the board
- * @throws {string} when size is not a positive integer
- * @returns {Map}
  */
 export function emptyBoard(size) {
     if (!isNumber(size) || size &lt;= 0 || size !== parseInt(size)) {
@@ -99,7 +95,7 @@ export function emptyBoard(size) {
  * @private
  */
 export function addMove(board, position, color) {
-    if (!isValidPosition(board, position, color)) {
+    if (!isLegalMove(board, position, color)) {
         throw &apos;Not a valid position&apos;;
     }
 
@@ -118,7 +114,6 @@ export function addMove(board, position, color) {
 
 /**
  * @private
- * @returns {Map} board representing the new state
  */
 export function addBlackMove(board, position) {
     return addMove(board, position, BLACK);
@@ -127,7 +122,6 @@ export function addBlackMove(board, position) {
 
 /**
  * @private
- * @returns {Map} board representing the new state
  */
 export function addWhiteMove(board, position) {
     return addMove(board, position, WHITE);
@@ -135,12 +129,7 @@ export function addWhiteMove(board, position) {
 
 
 /**
- * Removes positions.  Positions that are not on the board are ignored.
- *
  * @private
- * @param {Map} board
- * @param {Set} positions
- * @returns {Map} board representing the new state
  */
 export function removeMoves(board, positions) {
     return positions.reduce(

@@ -30,6 +30,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "godash/src/position.js~positions",
+    "function/index.html#static-function-positions",
+    "<span>positions</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
+    "function"
+  ],
+  [
     "builtinexternal/ecmascriptexternal.js~array",
     "external/index.html",
     "BuiltinExternal/ECMAScriptExternal.js~Array",
@@ -414,9 +420,15 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/board.js~board#islegalmove",
-    "class/src/board.js~Board.html#instance-method-isLegalMove",
-    "src/board.js~Board#isLegalMove",
+    "src/board.js~board#islegalblackmove",
+    "class/src/board.js~Board.html#instance-method-isLegalBlackMove",
+    "src/board.js~Board#isLegalBlackMove",
+    "method"
+  ],
+  [
+    "src/board.js~board#islegalwhitemove",
+    "class/src/board.js~Board.html#instance-method-isLegalWhiteMove",
+    "src/board.js~Board#isLegalWhiteMove",
     "method"
   ],
   [
