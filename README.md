@@ -18,7 +18,12 @@ Install `godash` via [npm](https://www.npmjs.com/package/godash).
 `require` and use it in your modules.
 
     var godash = require('godash');
-    godash.Board(19);
+    var board = godash.Board(19);
+    var tengen = godash.position(8, 8); // 0-based
+    board.positions.has(tengen); // false
+
+    var standard_opening = board.addBlackMove(tengen);
+    standard_opening.positions.has(tengen); // true
 
 ### Browser
 
