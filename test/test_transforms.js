@@ -2,7 +2,7 @@ import assert from 'assert';
 import {List, Set} from 'immutable';
 
 import {emptyBoard, addMove, removeMoves} from '../src/transforms';
-import {SIZE_KEY, BLACK, WHITE} from '../src/analysis';
+import {SIZE_KEY, BLACK, WHITE, prettyString} from '../src/analysis';
 
 
 describe('empty board', function() {
@@ -68,6 +68,34 @@ describe('add move', function() {
                 List.of(1, 1),
                 List.of(2, 2),
                 List.of(1, 2),
+            ]).equals(Set(new_board.keys()))
+        );
+    });
+
+    it('kills 3 stone group', function() {
+        const board = emptyBoard(5)
+            .set(List.of(0, 0), BLACK)
+            .set(List.of(0, 1), BLACK)
+            .set(List.of(0, 2), BLACK)
+            .set(List.of(1, 0), WHITE)
+            .set(List.of(1, 1), WHITE)
+            .set(List.of(1, 2), WHITE)
+            .set(List.of(2, 0), BLACK)
+            .set(List.of(2, 1), BLACK)
+            .set(List.of(2, 2), BLACK);
+
+        const new_board = addMove(board, List.of(1, 3), BLACK);
+
+        assert.ok(
+            Set([
+                SIZE_KEY,
+                List.of(0, 0),
+                List.of(0, 1),
+                List.of(0, 2),
+                List.of(2, 0),
+                List.of(2, 1),
+                List.of(2, 2),
+                List.of(1, 3),
             ]).equals(Set(new_board.keys()))
         );
     });

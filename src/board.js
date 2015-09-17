@@ -3,7 +3,7 @@ import {Map, List} from 'immutable';
 import {isPositiveInteger} from './utils';
 import {
     SIZE_KEY, allPossibleMoves, group, liberties, isLegalMove,
-    BLACK, WHITE, EMPTY,
+    BLACK, WHITE, EMPTY, prettyString,
 } from './analysis';
 import {
     emptyBoard, addBlackMove, addWhiteMove, addMove, removeMoves,
@@ -204,26 +204,6 @@ export class Board {
      * @returns {string} ASCII board
      */
     toPrettyString() {
-        const size = this.board_size;
-        let pretty_string = '';
-
-        for (var i = 0; i < this.board_size; i++) {
-            for (var j = 0; j < this.board_size; j++) {
-                let color = this.positions.get(List.of(i, j), EMPTY);
-                switch(color) {
-                    case BLACK:
-                        pretty_string += 'O';
-                        break;
-                    case WHITE:
-                        pretty_string += 'X';
-                        break;
-                    case EMPTY:
-                        pretty_string += '+';
-                        break;
-                }
-            }
-            pretty_string += '\n';
-        }
-        return pretty_string;
+        return prettyString(this.positions);
     }
 }
