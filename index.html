@@ -76,8 +76,18 @@
 <p>A Javascript utility library to handle go board manipulations in immutable data structures.</p>
 <p>This library is entirely frontend agnostic and strives only to represent the rules of <a href="https://en.wikipedia.org/wiki/Go_%28game%29">Go</a> and corresponding basic analysis.  Immutability is delivered by <a href="http://facebook.github.io/immutable-js/">ImmutableJS</a> and other basic javascript manipulations are done with <a href="https://lodash.com/">lodash</a>, this library&apos;s namesake.</p>
 <h2 id="getting-started">Getting Started</h2>
-<p>TODO</p>
-<h2 id="roadmap">Roadmap</h2>
+<p>Install <code>godash</code> via <a href="https://www.npmjs.com/package/godash">npm</a>.</p>
+<pre><code><code class="source-code prettyprint">npm install godash</code>
+</code></pre><p><code>require</code> and use it in your modules.</p>
+<pre><code><code class="source-code prettyprint">var godash = require(&apos;godash&apos;);
+godash.Board(19);</code>
+</code></pre><h3 id="browser">Browser</h3>
+<p>Grab the <a href="https://github.com/duckpunch/godash/blob/master/dist/godash.min.js">compiled script</a> and just use it.</p>
+<pre><code><code class="source-code prettyprint">&lt;script src=&quot;godash.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    godash.Board(19);
+&lt;/script&gt;</code>
+</code></pre><h2 id="roadmap">Roadmap</h2>
 <p>First things first.</p>
 <ul>
 <li>Start actually using it.</li>
