@@ -2,18 +2,13 @@ import {isNumber} from 'lodash';
 import {Map, Set} from 'immutable';
 
 import {
-    BLACK, WHITE, SIZE_KEY, isValidPosition, oppositeColor,
+    BLACK, WHITE, SIZE_KEY, isLegalMove, oppositeColor,
     matchingAdjacentPositions, liberties, group
 } from './analysis';
 
 
 /**
- * Creates an empty board.
- *
  * @private
- * @param {number} size the size of the board
- * @throws {string} when size is not a positive integer
- * @returns {Map}
  */
 export function emptyBoard(size) {
     if (!isNumber(size) || size <= 0 || size !== parseInt(size)) {
@@ -27,7 +22,7 @@ export function emptyBoard(size) {
  * @private
  */
 export function addMove(board, position, color) {
-    if (!isValidPosition(board, position, color)) {
+    if (!isLegalMove(board, position, color)) {
         throw 'Not a valid position';
     }
 
@@ -46,7 +41,6 @@ export function addMove(board, position, color) {
 
 /**
  * @private
- * @returns {Map} board representing the new state
  */
 export function addBlackMove(board, position) {
     return addMove(board, position, BLACK);
@@ -55,7 +49,6 @@ export function addBlackMove(board, position) {
 
 /**
  * @private
- * @returns {Map} board representing the new state
  */
 export function addWhiteMove(board, position) {
     return addMove(board, position, WHITE);
@@ -63,12 +56,7 @@ export function addWhiteMove(board, position) {
 
 
 /**
- * Removes positions.  Positions that are not on the board are ignored.
- *
  * @private
- * @param {Map} board
- * @param {Set} positions
- * @returns {Map} board representing the new state
  */
 export function removeMoves(board, positions) {
     return positions.reduce(

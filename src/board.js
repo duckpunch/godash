@@ -2,10 +2,10 @@ import {Map} from 'immutable';
 
 import {isPositiveInteger} from './utils';
 import {
-    SIZE_KEY, allPossibleMoves,
+    SIZE_KEY, allPossibleMoves, group, liberties, isLegalMove,
 } from './analysis';
 import {
-    emptyBoard, addBlackMove, addWhiteMove, addMove,
+    emptyBoard, addBlackMove, addWhiteMove, addMove, removeMoves,
 } from './transforms';
 
 
@@ -88,6 +88,16 @@ export class Board {
     }
 
     /**
+     * Removes positions.  Positions that are not on the board are ignored.
+     *
+     * @param {Set} positions
+     * @returns {Board}
+     */
+    removeMoves(positions) {
+        return new Board(removeMoves(this.data, positions));
+    }
+
+    /**
      * A set of all possible moves on the board, even the occupied ones.
      *
      * @returns {Set} contains Lists (2-tuples)
@@ -96,15 +106,31 @@ export class Board {
         return allPossibleMoves(this.board_size);
     }
 
+    /**
+     * Gets a set of positions of the logical group associated with the given position.
+     *
+     * @param {List} position
+     * @returns {Set}
+     */
     group(position) {
+        return group(this.data, position);
     }
 
-    isLegalMove(position) {
+    isLegalBlackMove(position) {
+        return isLegalMove(this.data, position, BLACK);
     }
 
+    isLegalWhiteMove(position) {
+        return isLegalMove(this.data, position, WHITE);
+    }
+
+    /**
+     * Counts liberties for the stone at the given position.
+     *
+     * @param {List} position
+     * @returns {number}
+     */
     liberties(position) {
-    }
-
-    removeMoves(positions) {
+        return liberties(this.data, position);
     }
 }

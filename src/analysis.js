@@ -167,7 +167,7 @@ export function oppositeColor(color) {
  * @param {List} color
  * @returns {boolean}
  */
-export function isValidPosition(board, position, color) {
+export function isLegalMove(board, position, color) {
     const will_have_liberty = liberties(board.set(position, color), position) > 0;
     const will_kill_something = matchingAdjacentPositions(board, position, oppositeColor(color))
         .some(pos => liberties(board, pos) === 1);
@@ -177,5 +177,5 @@ export function isValidPosition(board, position, color) {
 
 
 export default {
-    isValidPosition, oppositeColor, liberties, group
+    isLegalMove, oppositeColor, liberties, group
 };

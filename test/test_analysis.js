@@ -4,7 +4,7 @@ import {List, Set} from 'immutable';
 import {emptyBoard} from '../src/transforms';
 import {
     adjacentPositions, allPossibleMoves, group,
-    WHITE, BLACK, liberties, emptyPositions, isValidPosition
+    WHITE, BLACK, liberties, emptyPositions, isLegalMove
 } from '../src/analysis';
 
 
@@ -200,7 +200,7 @@ describe('is valid position', function() {
             .set(List.of(2, 1), BLACK)
             .set(List.of(1, 2), BLACK);
 
-        assert.ok(!isValidPosition(board, List.of(1, 1), WHITE));
+        assert.ok(!isLegalMove(board, List.of(1, 1), WHITE));
     });
 
     it('allows filling in a ponnuki', function() {
@@ -210,7 +210,7 @@ describe('is valid position', function() {
             .set(List.of(2, 1), BLACK)
             .set(List.of(1, 2), BLACK);
 
-        assert.ok(isValidPosition(board, List.of(1, 1), BLACK));
+        assert.ok(isLegalMove(board, List.of(1, 1), BLACK));
     });
 
     it('marks suicide in corner as invalid', function() {
@@ -219,7 +219,7 @@ describe('is valid position', function() {
             .set(List.of(2, 1), BLACK)
             .set(List.of(1, 2), BLACK);
 
-        assert.ok(!isValidPosition(board, List.of(2, 2), WHITE));
+        assert.ok(!isLegalMove(board, List.of(2, 2), WHITE));
     });
 
     it('marks suicide in corner that kills first as valid', function() {
@@ -230,6 +230,6 @@ describe('is valid position', function() {
             .set(List.of(2, 1), BLACK)
             .set(List.of(1, 2), BLACK);
 
-        assert.ok(isValidPosition(board, List.of(2, 2), WHITE));
+        assert.ok(isLegalMove(board, List.of(2, 2), WHITE));
     });
 });

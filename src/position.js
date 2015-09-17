@@ -1,4 +1,4 @@
-import {List} from 'immutable';
+import {Set, List} from 'immutable';
 import {isPositiveInteger} from './utils';
 
 
@@ -29,4 +29,20 @@ export function position(x, y) {
  */
 export function isValidPosition(position, board_size) {
     // TODO
+}
+
+
+/**
+ * Returns a {@link Set} of positions compatible with areas of godash that need a collection
+ * of positions.
+ *
+ * @param {*} raw_positions anything that is compatible with the constructor arguments for Set
+ * @returns {Set}
+ */
+export function positions(raw_positions) {
+    const position_set = Set(raw_positions);
+
+    // TODO - check validity of each position
+
+    return position_set;
 }
