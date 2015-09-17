@@ -17,22 +17,27 @@ Install `godash` via [npm](https://www.npmjs.com/package/godash).
 
 `require` and use it in your modules.
 
-    var godash = require('godash');
-    var board = godash.Board(19);
-    var tengen = godash.position(8, 8); // 0-based
-    board.positions.has(tengen); // false
+```javascript
+var godash = require('godash');
+var board = godash.Board(19);
+var tengen = godash.position(8, 8); // 0-based
 
-    var standard_opening = board.addBlackMove(tengen);
-    standard_opening.positions.has(tengen); // true
+board.positions.has(tengen); // false
+
+var standard_opening = board.addBlackMove(tengen);
+standard_opening.positions.has(tengen); // true
+```
 
 ### Browser
 
 Grab the [compiled script](https://github.com/duckpunch/godash/blob/master/dist/godash.min.js) and just use it.
 
-    <script src="godash.min.js"></script>
-    <script>
-        godash.Board(19);
-    </script>
+```html
+<script src="godash.min.js"></script>
+<script>
+    godash.Board(19);
+</script>
+```
 
 Roadmap
 -------
