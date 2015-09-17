@@ -1,8 +1,6 @@
-import _ from 'lodash';
-
-import analysis from './analysis';
-import transforms from './transforms';
+import {BLACK, WHITE} from './analysis';
 import {Board} from './board';
+import {position} from './position';
 
 
 /**
@@ -18,4 +16,17 @@ import {Board} from './board';
  */
 
 
-export default _.merge(analysis, transforms, {Board});
+function _Board(...args) {
+    return new Board(...args);
+}
+
+
+_Board.prototype = Board.prototype;
+
+
+export default {
+    Board: _Board,
+    position,
+    BLACK,
+    WHITE,
+};

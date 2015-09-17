@@ -1,21 +1,11 @@
 import {Map} from 'immutable';
-import {isNumber} from 'lodash';
 
 import {SIZE_KEY} from './analysis';
 import {emptyBoard} from './transforms';
+import {isPositiveInteger} from './utils';
 
 
-function isPositiveInteger(num) {
-    return isNumber(num) && num === parseInt(num) && num > 0;
-}
-
-
-/**
- * Checks for valid backing data structure for {@link Board}.
- *
- * @private
- */
-export function isValidBoardMap(board) {
+function isValidBoardMap(board) {
     return Map.isMap(board) && isPositiveInteger(board.get(SIZE_KEY, 0));
 }
 
@@ -71,10 +61,7 @@ export class Board {
     group(position) {
     }
 
-    isValidPosition(position) {
-    }
-
-    isValidMove(position) {
+    isLegalMove(position) {
     }
 
     liberties(position) {
