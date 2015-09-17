@@ -33,13 +33,19 @@
   <ul>
     
   <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
-<li data-ice="classDoc"><span><a href="class/src/position.js~Position.html">Position</a></span></li>
 </ul>
 </div>
 
 
 
-
+<div data-ice="functionWrap">
+  <h2><a href="function/">Function</a></h2>
+  <ul>
+    
+  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-position">position</a></span></li>
+</ul>
+</div>
 
 <div data-ice="variableWrap">
   <h2><a href="variable/">Variable</a></h2>
@@ -64,11 +70,9 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import _ from &apos;lodash&apos;;
-
-import analysis from &apos;./analysis&apos;;
-import transforms from &apos;./transforms&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {BLACK, WHITE} from &apos;./analysis&apos;;
 import {Board} from &apos;./board&apos;;
+import {position} from &apos;./position&apos;;
 
 
 /**
@@ -84,7 +88,20 @@ import {Board} from &apos;./board&apos;;
  */
 
 
-export default _.merge(analysis, transforms, {Board});
+function _Board(...args) {
+    return new Board(...args);
+}
+
+
+_Board.prototype = Board.prototype;
+
+
+export default {
+    Board: _Board,
+    position,
+    BLACK,
+    WHITE,
+};
 </code></pre>
 
 </div>

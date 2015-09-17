@@ -33,7 +33,6 @@
   <ul>
     
   <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
-<li data-ice="classDoc"><span><a href="class/src/position.js~Position.html">Position</a></span></li>
 </ul>
 </div>
 
@@ -43,7 +42,8 @@
   <h2><a href="function/">Function</a></h2>
   <ul>
     
-  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidBoardMap">isValidBoardMap</a></span></li>
+  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-position">position</a></span></li>
 </ul>
 </div>
 
@@ -85,13 +85,38 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="function/index.html#static-function-isValidBoardMap">isValidBoardMap</a></span></span><span data-ice="signature">(board: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></span><span data-ice="signature">(position: <span>*</span>, board_size: <span>*</span>)</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Checks for valid backing data structure for <span><a href="class/src/board.js~Board.html">Board</a></span>.</p></div>
+        <div data-ice="description"><p>Validates a position with a board size.</p></div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="function/index.html#static-function-position">position</a></span></span><span data-ice="signature">(x: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, y: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Returns a coordinate type compatible with the rest of godash.</p></div>
       </div>
     </td>
     <td>
@@ -105,24 +130,24 @@
 <div data-ice="details"><h2 data-ice="title">Static Public </h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-isValidBoardMap">
+  <h3 data-ice="anchor" id="static-function-isValidPosition">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">isValidBoardMap</span><span data-ice="signature">(board: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">isValidPosition</span><span data-ice="signature">(position: <span>*</span>, board_size: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber16">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/position.js.html#lineNumber28">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isValidBoardMap} from &apos;<span><a href="file/src/board.js.html#lineNumber16">godash/src/board.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isValidPosition} from &apos;<span><a href="file/src/position.js.html#lineNumber28">godash/src/position.js</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks for valid backing data structure for <span><a href="class/src/board.js~Board.html">Board</a></span>.</p>
+  <div data-ice="description"><p>Validates a position with a board size.</p>
 </div>
 
   
@@ -136,8 +161,77 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">board</td>
+      <td data-ice="name" data-depth="0">position</td>
       <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">board_size</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-position">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">position</span><span data-ice="signature">(x: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, y: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/position.js.html#lineNumber13">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {position} from &apos;<span><a href="file/src/position.js.html#lineNumber13">godash/src/position.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Returns a coordinate type compatible with the rest of godash.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">x</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">y</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -150,8 +244,9 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>representing a possible coordinate on the board</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -162,7 +257,19 @@
 
   
 
-  
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError">TypeError</a></span></p></td>
+        <td data-ice="throwDesc"><p>arguments are not integers greater than or equal to 0</p>
+</td>
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   
 

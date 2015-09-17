@@ -503,36 +503,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {Map} from 'immutable';\nimport {isNumber} from 'lodash';\n\nimport {SIZE_KEY} from './analysis';\nimport {emptyBoard} from './transforms';\n\n\nfunction isPositiveInteger(num) {\n    return isNumber(num) && num === parseInt(num) && num > 0;\n}\n\n\n/**\n * Checks for valid backing data structure for {@link Board}.\n *\n * @private\n */\nexport function isValidBoardMap(board) {\n    return Map.isMap(board) && isPositiveInteger(board.get(SIZE_KEY, 0));\n}\n\n\n/**\n * Represents a given board state.\n */\nexport class Board {\n    /**\n     * @param {Map} board_data argument specifying either the backing Map or the size\n     * @throws {TypeError} when board_data is neither a proper board Map or a positive integer\n     */\n    constructor(board_data) {\n        if (isValidBoardMap(board_data)) {\n            this._data = board_data;\n        } else if (isPositiveInteger(board_data)) {\n            this._data = emptyBoard(board_data);\n        } else {\n            throw TypeError('Instantiate a Board with a Map or a positive integer');\n        }\n    }\n\n    /**\n     * Underlying data structure for the Board.\n     *\n     * @returns {Map}\n     */\n    get data() {\n        return this._data;\n    }\n\n    /**\n     * Positive integer representing the size of the board.\n     *\n     * @returns {number}\n     */\n    get board_size() {\n        return this.data.get(SIZE_KEY);\n    }\n\n    addBlackMove(position) {\n    }\n\n    addWhiteMove(position) {\n    }\n\n    addMove(position, color) {\n    }\n\n    allPossibleMoves() {\n    }\n\n    group(position) {\n    }\n\n    isValidPosition(position) {\n    }\n\n    isValidMove(position) {\n    }\n\n    liberties(position) {\n    }\n\n    removeMoves(positions) {\n    }\n}\n"
-  },
-  {
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "isPositiveInteger",
-    "memberof": "src/board.js",
-    "longname": "src/board.js~isPositiveInteger",
-    "access": null,
-    "export": false,
-    "importPath": "godash/src/board.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 8,
-    "undocument": true,
-    "params": [
-      {
-        "name": "num",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
+    "content": "import {Map} from 'immutable';\n\nimport {SIZE_KEY} from './analysis';\nimport {emptyBoard} from './transforms';\nimport {isPositiveInteger} from './utils';\n\n\nfunction isValidBoardMap(board) {\n    return Map.isMap(board) && isPositiveInteger(board.get(SIZE_KEY, 0));\n}\n\n\n/**\n * Represents a given board state.\n */\nexport class Board {\n    /**\n     * @param {Map} board_data argument specifying either the backing Map or the size\n     * @throws {TypeError} when board_data is neither a proper board Map or a positive integer\n     */\n    constructor(board_data) {\n        if (isValidBoardMap(board_data)) {\n            this._data = board_data;\n        } else if (isPositiveInteger(board_data)) {\n            this._data = emptyBoard(board_data);\n        } else {\n            throw TypeError('Instantiate a Board with a Map or a positive integer');\n        }\n    }\n\n    /**\n     * Underlying data structure for the Board.\n     *\n     * @returns {Map}\n     */\n    get data() {\n        return this._data;\n    }\n\n    /**\n     * Positive integer representing the size of the board.\n     *\n     * @returns {number}\n     */\n    get board_size() {\n        return this.data.get(SIZE_KEY);\n    }\n\n    addBlackMove(position) {\n    }\n\n    addWhiteMove(position) {\n    }\n\n    addMove(position, color) {\n    }\n\n    allPossibleMoves() {\n    }\n\n    group(position) {\n    }\n\n    isLegalMove(position) {\n    }\n\n    liberties(position) {\n    }\n\n    removeMoves(positions) {\n    }\n}\n"
   },
   {
     "kind": "function",
@@ -541,12 +512,13 @@
     "name": "isValidBoardMap",
     "memberof": "src/board.js",
     "longname": "src/board.js~isValidBoardMap",
-    "access": "private",
-    "export": true,
+    "access": null,
+    "export": false,
     "importPath": "godash/src/board.js",
-    "importStyle": "{isValidBoardMap}",
-    "description": "Checks for valid backing data structure for {@link Board}.",
-    "lineNumber": 18,
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
     "params": [
       {
         "name": "board",
@@ -574,7 +546,7 @@
     "importPath": "godash/src/board.js",
     "importStyle": "{Board}",
     "description": "Represents a given board state.",
-    "lineNumber": 26,
+    "lineNumber": 16,
     "interface": false
   },
   {
@@ -586,7 +558,7 @@
     "longname": "src/board.js~Board#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 31,
+    "lineNumber": 21,
     "params": [
       {
         "nullable": null,
@@ -618,7 +590,7 @@
     "longname": "src/board.js~Board#_data",
     "access": null,
     "description": null,
-    "lineNumber": 33,
+    "lineNumber": 23,
     "undocument": true,
     "type": {
       "types": [
@@ -635,7 +607,7 @@
     "longname": "src/board.js~Board#_data",
     "access": null,
     "description": null,
-    "lineNumber": 35,
+    "lineNumber": 25,
     "undocument": true,
     "type": {
       "types": [
@@ -652,7 +624,7 @@
     "longname": "src/board.js~Board#data",
     "access": null,
     "description": "Underlying data structure for the Board.",
-    "lineNumber": 46,
+    "lineNumber": 36,
     "unknown": [
       {
         "tagName": "@returns",
@@ -683,7 +655,7 @@
     "longname": "src/board.js~Board#board_size",
     "access": null,
     "description": "Positive integer representing the size of the board.",
-    "lineNumber": 55,
+    "lineNumber": 45,
     "unknown": [
       {
         "tagName": "@returns",
@@ -714,7 +686,7 @@
     "longname": "src/board.js~Board#addBlackMove",
     "access": null,
     "description": null,
-    "lineNumber": 59,
+    "lineNumber": 49,
     "undocument": true,
     "params": [
       {
@@ -735,7 +707,7 @@
     "longname": "src/board.js~Board#addWhiteMove",
     "access": null,
     "description": null,
-    "lineNumber": 62,
+    "lineNumber": 52,
     "undocument": true,
     "params": [
       {
@@ -756,7 +728,7 @@
     "longname": "src/board.js~Board#addMove",
     "access": null,
     "description": null,
-    "lineNumber": 65,
+    "lineNumber": 55,
     "undocument": true,
     "params": [
       {
@@ -783,7 +755,7 @@
     "longname": "src/board.js~Board#allPossibleMoves",
     "access": null,
     "description": null,
-    "lineNumber": 68,
+    "lineNumber": 58,
     "undocument": true,
     "params": [],
     "generator": false
@@ -797,7 +769,7 @@
     "longname": "src/board.js~Board#group",
     "access": null,
     "description": null,
-    "lineNumber": 71,
+    "lineNumber": 61,
     "undocument": true,
     "params": [
       {
@@ -813,33 +785,12 @@
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "isValidPosition",
+    "name": "isLegalMove",
     "memberof": "src/board.js~Board",
-    "longname": "src/board.js~Board#isValidPosition",
+    "longname": "src/board.js~Board#isLegalMove",
     "access": null,
     "description": null,
-    "lineNumber": 74,
-    "undocument": true,
-    "params": [
-      {
-        "name": "position",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "generator": false
-  },
-  {
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "isValidMove",
-    "memberof": "src/board.js~Board",
-    "longname": "src/board.js~Board#isValidMove",
-    "access": null,
-    "description": null,
-    "lineNumber": 77,
+    "lineNumber": 64,
     "undocument": true,
     "params": [
       {
@@ -860,7 +811,7 @@
     "longname": "src/board.js~Board#liberties",
     "access": null,
     "description": null,
-    "lineNumber": 80,
+    "lineNumber": 67,
     "undocument": true,
     "params": [
       {
@@ -881,7 +832,7 @@
     "longname": "src/board.js~Board#removeMoves",
     "access": null,
     "description": null,
-    "lineNumber": 83,
+    "lineNumber": 70,
     "undocument": true,
     "params": [
       {
@@ -915,7 +866,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import _ from 'lodash';\n\nimport analysis from './analysis';\nimport transforms from './transforms';\nimport {Board} from './board';\n\n\n/**\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n */\n\n/**\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n */\n\n/**\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n */\n\n\nexport default _.merge(analysis, transforms, {Board});\n"
+    "content": "import {BLACK, WHITE} from './analysis';\nimport {Board} from './board';\nimport {position} from './position';\n\n\n/**\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n */\n\n/**\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n */\n\n/**\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n */\n\n\nfunction _Board(...args) {\n    return new Board(...args);\n}\n\n\n_Board.prototype = Board.prototype;\n\n\nexport default {\n    Board: _Board,\n    position,\n    BLACK,\n    WHITE,\n};\n"
   },
   {
     "kind": "external",
@@ -949,7 +900,7 @@
     "longname": "src/index.js~Set",
     "access": null,
     "description": null,
-    "lineNumber": 21
+    "lineNumber": 19
   },
   {
     "kind": "file",
@@ -961,40 +912,94 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {List} from 'immutable';\n\n\nexport class Position {\n    get data() {\n        return this._data;\n    }\n}\n"
+    "content": "import {List} from 'immutable';\nimport {isPositiveInteger} from './utils';\n\n\n/**\n * Returns a coordinate type compatible with the rest of godash.\n *\n * @param {number} x\n * @param {number} y\n * @returns {List} representing a possible coordinate on the board\n * @throws {TypeError} arguments are not integers greater than or equal to 0\n */\nexport function position(x, y) {\n    const valid_x = x === 0 || isPositiveInteger(x);\n    const valid_y = y === 0 || isPositiveInteger(y);\n\n    if (!valid_x || !valid_y) {\n        throw TypeError('Both passed arguments must be integers greater than or equal to 0');\n    }\n\n    return List.of(x, y);\n}\n\n\n/**\n * Validates a position with a board size.\n */\nexport function isValidPosition(position, board_size) {\n}\n"
   },
   {
-    "kind": "class",
+    "kind": "function",
     "static": true,
     "variation": null,
-    "name": "Position",
+    "name": "position",
     "memberof": "src/position.js",
-    "longname": "src/position.js~Position",
+    "longname": "src/position.js~position",
     "access": null,
     "export": true,
     "importPath": "godash/src/position.js",
-    "importStyle": "{Position}",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
-    "interface": false
+    "importStyle": "{position}",
+    "description": "Returns a coordinate type compatible with the rest of godash.",
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{List} representing a possible coordinate on the board"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "x",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "y",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "List"
+      ],
+      "spread": false,
+      "description": "representing a possible coordinate on the board"
+    },
+    "throws": [
+      {
+        "types": [
+          "TypeError"
+        ],
+        "description": "arguments are not integers greater than or equal to 0"
+      }
+    ],
+    "generator": false
   },
   {
-    "kind": "get",
-    "static": false,
+    "kind": "function",
+    "static": true,
     "variation": null,
-    "name": "data",
-    "memberof": "src/position.js~Position",
-    "longname": "src/position.js~Position#data",
+    "name": "isValidPosition",
+    "memberof": "src/position.js",
+    "longname": "src/position.js~isValidPosition",
     "access": null,
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
+    "export": true,
+    "importPath": "godash/src/position.js",
+    "importStyle": "{isValidPosition}",
+    "description": "Validates a position with a board size.",
+    "lineNumber": 28,
+    "params": [
+      {
+        "name": "position",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "board_size",
+        "types": [
+          "*"
+        ]
+      }
+    ],
     "generator": false
   },
   {
@@ -1271,65 +1276,33 @@
     "kind": "file",
     "static": true,
     "variation": null,
-    "name": "src/wrapper.js",
+    "name": "src/utils.js",
     "memberof": null,
-    "longname": "src/wrapper.js",
+    "longname": "src/utils.js",
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {Board} from './board';\nimport {Position} from './board';\n\n\nfunction _Board(...args) {\n    return new Board(...args);\n}\n\n\nfunction _Position(...args) {\n    return new Position(...args);\n}\n\n\n_Board.prototype = Board.prototype;\n_Position.prototype = Position.prototype;\n\n\nexport default {\n    Board: _Board,\n    Position: _Position,\n};\n"
+    "content": "import {isNumber} from 'lodash';\n\n/**\n * @private\n */\nexport function isPositiveInteger(num) {\n    return isNumber(num) && num === parseInt(num) && num > 0;\n}\n"
   },
   {
     "kind": "function",
     "static": true,
     "variation": null,
-    "name": "_Board",
-    "memberof": "src/wrapper.js",
-    "longname": "src/wrapper.js~_Board",
-    "access": null,
-    "export": false,
-    "importPath": "godash/src/wrapper.js",
-    "importStyle": null,
+    "name": "isPositiveInteger",
+    "memberof": "src/utils.js",
+    "longname": "src/utils.js~isPositiveInteger",
+    "access": "private",
+    "export": true,
+    "importPath": "godash/src/utils.js",
+    "importStyle": "{isPositiveInteger}",
     "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "lineNumber": 6,
     "params": [
       {
-        "name": "args",
+        "name": "num",
         "types": [
-          "...*"
-        ],
-        "spread": true
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "_Position",
-    "memberof": "src/wrapper.js",
-    "longname": "src/wrapper.js~_Position",
-    "access": null,
-    "export": false,
-    "importPath": "godash/src/wrapper.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true,
-    "params": [
-      {
-        "name": "args",
-        "types": [
-          "...*"
-        ],
-        "spread": true
+          "*"
+        ]
       }
     ],
     "return": {

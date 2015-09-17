@@ -12,16 +12,22 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "godash/src/position.js~position",
-    "class/src/position.js~Position.html",
-    "<span>Position</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
-    "class"
-  ],
-  [
     "godash/src/analysis.js~white",
     "variable/index.html#static-variable-WHITE",
     "<span>WHITE</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
     "variable"
+  ],
+  [
+    "godash/src/position.js~isvalidposition",
+    "function/index.html#static-function-isValidPosition",
+    "<span>isValidPosition</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
+    "function"
+  ],
+  [
+    "godash/src/position.js~position",
+    "function/index.html#static-function-position",
+    "<span>position</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
+    "function"
   ],
   [
     "builtinexternal/ecmascriptexternal.js~array",
@@ -408,15 +414,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/board.js~board#isvalidmove",
-    "class/src/board.js~Board.html#instance-method-isValidMove",
-    "src/board.js~Board#isValidMove",
-    "method"
-  ],
-  [
-    "src/board.js~board#isvalidposition",
-    "class/src/board.js~Board.html#instance-method-isValidPosition",
-    "src/board.js~Board#isValidPosition",
+    "src/board.js~board#islegalmove",
+    "class/src/board.js~Board.html#instance-method-isLegalMove",
+    "src/board.js~Board#isLegalMove",
     "method"
   ],
   [
@@ -468,21 +468,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/position.js~position#data",
-    "class/src/position.js~Position.html#instance-get-data",
-    "src/position.js~Position#data",
-    "member"
-  ],
-  [
     "src/transforms.js",
     "file/src/transforms.js.html",
     "src/transforms.js",
     "file"
   ],
   [
-    "src/wrapper.js",
-    "file/src/wrapper.js.html",
-    "src/wrapper.js",
+    "src/utils.js",
+    "file/src/utils.js.html",
+    "src/utils.js",
     "file"
   ]
 ]
