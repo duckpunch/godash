@@ -2671,10 +2671,10 @@
         "trailingComments": [
           {
             "type": "Block",
-            "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+            "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
             "range": [
               1124,
-              1409
+              1194
             ],
             "loc": {
               "start": {
@@ -2682,7 +2682,7 @@
                 "column": 0
               },
               "end": {
-                "line": 56,
+                "line": 50,
                 "column": 3
               }
             }
@@ -2728,10 +2728,10 @@
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+          "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
           "range": [
             1124,
-            1409
+            1194
           ],
           "loc": {
             "start": {
@@ -2739,7 +2739,7 @@
               "column": 0
             },
             "end": {
-              "line": 56,
+              "line": 50,
               "column": 3
             }
           }
@@ -2754,16 +2754,16 @@
           "type": "Identifier",
           "name": "addBlackMove",
           "range": [
-            1426,
-            1438
+            1211,
+            1223
           ],
           "loc": {
             "start": {
-              "line": 57,
+              "line": 51,
               "column": 16
             },
             "end": {
-              "line": 57,
+              "line": 51,
               "column": 28
             }
           }
@@ -2773,16 +2773,16 @@
             "type": "Identifier",
             "name": "board",
             "range": [
-              1439,
-              1444
+              1224,
+              1229
             ],
             "loc": {
               "start": {
-                "line": 57,
+                "line": 51,
                 "column": 29
               },
               "end": {
-                "line": 57,
+                "line": 51,
                 "column": 34
               }
             }
@@ -2791,16 +2791,16 @@
             "type": "Identifier",
             "name": "position",
             "range": [
-              1446,
-              1454
+              1231,
+              1239
             ],
             "loc": {
               "start": {
-                "line": 57,
+                "line": 51,
                 "column": 36
               },
               "end": {
-                "line": 57,
+                "line": 51,
                 "column": 44
               }
             }
@@ -2817,16 +2817,16 @@
                   "type": "Identifier",
                   "name": "addMove",
                   "range": [
-                    1469,
-                    1476
+                    1254,
+                    1261
                   ],
                   "loc": {
                     "start": {
-                      "line": 58,
+                      "line": 52,
                       "column": 11
                     },
                     "end": {
-                      "line": 58,
+                      "line": 52,
                       "column": 18
                     }
                   }
@@ -2836,16 +2836,16 @@
                     "type": "Identifier",
                     "name": "board",
                     "range": [
-                      1477,
-                      1482
+                      1262,
+                      1267
                     ],
                     "loc": {
                       "start": {
-                        "line": 58,
+                        "line": 52,
                         "column": 19
                       },
                       "end": {
-                        "line": 58,
+                        "line": 52,
                         "column": 24
                       }
                     }
@@ -2854,16 +2854,16 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      1484,
-                      1492
+                      1269,
+                      1277
                     ],
                     "loc": {
                       "start": {
-                        "line": 58,
+                        "line": 52,
                         "column": 26
                       },
                       "end": {
-                        "line": 58,
+                        "line": 52,
                         "column": 34
                       }
                     }
@@ -2872,63 +2872,63 @@
                     "type": "Identifier",
                     "name": "BLACK",
                     "range": [
-                      1494,
-                      1499
+                      1279,
+                      1284
                     ],
                     "loc": {
                       "start": {
-                        "line": 58,
+                        "line": 52,
                         "column": 36
                       },
                       "end": {
-                        "line": 58,
+                        "line": 52,
                         "column": 41
                       }
                     }
                   }
                 ],
                 "range": [
-                  1469,
-                  1500
+                  1254,
+                  1285
                 ],
                 "loc": {
                   "start": {
-                    "line": 58,
+                    "line": 52,
                     "column": 11
                   },
                   "end": {
-                    "line": 58,
+                    "line": 52,
                     "column": 42
                   }
                 }
               },
               "range": [
-                1462,
-                1501
+                1247,
+                1286
               ],
               "loc": {
                 "start": {
-                  "line": 58,
+                  "line": 52,
                   "column": 4
                 },
                 "end": {
-                  "line": 58,
+                  "line": 52,
                   "column": 43
                 }
               }
             }
           ],
           "range": [
-            1456,
-            1503
+            1241,
+            1288
           ],
           "loc": {
             "start": {
-              "line": 57,
+              "line": 51,
               "column": 46
             },
             "end": {
-              "line": 59,
+              "line": 53,
               "column": 1
             }
           }
@@ -2936,26 +2936,26 @@
         "generator": false,
         "expression": false,
         "range": [
-          1417,
-          1503
+          1202,
+          1288
         ],
         "loc": {
           "start": {
-            "line": 57,
+            "line": 51,
             "column": 7
           },
           "end": {
-            "line": 59,
+            "line": 53,
             "column": 1
           }
         },
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+            "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
             "range": [
               1124,
-              1409
+              1194
             ],
             "loc": {
               "start": {
@@ -2963,7 +2963,7 @@
                 "column": 0
               },
               "end": {
-                "line": 56,
+                "line": 50,
                 "column": 3
               }
             }
@@ -2972,18 +2972,18 @@
         "trailingComments": [
           {
             "type": "Block",
-            "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+            "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1506,
-              1791
+              1291,
+              1361
             ],
             "loc": {
               "start": {
-                "line": 62,
+                "line": 56,
                 "column": 0
               },
               "end": {
-                "line": 71,
+                "line": 59,
                 "column": 3
               }
             }
@@ -2993,26 +2993,26 @@
       "specifiers": [],
       "source": null,
       "range": [
-        1410,
-        1503
+        1195,
+        1288
       ],
       "loc": {
         "start": {
-          "line": 57,
+          "line": 51,
           "column": 0
         },
         "end": {
-          "line": 59,
+          "line": 53,
           "column": 1
         }
       },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+          "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
           "range": [
             1124,
-            1409
+            1194
           ],
           "loc": {
             "start": {
@@ -3020,7 +3020,7 @@
               "column": 0
             },
             "end": {
-              "line": 56,
+              "line": 50,
               "column": 3
             }
           }
@@ -3029,18 +3029,18 @@
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+          "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1506,
-            1791
+            1291,
+            1361
           ],
           "loc": {
             "start": {
-              "line": 62,
+              "line": 56,
               "column": 0
             },
             "end": {
-              "line": 71,
+              "line": 59,
               "column": 3
             }
           }
@@ -3055,16 +3055,16 @@
           "type": "Identifier",
           "name": "addWhiteMove",
           "range": [
-            1808,
-            1820
+            1378,
+            1390
           ],
           "loc": {
             "start": {
-              "line": 72,
+              "line": 60,
               "column": 16
             },
             "end": {
-              "line": 72,
+              "line": 60,
               "column": 28
             }
           }
@@ -3074,16 +3074,16 @@
             "type": "Identifier",
             "name": "board",
             "range": [
-              1821,
-              1826
+              1391,
+              1396
             ],
             "loc": {
               "start": {
-                "line": 72,
+                "line": 60,
                 "column": 29
               },
               "end": {
-                "line": 72,
+                "line": 60,
                 "column": 34
               }
             }
@@ -3092,16 +3092,16 @@
             "type": "Identifier",
             "name": "position",
             "range": [
-              1828,
-              1836
+              1398,
+              1406
             ],
             "loc": {
               "start": {
-                "line": 72,
+                "line": 60,
                 "column": 36
               },
               "end": {
-                "line": 72,
+                "line": 60,
                 "column": 44
               }
             }
@@ -3118,16 +3118,16 @@
                   "type": "Identifier",
                   "name": "addMove",
                   "range": [
-                    1851,
-                    1858
+                    1421,
+                    1428
                   ],
                   "loc": {
                     "start": {
-                      "line": 73,
+                      "line": 61,
                       "column": 11
                     },
                     "end": {
-                      "line": 73,
+                      "line": 61,
                       "column": 18
                     }
                   }
@@ -3137,16 +3137,16 @@
                     "type": "Identifier",
                     "name": "board",
                     "range": [
-                      1859,
-                      1864
+                      1429,
+                      1434
                     ],
                     "loc": {
                       "start": {
-                        "line": 73,
+                        "line": 61,
                         "column": 19
                       },
                       "end": {
-                        "line": 73,
+                        "line": 61,
                         "column": 24
                       }
                     }
@@ -3155,16 +3155,16 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      1866,
-                      1874
+                      1436,
+                      1444
                     ],
                     "loc": {
                       "start": {
-                        "line": 73,
+                        "line": 61,
                         "column": 26
                       },
                       "end": {
-                        "line": 73,
+                        "line": 61,
                         "column": 34
                       }
                     }
@@ -3173,63 +3173,63 @@
                     "type": "Identifier",
                     "name": "WHITE",
                     "range": [
-                      1876,
-                      1881
+                      1446,
+                      1451
                     ],
                     "loc": {
                       "start": {
-                        "line": 73,
+                        "line": 61,
                         "column": 36
                       },
                       "end": {
-                        "line": 73,
+                        "line": 61,
                         "column": 41
                       }
                     }
                   }
                 ],
                 "range": [
-                  1851,
-                  1882
+                  1421,
+                  1452
                 ],
                 "loc": {
                   "start": {
-                    "line": 73,
+                    "line": 61,
                     "column": 11
                   },
                   "end": {
-                    "line": 73,
+                    "line": 61,
                     "column": 42
                   }
                 }
               },
               "range": [
-                1844,
-                1883
+                1414,
+                1453
               ],
               "loc": {
                 "start": {
-                  "line": 73,
+                  "line": 61,
                   "column": 4
                 },
                 "end": {
-                  "line": 73,
+                  "line": 61,
                   "column": 43
                 }
               }
             }
           ],
           "range": [
-            1838,
-            1885
+            1408,
+            1455
           ],
           "loc": {
             "start": {
-              "line": 72,
+              "line": 60,
               "column": 46
             },
             "end": {
-              "line": 74,
+              "line": 62,
               "column": 1
             }
           }
@@ -3237,34 +3237,34 @@
         "generator": false,
         "expression": false,
         "range": [
-          1799,
-          1885
+          1369,
+          1455
         ],
         "loc": {
           "start": {
-            "line": 72,
+            "line": 60,
             "column": 7
           },
           "end": {
-            "line": 74,
+            "line": 62,
             "column": 1
           }
         },
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+            "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1506,
-              1791
+              1291,
+              1361
             ],
             "loc": {
               "start": {
-                "line": 62,
+                "line": 56,
                 "column": 0
               },
               "end": {
-                "line": 71,
+                "line": 59,
                 "column": 3
               }
             }
@@ -3275,16 +3275,16 @@
             "type": "Block",
             "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @private\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1888,
-              2081
+              1458,
+              1651
             ],
             "loc": {
               "start": {
-                "line": 77,
+                "line": 65,
                 "column": 0
               },
               "end": {
-                "line": 84,
+                "line": 72,
                 "column": 3
               }
             }
@@ -3294,34 +3294,34 @@
       "specifiers": [],
       "source": null,
       "range": [
-        1792,
-        1885
+        1362,
+        1455
       ],
       "loc": {
         "start": {
-          "line": 72,
+          "line": 60,
           "column": 0
         },
         "end": {
-          "line": 74,
+          "line": 62,
           "column": 1
         }
       },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+          "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1506,
-            1791
+            1291,
+            1361
           ],
           "loc": {
             "start": {
-              "line": 62,
+              "line": 56,
               "column": 0
             },
             "end": {
-              "line": 71,
+              "line": 59,
               "column": 3
             }
           }
@@ -3332,16 +3332,16 @@
           "type": "Block",
           "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @private\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1888,
-            2081
+            1458,
+            1651
           ],
           "loc": {
             "start": {
-              "line": 77,
+              "line": 65,
               "column": 0
             },
             "end": {
-              "line": 84,
+              "line": 72,
               "column": 3
             }
           }
@@ -3356,16 +3356,16 @@
           "type": "Identifier",
           "name": "removeMoves",
           "range": [
-            2098,
-            2109
+            1668,
+            1679
           ],
           "loc": {
             "start": {
-              "line": 85,
+              "line": 73,
               "column": 16
             },
             "end": {
-              "line": 85,
+              "line": 73,
               "column": 27
             }
           }
@@ -3375,16 +3375,16 @@
             "type": "Identifier",
             "name": "board",
             "range": [
-              2110,
-              2115
+              1680,
+              1685
             ],
             "loc": {
               "start": {
-                "line": 85,
+                "line": 73,
                 "column": 28
               },
               "end": {
-                "line": 85,
+                "line": 73,
                 "column": 33
               }
             }
@@ -3393,16 +3393,16 @@
             "type": "Identifier",
             "name": "positions",
             "range": [
-              2117,
-              2126
+              1687,
+              1696
             ],
             "loc": {
               "start": {
-                "line": 85,
+                "line": 73,
                 "column": 35
               },
               "end": {
-                "line": 85,
+                "line": 73,
                 "column": 44
               }
             }
@@ -3422,16 +3422,16 @@
                     "type": "Identifier",
                     "name": "positions",
                     "range": [
-                      2141,
-                      2150
+                      1711,
+                      1720
                     ],
                     "loc": {
                       "start": {
-                        "line": 86,
+                        "line": 74,
                         "column": 11
                       },
                       "end": {
-                        "line": 86,
+                        "line": 74,
                         "column": 20
                       }
                     }
@@ -3440,31 +3440,31 @@
                     "type": "Identifier",
                     "name": "reduce",
                     "range": [
-                      2151,
-                      2157
+                      1721,
+                      1727
                     ],
                     "loc": {
                       "start": {
-                        "line": 86,
+                        "line": 74,
                         "column": 21
                       },
                       "end": {
-                        "line": 86,
+                        "line": 74,
                         "column": 27
                       }
                     }
                   },
                   "range": [
-                    2141,
-                    2157
+                    1711,
+                    1727
                   ],
                   "loc": {
                     "start": {
-                      "line": 86,
+                      "line": 74,
                       "column": 11
                     },
                     "end": {
-                      "line": 86,
+                      "line": 74,
                       "column": 27
                     }
                   }
@@ -3478,16 +3478,16 @@
                         "type": "Identifier",
                         "name": "acc",
                         "range": [
-                          2168,
-                          2171
+                          1738,
+                          1741
                         ],
                         "loc": {
                           "start": {
-                            "line": 87,
+                            "line": 75,
                             "column": 9
                           },
                           "end": {
-                            "line": 87,
+                            "line": 75,
                             "column": 12
                           }
                         }
@@ -3496,16 +3496,16 @@
                         "type": "Identifier",
                         "name": "position",
                         "range": [
-                          2173,
-                          2181
+                          1743,
+                          1751
                         ],
                         "loc": {
                           "start": {
-                            "line": 87,
+                            "line": 75,
                             "column": 14
                           },
                           "end": {
-                            "line": 87,
+                            "line": 75,
                             "column": 22
                           }
                         }
@@ -3520,16 +3520,16 @@
                           "type": "Identifier",
                           "name": "acc",
                           "range": [
-                            2186,
-                            2189
+                            1756,
+                            1759
                           ],
                           "loc": {
                             "start": {
-                              "line": 87,
+                              "line": 75,
                               "column": 27
                             },
                             "end": {
-                              "line": 87,
+                              "line": 75,
                               "column": 30
                             }
                           }
@@ -3538,31 +3538,31 @@
                           "type": "Identifier",
                           "name": "delete",
                           "range": [
-                            2190,
-                            2196
+                            1760,
+                            1766
                           ],
                           "loc": {
                             "start": {
-                              "line": 87,
+                              "line": 75,
                               "column": 31
                             },
                             "end": {
-                              "line": 87,
+                              "line": 75,
                               "column": 37
                             }
                           }
                         },
                         "range": [
-                          2186,
-                          2196
+                          1756,
+                          1766
                         ],
                         "loc": {
                           "start": {
-                            "line": 87,
+                            "line": 75,
                             "column": 27
                           },
                           "end": {
-                            "line": 87,
+                            "line": 75,
                             "column": 37
                           }
                         }
@@ -3572,32 +3572,32 @@
                           "type": "Identifier",
                           "name": "position",
                           "range": [
-                            2197,
-                            2205
+                            1767,
+                            1775
                           ],
                           "loc": {
                             "start": {
-                              "line": 87,
+                              "line": 75,
                               "column": 38
                             },
                             "end": {
-                              "line": 87,
+                              "line": 75,
                               "column": 46
                             }
                           }
                         }
                       ],
                       "range": [
-                        2186,
-                        2206
+                        1756,
+                        1776
                       ],
                       "loc": {
                         "start": {
-                          "line": 87,
+                          "line": 75,
                           "column": 27
                         },
                         "end": {
-                          "line": 87,
+                          "line": 75,
                           "column": 47
                         }
                       }
@@ -3605,16 +3605,16 @@
                     "generator": false,
                     "expression": true,
                     "range": [
-                      2167,
-                      2206
+                      1737,
+                      1776
                     ],
                     "loc": {
                       "start": {
-                        "line": 87,
+                        "line": 75,
                         "column": 8
                       },
                       "end": {
-                        "line": 87,
+                        "line": 75,
                         "column": 47
                       }
                     }
@@ -3623,63 +3623,63 @@
                     "type": "Identifier",
                     "name": "board",
                     "range": [
-                      2216,
-                      2221
+                      1786,
+                      1791
                     ],
                     "loc": {
                       "start": {
-                        "line": 88,
+                        "line": 76,
                         "column": 8
                       },
                       "end": {
-                        "line": 88,
+                        "line": 76,
                         "column": 13
                       }
                     }
                   }
                 ],
                 "range": [
-                  2141,
-                  2227
+                  1711,
+                  1797
                 ],
                 "loc": {
                   "start": {
-                    "line": 86,
+                    "line": 74,
                     "column": 11
                   },
                   "end": {
-                    "line": 89,
+                    "line": 77,
                     "column": 5
                   }
                 }
               },
               "range": [
-                2134,
-                2228
+                1704,
+                1798
               ],
               "loc": {
                 "start": {
-                  "line": 86,
+                  "line": 74,
                   "column": 4
                 },
                 "end": {
-                  "line": 89,
+                  "line": 77,
                   "column": 6
                 }
               }
             }
           ],
           "range": [
-            2128,
-            2230
+            1698,
+            1800
           ],
           "loc": {
             "start": {
-              "line": 85,
+              "line": 73,
               "column": 46
             },
             "end": {
-              "line": 90,
+              "line": 78,
               "column": 1
             }
           }
@@ -3687,16 +3687,16 @@
         "generator": false,
         "expression": false,
         "range": [
-          2089,
-          2230
+          1659,
+          1800
         ],
         "loc": {
           "start": {
-            "line": 85,
+            "line": 73,
             "column": 7
           },
           "end": {
-            "line": 90,
+            "line": 78,
             "column": 1
           }
         },
@@ -3705,16 +3705,16 @@
             "type": "Block",
             "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @private\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
             "range": [
-              1888,
-              2081
+              1458,
+              1651
             ],
             "loc": {
               "start": {
-                "line": 77,
+                "line": 65,
                 "column": 0
               },
               "end": {
-                "line": 84,
+                "line": 72,
                 "column": 3
               }
             }
@@ -3725,16 +3725,16 @@
       "specifiers": [],
       "source": null,
       "range": [
-        2082,
-        2230
+        1652,
+        1800
       ],
       "loc": {
         "start": {
-          "line": 85,
+          "line": 73,
           "column": 0
         },
         "end": {
-          "line": 90,
+          "line": 78,
           "column": 1
         }
       },
@@ -3743,16 +3743,16 @@
           "type": "Block",
           "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @private\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
           "range": [
-            1888,
-            2081
+            1458,
+            1651
           ],
           "loc": {
             "start": {
-              "line": 77,
+              "line": 65,
               "column": 0
             },
             "end": {
-              "line": 84,
+              "line": 72,
               "column": 3
             }
           }
@@ -3770,16 +3770,16 @@
               "type": "Identifier",
               "name": "emptyBoard",
               "range": [
-                2254,
-                2264
+                1824,
+                1834
               ],
               "loc": {
                 "start": {
-                  "line": 94,
+                  "line": 82,
                   "column": 4
                 },
                 "end": {
-                  "line": 94,
+                  "line": 82,
                   "column": 14
                 }
               }
@@ -3788,16 +3788,16 @@
               "type": "Identifier",
               "name": "emptyBoard",
               "range": [
-                2254,
-                2264
+                1824,
+                1834
               ],
               "loc": {
                 "start": {
-                  "line": 94,
+                  "line": 82,
                   "column": 4
                 },
                 "end": {
-                  "line": 94,
+                  "line": 82,
                   "column": 14
                 }
               }
@@ -3807,16 +3807,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              2254,
-              2264
+              1824,
+              1834
             ],
             "loc": {
               "start": {
-                "line": 94,
+                "line": 82,
                 "column": 4
               },
               "end": {
-                "line": 94,
+                "line": 82,
                 "column": 14
               }
             }
@@ -3827,16 +3827,16 @@
               "type": "Identifier",
               "name": "addBlackMove",
               "range": [
-                2266,
-                2278
+                1836,
+                1848
               ],
               "loc": {
                 "start": {
-                  "line": 94,
+                  "line": 82,
                   "column": 16
                 },
                 "end": {
-                  "line": 94,
+                  "line": 82,
                   "column": 28
                 }
               }
@@ -3845,16 +3845,16 @@
               "type": "Identifier",
               "name": "addBlackMove",
               "range": [
-                2266,
-                2278
+                1836,
+                1848
               ],
               "loc": {
                 "start": {
-                  "line": 94,
+                  "line": 82,
                   "column": 16
                 },
                 "end": {
-                  "line": 94,
+                  "line": 82,
                   "column": 28
                 }
               }
@@ -3864,16 +3864,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              2266,
-              2278
+              1836,
+              1848
             ],
             "loc": {
               "start": {
-                "line": 94,
+                "line": 82,
                 "column": 16
               },
               "end": {
-                "line": 94,
+                "line": 82,
                 "column": 28
               }
             }
@@ -3884,16 +3884,16 @@
               "type": "Identifier",
               "name": "addWhiteMove",
               "range": [
-                2280,
-                2292
+                1850,
+                1862
               ],
               "loc": {
                 "start": {
-                  "line": 94,
+                  "line": 82,
                   "column": 30
                 },
                 "end": {
-                  "line": 94,
+                  "line": 82,
                   "column": 42
                 }
               }
@@ -3902,16 +3902,16 @@
               "type": "Identifier",
               "name": "addWhiteMove",
               "range": [
-                2280,
-                2292
+                1850,
+                1862
               ],
               "loc": {
                 "start": {
-                  "line": 94,
+                  "line": 82,
                   "column": 30
                 },
                 "end": {
-                  "line": 94,
+                  "line": 82,
                   "column": 42
                 }
               }
@@ -3921,16 +3921,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              2280,
-              2292
+              1850,
+              1862
             ],
             "loc": {
               "start": {
-                "line": 94,
+                "line": 82,
                 "column": 30
               },
               "end": {
-                "line": 94,
+                "line": 82,
                 "column": 42
               }
             }
@@ -3941,16 +3941,16 @@
               "type": "Identifier",
               "name": "removeMoves",
               "range": [
-                2294,
-                2305
+                1864,
+                1875
               ],
               "loc": {
                 "start": {
-                  "line": 94,
+                  "line": 82,
                   "column": 44
                 },
                 "end": {
-                  "line": 94,
+                  "line": 82,
                   "column": 55
                 }
               }
@@ -3959,16 +3959,16 @@
               "type": "Identifier",
               "name": "removeMoves",
               "range": [
-                2294,
-                2305
+                1864,
+                1875
               ],
               "loc": {
                 "start": {
-                  "line": 94,
+                  "line": 82,
                   "column": 44
                 },
                 "end": {
-                  "line": 94,
+                  "line": 82,
                   "column": 55
                 }
               }
@@ -3978,32 +3978,32 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              2294,
-              2305
+              1864,
+              1875
             ],
             "loc": {
               "start": {
-                "line": 94,
+                "line": 82,
                 "column": 44
               },
               "end": {
-                "line": 94,
+                "line": 82,
                 "column": 55
               }
             }
           }
         ],
         "range": [
-          2248,
-          2307
+          1818,
+          1877
         ],
         "loc": {
           "start": {
-            "line": 93,
+            "line": 81,
             "column": 15
           },
           "end": {
-            "line": 95,
+            "line": 83,
             "column": 1
           }
         },
@@ -4011,16 +4011,16 @@
         "trailingComments": []
       },
       "range": [
-        2233,
-        2308
+        1803,
+        1878
       ],
       "loc": {
         "start": {
-          "line": 93,
+          "line": 81,
           "column": 0
         },
         "end": {
-          "line": 95,
+          "line": 83,
           "column": 2
         }
       }
@@ -4029,7 +4029,7 @@
   "sourceType": "module",
   "range": [
     0,
-    2308
+    1878
   ],
   "loc": {
     "start": {
@@ -4037,7 +4037,7 @@
       "column": 0
     },
     "end": {
-      "line": 95,
+      "line": 83,
       "column": 2
     }
   },
@@ -4080,10 +4080,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n * Adds a black move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+      "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
       "range": [
         1124,
-        1409
+        1194
       ],
       "loc": {
         "start": {
@@ -4091,25 +4091,25 @@
           "column": 0
         },
         "end": {
-          "line": 56,
+          "line": 50,
           "column": 3
         }
       }
     },
     {
       "type": "Block",
-      "value": "*\n * Adds a white move at the specified position.  Follows the rules of go\n * which means dead stones will be removed.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @throws {string} when the move is not valid\n * @returns {Map} board representing the new state\n ",
+      "value": "*\n * @private\n * @returns {Map} board representing the new state\n ",
       "range": [
-        1506,
-        1791
+        1291,
+        1361
       ],
       "loc": {
         "start": {
-          "line": 62,
+          "line": 56,
           "column": 0
         },
         "end": {
-          "line": 71,
+          "line": 59,
           "column": 3
         }
       }
@@ -4118,16 +4118,16 @@
       "type": "Block",
       "value": "*\n * Removes positions.  Positions that are not on the board are ignored.\n *\n * @private\n * @param {Map} board\n * @param {Set} positions\n * @returns {Map} board representing the new state\n ",
       "range": [
-        1888,
-        2081
+        1458,
+        1651
       ],
       "loc": {
         "start": {
-          "line": 77,
+          "line": 65,
           "column": 0
         },
         "end": {
-          "line": 84,
+          "line": 72,
           "column": 3
         }
       }

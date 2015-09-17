@@ -117,13 +117,7 @@ export function addMove(board, position, color) {
 
 
 /**
- * Adds a black move at the specified position.  Follows the rules of go
- * which means dead stones will be removed.
- *
  * @private
- * @param {Map} board
- * @param {List} position
- * @throws {string} when the move is not valid
  * @returns {Map} board representing the new state
  */
 export function addBlackMove(board, position) {
@@ -132,13 +126,7 @@ export function addBlackMove(board, position) {
 
 
 /**
- * Adds a white move at the specified position.  Follows the rules of go
- * which means dead stones will be removed.
- *
  * @private
- * @param {Map} board
- * @param {List} position
- * @throws {string} when the move is not valid
  * @returns {Map} board representing the new state
  */
 export function addWhiteMove(board, position) {

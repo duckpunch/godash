@@ -72,7 +72,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {BLACK, WHITE} from &apos;./analysis&apos;;
 import {Board} from &apos;./board&apos;;
-import {position} from &apos;./position&apos;;
+import {position, isValidPosition} from &apos;./position&apos;;
 
 
 /**
@@ -99,6 +99,7 @@ _Board.prototype = Board.prototype;
 export default {
     Board: _Board,
     position,
+    isValidPosition,
     BLACK,
     WHITE,
 };

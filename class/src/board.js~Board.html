@@ -70,13 +70,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Board} from &apos;<span><a href="file/src/board.js.html#lineNumber16">godash/src/board.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Board} from &apos;<span><a href="file/src/board.js.html#lineNumber20">godash/src/board.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/board.js.html#lineNumber16">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/board.js.html#lineNumber20">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -96,7 +96,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>Represents a given board state.</p>
+  <div class="description" data-ice="description"><p>Represents a board state.</p>
 </div>
 
   
@@ -214,13 +214,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-addBlackMove">addBlackMove</a></span></span><span data-ice="signature">(position: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-addBlackMove">addBlackMove</a></span></span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="class/src/board.js~Board.html">Board</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Adds a black move at the specified position.</p></div>
       </div>
     </td>
     <td>
@@ -239,13 +239,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-addMove">addMove</a></span></span><span data-ice="signature">(position: <span>*</span>, color: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-addMove">addMove</a></span></span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>, color: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/board.js~Board.html">Board</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Adds a move at the specified position.</p></div>
       </div>
     </td>
     <td>
@@ -264,13 +264,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-addWhiteMove">addWhiteMove</a></span></span><span data-ice="signature">(position: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-addWhiteMove">addWhiteMove</a></span></span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="class/src/board.js~Board.html">Board</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Adds a white move at the specified position.</p></div>
       </div>
     </td>
     <td>
@@ -289,13 +289,13 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-allPossibleMoves">allPossibleMoves</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/src/board.js~Board.html#instance-method-allPossibleMoves">allPossibleMoves</a></span></span><span data-ice="signature">(): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>A set of all possible moves on the board, even the occupied ones.</p></div>
       </div>
     </td>
     <td>
@@ -424,7 +424,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber25">source</a></span></span>
     </span>
   </h3>
 
@@ -496,7 +496,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber45">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber49">source</a></span></span>
     </span>
   </h3>
 
@@ -547,7 +547,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber36">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber40">source</a></span></span>
     </span>
   </h3>
 
@@ -597,18 +597,20 @@
     
     
     
-    <span data-ice="name">addBlackMove</span><span data-ice="signature">(position: <span>*</span>)</span>
+    <span data-ice="name">addBlackMove</span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="class/src/board.js~Board.html">Board</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber49">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber61">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Adds a black move at the specified position.  Follows the rules of go
+which means dead stones will be removed.</p>
+</div>
 
   
 
@@ -622,7 +624,7 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">position</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -631,13 +633,35 @@
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/src/board.js~Board.html">Board</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
   
 
-  
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></p></td>
+        <td data-ice="throwDesc"><p>when the move is not valid</p>
+</td>
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   
 
@@ -653,18 +677,20 @@
     
     
     
-    <span data-ice="name">addMove</span><span data-ice="signature">(position: <span>*</span>, color: <span>*</span>)</span>
+    <span data-ice="name">addMove</span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>, color: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="class/src/board.js~Board.html">Board</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber55">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber86">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Adds a move at the specified position.  Follows the rules of go
+which means dead stones will be removed.</p>
+</div>
 
   
 
@@ -678,13 +704,13 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">position</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">color</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -693,13 +719,35 @@
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/src/board.js~Board.html">Board</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
   
 
-  
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></p></td>
+        <td data-ice="throwDesc"><p>when the move is not valid</p>
+</td>
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   
 
@@ -715,18 +763,20 @@
     
     
     
-    <span data-ice="name">addWhiteMove</span><span data-ice="signature">(position: <span>*</span>)</span>
+    <span data-ice="name">addWhiteMove</span><span data-ice="signature">(position: <span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span>): <span><a href="class/src/board.js~Board.html">Board</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber52">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber73">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Adds a white move at the specified position.  Follows the rules of go
+which means dead stones will be removed.</p>
+</div>
 
   
 
@@ -740,7 +790,7 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">position</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="http://facebook.github.io/immutable-js/docs/#/List">List</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -749,13 +799,35 @@
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/src/board.js~Board.html">Board</a></span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
   
 
-  
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></p></td>
+        <td data-ice="throwDesc"><p>when the move is not valid</p>
+</td>
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   
 
@@ -771,25 +843,37 @@
     
     
     
-    <span data-ice="name">allPossibleMoves</span><span data-ice="signature">()</span>
+    <span data-ice="name">allPossibleMoves</span><span data-ice="signature">(): <span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber58">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber95">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>A set of all possible moves on the board, even the occupied ones.</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="http://facebook.github.io/immutable-js/docs/#/Set">Set</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>contains Lists (2-tuples)</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -815,7 +899,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber61">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber99">source</a></span></span>
     </span>
   </h3>
 
@@ -871,7 +955,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber102">source</a></span></span>
     </span>
   </h3>
 
@@ -927,7 +1011,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber67">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber105">source</a></span></span>
     </span>
   </h3>
 
@@ -983,7 +1067,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber70">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/board.js.html#lineNumber108">source</a></span></span>
     </span>
   </h3>
 

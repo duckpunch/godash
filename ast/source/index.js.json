@@ -291,6 +291,59 @@
               "column": 16
             }
           }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "isValidPosition",
+            "range": [
+              90,
+              105
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 18
+              },
+              "end": {
+                "line": 3,
+                "column": 33
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "isValidPosition",
+            "range": [
+              90,
+              105
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 18
+              },
+              "end": {
+                "line": 3,
+                "column": 33
+              }
+            }
+          },
+          "range": [
+            90,
+            105
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 18
+            },
+            "end": {
+              "line": 3,
+              "column": 33
+            }
+          }
         }
       ],
       "source": {
@@ -298,23 +351,23 @@
         "value": "./position",
         "raw": "'./position'",
         "range": [
-          95,
-          107
+          112,
+          124
         ],
         "loc": {
           "start": {
             "line": 3,
-            "column": 23
+            "column": 40
           },
           "end": {
             "line": 3,
-            "column": 35
+            "column": 52
           }
         }
       },
       "range": [
         72,
-        108
+        125
       ],
       "loc": {
         "start": {
@@ -323,7 +376,7 @@
         },
         "end": {
           "line": 3,
-          "column": 36
+          "column": 53
         }
       },
       "trailingComments": [
@@ -331,8 +384,8 @@
           "type": "Block",
           "value": "*\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n ",
           "range": [
-            111,
-            187
+            128,
+            204
           ],
           "loc": {
             "start": {
@@ -349,8 +402,8 @@
           "type": "Block",
           "value": "*\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n ",
           "range": [
-            189,
-            267
+            206,
+            284
           ],
           "loc": {
             "start": {
@@ -367,8 +420,8 @@
           "type": "Block",
           "value": "*\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n ",
           "range": [
-            269,
-            345
+            286,
+            362
           ],
           "loc": {
             "start": {
@@ -389,8 +442,8 @@
         "type": "Identifier",
         "name": "_Board",
         "range": [
-          357,
-          363
+          374,
+          380
         ],
         "loc": {
           "start": {
@@ -410,8 +463,8 @@
             "type": "Identifier",
             "name": "args",
             "range": [
-              367,
-              371
+              384,
+              388
             ],
             "loc": {
               "start": {
@@ -425,8 +478,8 @@
             }
           },
           "range": [
-            364,
-            371
+            381,
+            388
           ],
           "loc": {
             "start": {
@@ -451,8 +504,8 @@
                 "type": "Identifier",
                 "name": "Board",
                 "range": [
-                  390,
-                  395
+                  407,
+                  412
                 ],
                 "loc": {
                   "start": {
@@ -472,8 +525,8 @@
                     "type": "Identifier",
                     "name": "args",
                     "range": [
-                      399,
-                      403
+                      416,
+                      420
                     ],
                     "loc": {
                       "start": {
@@ -487,8 +540,8 @@
                     }
                   },
                   "range": [
-                    396,
-                    403
+                    413,
+                    420
                   ],
                   "loc": {
                     "start": {
@@ -503,8 +556,8 @@
                 }
               ],
               "range": [
-                386,
-                404
+                403,
+                421
               ],
               "loc": {
                 "start": {
@@ -518,8 +571,8 @@
               }
             },
             "range": [
-              379,
-              405
+              396,
+              422
             ],
             "loc": {
               "start": {
@@ -534,8 +587,8 @@
           }
         ],
         "range": [
-          373,
-          407
+          390,
+          424
         ],
         "loc": {
           "start": {
@@ -551,8 +604,8 @@
       "generator": false,
       "expression": false,
       "range": [
-        348,
-        407
+        365,
+        424
       ],
       "loc": {
         "start": {
@@ -569,8 +622,8 @@
           "type": "Block",
           "value": "*\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n ",
           "range": [
-            111,
-            187
+            128,
+            204
           ],
           "loc": {
             "start": {
@@ -587,8 +640,8 @@
           "type": "Block",
           "value": "*\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n ",
           "range": [
-            189,
-            267
+            206,
+            284
           ],
           "loc": {
             "start": {
@@ -605,8 +658,8 @@
           "type": "Block",
           "value": "*\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n ",
           "range": [
-            269,
-            345
+            286,
+            362
           ],
           "loc": {
             "start": {
@@ -633,8 +686,8 @@
             "type": "Identifier",
             "name": "_Board",
             "range": [
-              410,
-              416
+              427,
+              433
             ],
             "loc": {
               "start": {
@@ -651,8 +704,8 @@
             "type": "Identifier",
             "name": "prototype",
             "range": [
-              417,
-              426
+              434,
+              443
             ],
             "loc": {
               "start": {
@@ -666,8 +719,8 @@
             }
           },
           "range": [
-            410,
-            426
+            427,
+            443
           ],
           "loc": {
             "start": {
@@ -687,8 +740,8 @@
             "type": "Identifier",
             "name": "Board",
             "range": [
-              429,
-              434
+              446,
+              451
             ],
             "loc": {
               "start": {
@@ -705,8 +758,8 @@
             "type": "Identifier",
             "name": "prototype",
             "range": [
-              435,
-              444
+              452,
+              461
             ],
             "loc": {
               "start": {
@@ -720,8 +773,8 @@
             }
           },
           "range": [
-            429,
-            444
+            446,
+            461
           ],
           "loc": {
             "start": {
@@ -735,8 +788,8 @@
           }
         },
         "range": [
-          410,
-          444
+          427,
+          461
         ],
         "loc": {
           "start": {
@@ -750,8 +803,8 @@
         }
       },
       "range": [
-        410,
-        445
+        427,
+        462
       ],
       "loc": {
         "start": {
@@ -775,8 +828,8 @@
               "type": "Identifier",
               "name": "Board",
               "range": [
-                469,
-                474
+                486,
+                491
               ],
               "loc": {
                 "start": {
@@ -793,8 +846,8 @@
               "type": "Identifier",
               "name": "_Board",
               "range": [
-                476,
-                482
+                493,
+                499
               ],
               "loc": {
                 "start": {
@@ -812,8 +865,8 @@
             "shorthand": false,
             "computed": false,
             "range": [
-              469,
-              482
+              486,
+              499
             ],
             "loc": {
               "start": {
@@ -832,8 +885,8 @@
               "type": "Identifier",
               "name": "position",
               "range": [
-                488,
-                496
+                505,
+                513
               ],
               "loc": {
                 "start": {
@@ -850,8 +903,8 @@
               "type": "Identifier",
               "name": "position",
               "range": [
-                488,
-                496
+                505,
+                513
               ],
               "loc": {
                 "start": {
@@ -869,8 +922,8 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              488,
-              496
+              505,
+              513
             ],
             "loc": {
               "start": {
@@ -887,10 +940,10 @@
             "type": "Property",
             "key": {
               "type": "Identifier",
-              "name": "BLACK",
+              "name": "isValidPosition",
               "range": [
-                502,
-                507
+                519,
+                534
               ],
               "loc": {
                 "start": {
@@ -899,6 +952,63 @@
                 },
                 "end": {
                   "line": 30,
+                  "column": 19
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "isValidPosition",
+              "range": [
+                519,
+                534
+              ],
+              "loc": {
+                "start": {
+                  "line": 30,
+                  "column": 4
+                },
+                "end": {
+                  "line": 30,
+                  "column": 19
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "range": [
+              519,
+              534
+            ],
+            "loc": {
+              "start": {
+                "line": 30,
+                "column": 4
+              },
+              "end": {
+                "line": 30,
+                "column": 19
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "BLACK",
+              "range": [
+                540,
+                545
+              ],
+              "loc": {
+                "start": {
+                  "line": 31,
+                  "column": 4
+                },
+                "end": {
+                  "line": 31,
                   "column": 9
                 }
               }
@@ -907,16 +1017,16 @@
               "type": "Identifier",
               "name": "BLACK",
               "range": [
-                502,
-                507
+                540,
+                545
               ],
               "loc": {
                 "start": {
-                  "line": 30,
+                  "line": 31,
                   "column": 4
                 },
                 "end": {
-                  "line": 30,
+                  "line": 31,
                   "column": 9
                 }
               }
@@ -926,16 +1036,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              502,
-              507
+              540,
+              545
             ],
             "loc": {
               "start": {
-                "line": 30,
+                "line": 31,
                 "column": 4
               },
               "end": {
-                "line": 30,
+                "line": 31,
                 "column": 9
               }
             }
@@ -946,16 +1056,16 @@
               "type": "Identifier",
               "name": "WHITE",
               "range": [
-                513,
-                518
+                551,
+                556
               ],
               "loc": {
                 "start": {
-                  "line": 31,
+                  "line": 32,
                   "column": 4
                 },
                 "end": {
-                  "line": 31,
+                  "line": 32,
                   "column": 9
                 }
               }
@@ -964,16 +1074,16 @@
               "type": "Identifier",
               "name": "WHITE",
               "range": [
-                513,
-                518
+                551,
+                556
               ],
               "loc": {
                 "start": {
-                  "line": 31,
+                  "line": 32,
                   "column": 4
                 },
                 "end": {
-                  "line": 31,
+                  "line": 32,
                   "column": 9
                 }
               }
@@ -983,24 +1093,24 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              513,
-              518
+              551,
+              556
             ],
             "loc": {
               "start": {
-                "line": 31,
+                "line": 32,
                 "column": 4
               },
               "end": {
-                "line": 31,
+                "line": 32,
                 "column": 9
               }
             }
           }
         ],
         "range": [
-          463,
-          521
+          480,
+          559
         ],
         "loc": {
           "start": {
@@ -1008,7 +1118,7 @@
             "column": 15
           },
           "end": {
-            "line": 32,
+            "line": 33,
             "column": 1
           }
         },
@@ -1016,8 +1126,8 @@
         "trailingComments": []
       },
       "range": [
-        448,
-        522
+        465,
+        560
       ],
       "loc": {
         "start": {
@@ -1025,7 +1135,7 @@
           "column": 0
         },
         "end": {
-          "line": 32,
+          "line": 33,
           "column": 2
         }
       }
@@ -1034,7 +1144,7 @@
   "sourceType": "module",
   "range": [
     0,
-    522
+    560
   ],
   "loc": {
     "start": {
@@ -1042,7 +1152,7 @@
       "column": 0
     },
     "end": {
-      "line": 32,
+      "line": 33,
       "column": 2
     }
   },
@@ -1051,8 +1161,8 @@
       "type": "Block",
       "value": "*\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n ",
       "range": [
-        111,
-        187
+        128,
+        204
       ],
       "loc": {
         "start": {
@@ -1069,8 +1179,8 @@
       "type": "Block",
       "value": "*\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n ",
       "range": [
-        189,
-        267
+        206,
+        284
       ],
       "loc": {
         "start": {
@@ -1087,8 +1197,8 @@
       "type": "Block",
       "value": "*\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n ",
       "range": [
-        269,
-        345
+        286,
+        362
       ],
       "loc": {
         "start": {

@@ -1015,10 +1015,10 @@
         "trailingComments": [
           {
             "type": "Block",
-            "value": "*\n * Validates a position with a board size.\n ",
+            "value": "*\n * Validates a position with a board size.\n *\n * @returns {boolean}\n ",
             "range": [
               642,
-              692
+              717
             ],
             "loc": {
               "start": {
@@ -1026,7 +1026,7 @@
                 "column": 0
               },
               "end": {
-                "line": 27,
+                "line": 29,
                 "column": 3
               }
             }
@@ -1072,10 +1072,10 @@
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * Validates a position with a board size.\n ",
+          "value": "*\n * Validates a position with a board size.\n *\n * @returns {boolean}\n ",
           "range": [
             642,
-            692
+            717
           ],
           "loc": {
             "start": {
@@ -1083,7 +1083,7 @@
               "column": 0
             },
             "end": {
-              "line": 27,
+              "line": 29,
               "column": 3
             }
           }
@@ -1098,16 +1098,16 @@
           "type": "Identifier",
           "name": "isValidPosition",
           "range": [
-            709,
-            724
+            734,
+            749
           ],
           "loc": {
             "start": {
-              "line": 28,
+              "line": 30,
               "column": 16
             },
             "end": {
-              "line": 28,
+              "line": 30,
               "column": 31
             }
           }
@@ -1117,16 +1117,16 @@
             "type": "Identifier",
             "name": "position",
             "range": [
-              725,
-              733
+              750,
+              758
             ],
             "loc": {
               "start": {
-                "line": 28,
+                "line": 30,
                 "column": 32
               },
               "end": {
-                "line": 28,
+                "line": 30,
                 "column": 40
               }
             }
@@ -1135,16 +1135,16 @@
             "type": "Identifier",
             "name": "board_size",
             "range": [
-              735,
-              745
+              760,
+              770
             ],
             "loc": {
               "start": {
-                "line": 28,
+                "line": 30,
                 "column": 42
               },
               "end": {
-                "line": 28,
+                "line": 30,
                 "column": 52
               }
             }
@@ -1154,43 +1154,63 @@
           "type": "BlockStatement",
           "body": [],
           "range": [
-            747,
-            750
+            772,
+            787
           ],
           "loc": {
             "start": {
-              "line": 28,
+              "line": 30,
               "column": 54
             },
             "end": {
-              "line": 29,
+              "line": 32,
               "column": 1
             }
-          }
+          },
+          "trailingComments": [
+            {
+              "type": "Line",
+              "value": " TODO",
+              "range": [
+                778,
+                785
+              ],
+              "loc": {
+                "start": {
+                  "line": 31,
+                  "column": 4
+                },
+                "end": {
+                  "line": 31,
+                  "column": 11
+                }
+              }
+            }
+          ]
         },
         "generator": false,
         "expression": false,
         "range": [
-          700,
-          750
+          725,
+          787
         ],
         "loc": {
           "start": {
-            "line": 28,
+            "line": 30,
             "column": 7
           },
           "end": {
-            "line": 29,
+            "line": 32,
             "column": 1
           }
         },
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\n * Validates a position with a board size.\n ",
+            "value": "*\n * Validates a position with a board size.\n *\n * @returns {boolean}\n ",
             "range": [
               642,
-              692
+              717
             ],
             "loc": {
               "start": {
@@ -1198,7 +1218,7 @@
                 "column": 0
               },
               "end": {
-                "line": 27,
+                "line": 29,
                 "column": 3
               }
             }
@@ -1209,26 +1229,26 @@
       "specifiers": [],
       "source": null,
       "range": [
-        693,
-        750
+        718,
+        787
       ],
       "loc": {
         "start": {
-          "line": 28,
+          "line": 30,
           "column": 0
         },
         "end": {
-          "line": 29,
+          "line": 32,
           "column": 1
         }
       },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\n * Validates a position with a board size.\n ",
+          "value": "*\n * Validates a position with a board size.\n *\n * @returns {boolean}\n ",
           "range": [
             642,
-            692
+            717
           ],
           "loc": {
             "start": {
@@ -1236,7 +1256,7 @@
               "column": 0
             },
             "end": {
-              "line": 27,
+              "line": 29,
               "column": 3
             }
           }
@@ -1247,7 +1267,7 @@
   "sourceType": "module",
   "range": [
     0,
-    750
+    787
   ],
   "loc": {
     "start": {
@@ -1255,7 +1275,7 @@
       "column": 0
     },
     "end": {
-      "line": 29,
+      "line": 32,
       "column": 1
     }
   },
@@ -1280,10 +1300,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n * Validates a position with a board size.\n ",
+      "value": "*\n * Validates a position with a board size.\n *\n * @returns {boolean}\n ",
       "range": [
         642,
-        692
+        717
       ],
       "loc": {
         "start": {
@@ -1291,8 +1311,26 @@
           "column": 0
         },
         "end": {
-          "line": 27,
+          "line": 29,
           "column": 3
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " TODO",
+      "range": [
+        778,
+        785
+      ],
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 4
+        },
+        "end": {
+          "line": 31,
+          "column": 11
         }
       }
     }
