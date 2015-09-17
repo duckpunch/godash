@@ -16,6 +16,8 @@ function isValidBoardMap(board) {
 
 /**
  * Represents a board state.
+ * @example
+ * Board(19);
  */
 export class Board {
     /**
