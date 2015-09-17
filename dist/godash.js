@@ -17558,16 +17558,16 @@ var Board = (function () {
         _classCallCheck(this, Board);
 
         if (isValidBoardMap(board_data)) {
-            this._data = board_data;
+            this._positions = board_data;
         } else if ((0, _utils.isPositiveInteger)(board_data)) {
-            this._data = (0, _transforms.emptyBoard)(board_data);
+            this._positions = (0, _transforms.emptyBoard)(board_data);
         } else {
             throw TypeError('Instantiate a Board with a Map or a positive integer');
         }
     }
 
     /**
-     * Underlying data structure for the Board.
+     * Immutable data structure holding the positions in a {@link Map}.
      *
      * @returns {Map}
      */
@@ -17585,7 +17585,7 @@ var Board = (function () {
          * @see {@link addMove}
          */
         value: function addBlackMove(position) {
-            return new Board((0, _transforms.addBlackMove)(this.data, position));
+            return new Board((0, _transforms.addBlackMove)(this.positions, position));
         }
 
         /**
@@ -17600,7 +17600,7 @@ var Board = (function () {
     }, {
         key: 'addWhiteMove',
         value: function addWhiteMove(position) {
-            return new Board((0, _transforms.addWhiteMove)(this.data, position));
+            return new Board((0, _transforms.addWhiteMove)(this.positions, position));
         }
 
         /**
@@ -17644,7 +17644,7 @@ var Board = (function () {
     }, {
         key: 'addMove',
         value: function addMove(position, color) {
-            return new Board((0, _transforms.addMove)(this.data, position, color));
+            return new Board((0, _transforms.addMove)(this.positions, position, color));
         }
 
         /**
@@ -17656,7 +17656,7 @@ var Board = (function () {
     }, {
         key: 'removeMoves',
         value: function removeMoves(positions) {
-            return new Board((0, _transforms.removeMoves)(this.data, positions));
+            return new Board((0, _transforms.removeMoves)(this.positions, positions));
         }
 
         /**
@@ -17679,7 +17679,7 @@ var Board = (function () {
     }, {
         key: 'group',
         value: function group(position) {
-            return (0, _analysis.group)(this.data, position);
+            return (0, _analysis.group)(this.positions, position);
         }
 
         /**
@@ -17691,7 +17691,7 @@ var Board = (function () {
     }, {
         key: 'isLegalBlackMove',
         value: function isLegalBlackMove(position) {
-            return (0, _analysis.isLegalMove)(this.data, position, _analysis.BLACK);
+            return (0, _analysis.isLegalMove)(this.positions, position, _analysis.BLACK);
         }
 
         /**
@@ -17703,7 +17703,7 @@ var Board = (function () {
     }, {
         key: 'isLegalWhiteMove',
         value: function isLegalWhiteMove(position) {
-            return (0, _analysis.isLegalMove)(this.data, position, _analysis.WHITE);
+            return (0, _analysis.isLegalMove)(this.positions, position, _analysis.WHITE);
         }
 
         /**
@@ -17715,13 +17715,13 @@ var Board = (function () {
     }, {
         key: 'liberties',
         value: function liberties(position) {
-            return (0, _analysis.liberties)(this.data, position);
+            return (0, _analysis.liberties)(this.positions, position);
         }
 
         /**
          * Compare with another board.
          *
-         * @param {*} other_board Board or Board.data
+         * @param {*} other_board Board or Board.positions
          * @returns {boolean}
          */
     }, {
@@ -17731,7 +17731,7 @@ var Board = (function () {
                 throw TypeError('Pass in another board to compare');
             }
 
-            return this.data.equals(other_board.data || other_board);
+            return this.positions.equals(other_board.positions || other_board);
         }
 
         /**
@@ -17745,7 +17745,7 @@ var Board = (function () {
 
             for (var i = 0; i < this.board_size; i++) {
                 for (var j = 0; j < this.board_size; j++) {
-                    var color = this.data.get(_immutable.List.of(i, j), _analysis.EMPTY);
+                    var color = this.positions.get(_immutable.List.of(i, j), _analysis.EMPTY);
                     switch (color) {
                         case _analysis.BLACK:
                             pretty_string += 'O';
@@ -17763,9 +17763,9 @@ var Board = (function () {
             return pretty_string;
         }
     }, {
-        key: 'data',
+        key: 'positions',
         get: function get() {
-            return this._data;
+            return this._positions;
         }
 
         /**
@@ -17776,7 +17776,7 @@ var Board = (function () {
     }, {
         key: 'board_size',
         get: function get() {
-            return this.data.get(_analysis.SIZE_KEY);
+            return this.positions.get(_analysis.SIZE_KEY);
         }
     }]);
 
