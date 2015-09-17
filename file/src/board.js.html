@@ -106,21 +106,21 @@ export class Board {
      */
     constructor(board_data) {
         if (isValidBoardMap(board_data)) {
-            this._data = board_data;
+            this._positions = board_data;
         } else if (isPositiveInteger(board_data)) {
-            this._data = emptyBoard(board_data);
+            this._positions = emptyBoard(board_data);
         } else {
             throw TypeError(&apos;Instantiate a Board with a Map or a positive integer&apos;);
         }
     }
 
     /**
-     * Underlying data structure for the Board.
+     * Immutable data structure holding the positions in a {@link Map}.
      *
      * @returns {Map}
      */
-    get data() {
-        return this._data;
+    get positions() {
+        return this._positions;
     }
 
     /**
@@ -129,7 +129,7 @@ export class Board {
      * @returns {number}
      */
     get board_size() {
-        return this.data.get(SIZE_KEY);
+        return this.positions.get(SIZE_KEY);
     }
 
     /**
@@ -142,7 +142,7 @@ export class Board {
      * @see {@link addMove}
      */
     addBlackMove(position) {
-        return new Board(addBlackMove(this.data, position));
+        return new Board(addBlackMove(this.positions, position));
     }
 
     /**
@@ -155,7 +155,7 @@ export class Board {
      * @see {@link addMove}
      */
     addWhiteMove(position) {
-        return new Board(addWhiteMove(this.data, position));
+        return new Board(addWhiteMove(this.positions, position));
     }
 
     /**
@@ -197,7 +197,7 @@ export class Board {
      * // +O+
      */
     addMove(position, color) {
-        return new Board(addMove(this.data, position, color));
+        return new Board(addMove(this.positions, position, color));
     }
 
     /**
@@ -207,7 +207,7 @@ export class Board {
      * @returns {Board}
      */
     removeMoves(positions) {
-        return new Board(removeMoves(this.data, positions));
+        return new Board(removeMoves(this.positions, positions));
     }
 
     /**
@@ -226,7 +226,7 @@ export class Board {
      * @returns {Set}
      */
     group(position) {
-        return group(this.data, position);
+        return group(this.positions, position);
     }
 
     /**
@@ -236,7 +236,7 @@ export class Board {
      * @returns {boolean}
      */
     isLegalBlackMove(position) {
-        return isLegalMove(this.data, position, BLACK);
+        return isLegalMove(this.positions, position, BLACK);
     }
 
     /**
@@ -246,7 +246,7 @@ export class Board {
      * @returns {boolean}
      */
     isLegalWhiteMove(position) {
-        return isLegalMove(this.data, position, WHITE);
+        return isLegalMove(this.positions, position, WHITE);
     }
 
     /**
@@ -256,13 +256,13 @@ export class Board {
      * @returns {number}
      */
     liberties(position) {
-        return liberties(this.data, position);
+        return liberties(this.positions, position);
     }
 
     /**
      * Compare with another board.
      *
-     * @param {*} other_board Board or Board.data
+     * @param {*} other_board Board or Board.positions
      * @returns {boolean}
      */
     equals(other_board) {
@@ -270,7 +270,7 @@ export class Board {
             throw TypeError(&apos;Pass in another board to compare&apos;);
         }
 
-        return this.data.equals(other_board.data || other_board);
+        return this.positions.equals(other_board.positions || other_board);
     }
 
     /**
@@ -282,7 +282,7 @@ export class Board {
 
         for (var i = 0; i &lt; this.board_size; i++) {
             for (var j = 0; j &lt; this.board_size; j++) {
-                let color = this.data.get(List.of(i, j), EMPTY);
+                let color = this.positions.get(List.of(i, j), EMPTY);
                 switch(color) {
                     case BLACK:
                         pretty_string += &apos;O&apos;;

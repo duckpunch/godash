@@ -408,12 +408,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/board.js~board#data",
-    "class/src/board.js~Board.html#instance-get-data",
-    "src/board.js~Board#data",
-    "member"
-  ],
-  [
     "src/board.js~board#equals",
     "class/src/board.js~Board.html#instance-method-equals",
     "src/board.js~Board#equals",
@@ -442,6 +436,12 @@ window.esdocSearchIndex = [
     "class/src/board.js~Board.html#instance-method-liberties",
     "src/board.js~Board#liberties",
     "method"
+  ],
+  [
+    "src/board.js~board#positions",
+    "class/src/board.js~Board.html#instance-get-positions",
+    "src/board.js~Board#positions",
+    "member"
   ],
   [
     "src/board.js~board#removemoves",
