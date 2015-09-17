@@ -28,28 +28,18 @@
   </div>
 </header>
 
-<nav class="navigation" data-ice="nav">
-
-
-
-<div data-ice="functionWrap">
-  <h2><a href="function/">Function</a></h2>
+<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
+  <h2>Class</h2>
   <ul>
     
-  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-addBlackMove">addBlackMove</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-addWhiteMove">addWhiteMove</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-adjacentPositions">adjacentPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-allPossibleMoves">allPossibleMoves</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-emptyBoard">emptyBoard</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-emptyPositions">emptyPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-group">group</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-liberties">liberties</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-matchingAdjacentPositions">matchingAdjacentPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-oppositeColor">oppositeColor</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-removeMoves">removeMoves</a></span></li>
+  <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
+<li data-ice="classDoc"><span><a href="class/src/position.js~Position.html">Position</a></span></li>
 </ul>
 </div>
+
+
+
+
 
 <div data-ice="variableWrap">
   <h2><a href="variable/">Variable</a></h2>
@@ -73,7 +63,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">14/14</span></h1>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">6/17</span></h1>
 
 <table class="files-summary" data-ice="files" data-use-coverage="true">
   <thead>
@@ -91,19 +81,19 @@
   <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/analysis.js.html">src/analysis.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-BLACK">BLACK</a></span>
-<span><a href="variable/index.html#static-variable-WHITE">WHITE</a></span>
-<span><a href="function/index.html#static-function-adjacentPositions">adjacentPositions</a></span>
-<span><a href="function/index.html#static-function-allPossibleMoves">allPossibleMoves</a></span>
-<span><a href="function/index.html#static-function-emptyPositions">emptyPositions</a></span>
-<span><a href="function/index.html#static-function-group">group</a></span>
-<span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span>
-<span><a href="function/index.html#static-function-liberties">liberties</a></span>
-<span><a href="function/index.html#static-function-matchingAdjacentPositions">matchingAdjacentPositions</a></span>
-<span><a href="function/index.html#static-function-oppositeColor">oppositeColor</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">10/10</span></td>
-      <td style="display: none;" data-ice="size">3960 byte</td>
-      <td style="display: none;" data-ice="lines">179</td>
-      <td style="display: none;" data-ice="updated">2015-09-03 08:19:16 (UTC)</td>
+<span><a href="variable/index.html#static-variable-WHITE">WHITE</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">2/2</span></td>
+      <td style="display: none;" data-ice="size">4056 byte</td>
+      <td style="display: none;" data-ice="lines">187</td>
+      <td style="display: none;" data-ice="updated">2015-09-05 04:08:34 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/board.js.html#errorLines=59,62,65,68,71,74,77,80,83">src/board.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/board.js~Board.html">Board</a></span></td>
+      <td class="coverage"><span data-ice="coverage">30 %</span><span data-ice="coverageCount" class="coverage-count">4/13</span></td>
+      <td style="display: none;" data-ice="size">1677 byte</td>
+      <td style="display: none;" data-ice="lines">85</td>
+      <td style="display: none;" data-ice="updated">2015-09-05 04:11:04 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/browser.js.html">src/browser.js</a></span></td>
@@ -117,20 +107,33 @@
       <td data-ice="filePath"><span><a href="file/src/index.js.html">src/index.js</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">384 byte</td>
-      <td style="display: none;" data-ice="lines">20</td>
-      <td style="display: none;" data-ice="updated">2015-09-02 09:35:48 (UTC)</td>
+      <td style="display: none;" data-ice="size">424 byte</td>
+      <td style="display: none;" data-ice="lines">21</td>
+      <td style="display: none;" data-ice="updated">2015-09-04 23:07:29 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/position.js.html#errorLines=4,5">src/position.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/position.js~Position.html">Position</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">110 byte</td>
+      <td style="display: none;" data-ice="lines">8</td>
+      <td style="display: none;" data-ice="updated">2015-09-05 03:41:03 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/transforms.js.html">src/transforms.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-addBlackMove">addBlackMove</a></span>
-<span><a href="function/index.html#static-function-addWhiteMove">addWhiteMove</a></span>
-<span><a href="function/index.html#static-function-emptyBoard">emptyBoard</a></span>
-<span><a href="function/index.html#static-function-removeMoves">removeMoves</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">4/4</span></td>
-      <td style="display: none;" data-ice="size">2261 byte</td>
-      <td style="display: none;" data-ice="lines">91</td>
-      <td style="display: none;" data-ice="updated">2015-09-03 08:33:53 (UTC)</td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">2309 byte</td>
+      <td style="display: none;" data-ice="lines">95</td>
+      <td style="display: none;" data-ice="updated">2015-09-05 04:07:24 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/wrapper.js.html">src/wrapper.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">341 byte</td>
+      <td style="display: none;" data-ice="lines">22</td>
+      <td style="display: none;" data-ice="updated">2015-09-05 03:42:13 (UTC)</td>
     </tr>
 </tbody>
 </table>

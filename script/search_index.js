@@ -6,82 +6,22 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "godash/src/board.js~board",
+    "class/src/board.js~Board.html",
+    "<span>Board</span> <span class=\"search-result-import-path\">godash/src/board.js</span>",
+    "class"
+  ],
+  [
+    "godash/src/position.js~position",
+    "class/src/position.js~Position.html",
+    "<span>Position</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
+    "class"
+  ],
+  [
     "godash/src/analysis.js~white",
     "variable/index.html#static-variable-WHITE",
     "<span>WHITE</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
     "variable"
-  ],
-  [
-    "godash/src/transforms.js~addblackmove",
-    "function/index.html#static-function-addBlackMove",
-    "<span>addBlackMove</span> <span class=\"search-result-import-path\">godash/src/transforms.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/transforms.js~addwhitemove",
-    "function/index.html#static-function-addWhiteMove",
-    "<span>addWhiteMove</span> <span class=\"search-result-import-path\">godash/src/transforms.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/analysis.js~adjacentpositions",
-    "function/index.html#static-function-adjacentPositions",
-    "<span>adjacentPositions</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/analysis.js~allpossiblemoves",
-    "function/index.html#static-function-allPossibleMoves",
-    "<span>allPossibleMoves</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/transforms.js~emptyboard",
-    "function/index.html#static-function-emptyBoard",
-    "<span>emptyBoard</span> <span class=\"search-result-import-path\">godash/src/transforms.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/analysis.js~emptypositions",
-    "function/index.html#static-function-emptyPositions",
-    "<span>emptyPositions</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/analysis.js~group",
-    "function/index.html#static-function-group",
-    "<span>group</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/analysis.js~isvalidposition",
-    "function/index.html#static-function-isValidPosition",
-    "<span>isValidPosition</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/analysis.js~liberties",
-    "function/index.html#static-function-liberties",
-    "<span>liberties</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/analysis.js~matchingadjacentpositions",
-    "function/index.html#static-function-matchingAdjacentPositions",
-    "<span>matchingAdjacentPositions</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/analysis.js~oppositecolor",
-    "function/index.html#static-function-oppositeColor",
-    "<span>oppositeColor</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/transforms.js~removemoves",
-    "function/index.html#static-function-removeMoves",
-    "<span>removeMoves</span> <span class=\"search-result-import-path\">godash/src/transforms.js</span>",
-    "function"
   ],
   [
     "builtinexternal/ecmascriptexternal.js~array",
@@ -414,6 +354,84 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/board.js",
+    "file/src/board.js.html",
+    "src/board.js",
+    "file"
+  ],
+  [
+    "src/board.js~board#addblackmove",
+    "class/src/board.js~Board.html#instance-method-addBlackMove",
+    "src/board.js~Board#addBlackMove",
+    "method"
+  ],
+  [
+    "src/board.js~board#addmove",
+    "class/src/board.js~Board.html#instance-method-addMove",
+    "src/board.js~Board#addMove",
+    "method"
+  ],
+  [
+    "src/board.js~board#addwhitemove",
+    "class/src/board.js~Board.html#instance-method-addWhiteMove",
+    "src/board.js~Board#addWhiteMove",
+    "method"
+  ],
+  [
+    "src/board.js~board#allpossiblemoves",
+    "class/src/board.js~Board.html#instance-method-allPossibleMoves",
+    "src/board.js~Board#allPossibleMoves",
+    "method"
+  ],
+  [
+    "src/board.js~board#board_size",
+    "class/src/board.js~Board.html#instance-get-board_size",
+    "src/board.js~Board#board_size",
+    "member"
+  ],
+  [
+    "src/board.js~board#constructor",
+    "class/src/board.js~Board.html#instance-constructor-constructor",
+    "src/board.js~Board#constructor",
+    "method"
+  ],
+  [
+    "src/board.js~board#data",
+    "class/src/board.js~Board.html#instance-get-data",
+    "src/board.js~Board#data",
+    "member"
+  ],
+  [
+    "src/board.js~board#group",
+    "class/src/board.js~Board.html#instance-method-group",
+    "src/board.js~Board#group",
+    "method"
+  ],
+  [
+    "src/board.js~board#isvalidmove",
+    "class/src/board.js~Board.html#instance-method-isValidMove",
+    "src/board.js~Board#isValidMove",
+    "method"
+  ],
+  [
+    "src/board.js~board#isvalidposition",
+    "class/src/board.js~Board.html#instance-method-isValidPosition",
+    "src/board.js~Board#isValidPosition",
+    "method"
+  ],
+  [
+    "src/board.js~board#liberties",
+    "class/src/board.js~Board.html#instance-method-liberties",
+    "src/board.js~Board#liberties",
+    "method"
+  ],
+  [
+    "src/board.js~board#removemoves",
+    "class/src/board.js~Board.html#instance-method-removeMoves",
+    "src/board.js~Board#removeMoves",
+    "method"
+  ],
+  [
     "src/browser.js",
     "file/src/browser.js.html",
     "src/browser.js",
@@ -444,9 +462,27 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "src/position.js",
+    "file/src/position.js.html",
+    "src/position.js",
+    "file"
+  ],
+  [
+    "src/position.js~position#data",
+    "class/src/position.js~Position.html#instance-get-data",
+    "src/position.js~Position#data",
+    "member"
+  ],
+  [
     "src/transforms.js",
     "file/src/transforms.js.html",
     "src/transforms.js",
+    "file"
+  ],
+  [
+    "src/wrapper.js",
+    "file/src/wrapper.js.html",
+    "src/wrapper.js",
     "file"
   ]
 ]

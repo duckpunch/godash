@@ -28,28 +28,18 @@
   </div>
 </header>
 
-<nav class="navigation" data-ice="nav">
-
-
-
-<div data-ice="functionWrap">
-  <h2><a href="function/">Function</a></h2>
+<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
+  <h2>Class</h2>
   <ul>
     
-  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-addBlackMove">addBlackMove</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-addWhiteMove">addWhiteMove</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-adjacentPositions">adjacentPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-allPossibleMoves">allPossibleMoves</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-emptyBoard">emptyBoard</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-emptyPositions">emptyPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-group">group</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-liberties">liberties</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-matchingAdjacentPositions">matchingAdjacentPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-oppositeColor">oppositeColor</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-removeMoves">removeMoves</a></span></li>
+  <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
+<li data-ice="classDoc"><span><a href="class/src/position.js~Position.html">Position</a></span></li>
 </ul>
 </div>
+
+
+
+
 
 <div data-ice="variableWrap">
   <h2><a href="variable/">Variable</a></h2>
@@ -78,6 +68,7 @@
 
 import analysis from &apos;./analysis&apos;;
 import transforms from &apos;./transforms&apos;;
+import {Board} from &apos;./board&apos;;
 
 
 /**
@@ -93,7 +84,7 @@ import transforms from &apos;./transforms&apos;;
  */
 
 
-export default _.merge(analysis, transforms);
+export default _.merge(analysis, transforms, {Board});
 </code></pre>
 
 </div>

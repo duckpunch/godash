@@ -28,28 +28,18 @@
   </div>
 </header>
 
-<nav class="navigation" data-ice="nav">
-
-
-
-<div data-ice="functionWrap">
-  <h2><a href="function/">Function</a></h2>
+<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
+  <h2>Class</h2>
   <ul>
     
-  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-addBlackMove">addBlackMove</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-addWhiteMove">addWhiteMove</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-adjacentPositions">adjacentPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-allPossibleMoves">allPossibleMoves</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-emptyBoard">emptyBoard</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-emptyPositions">emptyPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-group">group</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-liberties">liberties</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-matchingAdjacentPositions">matchingAdjacentPositions</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-oppositeColor">oppositeColor</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-removeMoves">removeMoves</a></span></li>
+  <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
+<li data-ice="classDoc"><span><a href="class/src/position.js~Position.html">Position</a></span></li>
 </ul>
 </div>
+
+
+
+
 
 <div data-ice="variableWrap">
   <h2><a href="variable/">Variable</a></h2>
@@ -86,6 +76,7 @@ import {
 /**
  * Creates an empty board.
  *
+ * @private
  * @param {number} size the size of the board
  * @throws {string} when size is not a positive integer
  * @returns {Map}
@@ -123,6 +114,7 @@ export function addMove(board, position, color) {
  * Adds a black move at the specified position.  Follows the rules of go
  * which means dead stones will be removed.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @throws {string} when the move is not valid
@@ -137,6 +129,7 @@ export function addBlackMove(board, position) {
  * Adds a white move at the specified position.  Follows the rules of go
  * which means dead stones will be removed.
  *
+ * @private
  * @param {Map} board
  * @param {List} position
  * @throws {string} when the move is not valid
@@ -150,6 +143,7 @@ export function addWhiteMove(board, position) {
 /**
  * Removes positions.  Positions that are not on the board are ignored.
  *
+ * @private
  * @param {Map} board
  * @param {Set} positions
  * @returns {Map} board representing the new state
