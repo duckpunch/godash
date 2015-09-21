@@ -81,7 +81,7 @@
 </code></pre><p><code>require</code> and use it in your modules.</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">var godash = require(&apos;godash&apos;);
 var board = godash.Board(19);
-var tengen = godash.position(10, 10); // 0-based
+var tengen = godash.position(9, 9); // 0-based
 
 board.positions.has(tengen); // false
 
@@ -95,6 +95,10 @@ standard_opening.positions.has(tengen); // true</code>
     godash.Board(19);
 &lt;/script&gt;</code>
 </code></pre>
+<h2 id="examples">Examples</h2>
+<ul>
+<li>A <a href="http://duckpunch.github.io/react-simple-goban">simple goban</a> in <a href="https://facebook.github.io/react/">React</a></li>
+</ul>
 <h2 id="roadmap">Roadmap</h2>
 <p>First things first.</p>
 <ul>
