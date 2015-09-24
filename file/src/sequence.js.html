@@ -73,7 +73,15 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/sequence.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export class Node {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Map} from &apos;immutable&apos;;
+
+
+function isValidVariationMap(variation) {
+    return Map.isMap(variation);
+}
+
+
+export class Node {
     // id in tree
     // move to get here
     // current board
@@ -86,6 +94,9 @@
 
 
 export class Variation {
+    constructor(variation_data) {
+    }
+
     // getNodeByPath
     // addMove(position, color, path)
     // getSequence(...path):List

@@ -510,6 +510,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/sequence.js~variation#constructor",
+    "class/src/sequence.js~Variation.html#instance-constructor-constructor",
+    "src/sequence.js~Variation#constructor",
+    "method"
+  ],
+  [
     "src/transforms.js",
     "file/src/transforms.js.html",
     "src/transforms.js",
