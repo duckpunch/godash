@@ -1,6 +1,6 @@
 {
   "name": "godash",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Immutable data structures and utilities to represent Go",
   "homepage": "https://github.com/duckpunch/godash",
   "repository": {
@@ -8,7 +8,12 @@
     "url": "https://github.com/duckpunch/godash.git"
   },
   "main": "src/index.js",
-  "keywords": ["go", "weiqi", "baduk", "immutable"],
+  "keywords": [
+    "go",
+    "weiqi",
+    "baduk",
+    "immutable"
+  ],
   "author": {
     "name": "duckpunch",
     "url": "https://github.com/duckpunch"
