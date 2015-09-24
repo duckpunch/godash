@@ -1,3 +1,11 @@
+import {Map} from 'immutable';
+
+
+function isValidVariationMap(variation) {
+    return Map.isMap(variation);
+}
+
+
 export class Node {
     // id in tree
     // move to get here
@@ -11,6 +19,9 @@ export class Node {
 
 
 export class Variation {
+    constructor(variation_data) {
+    }
+
     // getNodeByPath
     // addMove(position, color, path)
     // getSequence(...path):List
