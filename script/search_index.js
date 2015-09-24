@@ -12,6 +12,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "godash/src/sequence.js~node",
+    "class/src/sequence.js~Node.html",
+    "<span>Node</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
+    "class"
+  ],
+  [
+    "godash/src/sequence.js~variation",
+    "class/src/sequence.js~Variation.html",
+    "<span>Variation</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
+    "class"
+  ],
+  [
     "godash/src/analysis.js~white",
     "variable/index.html#static-variable-WHITE",
     "<span>WHITE</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
@@ -489,6 +501,12 @@ window.esdocSearchIndex = [
     "src/position.js",
     "file/src/position.js.html",
     "src/position.js",
+    "file"
+  ],
+  [
+    "src/sequence.js",
+    "file/src/sequence.js.html",
+    "src/sequence.js",
     "file"
   ],
   [
