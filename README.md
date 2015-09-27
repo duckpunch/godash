@@ -49,15 +49,9 @@ Examples
 Roadmap
 -------
 
-First things first.
-
-- Start actually using it.
-- Make some examples from it.
-- Tweak the API accordingly.
+Currently working on sequences and variations API.
 
 Then, in no particular order.
 
 - SGF support (import and export)
-- Sequences (games)
-- Variations
 - Annotations (comments and marks)
