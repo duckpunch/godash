@@ -3,6 +3,7 @@ godash
 
 [![Build Status](https://travis-ci.org/duckpunch/godash.svg)](https://travis-ci.org/duckpunch/godash)
 [![Document](http://duckpunch.github.io/godash/badge.svg)](http://duckpunch.github.io/godash/)
+[![Dependencies](https://david-dm.org/duckpunch/godash.svg)](https://david-dm.org/duckpunch/godash)
 
 A Javascript utility library to handle go board manipulations in immutable data structures.
 
