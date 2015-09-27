@@ -1,4 +1,6 @@
 import {Set, List} from 'immutable';
+import {ListSchema} from 'immutable-schema';
+
 import {isPositiveInteger} from './utils';
 
 
