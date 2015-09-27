@@ -74,6 +74,7 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/board.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Map, List} from &apos;immutable&apos;;
+import {MapSchema, ListSchema} from &apos;immutable-schema&apos;;
 
 import {isPositiveInteger} from &apos;./utils&apos;;
 import {
@@ -86,7 +87,11 @@ import {
 
 
 function isValidBoardMap(board) {
-    return Map.isMap(board) &amp;&amp; isPositiveInteger(board.get(SIZE_KEY, 0));
+    const schema = MapSchema(
+        ListSchema(isNumber, isNumber), s =&gt; s === BLACK || s === WHITE,
+        s =&gt; s === SIZE_KEY, isPositiveInteger
+    );
+    return schema(board);
 }
 
 

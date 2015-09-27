@@ -17,9 +17,9 @@
       "expectCount": 3,
       "actualCount": 0,
       "undocumentLines": [
-        9,
-        21,
-        22
+        17,
+        29,
+        30
       ]
     },
     "src/position.js": {

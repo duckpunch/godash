@@ -74,6 +74,8 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/position.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Set, List} from &apos;immutable&apos;;
+import {ListSchema} from &apos;immutable-schema&apos;;
+
 import {isPositiveInteger} from &apos;./utils&apos;;
 
 
@@ -107,7 +109,7 @@ export function isValidPosition(position, board_size) {
 }
 
 function matchesPositionType(position) {
-    return List.isList(position) &amp;&amp; position.size === 2 &amp;&amp; position.every(isPositiveInteger);
+    return ListSchema(isPositiveInteger, isPositiveInteger)(position);
 }
 
 

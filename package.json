@@ -1,6 +1,6 @@
 {
   "name": "godash",
-  "version": "0.1.7",
+  "version": "0.2.0-0",
   "description": "Immutable data structures and utilities to represent Go",
   "homepage": "https://github.com/duckpunch/godash",
   "repository": {
@@ -21,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "immutable": "^3.7.5",
+    "immutable-schema": "^0.1.2",
     "lodash": "^3.10.1"
   },
   "devDependencies": {
