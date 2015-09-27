@@ -1,6 +1,7 @@
 godash
 ======
 
+[![npm](https://img.shields.io/npm/v/godash.svg)](https://www.npmjs.com/package/godash)
 [![Build Status](https://travis-ci.org/duckpunch/godash.svg)](https://travis-ci.org/duckpunch/godash)
 [![Document](http://duckpunch.github.io/godash/badge.svg)](http://duckpunch.github.io/godash/)
 [![Dependencies](https://david-dm.org/duckpunch/godash.svg)](https://david-dm.org/duckpunch/godash)
