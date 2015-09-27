@@ -32,7 +32,7 @@ export function isValidPosition(position, board_size) {
 }
 
 function matchesPositionType(position) {
-    return List.isList(position) && position.size === 2 && position.every(isPositiveInteger);
+    return ListSchema(isPositiveInteger, isPositiveInteger)(position);
 }
 
 

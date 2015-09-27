@@ -1,4 +1,5 @@
 import {Map, List} from 'immutable';
+import {MapSchema, ListSchema} from 'immutable-schema';
 
 import {isPositiveInteger} from './utils';
 import {
@@ -11,7 +12,11 @@ import {
 
 
 function isValidBoardMap(board) {
-    return Map.isMap(board) && isPositiveInteger(board.get(SIZE_KEY, 0));
+    const schema = MapSchema(
+        ListSchema(isNumber, isNumber), s => s === BLACK || s === WHITE,
+        s => s === SIZE_KEY, isPositiveInteger
+    );
+    return schema(board);
 }
 
 
