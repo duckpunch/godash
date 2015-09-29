@@ -11,7 +11,10 @@ import {
 } from './transforms';
 
 
-const isValidBoardMap = MapSchema(
+/**
+ * @private
+ */
+export const isValidBoardMap = MapSchema(
     FixedListSchema(isNumber, isNumber), OneOf(BLACK, WHITE),
     Exactly(SIZE_KEY), isPositiveInteger
 );

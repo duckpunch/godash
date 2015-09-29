@@ -34,7 +34,10 @@ export function isValidPosition(position, board_size) {
 }
 
 
-const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);
+/**
+ * @private
+ */
+export const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);
 
 
 /**

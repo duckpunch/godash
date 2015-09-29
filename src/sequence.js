@@ -1,17 +1,19 @@
+import {isNumber} from 'lodash';
 import {Map} from 'immutable';
+import {MapSchema, ListSchema, Exactly} from 'immutable-schema';
+
+import {isValidBoardMap} from './board';
+import {matchesPositionType} from './position';
 
 
-function isValidVariationMap(variation) {
-    //MapSchema(
-        //ListSchema(),  // should match variation key sequence - need to extend schema lib to take variable length list
-        //MapSchema(
-            //KeyMatches('board'), isBoard,  // need to add this API to schema lib
-            //KeyMatches('last_move'), isValidPosition,
-            //KeyMatches('meta_stuff'), Something  // not ready for this yet, but should look like this
-        //)
-    //);
-    return Map.isMap(variation);
-}
+// This schema isn't as thorough as it can be.
+const isValidVariationMap = MapSchema(
+    ListSchema(isNumber),
+    MapSchema(
+        Exactly('board'), isValidBoardMap,
+        Exactly('last_move'), matchesPositionType
+    )
+);
 
 
 export class Node {
@@ -28,9 +30,19 @@ export class Node {
 
 export class Variation {
     constructor(variation_data) {
+        if (!isValidVariationMap(variation_data)) {
+            throw 'Invalid variation map';
+        }
+
+        this.variation_data = variation_data;
     }
 
-    // getNodeByPath
+    getNodeByPath(path) {
+        if (this.variation_data.has(path)) {
+            // go get it
+        }
+    }
+
     // addMove(position, color, path)
     // getSequence(...path):List
     // backed by a map, index by path
