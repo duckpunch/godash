@@ -1606,7 +1606,26 @@
             }
           }
         ],
-        "trailingComments": []
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * @private\n ",
+            "range": [
+              919,
+              938
+            ],
+            "loc": {
+              "start": {
+                "line": 37,
+                "column": 0
+              },
+              "end": {
+                "line": 39,
+                "column": 3
+              }
+            }
+          }
+        ]
       },
       "specifiers": [],
       "source": null,
@@ -1643,150 +1662,249 @@
             }
           }
         }
-      ]
-    },
-    {
-      "type": "VariableDeclaration",
-      "declarations": [
+      ],
+      "trailingComments": [
         {
-          "type": "VariableDeclarator",
-          "id": {
-            "type": "Identifier",
-            "name": "matchesPositionType",
-            "range": [
-              925,
-              944
-            ],
-            "loc": {
-              "start": {
-                "line": 37,
-                "column": 6
-              },
-              "end": {
-                "line": 37,
-                "column": 25
-              }
-            }
-          },
-          "init": {
-            "type": "CallExpression",
-            "callee": {
-              "type": "Identifier",
-              "name": "FixedListSchema",
-              "range": [
-                947,
-                962
-              ],
-              "loc": {
-                "start": {
-                  "line": 37,
-                  "column": 28
-                },
-                "end": {
-                  "line": 37,
-                  "column": 43
-                }
-              }
-            },
-            "arguments": [
-              {
-                "type": "Identifier",
-                "name": "isPositiveInteger",
-                "range": [
-                  963,
-                  980
-                ],
-                "loc": {
-                  "start": {
-                    "line": 37,
-                    "column": 44
-                  },
-                  "end": {
-                    "line": 37,
-                    "column": 61
-                  }
-                }
-              },
-              {
-                "type": "Identifier",
-                "name": "isPositiveInteger",
-                "range": [
-                  982,
-                  999
-                ],
-                "loc": {
-                  "start": {
-                    "line": 37,
-                    "column": 63
-                  },
-                  "end": {
-                    "line": 37,
-                    "column": 80
-                  }
-                }
-              }
-            ],
-            "range": [
-              947,
-              1000
-            ],
-            "loc": {
-              "start": {
-                "line": 37,
-                "column": 28
-              },
-              "end": {
-                "line": 37,
-                "column": 81
-              }
-            }
-          },
+          "type": "Block",
+          "value": "*\n * @private\n ",
           "range": [
-            925,
-            1000
+            919,
+            938
           ],
           "loc": {
             "start": {
               "line": 37,
-              "column": 6
+              "column": 0
             },
             "end": {
+              "line": 39,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "matchesPositionType",
+              "range": [
+                952,
+                971
+              ],
+              "loc": {
+                "start": {
+                  "line": 40,
+                  "column": 13
+                },
+                "end": {
+                  "line": 40,
+                  "column": 32
+                }
+              }
+            },
+            "init": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "FixedListSchema",
+                "range": [
+                  974,
+                  989
+                ],
+                "loc": {
+                  "start": {
+                    "line": 40,
+                    "column": 35
+                  },
+                  "end": {
+                    "line": 40,
+                    "column": 50
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "isPositiveInteger",
+                  "range": [
+                    990,
+                    1007
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 40,
+                      "column": 51
+                    },
+                    "end": {
+                      "line": 40,
+                      "column": 68
+                    }
+                  }
+                },
+                {
+                  "type": "Identifier",
+                  "name": "isPositiveInteger",
+                  "range": [
+                    1009,
+                    1026
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 40,
+                      "column": 70
+                    },
+                    "end": {
+                      "line": 40,
+                      "column": 87
+                    }
+                  }
+                }
+              ],
+              "range": [
+                974,
+                1027
+              ],
+              "loc": {
+                "start": {
+                  "line": 40,
+                  "column": 35
+                },
+                "end": {
+                  "line": 40,
+                  "column": 88
+                }
+              }
+            },
+            "range": [
+              952,
+              1027
+            ],
+            "loc": {
+              "start": {
+                "line": 40,
+                "column": 13
+              },
+              "end": {
+                "line": 40,
+                "column": 88
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          946,
+          1028
+        ],
+        "loc": {
+          "start": {
+            "line": 40,
+            "column": 7
+          },
+          "end": {
+            "line": 40,
+            "column": 89
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * @private\n ",
+            "range": [
+              919,
+              938
+            ],
+            "loc": {
+              "start": {
+                "line": 37,
+                "column": 0
+              },
+              "end": {
+                "line": 39,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Returns a {@link Set} of positions compatible with areas of godash that need a collection\n * of positions.\n *\n * @param {*} raw_positions anything that is compatible with the constructor arguments for Set\n * @returns {Set}\n ",
+            "range": [
+              1031,
+              1264
+            ],
+            "loc": {
+              "start": {
+                "line": 43,
+                "column": 0
+              },
+              "end": {
+                "line": 49,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        939,
+        1028
+      ],
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 0
+        },
+        "end": {
+          "line": 40,
+          "column": 89
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * @private\n ",
+          "range": [
+            919,
+            938
+          ],
+          "loc": {
+            "start": {
               "line": 37,
-              "column": 81
+              "column": 0
+            },
+            "end": {
+              "line": 39,
+              "column": 3
             }
           }
         }
       ],
-      "kind": "const",
-      "range": [
-        919,
-        1001
-      ],
-      "loc": {
-        "start": {
-          "line": 37,
-          "column": 0
-        },
-        "end": {
-          "line": 37,
-          "column": 82
-        }
-      },
       "trailingComments": [
         {
           "type": "Block",
           "value": "*\n * Returns a {@link Set} of positions compatible with areas of godash that need a collection\n * of positions.\n *\n * @param {*} raw_positions anything that is compatible with the constructor arguments for Set\n * @returns {Set}\n ",
           "range": [
-            1004,
-            1237
+            1031,
+            1264
           ],
           "loc": {
             "start": {
-              "line": 40,
+              "line": 43,
               "column": 0
             },
             "end": {
-              "line": 46,
+              "line": 49,
               "column": 3
             }
           }
@@ -1801,16 +1919,16 @@
           "type": "Identifier",
           "name": "positions",
           "range": [
-            1254,
-            1263
+            1281,
+            1290
           ],
           "loc": {
             "start": {
-              "line": 47,
+              "line": 50,
               "column": 16
             },
             "end": {
-              "line": 47,
+              "line": 50,
               "column": 25
             }
           }
@@ -1820,16 +1938,16 @@
             "type": "Identifier",
             "name": "raw_positions",
             "range": [
-              1264,
-              1277
+              1291,
+              1304
             ],
             "loc": {
               "start": {
-                "line": 47,
+                "line": 50,
                 "column": 26
               },
               "end": {
-                "line": 47,
+                "line": 50,
                 "column": 39
               }
             }
@@ -1847,16 +1965,16 @@
                     "type": "Identifier",
                     "name": "position_set",
                     "range": [
-                      1291,
-                      1303
+                      1318,
+                      1330
                     ],
                     "loc": {
                       "start": {
-                        "line": 48,
+                        "line": 51,
                         "column": 10
                       },
                       "end": {
-                        "line": 48,
+                        "line": 51,
                         "column": 22
                       }
                     }
@@ -1867,16 +1985,16 @@
                       "type": "Identifier",
                       "name": "Set",
                       "range": [
-                        1306,
-                        1309
+                        1333,
+                        1336
                       ],
                       "loc": {
                         "start": {
-                          "line": 48,
+                          "line": 51,
                           "column": 25
                         },
                         "end": {
-                          "line": 48,
+                          "line": 51,
                           "column": 28
                         }
                       }
@@ -1886,47 +2004,47 @@
                         "type": "Identifier",
                         "name": "raw_positions",
                         "range": [
-                          1310,
-                          1323
+                          1337,
+                          1350
                         ],
                         "loc": {
                           "start": {
-                            "line": 48,
+                            "line": 51,
                             "column": 29
                           },
                           "end": {
-                            "line": 48,
+                            "line": 51,
                             "column": 42
                           }
                         }
                       }
                     ],
                     "range": [
-                      1306,
-                      1324
+                      1333,
+                      1351
                     ],
                     "loc": {
                       "start": {
-                        "line": 48,
+                        "line": 51,
                         "column": 25
                       },
                       "end": {
-                        "line": 48,
+                        "line": 51,
                         "column": 43
                       }
                     }
                   },
                   "range": [
-                    1291,
-                    1324
+                    1318,
+                    1351
                   ],
                   "loc": {
                     "start": {
-                      "line": 48,
+                      "line": 51,
                       "column": 10
                     },
                     "end": {
-                      "line": 48,
+                      "line": 51,
                       "column": 43
                     }
                   }
@@ -1934,16 +2052,16 @@
               ],
               "kind": "const",
               "range": [
-                1285,
-                1325
+                1312,
+                1352
               ],
               "loc": {
                 "start": {
-                  "line": 48,
+                  "line": 51,
                   "column": 4
                 },
                 "end": {
-                  "line": 48,
+                  "line": 51,
                   "column": 44
                 }
               }
@@ -1962,16 +2080,16 @@
                       "type": "Identifier",
                       "name": "position_set",
                       "range": [
-                        1336,
-                        1348
+                        1363,
+                        1375
                       ],
                       "loc": {
                         "start": {
-                          "line": 50,
+                          "line": 53,
                           "column": 9
                         },
                         "end": {
-                          "line": 50,
+                          "line": 53,
                           "column": 21
                         }
                       }
@@ -1980,31 +2098,31 @@
                       "type": "Identifier",
                       "name": "every",
                       "range": [
-                        1349,
-                        1354
+                        1376,
+                        1381
                       ],
                       "loc": {
                         "start": {
-                          "line": 50,
+                          "line": 53,
                           "column": 22
                         },
                         "end": {
-                          "line": 50,
+                          "line": 53,
                           "column": 27
                         }
                       }
                     },
                     "range": [
-                      1336,
-                      1354
+                      1363,
+                      1381
                     ],
                     "loc": {
                       "start": {
-                        "line": 50,
+                        "line": 53,
                         "column": 9
                       },
                       "end": {
-                        "line": 50,
+                        "line": 53,
                         "column": 27
                       }
                     }
@@ -2014,48 +2132,48 @@
                       "type": "Identifier",
                       "name": "matchesPositionType",
                       "range": [
-                        1355,
-                        1374
+                        1382,
+                        1401
                       ],
                       "loc": {
                         "start": {
-                          "line": 50,
+                          "line": 53,
                           "column": 28
                         },
                         "end": {
-                          "line": 50,
+                          "line": 53,
                           "column": 47
                         }
                       }
                     }
                   ],
                   "range": [
-                    1336,
-                    1375
+                    1363,
+                    1402
                   ],
                   "loc": {
                     "start": {
-                      "line": 50,
+                      "line": 53,
                       "column": 9
                     },
                     "end": {
-                      "line": 50,
+                      "line": 53,
                       "column": 48
                     }
                   }
                 },
                 "prefix": true,
                 "range": [
-                  1335,
-                  1375
+                  1362,
+                  1402
                 ],
                 "loc": {
                   "start": {
-                    "line": 50,
+                    "line": 53,
                     "column": 8
                   },
                   "end": {
-                    "line": 50,
+                    "line": 53,
                     "column": 48
                   }
                 }
@@ -2071,16 +2189,16 @@
                         "type": "Identifier",
                         "name": "TypeError",
                         "range": [
-                          1393,
-                          1402
+                          1420,
+                          1429
                         ],
                         "loc": {
                           "start": {
-                            "line": 51,
+                            "line": 54,
                             "column": 14
                           },
                           "end": {
-                            "line": 51,
+                            "line": 54,
                             "column": 23
                           }
                         }
@@ -2094,16 +2212,16 @@
                             "value": "Must pass an iterable of positions,",
                             "raw": "'Must pass an iterable of positions,'",
                             "range": [
-                              1403,
-                              1440
+                              1430,
+                              1467
                             ],
                             "loc": {
                               "start": {
-                                "line": 51,
+                                "line": 54,
                                 "column": 24
                               },
                               "end": {
-                                "line": 51,
+                                "line": 54,
                                 "column": 61
                               }
                             }
@@ -2113,94 +2231,94 @@
                             "value": " Immutable.List types of length 2, containing non-negative integers",
                             "raw": "' Immutable.List types of length 2, containing non-negative integers'",
                             "range": [
-                              1455,
-                              1524
+                              1482,
+                              1551
                             ],
                             "loc": {
                               "start": {
-                                "line": 52,
+                                "line": 55,
                                 "column": 12
                               },
                               "end": {
-                                "line": 52,
+                                "line": 55,
                                 "column": 81
                               }
                             }
                           },
                           "range": [
-                            1403,
-                            1524
+                            1430,
+                            1551
                           ],
                           "loc": {
                             "start": {
-                              "line": 51,
+                              "line": 54,
                               "column": 24
                             },
                             "end": {
-                              "line": 52,
+                              "line": 55,
                               "column": 81
                             }
                           }
                         }
                       ],
                       "range": [
-                        1393,
-                        1525
+                        1420,
+                        1552
                       ],
                       "loc": {
                         "start": {
-                          "line": 51,
+                          "line": 54,
                           "column": 14
                         },
                         "end": {
-                          "line": 52,
+                          "line": 55,
                           "column": 82
                         }
                       }
                     },
                     "range": [
-                      1387,
-                      1526
+                      1414,
+                      1553
                     ],
                     "loc": {
                       "start": {
-                        "line": 51,
+                        "line": 54,
                         "column": 8
                       },
                       "end": {
-                        "line": 52,
+                        "line": 55,
                         "column": 83
                       }
                     }
                   }
                 ],
                 "range": [
-                  1377,
-                  1532
+                  1404,
+                  1559
                 ],
                 "loc": {
                   "start": {
-                    "line": 50,
+                    "line": 53,
                     "column": 50
                   },
                   "end": {
-                    "line": 53,
+                    "line": 56,
                     "column": 5
                   }
                 }
               },
               "alternate": null,
               "range": [
-                1331,
-                1532
+                1358,
+                1559
               ],
               "loc": {
                 "start": {
-                  "line": 50,
+                  "line": 53,
                   "column": 4
                 },
                 "end": {
-                  "line": 53,
+                  "line": 56,
                   "column": 5
                 }
               }
@@ -2211,47 +2329,47 @@
                 "type": "Identifier",
                 "name": "position_set",
                 "range": [
-                  1545,
-                  1557
+                  1572,
+                  1584
                 ],
                 "loc": {
                   "start": {
-                    "line": 55,
+                    "line": 58,
                     "column": 11
                   },
                   "end": {
-                    "line": 55,
+                    "line": 58,
                     "column": 23
                   }
                 }
               },
               "range": [
-                1538,
-                1558
+                1565,
+                1585
               ],
               "loc": {
                 "start": {
-                  "line": 55,
+                  "line": 58,
                   "column": 4
                 },
                 "end": {
-                  "line": 55,
+                  "line": 58,
                   "column": 24
                 }
               }
             }
           ],
           "range": [
-            1279,
-            1560
+            1306,
+            1587
           ],
           "loc": {
             "start": {
-              "line": 47,
+              "line": 50,
               "column": 41
             },
             "end": {
-              "line": 56,
+              "line": 59,
               "column": 1
             }
           }
@@ -2259,16 +2377,16 @@
         "generator": false,
         "expression": false,
         "range": [
-          1245,
-          1560
+          1272,
+          1587
         ],
         "loc": {
           "start": {
-            "line": 47,
+            "line": 50,
             "column": 7
           },
           "end": {
-            "line": 56,
+            "line": 59,
             "column": 1
           }
         },
@@ -2277,16 +2395,16 @@
             "type": "Block",
             "value": "*\n * Returns a {@link Set} of positions compatible with areas of godash that need a collection\n * of positions.\n *\n * @param {*} raw_positions anything that is compatible with the constructor arguments for Set\n * @returns {Set}\n ",
             "range": [
-              1004,
-              1237
+              1031,
+              1264
             ],
             "loc": {
               "start": {
-                "line": 40,
+                "line": 43,
                 "column": 0
               },
               "end": {
-                "line": 46,
+                "line": 49,
                 "column": 3
               }
             }
@@ -2297,16 +2415,16 @@
       "specifiers": [],
       "source": null,
       "range": [
-        1238,
-        1560
+        1265,
+        1587
       ],
       "loc": {
         "start": {
-          "line": 47,
+          "line": 50,
           "column": 0
         },
         "end": {
-          "line": 56,
+          "line": 59,
           "column": 1
         }
       },
@@ -2315,16 +2433,16 @@
           "type": "Block",
           "value": "*\n * Returns a {@link Set} of positions compatible with areas of godash that need a collection\n * of positions.\n *\n * @param {*} raw_positions anything that is compatible with the constructor arguments for Set\n * @returns {Set}\n ",
           "range": [
-            1004,
-            1237
+            1031,
+            1264
           ],
           "loc": {
             "start": {
-              "line": 40,
+              "line": 43,
               "column": 0
             },
             "end": {
-              "line": 46,
+              "line": 49,
               "column": 3
             }
           }
@@ -2335,7 +2453,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1560
+    1587
   ],
   "loc": {
     "start": {
@@ -2343,7 +2461,7 @@
       "column": 0
     },
     "end": {
-      "line": 56,
+      "line": 59,
       "column": 1
     }
   },
@@ -2386,18 +2504,36 @@
     },
     {
       "type": "Block",
-      "value": "*\n * Returns a {@link Set} of positions compatible with areas of godash that need a collection\n * of positions.\n *\n * @param {*} raw_positions anything that is compatible with the constructor arguments for Set\n * @returns {Set}\n ",
+      "value": "*\n * @private\n ",
       "range": [
-        1004,
-        1237
+        919,
+        938
       ],
       "loc": {
         "start": {
-          "line": 40,
+          "line": 37,
           "column": 0
         },
         "end": {
-          "line": 46,
+          "line": 39,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * Returns a {@link Set} of positions compatible with areas of godash that need a collection\n * of positions.\n *\n * @param {*} raw_positions anything that is compatible with the constructor arguments for Set\n * @returns {Set}\n ",
+      "range": [
+        1031,
+        1264
+      ],
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 0
+        },
+        "end": {
+          "line": 49,
           "column": 3
         }
       }

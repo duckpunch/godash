@@ -516,6 +516,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/sequence.js~variation#getnodebypath",
+    "class/src/sequence.js~Variation.html#instance-method-getNodeByPath",
+    "src/sequence.js~Variation#getNodeByPath",
+    "method"
+  ],
+  [
+    "src/sequence.js~variation#variation_data",
+    "class/src/sequence.js~Variation.html#instance-member-variation_data",
+    "src/sequence.js~Variation#variation_data",
+    "member"
+  ],
+  [
     "src/transforms.js",
     "file/src/transforms.js.html",
     "src/transforms.js",

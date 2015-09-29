@@ -73,20 +73,22 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/sequence.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Map} from &apos;immutable&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {isNumber} from &apos;lodash&apos;;
+import {Map} from &apos;immutable&apos;;
+import {MapSchema, ListSchema, Exactly} from &apos;immutable-schema&apos;;
+
+import {isValidBoardMap} from &apos;./board&apos;;
+import {matchesPositionType} from &apos;./position&apos;;
 
 
-function isValidVariationMap(variation) {
-    //MapSchema(
-        //ListSchema(),  // should match variation key sequence - need to extend schema lib to take variable length list
-        //MapSchema(
-            //KeyMatches(&apos;board&apos;), isBoard,  // need to add this API to schema lib
-            //KeyMatches(&apos;last_move&apos;), isValidPosition,
-            //KeyMatches(&apos;meta_stuff&apos;), Something  // not ready for this yet, but should look like this
-        //)
-    //);
-    return Map.isMap(variation);
-}
+// This schema isn&apos;t as thorough as it can be.
+const isValidVariationMap = MapSchema(
+    ListSchema(isNumber),
+    MapSchema(
+        Exactly(&apos;board&apos;), isValidBoardMap,
+        Exactly(&apos;last_move&apos;), matchesPositionType
+    )
+);
 
 
 export class Node {
@@ -103,9 +105,19 @@ export class Node {
 
 export class Variation {
     constructor(variation_data) {
+        if (!isValidVariationMap(variation_data)) {
+            throw &apos;Invalid variation map&apos;;
+        }
+
+        this.variation_data = variation_data;
     }
 
-    // getNodeByPath
+    getNodeByPath(path) {
+        if (this.variation_data.has(path)) {
+            // go get it
+        }
+    }
+
     // addMove(position, color, path)
     // getSequence(...path):List
     // backed by a map, index by path
