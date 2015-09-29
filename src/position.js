@@ -1,5 +1,5 @@
 import {Set, List} from 'immutable';
-import {ListSchema} from 'immutable-schema';
+import {FixedListSchema} from 'immutable-schema';
 
 import {isPositiveInteger} from './utils';
 
@@ -33,9 +33,8 @@ export function isValidPosition(position, board_size) {
     return matchesPositionType(position) && position.every(val => val < board_size);
 }
 
-function matchesPositionType(position) {
-    return ListSchema(isPositiveInteger, isPositiveInteger)(position);
-}
+
+const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);
 
 
 /**
