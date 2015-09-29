@@ -1,5 +1,5 @@
 import {Map, List} from 'immutable';
-import {MapSchema, ListSchema} from 'immutable-schema';
+import {MapSchema, FixedListSchema, OneOf, Exactly} from 'immutable-schema';
 
 import {isPositiveInteger} from './utils';
 import {
@@ -11,13 +11,10 @@ import {
 } from './transforms';
 
 
-function isValidBoardMap(board) {
-    const schema = MapSchema(
-        ListSchema(isNumber, isNumber), s => s === BLACK || s === WHITE,
-        s => s === SIZE_KEY, isPositiveInteger
-    );
-    return schema(board);
-}
+const isValidBoardMap = MapSchema(
+    FixedListSchema(isNumber, isNumber), OneOf(BLACK, WHITE),
+    Exactly(SIZE_KEY), isPositiveInteger
+);
 
 
 /**
