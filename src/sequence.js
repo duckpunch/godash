@@ -39,7 +39,7 @@ export class Variation {
 
     getNodeByPath(path) {
         if (this.variation_data.has(path)) {
-            // go get it
+            return new Node(this.variation_data.get(path));
         }
     }
 
