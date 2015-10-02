@@ -40,6 +40,8 @@ export class Variation {
     getNodeByPath(path) {
         if (this.variation_data.has(path)) {
             return new Node(this.variation_data.get(path));
+        } else {
+            throw 'No node at the passed path';
         }
     }
 
