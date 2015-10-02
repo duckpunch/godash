@@ -1904,10 +1904,64 @@
                           }
                         }
                       },
-                      "alternate": null,
+                      "alternate": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ThrowStatement",
+                            "argument": {
+                              "type": "Literal",
+                              "value": "No node at the passed path",
+                              "raw": "'No node at the passed path'",
+                              "range": [
+                                1030,
+                                1058
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 44,
+                                  "column": 18
+                                },
+                                "end": {
+                                  "line": 44,
+                                  "column": 46
+                                }
+                              }
+                            },
+                            "range": [
+                              1024,
+                              1059
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 44,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 44,
+                                "column": 47
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1010,
+                          1069
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 43,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 45,
+                            "column": 9
+                          }
+                        }
+                      },
                       "range": [
                         898,
-                        1004
+                        1069
                       ],
                       "loc": {
                         "start": {
@@ -1915,7 +1969,7 @@
                           "column": 8
                         },
                         "end": {
-                          "line": 43,
+                          "line": 45,
                           "column": 9
                         }
                       }
@@ -1923,7 +1977,7 @@
                   ],
                   "range": [
                     888,
-                    1010
+                    1075
                   ],
                   "loc": {
                     "start": {
@@ -1931,7 +1985,7 @@
                       "column": 24
                     },
                     "end": {
-                      "line": 44,
+                      "line": 46,
                       "column": 5
                     }
                   }
@@ -1940,7 +1994,7 @@
                 "expression": false,
                 "range": [
                   881,
-                  1010
+                  1075
                 ],
                 "loc": {
                   "start": {
@@ -1948,7 +2002,7 @@
                     "column": 17
                   },
                   "end": {
-                    "line": 44,
+                    "line": 46,
                     "column": 5
                   }
                 }
@@ -1957,7 +2011,7 @@
               "computed": false,
               "range": [
                 868,
-                1010
+                1075
               ],
               "loc": {
                 "start": {
@@ -1965,7 +2019,7 @@
                   "column": 4
                 },
                 "end": {
-                  "line": 44,
+                  "line": 46,
                   "column": 5
                 }
               },
@@ -1974,16 +2028,16 @@
                   "type": "Line",
                   "value": " addMove(position, color, path)",
                   "range": [
-                    1016,
-                    1049
+                    1081,
+                    1114
                   ],
                   "loc": {
                     "start": {
-                      "line": 46,
+                      "line": 48,
                       "column": 4
                     },
                     "end": {
-                      "line": 46,
+                      "line": 48,
                       "column": 37
                     }
                   }
@@ -1992,16 +2046,16 @@
                   "type": "Line",
                   "value": " getSequence(...path):List",
                   "range": [
-                    1054,
-                    1082
+                    1119,
+                    1147
                   ],
                   "loc": {
                     "start": {
-                      "line": 47,
+                      "line": 49,
                       "column": 4
                     },
                     "end": {
-                      "line": 47,
+                      "line": 49,
                       "column": 32
                     }
                   }
@@ -2010,16 +2064,16 @@
                   "type": "Line",
                   "value": " backed by a map, index by path",
                   "range": [
-                    1087,
-                    1120
+                    1152,
+                    1185
                   ],
                   "loc": {
                     "start": {
-                      "line": 48,
+                      "line": 50,
                       "column": 4
                     },
                     "end": {
-                      "line": 48,
+                      "line": 50,
                       "column": 37
                     }
                   }
@@ -2028,16 +2082,16 @@
                   "type": "Line",
                   "value": " e.g. [move_number, paths, to, take]",
                   "range": [
-                    1125,
-                    1163
+                    1190,
+                    1228
                   ],
                   "loc": {
                     "start": {
-                      "line": 49,
+                      "line": 51,
                       "column": 4
                     },
                     "end": {
-                      "line": 49,
+                      "line": 51,
                       "column": 42
                     }
                   }
@@ -2048,7 +2102,7 @@
           ],
           "range": [
             669,
-            1165
+            1230
           ],
           "loc": {
             "start": {
@@ -2056,14 +2110,14 @@
               "column": 23
             },
             "end": {
-              "line": 50,
+              "line": 52,
               "column": 1
             }
           }
         },
         "range": [
           653,
-          1165
+          1230
         ],
         "loc": {
           "start": {
@@ -2071,7 +2125,7 @@
             "column": 7
           },
           "end": {
-            "line": 50,
+            "line": 52,
             "column": 1
           }
         },
@@ -2227,7 +2281,7 @@
       "source": null,
       "range": [
         646,
-        1165
+        1230
       ],
       "loc": {
         "start": {
@@ -2235,7 +2289,7 @@
           "column": 0
         },
         "end": {
-          "line": 50,
+          "line": 52,
           "column": 1
         }
       },
@@ -2390,7 +2444,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1165
+    1230
   ],
   "loc": {
     "start": {
@@ -2398,7 +2452,7 @@
       "column": 0
     },
     "end": {
-      "line": 50,
+      "line": 52,
       "column": 1
     }
   },
@@ -2569,16 +2623,16 @@
       "type": "Line",
       "value": " addMove(position, color, path)",
       "range": [
-        1016,
-        1049
+        1081,
+        1114
       ],
       "loc": {
         "start": {
-          "line": 46,
+          "line": 48,
           "column": 4
         },
         "end": {
-          "line": 46,
+          "line": 48,
           "column": 37
         }
       }
@@ -2587,16 +2641,16 @@
       "type": "Line",
       "value": " getSequence(...path):List",
       "range": [
-        1054,
-        1082
+        1119,
+        1147
       ],
       "loc": {
         "start": {
-          "line": 47,
+          "line": 49,
           "column": 4
         },
         "end": {
-          "line": 47,
+          "line": 49,
           "column": 32
         }
       }
@@ -2605,16 +2659,16 @@
       "type": "Line",
       "value": " backed by a map, index by path",
       "range": [
-        1087,
-        1120
+        1152,
+        1185
       ],
       "loc": {
         "start": {
-          "line": 48,
+          "line": 50,
           "column": 4
         },
         "end": {
-          "line": 48,
+          "line": 50,
           "column": 37
         }
       }
@@ -2623,16 +2677,16 @@
       "type": "Line",
       "value": " e.g. [move_number, paths, to, take]",
       "range": [
-        1125,
-        1163
+        1190,
+        1228
       ],
       "loc": {
         "start": {
-          "line": 49,
+          "line": 51,
           "column": 4
         },
         "end": {
-          "line": 49,
+          "line": 51,
           "column": 42
         }
       }
