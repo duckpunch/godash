@@ -2,7 +2,7 @@ import {isNumber} from 'lodash';
 import {Map} from 'immutable';
 import {MapSchema, ListSchema, Exactly} from 'immutable-schema';
 
-import {isValidBoardMap} from './board';
+import {isValidBoardMap, Board} from './board';
 import {matchesPositionType} from './position';
 
 
@@ -17,6 +17,10 @@ const isValidVariationMap = MapSchema(
 
 
 export class Node {
+    constructor(node_data) {
+        this.board = new Board(node_data.get('board'));
+    }
+
     // id in tree
     // move to get here
     // current board
