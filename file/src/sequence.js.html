@@ -77,7 +77,7 @@
 import {Map} from &apos;immutable&apos;;
 import {MapSchema, ListSchema, Exactly} from &apos;immutable-schema&apos;;
 
-import {isValidBoardMap} from &apos;./board&apos;;
+import {isValidBoardMap, Board} from &apos;./board&apos;;
 import {matchesPositionType} from &apos;./position&apos;;
 
 
@@ -92,6 +92,10 @@ const isValidVariationMap = MapSchema(
 
 
 export class Node {
+    constructor(node_data) {
+        this.board = new Board(node_data.get(&apos;board&apos;));
+    }
+
     // id in tree
     // move to get here
     // current board

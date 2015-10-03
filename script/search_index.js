@@ -510,6 +510,18 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/sequence.js~node#board",
+    "class/src/sequence.js~Node.html#instance-member-board",
+    "src/sequence.js~Node#board",
+    "member"
+  ],
+  [
+    "src/sequence.js~node#constructor",
+    "class/src/sequence.js~Node.html#instance-constructor-constructor",
+    "src/sequence.js~Node#constructor",
+    "method"
+  ],
+  [
     "src/sequence.js~variation#constructor",
     "class/src/sequence.js~Variation.html#instance-constructor-constructor",
     "src/sequence.js~Variation#constructor",

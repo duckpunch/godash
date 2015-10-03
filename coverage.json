@@ -1,6 +1,6 @@
 {
-  "coverage": "80%",
-  "expectCount": 25,
+  "coverage": "74.07%",
+  "expectCount": 27,
   "actualCount": 20,
   "files": {
     "src/analysis.js": {
@@ -14,14 +14,16 @@
       "undocumentLines": []
     },
     "src/sequence.js": {
-      "expectCount": 5,
+      "expectCount": 7,
       "actualCount": 0,
       "undocumentLines": [
         19,
-        31,
-        32,
-        40,
-        37
+        35,
+        21,
+        20,
+        36,
+        44,
+        41
       ]
     },
     "src/position.js": {
