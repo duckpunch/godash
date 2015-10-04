@@ -1367,7 +1367,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {isNumber} from 'lodash';\nimport {Map} from 'immutable';\nimport {MapSchema, ListSchema, Exactly} from 'immutable-schema';\n\nimport {isValidBoardMap, Board} from './board';\nimport {matchesPositionType} from './position';\n\n\n// This schema isn't as thorough as it can be.\nconst isValidVariationMap = MapSchema(\n    ListSchema(isNumber),\n    MapSchema(\n        Exactly('board'), isValidBoardMap,\n        Exactly('last_move'), matchesPositionType\n    )\n);\n\n\nexport class Node {\n    constructor(node_data) {\n        this.board = new Board(node_data.get('board'));\n    }\n\n    // id in tree\n    // move to get here\n    // current board\n    // next node(s)\n    // prev node\n    // has next\n    // has lots of next\n    // add move, returns tree\n}\n\n\nexport class Variation {\n    constructor(variation_data) {\n        if (!isValidVariationMap(variation_data)) {\n            throw 'Invalid variation map';\n        }\n\n        this.variation_data = variation_data;\n    }\n\n    getNodeByPath(path) {\n        if (this.variation_data.has(path)) {\n            return new Node(this.variation_data.get(path));\n        } else {\n            throw 'No node at the passed path';\n        }\n    }\n\n    // addMove(position, color, path)\n    // getSequence(...path):List\n    // backed by a map, index by path\n    // e.g. [move_number, paths, to, take]\n}\n"
+    "content": "import {isNumber} from 'lodash';\nimport {Map} from 'immutable';\nimport {MapSchema, ListSchema, Exactly} from 'immutable-schema';\n\nimport {isValidBoardMap, Board} from './board';\nimport {matchesPositionType} from './position';\n\n\n// This schema isn't as thorough as it can be.\nconst isValidVariationMap = MapSchema(\n    ListSchema(isNumber),\n    MapSchema(\n        Exactly('board'), isValidBoardMap,\n        Exactly('last_move'), matchesPositionType\n    )\n);\n\n\nexport class Node {\n    constructor(node_data) {\n        this.board = new Board(node_data.get('board'));\n    }\n\n    getBoard() {\n        return this.board;\n    }\n\n    // id in tree\n    // move to get here\n    // current board\n    // next node(s)\n    // prev node\n    // has next\n    // has lots of next\n    // add move, returns tree\n}\n\n\nexport class Variation {\n    constructor(variation_data) {\n        if (!isValidVariationMap(variation_data)) {\n            throw 'Invalid variation map';\n        }\n\n        this.variation_data = variation_data;\n    }\n\n    getNodeByPath(path) {\n        if (this.variation_data.has(path)) {\n            return new Node(this.variation_data.get(path));\n        } else {\n            throw 'No node at the passed path';\n        }\n    }\n\n    // addMove(position, color, path)\n    // getSequence(...path):List\n    // backed by a map, index by path\n    // e.g. [move_number, paths, to, take]\n}\n"
   },
   {
     "kind": "variable",
@@ -1444,6 +1444,25 @@
     }
   },
   {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getBoard",
+    "memberof": "src/sequence.js~Node",
+    "longname": "src/sequence.js~Node#getBoard",
+    "access": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
     "kind": "class",
     "static": true,
     "variation": null,
@@ -1455,7 +1474,7 @@
     "importPath": "godash/src/sequence.js",
     "importStyle": "{Variation}",
     "description": null,
-    "lineNumber": 35,
+    "lineNumber": 39,
     "undocument": true,
     "interface": false
   },
@@ -1468,7 +1487,7 @@
     "longname": "src/sequence.js~Variation#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 36,
+    "lineNumber": 40,
     "undocument": true,
     "params": [
       {
@@ -1489,7 +1508,7 @@
     "longname": "src/sequence.js~Variation#variation_data",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 45,
     "undocument": true,
     "type": {
       "types": [
@@ -1506,7 +1525,7 @@
     "longname": "src/sequence.js~Variation#getNodeByPath",
     "access": null,
     "description": null,
-    "lineNumber": 44,
+    "lineNumber": 48,
     "undocument": true,
     "params": [
       {

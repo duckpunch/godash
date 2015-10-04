@@ -522,6 +522,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/sequence.js~node#getboard",
+    "class/src/sequence.js~Node.html#instance-method-getBoard",
+    "src/sequence.js~Node#getBoard",
+    "method"
+  ],
+  [
     "src/sequence.js~variation#constructor",
     "class/src/sequence.js~Variation.html#instance-constructor-constructor",
     "src/sequence.js~Variation#constructor",
