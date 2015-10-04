@@ -21,6 +21,10 @@ export class Node {
         this.board = new Board(node_data.get('board'));
     }
 
+    getBoard() {
+        return this.board;
+    }
+
     // id in tree
     // move to get here
     // current board
