@@ -25,6 +25,9 @@ export class Node {
         return this.board;
     }
 
+    getMetadata() {
+    }
+
     // id in tree
     // move to get here
     // current board
