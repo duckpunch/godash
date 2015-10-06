@@ -534,6 +534,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/sequence.js~node#metadata",
+    "class/src/sequence.js~Node.html#instance-member-metadata",
+    "src/sequence.js~Node#metadata",
+    "member"
+  ],
+  [
     "src/sequence.js~variation#constructor",
     "class/src/sequence.js~Variation.html#instance-constructor-constructor",
     "src/sequence.js~Variation#constructor",
