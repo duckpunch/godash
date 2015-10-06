@@ -19,6 +19,7 @@ const isValidVariationMap = MapSchema(
 export class Node {
     constructor(node_data) {
         this.board = new Board(node_data.get('board'));
+        this.metadata = new Board(node_data.get('metadata'));
     }
 
     getBoard() {
@@ -26,6 +27,7 @@ export class Node {
     }
 
     getMetadata() {
+        return this.metadata;
     }
 
     // id in tree
