@@ -58,6 +58,9 @@ export class Variation {
         }
     }
 
+    getSequence(...path) {
+    }
+
     // addMove(position, color, path)
     // getSequence(...path):List
     // backed by a map, index by path
