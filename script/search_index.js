@@ -552,6 +552,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/sequence.js~variation#getsequence",
+    "class/src/sequence.js~Variation.html#instance-method-getSequence",
+    "src/sequence.js~Variation#getSequence",
+    "method"
+  ],
+  [
     "src/sequence.js~variation#variation_data",
     "class/src/sequence.js~Variation.html#instance-member-variation_data",
     "src/sequence.js~Variation#variation_data",
