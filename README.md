@@ -49,7 +49,7 @@ Examples
 Roadmap
 -------
 
-Currently working on sequences and variations API.
+Sporadically working on sequences and variations API.
 
 Then, in no particular order.
 
