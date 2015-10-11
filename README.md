@@ -37,6 +37,7 @@ Grab the [compiled script](https://github.com/duckpunch/godash/blob/master/dist/
 ```html
 <script src="godash.min.js"></script>
 <script>
+    // godash added to the window
     godash.Board(19);
 </script>
 ```
