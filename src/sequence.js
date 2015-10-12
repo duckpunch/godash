@@ -17,9 +17,9 @@ const isValidVariationMap = MapSchema(
 
 
 export class Node {
-    constructor(node_data) {
-        this.board = new Board(node_data.get('board'));
-        this.metadata = new Board(node_data.get('metadata'));
+    constructor(nodeData) {
+        this.board = new Board(nodeData.get('board'));
+        this.metadata = new Board(nodeData.get('metadata'));
     }
 
     getBoard() {
@@ -42,17 +42,17 @@ export class Node {
 
 
 export class Variation {
-    constructor(variation_data) {
-        if (!isValidVariationMap(variation_data)) {
+    constructor(variationData) {
+        if (!isValidVariationMap(variationData)) {
             throw 'Invalid variation map';
         }
 
-        this.variation_data = variation_data;
+        this.variationData = variationData;
     }
 
     getNodeByPath(path) {
-        if (this.variation_data.has(path)) {
-            return new Node(this.variation_data.get(path));
+        if (this.variationData.has(path)) {
+            return new Node(this.variationData.get(path));
         } else {
             throw 'No node at the passed path';
         }
