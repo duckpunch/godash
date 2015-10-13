@@ -66,3 +66,7 @@ export class Variation {
     // backed by a map, index by path
     // e.g. [move_number, paths, to, take]
 }
+
+
+export class Sequence {
+}
