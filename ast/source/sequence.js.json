@@ -3433,12 +3433,234 @@
           }
         }
       ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "Sequence",
+          "range": [
+            1540,
+            1548
+          ],
+          "loc": {
+            "start": {
+              "line": 71,
+              "column": 13
+            },
+            "end": {
+              "line": 71,
+              "column": 21
+            }
+          }
+        },
+        "superClass": null,
+        "body": {
+          "type": "ClassBody",
+          "body": [],
+          "range": [
+            1549,
+            1552
+          ],
+          "loc": {
+            "start": {
+              "line": 71,
+              "column": 22
+            },
+            "end": {
+              "line": 72,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          1534,
+          1552
+        ],
+        "loc": {
+          "start": {
+            "line": 71,
+            "column": 7
+          },
+          "end": {
+            "line": 72,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Line",
+            "value": " addMove(position, color, path)",
+            "range": [
+              1375,
+              1408
+            ],
+            "loc": {
+              "start": {
+                "line": 64,
+                "column": 4
+              },
+              "end": {
+                "line": 64,
+                "column": 37
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " getSequence(...path):List",
+            "range": [
+              1413,
+              1441
+            ],
+            "loc": {
+              "start": {
+                "line": 65,
+                "column": 4
+              },
+              "end": {
+                "line": 65,
+                "column": 32
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " backed by a map, index by path",
+            "range": [
+              1446,
+              1479
+            ],
+            "loc": {
+              "start": {
+                "line": 66,
+                "column": 4
+              },
+              "end": {
+                "line": 66,
+                "column": 37
+              }
+            }
+          },
+          {
+            "type": "Line",
+            "value": " e.g. [move_number, paths, to, take]",
+            "range": [
+              1484,
+              1522
+            ],
+            "loc": {
+              "start": {
+                "line": 67,
+                "column": 4
+              },
+              "end": {
+                "line": 67,
+                "column": 42
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        1527,
+        1552
+      ],
+      "loc": {
+        "start": {
+          "line": 71,
+          "column": 0
+        },
+        "end": {
+          "line": 72,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Line",
+          "value": " addMove(position, color, path)",
+          "range": [
+            1375,
+            1408
+          ],
+          "loc": {
+            "start": {
+              "line": 64,
+              "column": 4
+            },
+            "end": {
+              "line": 64,
+              "column": 37
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " getSequence(...path):List",
+          "range": [
+            1413,
+            1441
+          ],
+          "loc": {
+            "start": {
+              "line": 65,
+              "column": 4
+            },
+            "end": {
+              "line": 65,
+              "column": 32
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " backed by a map, index by path",
+          "range": [
+            1446,
+            1479
+          ],
+          "loc": {
+            "start": {
+              "line": 66,
+              "column": 4
+            },
+            "end": {
+              "line": 66,
+              "column": 37
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " e.g. [move_number, paths, to, take]",
+          "range": [
+            1484,
+            1522
+          ],
+          "loc": {
+            "start": {
+              "line": 67,
+              "column": 4
+            },
+            "end": {
+              "line": 67,
+              "column": 42
+            }
+          }
+        }
+      ]
     }
   ],
   "sourceType": "module",
   "range": [
     0,
-    1524
+    1552
   ],
   "loc": {
     "start": {
@@ -3446,7 +3668,7 @@
       "column": 0
     },
     "end": {
-      "line": 68,
+      "line": 72,
       "column": 1
     }
   },

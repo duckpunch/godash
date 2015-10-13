@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "godash/src/sequence.js~sequence",
+    "class/src/sequence.js~Sequence.html",
+    "<span>Sequence</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
+    "class"
+  ],
+  [
     "godash/src/sequence.js~variation",
     "class/src/sequence.js~Variation.html",
     "<span>Variation</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
