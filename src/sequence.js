@@ -59,6 +59,7 @@ export class Variation {
     }
 
     getSequence(...path) {
+        return new Sequence();
     }
 
     // addMove(position, color, path)
