@@ -11,8 +11,8 @@ const isValidVariationMap = MapSchema(
     ListSchema(isNumber),
     MapSchema(
         Exactly('board'), isValidBoardMap,
-        Exactly('last_move'), matchesPositionType
-        Exactly('metadata'), matchesPositionType
+        Exactly('last_move'), matchesPositionType,
+        Exactly('metadata'), Map.isMap
     )
 );
 
