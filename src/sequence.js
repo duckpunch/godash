@@ -12,6 +12,7 @@ const isValidVariationMap = MapSchema(
     MapSchema(
         Exactly('board'), isValidBoardMap,
         Exactly('last_move'), matchesPositionType
+        Exactly('metadata'), matchesPositionType
     )
 );
 
