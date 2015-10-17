@@ -3101,10 +3101,137 @@
                             }
                           }
                         },
-                        "arguments": [],
+                        "arguments": [
+                          {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "ThisExpression",
+                                  "range": [
+                                    1432,
+                                    1436
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 63,
+                                      "column": 28
+                                    },
+                                    "end": {
+                                      "line": 63,
+                                      "column": 32
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "variationData",
+                                  "range": [
+                                    1437,
+                                    1450
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 63,
+                                      "column": 33
+                                    },
+                                    "end": {
+                                      "line": 63,
+                                      "column": 46
+                                    }
+                                  }
+                                },
+                                "range": [
+                                  1432,
+                                  1450
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 63,
+                                    "column": 28
+                                  },
+                                  "end": {
+                                    "line": 63,
+                                    "column": 46
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "get",
+                                "range": [
+                                  1451,
+                                  1454
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 63,
+                                    "column": 47
+                                  },
+                                  "end": {
+                                    "line": 63,
+                                    "column": 50
+                                  }
+                                }
+                              },
+                              "range": [
+                                1432,
+                                1454
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 63,
+                                  "column": 28
+                                },
+                                "end": {
+                                  "line": 63,
+                                  "column": 50
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "path",
+                                "range": [
+                                  1455,
+                                  1459
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 63,
+                                    "column": 51
+                                  },
+                                  "end": {
+                                    "line": 63,
+                                    "column": 55
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              1432,
+                              1460
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 63,
+                                "column": 28
+                              },
+                              "end": {
+                                "line": 63,
+                                "column": 56
+                              }
+                            }
+                          }
+                        ],
                         "range": [
                           1419,
-                          1433
+                          1461
                         ],
                         "loc": {
                           "start": {
@@ -3113,13 +3240,13 @@
                           },
                           "end": {
                             "line": 63,
-                            "column": 29
+                            "column": 57
                           }
                         }
                       },
                       "range": [
                         1412,
-                        1434
+                        1462
                       ],
                       "loc": {
                         "start": {
@@ -3128,14 +3255,14 @@
                         },
                         "end": {
                           "line": 63,
-                          "column": 30
+                          "column": 58
                         }
                       }
                     }
                   ],
                   "range": [
                     1402,
-                    1440
+                    1468
                   ],
                   "loc": {
                     "start": {
@@ -3152,7 +3279,7 @@
                 "expression": false,
                 "range": [
                   1392,
-                  1440
+                  1468
                 ],
                 "loc": {
                   "start": {
@@ -3169,7 +3296,7 @@
               "computed": false,
               "range": [
                 1381,
-                1440
+                1468
               ],
               "loc": {
                 "start": {
@@ -3186,8 +3313,8 @@
                   "type": "Line",
                   "value": " addMove(position, color, path)",
                   "range": [
-                    1446,
-                    1479
+                    1474,
+                    1507
                   ],
                   "loc": {
                     "start": {
@@ -3204,8 +3331,8 @@
                   "type": "Line",
                   "value": " getSequence(...path):List",
                   "range": [
-                    1484,
-                    1512
+                    1512,
+                    1540
                   ],
                   "loc": {
                     "start": {
@@ -3222,8 +3349,8 @@
                   "type": "Line",
                   "value": " backed by a map, index by path",
                   "range": [
-                    1517,
-                    1550
+                    1545,
+                    1578
                   ],
                   "loc": {
                     "start": {
@@ -3240,8 +3367,8 @@
                   "type": "Line",
                   "value": " e.g. [move_number, paths, to, take]",
                   "range": [
-                    1555,
-                    1593
+                    1583,
+                    1621
                   ],
                   "loc": {
                     "start": {
@@ -3260,7 +3387,7 @@
           ],
           "range": [
             975,
-            1595
+            1623
           ],
           "loc": {
             "start": {
@@ -3275,7 +3402,7 @@
         },
         "range": [
           959,
-          1595
+          1623
         ],
         "loc": {
           "start": {
@@ -3439,7 +3566,7 @@
       "source": null,
       "range": [
         952,
-        1595
+        1623
       ],
       "loc": {
         "start": {
@@ -3606,8 +3733,8 @@
           "type": "Identifier",
           "name": "Sequence",
           "range": [
-            1611,
-            1619
+            1639,
+            1647
           ],
           "loc": {
             "start": {
@@ -3625,8 +3752,8 @@
           "type": "ClassBody",
           "body": [],
           "range": [
-            1620,
-            1623
+            1648,
+            1651
           ],
           "loc": {
             "start": {
@@ -3640,8 +3767,8 @@
           }
         },
         "range": [
-          1605,
-          1623
+          1633,
+          1651
         ],
         "loc": {
           "start": {
@@ -3658,8 +3785,8 @@
             "type": "Line",
             "value": " addMove(position, color, path)",
             "range": [
-              1446,
-              1479
+              1474,
+              1507
             ],
             "loc": {
               "start": {
@@ -3676,8 +3803,8 @@
             "type": "Line",
             "value": " getSequence(...path):List",
             "range": [
-              1484,
-              1512
+              1512,
+              1540
             ],
             "loc": {
               "start": {
@@ -3694,8 +3821,8 @@
             "type": "Line",
             "value": " backed by a map, index by path",
             "range": [
-              1517,
-              1550
+              1545,
+              1578
             ],
             "loc": {
               "start": {
@@ -3712,8 +3839,8 @@
             "type": "Line",
             "value": " e.g. [move_number, paths, to, take]",
             "range": [
-              1555,
-              1593
+              1583,
+              1621
             ],
             "loc": {
               "start": {
@@ -3732,8 +3859,8 @@
       "specifiers": [],
       "source": null,
       "range": [
-        1598,
-        1623
+        1626,
+        1651
       ],
       "loc": {
         "start": {
@@ -3750,8 +3877,8 @@
           "type": "Line",
           "value": " addMove(position, color, path)",
           "range": [
-            1446,
-            1479
+            1474,
+            1507
           ],
           "loc": {
             "start": {
@@ -3768,8 +3895,8 @@
           "type": "Line",
           "value": " getSequence(...path):List",
           "range": [
-            1484,
-            1512
+            1512,
+            1540
           ],
           "loc": {
             "start": {
@@ -3786,8 +3913,8 @@
           "type": "Line",
           "value": " backed by a map, index by path",
           "range": [
-            1517,
-            1550
+            1545,
+            1578
           ],
           "loc": {
             "start": {
@@ -3804,8 +3931,8 @@
           "type": "Line",
           "value": " e.g. [move_number, paths, to, take]",
           "range": [
-            1555,
-            1593
+            1583,
+            1621
           ],
           "loc": {
             "start": {
@@ -3824,7 +3951,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1623
+    1651
   ],
   "loc": {
     "start": {
@@ -4003,8 +4130,8 @@
       "type": "Line",
       "value": " addMove(position, color, path)",
       "range": [
-        1446,
-        1479
+        1474,
+        1507
       ],
       "loc": {
         "start": {
@@ -4021,8 +4148,8 @@
       "type": "Line",
       "value": " getSequence(...path):List",
       "range": [
-        1484,
-        1512
+        1512,
+        1540
       ],
       "loc": {
         "start": {
@@ -4039,8 +4166,8 @@
       "type": "Line",
       "value": " backed by a map, index by path",
       "range": [
-        1517,
-        1550
+        1545,
+        1578
       ],
       "loc": {
         "start": {
@@ -4057,8 +4184,8 @@
       "type": "Line",
       "value": " e.g. [move_number, paths, to, take]",
       "range": [
-        1555,
-        1593
+        1583,
+        1621
       ],
       "loc": {
         "start": {
