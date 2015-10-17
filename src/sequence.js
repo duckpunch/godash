@@ -60,7 +60,7 @@ export class Variation {
     }
 
     getSequence(...path) {
-        return new Sequence();
+        return new Sequence(this.variationData.get(path));
     }
 
     // addMove(position, color, path)
