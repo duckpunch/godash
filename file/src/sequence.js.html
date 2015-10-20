@@ -96,7 +96,7 @@ const isValidVariationMap = MapSchema(
 export class Node {
     constructor(nodeData) {
         this.board = new Board(nodeData.get(&apos;board&apos;));
-        this.metadata = nodeData.get(&apos;metadata&apos;, null);
+        this.metadata = nodeData.get(&apos;metadata&apos;, Map());
     }
 
     getBoard() {
