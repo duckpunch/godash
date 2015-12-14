@@ -25,6 +25,9 @@ const isValidVariationMap = MapSchema(
  * This class is not intended to be instantiated by public consumers.
  */
 export class Node {
+    /**
+     * @private
+     */
     constructor(board, variation) {
         this._board = board;
         this._variation = variation;
@@ -54,12 +57,16 @@ export class Node {
  * Tree of moves, represented by Nodes.
  */
 export class Variation {
-    constructor(variationData) {
-        if (!isValidVariationMap(variationData)) {
-            throw 'Invalid variation map';
+    /**
+     * Create a Variation.
+     *
+     * @param {number} boardSize optional board size, defaults to 19
+     */
+    constructor(boardSize) {
+        if (!boardSize) {
+            boardSize = 19;
         }
-
-        this.variationData = variationData;
+        this._root = new Node(new Board(boardSize), this);
     }
 
     /**
@@ -70,17 +77,4 @@ export class Variation {
     get root() {
         this._root;
     }
-
-    getNodeByPath(path) {
-        if (this.variationData.has(path)) {
-            return new Node(this.variationData.get(path));
-        } else {
-            throw 'No node at the passed path';
-        }
-    }
-
-    // addMove(position, color, path)
-    // getSequence(...path):List
-    // backed by a map, index by path
-    // e.g. [move_number, paths, to, take]
 }
