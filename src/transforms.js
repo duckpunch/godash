@@ -42,30 +42,9 @@ export function addMove(board, position, color) {
 /**
  * @private
  */
-export function addBlackMove(board, position) {
-    return addMove(board, position, BLACK);
-}
-
-
-/**
- * @private
- */
-export function addWhiteMove(board, position) {
-    return addMove(board, position, WHITE);
-}
-
-
-/**
- * @private
- */
 export function removeMoves(board, positions) {
     return positions.reduce(
         (acc, position) => acc.delete(position),
         board
     );
 }
-
-
-export default {
-    emptyBoard, addBlackMove, addWhiteMove, removeMoves
-};

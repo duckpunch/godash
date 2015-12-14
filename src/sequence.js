@@ -17,6 +17,10 @@ const isValidVariationMap = MapSchema(
 );
 
 
+/**
+ * Node represents a Board in a Variation.  That is, the board state along with any metadata
+ * like annotations.
+ */
 export class Node {
     constructor(nodeData) {
         this.board = new Board(nodeData.get('board'));

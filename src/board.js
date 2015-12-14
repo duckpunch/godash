@@ -6,9 +6,7 @@ import {
     SIZE_KEY, allPossibleMoves, group, liberties, isLegalMove,
     BLACK, WHITE, EMPTY, prettyString,
 } from './analysis';
-import {
-    emptyBoard, addBlackMove, addWhiteMove, addMove, removeMoves,
-} from './transforms';
+import {emptyBoard, removeMoves, addMove} from './transforms';
 
 
 /**
@@ -74,7 +72,7 @@ export class Board {
      * @see {@link addMove}
      */
     addBlackMove(position) {
-        return new Board(addBlackMove(this.positions, position));
+        return this.addMove(position, BLACK);
     }
 
     /**
@@ -87,7 +85,7 @@ export class Board {
      * @see {@link addMove}
      */
     addWhiteMove(position) {
-        return new Board(addWhiteMove(this.positions, position));
+        return this.addMove(position, WHITE);
     }
 
     /**
