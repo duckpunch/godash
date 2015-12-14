@@ -38,22 +38,3 @@ export function isValidPosition(position, board_size) {
  * @private
  */
 export const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);
-
-
-/**
- * Returns a {@link Set} of positions compatible with areas of godash that need a collection
- * of positions.
- *
- * @param {*} raw_positions anything that is compatible with the constructor arguments for Set
- * @returns {Set}
- */
-export function positions(raw_positions) {
-    const position_set = Set(raw_positions);
-
-    if (!position_set.every(matchesPositionType)) {
-        throw TypeError('Must pass an iterable of positions,' +
-            ' Immutable.List types of length 2, containing non-negative integers');
-    }
-
-    return position_set;
-}
