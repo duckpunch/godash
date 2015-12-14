@@ -1,6 +1,6 @@
 import {BLACK, WHITE} from './analysis';
 import {Board} from './board';
-import {position, isValidPosition} from './position';
+import {Position} from './position';
 
 
 /**
@@ -26,8 +26,7 @@ _Board.prototype = Board.prototype;
 
 export default {
     Board: _Board,
-    position,
-    isValidPosition,
+    Position,
     BLACK,
     WHITE,
 };

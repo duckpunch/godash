@@ -22,7 +22,7 @@ Install `godash` via [npm](https://www.npmjs.com/package/godash).
 ```javascript
 var godash = require('godash');
 var board = godash.Board(19);
-var tengen = godash.position(9, 9); // 0-based
+var tengen = godash.Position(9, 9); // 0-based
 
 board.positions.has(tengen); // false
 

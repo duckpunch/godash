@@ -1,4 +1,4 @@
-import {Set, List} from 'immutable';
+import {List} from 'immutable';
 import {FixedListSchema} from 'immutable-schema';
 
 import {isPositiveInteger} from './utils';
@@ -9,27 +9,30 @@ import {isPositiveInteger} from './utils';
  *
  * @param {number} x
  * @param {number} y
+ * @param {number} board_size optional board size to validate against
  * @returns {List} representing a possible coordinate on the board
  * @throws {TypeError} arguments are not integers greater than or equal to 0
+ * @throws {TypeError} first two arguments don't validate against board size
  */
-export function position(x, y) {
-    const valid_x = x === 0 || isPositiveInteger(x);
-    const valid_y = y === 0 || isPositiveInteger(y);
+export function Position(x, y, board_size) {
+    const position = List.of(x, y);
 
-    if (!valid_x || !valid_y) {
+    if (matchesPositionType(position)) {
         throw TypeError('Both passed arguments must be integers greater than or equal to 0');
     }
 
-    return List.of(x, y);
+    if (board_size && !isValidPosition(position, board_size)) {
+        throw TypeError('Position doesn\'t fit a the passed board size');
+    }
+
+    return position;
 }
 
 
 /**
- * Validates a position with a board size.
- *
- * @returns {boolean}
+ * @private
  */
-export function isValidPosition(position, board_size) {
+function isValidPosition(position, board_size) {
     return matchesPositionType(position) && position.every(val => val < board_size);
 }
 
