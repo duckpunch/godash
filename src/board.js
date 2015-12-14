@@ -4,9 +4,8 @@ import {MapSchema, FixedListSchema, OneOf, Exactly} from 'immutable-schema';
 import {isPositiveInteger} from './utils';
 import {
     SIZE_KEY, allPossibleMoves, group, liberties, isLegalMove,
-    BLACK, WHITE, EMPTY, prettyString,
+    BLACK, WHITE, EMPTY, prettyString, emptyBoard, removeMoves, addMove
 } from './analysis';
-import {emptyBoard, removeMoves, addMove} from './transforms';
 
 
 /**

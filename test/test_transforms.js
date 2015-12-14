@@ -1,8 +1,7 @@
 import assert from 'assert';
 import {List, Set} from 'immutable';
 
-import {emptyBoard, addMove, removeMoves} from '../src/transforms';
-import {SIZE_KEY, BLACK, WHITE} from '../src/analysis';
+import {SIZE_KEY, BLACK, WHITE, emptyBoard, addMove, removeMoves} from '../src/analysis';
 
 
 describe('empty board', function() {

@@ -1,9 +1,8 @@
 import assert from 'assert';
 import {List, Set} from 'immutable';
 
-import {emptyBoard} from '../src/transforms';
 import {
-    adjacentPositions, allPossibleMoves, group,
+    emptyBoard, adjacentPositions, allPossibleMoves, group,
     WHITE, BLACK, liberties, emptyPositions, isLegalMove
 } from '../src/analysis';
 
