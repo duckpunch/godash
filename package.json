@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/duckpunch/godash.git"
   },
-  "main": "src/index.js",
+  "main": "index.js",
   "keywords": [
     "go",
     "weiqi",
@@ -38,8 +38,8 @@
     ]
   },
   "scripts": {
-    "build": "browserify -o ./build/godash.js -e ./src/browser.js && uglifyjs --compress --mangle --output build/godash.min.js -- build/godash.js",
-    "build-dist": "browserify -o ./dist/godash.js -e ./src/browser.js && uglifyjs --compress --mangle --output dist/godash.min.js -- dist/godash.js",
+    "build": "browserify -o ./build/godash.js -e ./browser.js && uglifyjs --compress --mangle --output build/godash.min.js -- build/godash.js",
+    "build-dist": "browserify -o ./dist/godash.js -e ./browser.js && uglifyjs --compress --mangle --output dist/godash.min.js -- dist/godash.js",
     "test": "mochify",
     "watch-test": "mochify -w"
   }
