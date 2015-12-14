@@ -14,14 +14,14 @@ import {isPositiveInteger} from './utils';
  * @throws {TypeError} arguments are not integers greater than or equal to 0
  * @throws {TypeError} first two arguments don't validate against board size
  */
-export function Position(x, y, board_size) {
+export function Position(x, y, boardSize) {
     const position = List.of(x, y);
 
     if (matchesPositionType(position)) {
         throw TypeError('Both passed arguments must be integers greater than or equal to 0');
     }
 
-    if (board_size && !isValidPosition(position, board_size)) {
+    if (board_size && !isValidPosition(position, boardSize)) {
         throw TypeError('Position doesn\'t fit a the passed board size');
     }
 
@@ -32,8 +32,8 @@ export function Position(x, y, board_size) {
 /**
  * @private
  */
-function isValidPosition(position, board_size) {
-    return matchesPositionType(position) && position.every(val => val < board_size);
+function isValidPosition(position, boardSize) {
+    return matchesPositionType(position) && position.every(val => val < boardSize);
 }
 
 

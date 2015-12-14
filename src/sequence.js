@@ -7,6 +7,7 @@ import {matchesPositionType} from './position';
 
 
 // This schema isn't as thorough as it can be.
+// The keys must be sequential
 const isValidVariationMap = MapSchema(
     ListSchema(isNumber),
     MapSchema(
@@ -29,11 +30,16 @@ export class Node {
         this.metadata = nodeData.get('metadata', Map());
     }
 
-    getBoard() {
+    /**
+     * Represents the board state at this node
+     *
+     * @returns {Board}
+     */
+    get board() {
         return this.board;
     }
 
-    getMetadata() {
+    get metadata() {
         return this.metadata;
     }
 
