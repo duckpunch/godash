@@ -20,6 +20,8 @@ const isValidVariationMap = MapSchema(
 /**
  * Node represents a Board in a Variation.  That is, the board state along with any metadata
  * like annotations.
+ *
+ * This class is not intended to be instantiated by public consumers.
  */
 export class Node {
     constructor(nodeData) {
@@ -63,16 +65,8 @@ export class Variation {
         }
     }
 
-    getSequence(...path) {
-        return new Sequence(this.variationData.get(path));
-    }
-
     // addMove(position, color, path)
     // getSequence(...path):List
     // backed by a map, index by path
     // e.g. [move_number, paths, to, take]
-}
-
-
-export class Sequence {
 }
