@@ -1,4 +1,236 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _indexJs = require('./index.js');
+
+var _indexJs2 = _interopRequireDefault(_indexJs);
+
+if (!window.godash) {
+    window.godash = _indexJs2['default'];
+}
+
+},{"./index.js":2}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var _bind = Function.prototype.bind;
+
+var _srcAnalysis = require('./src/analysis');
+
+var _srcBoard = require('./src/board');
+
+var _srcPosition = require('./src/position');
+
+/**
+ * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map
+ */
+
+/**
+ * @external {List} http://facebook.github.io/immutable-js/docs/#/List
+ */
+
+/**
+ * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set
+ */
+
+function _Board() {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return new (_bind.apply(_srcBoard.Board, [null].concat(args)))();
+}
+
+_Board.prototype = _srcBoard.Board.prototype;
+
+exports['default'] = {
+  Board: _Board,
+  Position: _srcPosition.Position,
+  BLACK: _srcAnalysis.BLACK,
+  WHITE: _srcAnalysis.WHITE
+};
+module.exports = exports['default'];
+
+},{"./src/analysis":6,"./src/board":7,"./src/position":8}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
+
+exports.MapSchema = MapSchema;
+exports.FixedListSchema = FixedListSchema;
+exports.ListSchema = ListSchema;
+exports.Exactly = Exactly;
+exports.OneOf = OneOf;
+
+var _lodash = require('lodash');
+
+var _immutable = require('immutable');
+
+function checkPair(pair, key, value) {
+    var _pair = _slicedToArray(pair, 2);
+
+    var key_check = _pair[0];
+    var value_check = _pair[1];
+
+    return key_check(key) && value_check(value);
+}
+
+/**
+ * Creates a validator function based on passed validator 2-tuples.
+ *
+ * Key-value entries in the map must satisfy at least one of the validator tuples.
+ *
+ * @param {function} ...validators functions in pairs to match with each key-value pair
+ * @returns {function} function returns true if passed a valid Map
+ * @example
+ * var isValid = MapSchema(isNumber, Exactly('hi'), isString, isNumber);
+ *
+ * isValid(Map().set(5, 'hi')); // true
+ * isValid(Map().set('hi', 'hi')); // false
+ * isValid(Map().set(5, 'hi').set('foo', 3)); // true
+ */
+
+function MapSchema() {
+    for (var _len = arguments.length, validators = Array(_len), _key = 0; _key < _len; _key++) {
+        validators[_key] = arguments[_key];
+    }
+
+    var pairs = (0, _lodash.chunk)(validators, 2);
+    if (validators.length % 2 === 1) {
+        throw 'Must have even length of validators';
+    }
+
+    function validatePair(value, key) {
+        return (0, _lodash.some)(pairs, function (pair) {
+            return checkPair(pair, key, value);
+        });
+    }
+
+    return function (candidate) {
+        if (_immutable.Map.isMap(candidate)) {
+            return candidate.every(validatePair);
+        } else {
+            return false;
+        }
+    };
+}
+
+/**
+ * Generates a function that checks each value matches the validators passed,
+ * respective per index.
+ *
+ * @param {function} ...validators functions, in order, to check each value in the passed list
+ * @returns {function} which returns true if each element in list matches in order
+ * @example
+ * var schema = FixedListSchema(Exactly('roar'), isNumber);
+ *
+ * schema(List.of(3));  // false
+ * schema(List.of('roar'));  // false
+ * schema(List.of('fake roar'));  // false
+ * schema(List.of('roar', 15));  // true
+ */
+
+function FixedListSchema() {
+    for (var _len2 = arguments.length, validators = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        validators[_key2] = arguments[_key2];
+    }
+
+    return function (candidate) {
+        if (_immutable.List.isList(candidate) && candidate.size === validators.length) {
+            return candidate.every(function (value, index) {
+                return validators[index](value);
+            });
+        } else {
+            return false;
+        }
+    };
+}
+
+/**
+ * Generates a function that checks that each element of a List matches at least
+ * one of the passed validators.
+ *
+ * @param {function} ...validators functions to check each value in the passed list
+ * @returns {function} which returns true if each element in list matches at least one validator
+ * @example
+ * var schema = ListSchema(Exactly('roar'), isNumber);
+ *
+ * schema(List.of(3));  // true
+ * schema(List.of('roar'));  // true
+ * schema(List.of(3, 'fake roar'));  // false
+ */
+
+function ListSchema() {
+    for (var _len3 = arguments.length, validators = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        validators[_key3] = arguments[_key3];
+    }
+
+    return function (candidate) {
+        if (_immutable.List.isList(candidate)) {
+            return candidate.every(function (value) {
+                return (0, _lodash.some)(validators, function (validator) {
+                    return validator(value);
+                });
+            });
+        } else {
+            return false;
+        }
+    };
+}
+
+/**
+ * Convenience function that returns a function that validates strict equality.
+ *
+ * @param {*} value value to test equality
+ * @returns {function} evaluates strict equality of passed value
+ * @example
+ * var isExactly = Exactly('3');
+ *
+ * isExactly('hi');  // false
+ * isExactly(3);  // false
+ * isExactly('3');  // true
+ */
+
+function Exactly(value) {
+    return function (candidate) {
+        return value === candidate;
+    };
+}
+
+/**
+ * Convenience function that returns a function that validates strict membership
+ * in passed arguments.
+ *
+ * @param {*} ...values collection of values to test membership upon
+ * @returns {function} evaluates membership of passed value
+ * @example
+ * var membership = OneOf('hi', '3', 19);
+ *
+ * membership('hi');  // true
+ * membership(3);  // false
+ * membership('not in there');  // false
+ * membership(19);  // true
+ */
+
+function OneOf() {
+    for (var _len4 = arguments.length, values = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+        values[_key4] = arguments[_key4];
+    }
+
+    return function (candidate) {
+        return (0, _lodash.some)(values, Exactly);
+    };
+}
+
+},{"immutable":4,"lodash":5}],4:[function(require,module,exports){
 /**
  *  Copyright (c) 2014-2015, Facebook, Inc.
  *  All rights reserved.
@@ -4959,7 +5191,7 @@
   return Immutable;
 
 }));
-},{}],2:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -17314,7 +17546,7 @@
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],3:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -17332,6 +17564,9 @@ exports.liberties = liberties;
 exports.oppositeColor = oppositeColor;
 exports.isLegalMove = isLegalMove;
 exports.prettyString = prettyString;
+exports.emptyBoard = emptyBoard;
+exports.addMove = addMove;
+exports.removeMoves = removeMoves;
 
 var _lodash = require('lodash');
 
@@ -17538,11 +17773,49 @@ function prettyString(board) {
     return pretty_string;
 }
 
-exports['default'] = {
-    isLegalMove: isLegalMove, oppositeColor: oppositeColor, liberties: liberties, group: group
-};
+/**
+ * @private
+ */
 
-},{"immutable":1,"lodash":2}],4:[function(require,module,exports){
+function emptyBoard(size) {
+    if (!(0, _lodash.isNumber)(size) || size <= 0 || size !== parseInt(size)) {
+        throw 'An empty board must be created from a positive integer.';
+    }
+
+    return (0, _immutable.Map)().set(SIZE_KEY, size);
+}
+
+/**
+ * @private
+ */
+
+function addMove(board, position, color) {
+    if (!isLegalMove(board, position, color)) {
+        throw 'Not a valid position';
+    }
+
+    if (board.has(position)) {
+        throw 'There is already a stone there';
+    }
+
+    var killed = matchingAdjacentPositions(board, position, oppositeColor(color)).reduce(function (acc, pos) {
+        return acc.union(liberties(board, pos) === 1 ? group(board, pos) : (0, _immutable.Set)());
+    }, (0, _immutable.Set)());
+
+    return removeMoves(board, killed).set(position, color);
+}
+
+/**
+ * @private
+ */
+
+function removeMoves(board, positions) {
+    return positions.reduce(function (acc, position) {
+        return acc['delete'](position);
+    }, board);
+}
+
+},{"immutable":4,"lodash":5}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -17555,16 +17828,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var _immutable = require('immutable');
 
+var _immutableSchema = require('immutable-schema');
+
 var _utils = require('./utils');
 
 var _analysis = require('./analysis');
 
-var _transforms = require('./transforms');
+/**
+ * @private
+ */
+var isValidBoardMap = (0, _immutableSchema.MapSchema)((0, _immutableSchema.FixedListSchema)(isNumber, isNumber), (0, _immutableSchema.OneOf)(_analysis.BLACK, _analysis.WHITE), (0, _immutableSchema.Exactly)(_analysis.SIZE_KEY), _utils.isPositiveInteger);
 
-function isValidBoardMap(board) {
-    return _immutable.Map.isMap(board) && (0, _utils.isPositiveInteger)(board.get(_analysis.SIZE_KEY, 0));
-}
-
+exports.isValidBoardMap = isValidBoardMap;
 /**
  * Represents a board state.
  * @example
@@ -17589,7 +17864,7 @@ var Board = (function () {
         if (isValidBoardMap(board_data)) {
             this._positions = board_data;
         } else if ((0, _utils.isPositiveInteger)(board_data)) {
-            this._positions = (0, _transforms.emptyBoard)(board_data);
+            this._positions = (0, _analysis.emptyBoard)(board_data);
         } else {
             throw TypeError('Instantiate a Board with a Map or a positive integer');
         }
@@ -17614,7 +17889,7 @@ var Board = (function () {
          * @see {@link addMove}
          */
         value: function addBlackMove(position) {
-            return new Board((0, _transforms.addBlackMove)(this.positions, position));
+            return this.addMove(position, _analysis.BLACK);
         }
 
         /**
@@ -17629,7 +17904,7 @@ var Board = (function () {
     }, {
         key: 'addWhiteMove',
         value: function addWhiteMove(position) {
-            return new Board((0, _transforms.addWhiteMove)(this.positions, position));
+            return this.addMove(position, _analysis.WHITE);
         }
 
         /**
@@ -17673,7 +17948,7 @@ var Board = (function () {
     }, {
         key: 'addMove',
         value: function addMove(position, color) {
-            return new Board((0, _transforms.addMove)(this.positions, position, color));
+            return new Board((0, _analysis.addMove)(this.positions, position, color));
         }
 
         /**
@@ -17685,7 +17960,7 @@ var Board = (function () {
     }, {
         key: 'removeMoves',
         value: function removeMoves(positions) {
-            return new Board((0, _transforms.removeMoves)(this.positions, positions));
+            return new Board((0, _analysis.removeMoves)(this.positions, positions));
         }
 
         /**
@@ -17794,75 +18069,17 @@ var Board = (function () {
 
 exports.Board = Board;
 
-},{"./analysis":3,"./transforms":8,"./utils":9,"immutable":1}],5:[function(require,module,exports){
-'use strict';
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _indexJs = require('./index.js');
-
-var _indexJs2 = _interopRequireDefault(_indexJs);
-
-if (!window.godash) {
-    window.godash = _indexJs2['default'];
-}
-
-},{"./index.js":6}],6:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var _bind = Function.prototype.bind;
-
-var _analysis = require('./analysis');
-
-var _board = require('./board');
-
-var _position = require('./position');
-
-/**
- * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map
- */
-
-/**
- * @external {List} http://facebook.github.io/immutable-js/docs/#/List
- */
-
-/**
- * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set
- */
-
-function _Board() {
-  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  return new (_bind.apply(_board.Board, [null].concat(args)))();
-}
-
-_Board.prototype = _board.Board.prototype;
-
-exports['default'] = {
-  Board: _Board,
-  position: _position.position,
-  isValidPosition: _position.isValidPosition,
-  BLACK: _analysis.BLACK,
-  WHITE: _analysis.WHITE
-};
-module.exports = exports['default'];
-
-},{"./analysis":3,"./board":4,"./position":7}],7:[function(require,module,exports){
+},{"./analysis":6,"./utils":9,"immutable":4,"immutable-schema":3}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
-exports.position = position;
-exports.isValidPosition = isValidPosition;
-exports.positions = positions;
+exports.Position = Position;
 
 var _immutable = require('immutable');
+
+var _immutableSchema = require('immutable-schema');
 
 var _utils = require('./utils');
 
@@ -17871,136 +18088,42 @@ var _utils = require('./utils');
  *
  * @param {number} x
  * @param {number} y
+ * @param {number} board_size optional board size to validate against
  * @returns {List} representing a possible coordinate on the board
  * @throws {TypeError} arguments are not integers greater than or equal to 0
+ * @throws {TypeError} first two arguments don't validate against board size
  */
 
-function position(x, y) {
-    var valid_x = x === 0 || (0, _utils.isPositiveInteger)(x);
-    var valid_y = y === 0 || (0, _utils.isPositiveInteger)(y);
+function Position(x, y, boardSize) {
+    var position = _immutable.List.of(x, y);
 
-    if (!valid_x || !valid_y) {
+    if (matchesPositionType(position)) {
         throw TypeError('Both passed arguments must be integers greater than or equal to 0');
     }
 
-    return _immutable.List.of(x, y);
+    if (board_size && !isValidPosition(position, boardSize)) {
+        throw TypeError('Position doesn\'t fit a the passed board size');
+    }
+
+    return position;
 }
 
 /**
- * Validates a position with a board size.
- *
- * @returns {boolean}
+ * @private
  */
-
-function isValidPosition(position, board_size) {
+function isValidPosition(position, boardSize) {
     return matchesPositionType(position) && position.every(function (val) {
-        return val < board_size;
+        return val < boardSize;
     });
 }
 
-function matchesPositionType(position) {
-    return _immutable.List.isList(position) && position.size === 2 && position.every(_utils.isPositiveInteger);
-}
-
-/**
- * Returns a {@link Set} of positions compatible with areas of godash that need a collection
- * of positions.
- *
- * @param {*} raw_positions anything that is compatible with the constructor arguments for Set
- * @returns {Set}
- */
-
-function positions(raw_positions) {
-    var position_set = (0, _immutable.Set)(raw_positions);
-
-    if (!position_set.every(matchesPositionType)) {
-        throw TypeError('Must pass an iterable of positions,' + ' Immutable.List types of length 2, containing non-negative integers');
-    }
-
-    return position_set;
-}
-
-},{"./utils":9,"immutable":1}],8:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
-exports.emptyBoard = emptyBoard;
-exports.addMove = addMove;
-exports.addBlackMove = addBlackMove;
-exports.addWhiteMove = addWhiteMove;
-exports.removeMoves = removeMoves;
-
-var _lodash = require('lodash');
-
-var _immutable = require('immutable');
-
-var _analysis = require('./analysis');
-
 /**
  * @private
  */
+var matchesPositionType = (0, _immutableSchema.FixedListSchema)(_utils.isPositiveInteger, _utils.isPositiveInteger);
+exports.matchesPositionType = matchesPositionType;
 
-function emptyBoard(size) {
-    if (!(0, _lodash.isNumber)(size) || size <= 0 || size !== parseInt(size)) {
-        throw 'An empty board must be created from a positive integer.';
-    }
-
-    return (0, _immutable.Map)().set(_analysis.SIZE_KEY, size);
-}
-
-/**
- * @private
- */
-
-function addMove(board, position, color) {
-    if (!(0, _analysis.isLegalMove)(board, position, color)) {
-        throw 'Not a valid position';
-    }
-
-    if (board.has(position)) {
-        throw 'There is already a stone there';
-    }
-
-    var killed = (0, _analysis.matchingAdjacentPositions)(board, position, (0, _analysis.oppositeColor)(color)).reduce(function (acc, pos) {
-        return acc.union((0, _analysis.liberties)(board, pos) === 1 ? (0, _analysis.group)(board, pos) : (0, _immutable.Set)());
-    }, (0, _immutable.Set)());
-
-    return removeMoves(board, killed).set(position, color);
-}
-
-/**
- * @private
- */
-
-function addBlackMove(board, position) {
-    return addMove(board, position, _analysis.BLACK);
-}
-
-/**
- * @private
- */
-
-function addWhiteMove(board, position) {
-    return addMove(board, position, _analysis.WHITE);
-}
-
-/**
- * @private
- */
-
-function removeMoves(board, positions) {
-    return positions.reduce(function (acc, position) {
-        return acc['delete'](position);
-    }, board);
-}
-
-exports['default'] = {
-    emptyBoard: emptyBoard, addBlackMove: addBlackMove, addWhiteMove: addWhiteMove, removeMoves: removeMoves
-};
-
-},{"./analysis":3,"immutable":1,"lodash":2}],9:[function(require,module,exports){
+},{"./utils":9,"immutable":4,"immutable-schema":3}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -18018,4 +18141,4 @@ function isPositiveInteger(num) {
   return (0, _lodash.isNumber)(num) && num === parseInt(num) && num > 0;
 }
 
-},{"lodash":2}]},{},[5]);
+},{"lodash":5}]},{},[1]);
