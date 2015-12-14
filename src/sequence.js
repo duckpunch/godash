@@ -25,35 +25,34 @@ const isValidVariationMap = MapSchema(
  * This class is not intended to be instantiated by public consumers.
  */
 export class Node {
-    constructor(nodeData) {
-        this.board = new Board(nodeData.get('board'));
-        this.metadata = nodeData.get('metadata', Map());
+    constructor(board, variation) {
+        this._board = board;
+        this._variation = variation;
     }
 
     /**
-     * Represents the board state at this node
+     * Board state at this node
      *
      * @returns {Board}
      */
     get board() {
-        return this.board;
+        return this._board;
     }
 
-    get metadata() {
-        return this.metadata;
+    /**
+     * Variation for this Node
+     *
+     * @returns {Variation}
+     */
+    get variation() {
+        return this._variation;
     }
-
-    // id in tree
-    // move to get here
-    // current board
-    // next node(s)
-    // prev node
-    // has next
-    // has lots of next
-    // add move, returns tree
 }
 
 
+/**
+ * Tree of moves, represented by Nodes.
+ */
 export class Variation {
     constructor(variationData) {
         if (!isValidVariationMap(variationData)) {
@@ -61,6 +60,15 @@ export class Variation {
         }
 
         this.variationData = variationData;
+    }
+
+    /**
+     * Root node of this variation tree.
+     *
+     * @returns {Node}
+     */
+    get root() {
+        this._root;
     }
 
     getNodeByPath(path) {
