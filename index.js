@@ -1,6 +1,6 @@
-import {BLACK, WHITE} from './analysis';
-import {Board} from './board';
-import {Position} from './position';
+import {BLACK, WHITE} from './src/analysis';
+import {Board} from './src/board';
+import {Position} from './src/position';
 
 
 /**
