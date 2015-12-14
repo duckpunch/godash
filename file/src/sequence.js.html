@@ -34,7 +34,6 @@
     
   <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/sequence.js~Node.html">Node</a></span></li>
-<li data-ice="classDoc"><span><a href="class/src/sequence.js~Sequence.html">Sequence</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/sequence.js~Variation.html">Variation</a></span></li>
 </ul>
 </div>
@@ -73,6 +72,7 @@ import {matchesPositionType} from &apos;./position&apos;;
 
 
 // This schema isn&apos;t as thorough as it can be.
+// The keys must be sequential
 const isValidVariationMap = MapSchema(
     ListSchema(isNumber),
     MapSchema(
@@ -86,61 +86,62 @@ const isValidVariationMap = MapSchema(
 /**
  * Node represents a Board in a Variation.  That is, the board state along with any metadata
  * like annotations.
+ *
+ * This class is not intended to be instantiated by public consumers.
  */
 export class Node {
-    constructor(nodeData) {
-        this.board = new Board(nodeData.get(&apos;board&apos;));
-        this.metadata = nodeData.get(&apos;metadata&apos;, Map());
+    /**
+     * @private
+     */
+    constructor(board, variation) {
+        this._board = board;
+        this._variation = variation;
     }
 
-    getBoard() {
-        return this.board;
+    /**
+     * Board state at this node
+     *
+     * @returns {Board}
+     */
+    get board() {
+        return this._board;
     }
 
-    getMetadata() {
-        return this.metadata;
+    /**
+     * Variation for this Node
+     *
+     * @returns {Variation}
+     */
+    get variation() {
+        return this._variation;
     }
-
-    // id in tree
-    // move to get here
-    // current board
-    // next node(s)
-    // prev node
-    // has next
-    // has lots of next
-    // add move, returns tree
 }
 
 
+/**
+ * Tree of moves, represented by Nodes.
+ */
 export class Variation {
-    constructor(variationData) {
-        if (!isValidVariationMap(variationData)) {
-            throw &apos;Invalid variation map&apos;;
+    /**
+     * Create a Variation.
+     *
+     * @param {number} boardSize optional board size, defaults to 19
+     */
+    constructor(boardSize) {
+        if (!boardSize) {
+            boardSize = 19;
         }
-
-        this.variationData = variationData;
+        this._root = new Node(new Board(boardSize), this);
     }
 
-    getNodeByPath(path) {
-        if (this.variationData.has(path)) {
-            return new Node(this.variationData.get(path));
-        } else {
-            throw &apos;No node at the passed path&apos;;
-        }
+    /**
+     * Root node of this variation tree.
+     *
+     * @returns {Node}
+     */
+    get root() {
+        this._root;
     }
-
-    getSequence(...path) {
-        return new Sequence(this.variationData.get(path));
-    }
-
-    // addMove(position, color, path)
-    // getSequence(...path):List
-    // backed by a map, index by path
-    // e.g. [move_number, paths, to, take]
-}
-
-
-export class Sequence {
 }
 </code></pre>
 

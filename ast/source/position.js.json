@@ -355,10 +355,10 @@
           },
           {
             "type": "Identifier",
-            "name": "board_size",
+            "name": "boardSize",
             "range": [
               568,
-              578
+              577
             ],
             "loc": {
               "start": {
@@ -367,7 +367,7 @@
               },
               "end": {
                 "line": 17,
-                "column": 41
+                "column": 40
               }
             }
           }
@@ -384,8 +384,8 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      592,
-                      600
+                      591,
+                      599
                     ],
                     "loc": {
                       "start": {
@@ -407,8 +407,8 @@
                         "type": "Identifier",
                         "name": "List",
                         "range": [
-                          603,
-                          607
+                          602,
+                          606
                         ],
                         "loc": {
                           "start": {
@@ -425,8 +425,8 @@
                         "type": "Identifier",
                         "name": "of",
                         "range": [
-                          608,
-                          610
+                          607,
+                          609
                         ],
                         "loc": {
                           "start": {
@@ -440,8 +440,8 @@
                         }
                       },
                       "range": [
-                        603,
-                        610
+                        602,
+                        609
                       ],
                       "loc": {
                         "start": {
@@ -459,8 +459,8 @@
                         "type": "Identifier",
                         "name": "x",
                         "range": [
-                          611,
-                          612
+                          610,
+                          611
                         ],
                         "loc": {
                           "start": {
@@ -477,8 +477,8 @@
                         "type": "Identifier",
                         "name": "y",
                         "range": [
-                          614,
-                          615
+                          613,
+                          614
                         ],
                         "loc": {
                           "start": {
@@ -493,8 +493,8 @@
                       }
                     ],
                     "range": [
-                      603,
-                      616
+                      602,
+                      615
                     ],
                     "loc": {
                       "start": {
@@ -508,8 +508,8 @@
                     }
                   },
                   "range": [
-                    592,
-                    616
+                    591,
+                    615
                   ],
                   "loc": {
                     "start": {
@@ -525,8 +525,8 @@
               ],
               "kind": "const",
               "range": [
-                586,
-                617
+                585,
+                616
               ],
               "loc": {
                 "start": {
@@ -547,8 +547,8 @@
                   "type": "Identifier",
                   "name": "matchesPositionType",
                   "range": [
-                    627,
-                    646
+                    626,
+                    645
                   ],
                   "loc": {
                     "start": {
@@ -566,8 +566,8 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      647,
-                      655
+                      646,
+                      654
                     ],
                     "loc": {
                       "start": {
@@ -582,8 +582,8 @@
                   }
                 ],
                 "range": [
-                  627,
-                  656
+                  626,
+                  655
                 ],
                 "loc": {
                   "start": {
@@ -607,8 +607,8 @@
                         "type": "Identifier",
                         "name": "TypeError",
                         "range": [
-                          674,
-                          683
+                          673,
+                          682
                         ],
                         "loc": {
                           "start": {
@@ -627,8 +627,8 @@
                           "value": "Both passed arguments must be integers greater than or equal to 0",
                           "raw": "'Both passed arguments must be integers greater than or equal to 0'",
                           "range": [
-                            684,
-                            751
+                            683,
+                            750
                           ],
                           "loc": {
                             "start": {
@@ -643,8 +643,8 @@
                         }
                       ],
                       "range": [
-                        674,
-                        752
+                        673,
+                        751
                       ],
                       "loc": {
                         "start": {
@@ -658,8 +658,8 @@
                       }
                     },
                     "range": [
-                      668,
-                      753
+                      667,
+                      752
                     ],
                     "loc": {
                       "start": {
@@ -674,8 +674,8 @@
                   }
                 ],
                 "range": [
-                  658,
-                  759
+                  657,
+                  758
                 ],
                 "loc": {
                   "start": {
@@ -690,8 +690,8 @@
               },
               "alternate": null,
               "range": [
-                623,
-                759
+                622,
+                758
               ],
               "loc": {
                 "start": {
@@ -713,8 +713,8 @@
                   "type": "Identifier",
                   "name": "board_size",
                   "range": [
-                    769,
-                    779
+                    768,
+                    778
                   ],
                   "loc": {
                     "start": {
@@ -736,8 +736,8 @@
                       "type": "Identifier",
                       "name": "isValidPosition",
                       "range": [
-                        784,
-                        799
+                        783,
+                        798
                       ],
                       "loc": {
                         "start": {
@@ -755,8 +755,8 @@
                         "type": "Identifier",
                         "name": "position",
                         "range": [
-                          800,
-                          808
+                          799,
+                          807
                         ],
                         "loc": {
                           "start": {
@@ -771,10 +771,10 @@
                       },
                       {
                         "type": "Identifier",
-                        "name": "board_size",
+                        "name": "boardSize",
                         "range": [
-                          810,
-                          820
+                          809,
+                          818
                         ],
                         "loc": {
                           "start": {
@@ -783,14 +783,14 @@
                           },
                           "end": {
                             "line": 24,
-                            "column": 59
+                            "column": 58
                           }
                         }
                       }
                     ],
                     "range": [
-                      784,
-                      821
+                      783,
+                      819
                     ],
                     "loc": {
                       "start": {
@@ -799,14 +799,14 @@
                       },
                       "end": {
                         "line": 24,
-                        "column": 60
+                        "column": 59
                       }
                     }
                   },
                   "prefix": true,
                   "range": [
-                    783,
-                    821
+                    782,
+                    819
                   ],
                   "loc": {
                     "start": {
@@ -815,13 +815,13 @@
                     },
                     "end": {
                       "line": 24,
-                      "column": 60
+                      "column": 59
                     }
                   }
                 },
                 "range": [
-                  769,
-                  821
+                  768,
+                  819
                 ],
                 "loc": {
                   "start": {
@@ -830,7 +830,7 @@
                   },
                   "end": {
                     "line": 24,
-                    "column": 60
+                    "column": 59
                   }
                 }
               },
@@ -845,8 +845,8 @@
                         "type": "Identifier",
                         "name": "TypeError",
                         "range": [
-                          839,
-                          848
+                          837,
+                          846
                         ],
                         "loc": {
                           "start": {
@@ -865,8 +865,8 @@
                           "value": "Position doesn't fit a the passed board size",
                           "raw": "'Position doesn\\'t fit a the passed board size'",
                           "range": [
-                            849,
-                            896
+                            847,
+                            894
                           ],
                           "loc": {
                             "start": {
@@ -881,8 +881,8 @@
                         }
                       ],
                       "range": [
-                        839,
-                        897
+                        837,
+                        895
                       ],
                       "loc": {
                         "start": {
@@ -896,8 +896,8 @@
                       }
                     },
                     "range": [
-                      833,
-                      898
+                      831,
+                      896
                     ],
                     "loc": {
                       "start": {
@@ -912,13 +912,13 @@
                   }
                 ],
                 "range": [
-                  823,
-                  904
+                  821,
+                  902
                 ],
                 "loc": {
                   "start": {
                     "line": 24,
-                    "column": 62
+                    "column": 61
                   },
                   "end": {
                     "line": 26,
@@ -928,8 +928,8 @@
               },
               "alternate": null,
               "range": [
-                765,
-                904
+                764,
+                902
               ],
               "loc": {
                 "start": {
@@ -948,8 +948,8 @@
                 "type": "Identifier",
                 "name": "position",
                 "range": [
-                  917,
-                  925
+                  915,
+                  923
                 ],
                 "loc": {
                   "start": {
@@ -963,8 +963,8 @@
                 }
               },
               "range": [
-                910,
-                926
+                908,
+                924
               ],
               "loc": {
                 "start": {
@@ -979,13 +979,13 @@
             }
           ],
           "range": [
-            580,
-            928
+            579,
+            926
           ],
           "loc": {
             "start": {
               "line": 17,
-              "column": 43
+              "column": 42
             },
             "end": {
               "line": 29,
@@ -997,7 +997,7 @@
         "expression": false,
         "range": [
           544,
-          928
+          926
         ],
         "loc": {
           "start": {
@@ -1034,8 +1034,8 @@
             "type": "Block",
             "value": "*\n * @private\n ",
             "range": [
-              931,
-              950
+              929,
+              948
             ],
             "loc": {
               "start": {
@@ -1054,7 +1054,7 @@
       "source": null,
       "range": [
         537,
-        928
+        926
       ],
       "loc": {
         "start": {
@@ -1091,8 +1091,8 @@
           "type": "Block",
           "value": "*\n * @private\n ",
           "range": [
-            931,
-            950
+            929,
+            948
           ],
           "loc": {
             "start": {
@@ -1113,8 +1113,8 @@
         "type": "Identifier",
         "name": "isValidPosition",
         "range": [
-          960,
-          975
+          958,
+          973
         ],
         "loc": {
           "start": {
@@ -1132,8 +1132,8 @@
           "type": "Identifier",
           "name": "position",
           "range": [
-            976,
-            984
+            974,
+            982
           ],
           "loc": {
             "start": {
@@ -1148,10 +1148,10 @@
         },
         {
           "type": "Identifier",
-          "name": "board_size",
+          "name": "boardSize",
           "range": [
-            986,
-            996
+            984,
+            993
           ],
           "loc": {
             "start": {
@@ -1160,7 +1160,7 @@
             },
             "end": {
               "line": 35,
-              "column": 45
+              "column": 44
             }
           }
         }
@@ -1179,8 +1179,8 @@
                   "type": "Identifier",
                   "name": "matchesPositionType",
                   "range": [
-                    1011,
-                    1030
+                    1008,
+                    1027
                   ],
                   "loc": {
                     "start": {
@@ -1198,8 +1198,8 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      1031,
-                      1039
+                      1028,
+                      1036
                     ],
                     "loc": {
                       "start": {
@@ -1214,8 +1214,8 @@
                   }
                 ],
                 "range": [
-                  1011,
-                  1040
+                  1008,
+                  1037
                 ],
                 "loc": {
                   "start": {
@@ -1237,8 +1237,8 @@
                     "type": "Identifier",
                     "name": "position",
                     "range": [
-                      1044,
-                      1052
+                      1041,
+                      1049
                     ],
                     "loc": {
                       "start": {
@@ -1255,8 +1255,8 @@
                     "type": "Identifier",
                     "name": "every",
                     "range": [
-                      1053,
-                      1058
+                      1050,
+                      1055
                     ],
                     "loc": {
                       "start": {
@@ -1270,8 +1270,8 @@
                     }
                   },
                   "range": [
-                    1044,
-                    1058
+                    1041,
+                    1055
                   ],
                   "loc": {
                     "start": {
@@ -1293,8 +1293,8 @@
                         "type": "Identifier",
                         "name": "val",
                         "range": [
-                          1059,
-                          1062
+                          1056,
+                          1059
                         ],
                         "loc": {
                           "start": {
@@ -1315,8 +1315,8 @@
                         "type": "Identifier",
                         "name": "val",
                         "range": [
-                          1066,
-                          1069
+                          1063,
+                          1066
                         ],
                         "loc": {
                           "start": {
@@ -1331,10 +1331,10 @@
                       },
                       "right": {
                         "type": "Identifier",
-                        "name": "board_size",
+                        "name": "boardSize",
                         "range": [
-                          1072,
-                          1082
+                          1069,
+                          1078
                         ],
                         "loc": {
                           "start": {
@@ -1343,13 +1343,13 @@
                           },
                           "end": {
                             "line": 36,
-                            "column": 82
+                            "column": 81
                           }
                         }
                       },
                       "range": [
-                        1066,
-                        1082
+                        1063,
+                        1078
                       ],
                       "loc": {
                         "start": {
@@ -1358,15 +1358,15 @@
                         },
                         "end": {
                           "line": 36,
-                          "column": 82
+                          "column": 81
                         }
                       }
                     },
                     "generator": false,
                     "expression": true,
                     "range": [
-                      1059,
-                      1082
+                      1056,
+                      1078
                     ],
                     "loc": {
                       "start": {
@@ -1375,14 +1375,14 @@
                       },
                       "end": {
                         "line": 36,
-                        "column": 82
+                        "column": 81
                       }
                     }
                   }
                 ],
                 "range": [
-                  1044,
-                  1083
+                  1041,
+                  1079
                 ],
                 "loc": {
                   "start": {
@@ -1391,13 +1391,13 @@
                   },
                   "end": {
                     "line": 36,
-                    "column": 83
+                    "column": 82
                   }
                 }
               },
               "range": [
-                1011,
-                1083
+                1008,
+                1079
               ],
               "loc": {
                 "start": {
@@ -1406,13 +1406,13 @@
                 },
                 "end": {
                   "line": 36,
-                  "column": 83
+                  "column": 82
                 }
               }
             },
             "range": [
-              1004,
-              1084
+              1001,
+              1080
             ],
             "loc": {
               "start": {
@@ -1421,19 +1421,19 @@
               },
               "end": {
                 "line": 36,
-                "column": 84
+                "column": 83
               }
             }
           }
         ],
         "range": [
-          998,
-          1086
+          995,
+          1082
         ],
         "loc": {
           "start": {
             "line": 35,
-            "column": 47
+            "column": 46
           },
           "end": {
             "line": 37,
@@ -1444,8 +1444,8 @@
       "generator": false,
       "expression": false,
       "range": [
-        951,
-        1086
+        949,
+        1082
       ],
       "loc": {
         "start": {
@@ -1462,8 +1462,8 @@
           "type": "Block",
           "value": "*\n * @private\n ",
           "range": [
-            931,
-            950
+            929,
+            948
           ],
           "loc": {
             "start": {
@@ -1482,8 +1482,8 @@
           "type": "Block",
           "value": "*\n * @private\n ",
           "range": [
-            1089,
-            1108
+            1085,
+            1104
           ],
           "loc": {
             "start": {
@@ -1509,8 +1509,8 @@
               "type": "Identifier",
               "name": "matchesPositionType",
               "range": [
-                1122,
-                1141
+                1118,
+                1137
               ],
               "loc": {
                 "start": {
@@ -1529,8 +1529,8 @@
                 "type": "Identifier",
                 "name": "FixedListSchema",
                 "range": [
-                  1144,
-                  1159
+                  1140,
+                  1155
                 ],
                 "loc": {
                   "start": {
@@ -1548,8 +1548,8 @@
                   "type": "Identifier",
                   "name": "isPositiveInteger",
                   "range": [
-                    1160,
-                    1177
+                    1156,
+                    1173
                   ],
                   "loc": {
                     "start": {
@@ -1566,8 +1566,8 @@
                   "type": "Identifier",
                   "name": "isPositiveInteger",
                   "range": [
-                    1179,
-                    1196
+                    1175,
+                    1192
                   ],
                   "loc": {
                     "start": {
@@ -1582,8 +1582,8 @@
                 }
               ],
               "range": [
-                1144,
-                1197
+                1140,
+                1193
               ],
               "loc": {
                 "start": {
@@ -1597,8 +1597,8 @@
               }
             },
             "range": [
-              1122,
-              1197
+              1118,
+              1193
             ],
             "loc": {
               "start": {
@@ -1614,8 +1614,8 @@
         ],
         "kind": "const",
         "range": [
-          1116,
-          1198
+          1112,
+          1194
         ],
         "loc": {
           "start": {
@@ -1632,8 +1632,8 @@
             "type": "Block",
             "value": "*\n * @private\n ",
             "range": [
-              1089,
-              1108
+              1085,
+              1104
             ],
             "loc": {
               "start": {
@@ -1652,8 +1652,8 @@
       "specifiers": [],
       "source": null,
       "range": [
-        1109,
-        1198
+        1105,
+        1194
       ],
       "loc": {
         "start": {
@@ -1670,8 +1670,8 @@
           "type": "Block",
           "value": "*\n * @private\n ",
           "range": [
-            1089,
-            1108
+            1085,
+            1104
           ],
           "loc": {
             "start": {
@@ -1690,7 +1690,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1198
+    1194
   ],
   "loc": {
     "start": {
@@ -1725,8 +1725,8 @@
       "type": "Block",
       "value": "*\n * @private\n ",
       "range": [
-        931,
-        950
+        929,
+        948
       ],
       "loc": {
         "start": {
@@ -1743,8 +1743,8 @@
       "type": "Block",
       "value": "*\n * @private\n ",
       "range": [
-        1089,
-        1108
+        1085,
+        1104
       ],
       "loc": {
         "start": {

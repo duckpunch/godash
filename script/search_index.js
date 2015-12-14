@@ -24,12 +24,6 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "godash/src/sequence.js~sequence",
-    "class/src/sequence.js~Sequence.html",
-    "<span>Sequence</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
-    "class"
-  ],
-  [
     "godash/src/sequence.js~variation",
     "class/src/sequence.js~Variation.html",
     "<span>Variation</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
@@ -475,32 +469,14 @@ window.esdocSearchIndex = [
   ],
   [
     "src/sequence.js~node#board",
-    "class/src/sequence.js~Node.html#instance-member-board",
+    "class/src/sequence.js~Node.html#instance-get-board",
     "src/sequence.js~Node#board",
     "member"
   ],
   [
-    "src/sequence.js~node#constructor",
-    "class/src/sequence.js~Node.html#instance-constructor-constructor",
-    "src/sequence.js~Node#constructor",
-    "method"
-  ],
-  [
-    "src/sequence.js~node#getboard",
-    "class/src/sequence.js~Node.html#instance-method-getBoard",
-    "src/sequence.js~Node#getBoard",
-    "method"
-  ],
-  [
-    "src/sequence.js~node#getmetadata",
-    "class/src/sequence.js~Node.html#instance-method-getMetadata",
-    "src/sequence.js~Node#getMetadata",
-    "method"
-  ],
-  [
-    "src/sequence.js~node#metadata",
-    "class/src/sequence.js~Node.html#instance-member-metadata",
-    "src/sequence.js~Node#metadata",
+    "src/sequence.js~node#variation",
+    "class/src/sequence.js~Node.html#instance-get-variation",
+    "src/sequence.js~Node#variation",
     "member"
   ],
   [
@@ -510,21 +486,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/sequence.js~variation#getnodebypath",
-    "class/src/sequence.js~Variation.html#instance-method-getNodeByPath",
-    "src/sequence.js~Variation#getNodeByPath",
-    "method"
-  ],
-  [
-    "src/sequence.js~variation#getsequence",
-    "class/src/sequence.js~Variation.html#instance-method-getSequence",
-    "src/sequence.js~Variation#getSequence",
-    "method"
-  ],
-  [
-    "src/sequence.js~variation#variationdata",
-    "class/src/sequence.js~Variation.html#instance-member-variationData",
-    "src/sequence.js~Variation#variationData",
+    "src/sequence.js~variation#root",
+    "class/src/sequence.js~Variation.html#instance-get-root",
+    "src/sequence.js~Variation#root",
     "member"
   ],
   [

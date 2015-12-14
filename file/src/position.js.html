@@ -34,7 +34,6 @@
     
   <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/sequence.js~Node.html">Node</a></span></li>
-<li data-ice="classDoc"><span><a href="class/src/sequence.js~Sequence.html">Sequence</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/sequence.js~Variation.html">Variation</a></span></li>
 </ul>
 </div>
@@ -80,14 +79,14 @@ import {isPositiveInteger} from &apos;./utils&apos;;
  * @throws {TypeError} arguments are not integers greater than or equal to 0
  * @throws {TypeError} first two arguments don&apos;t validate against board size
  */
-export function Position(x, y, board_size) {
+export function Position(x, y, boardSize) {
     const position = List.of(x, y);
 
     if (matchesPositionType(position)) {
         throw TypeError(&apos;Both passed arguments must be integers greater than or equal to 0&apos;);
     }
 
-    if (board_size &amp;&amp; !isValidPosition(position, board_size)) {
+    if (board_size &amp;&amp; !isValidPosition(position, boardSize)) {
         throw TypeError(&apos;Position doesn\&apos;t fit a the passed board size&apos;);
     }
 
@@ -98,8 +97,8 @@ export function Position(x, y, board_size) {
 /**
  * @private
  */
-function isValidPosition(position, board_size) {
-    return matchesPositionType(position) &amp;&amp; position.every(val =&gt; val &lt; board_size);
+function isValidPosition(position, boardSize) {
+    return matchesPositionType(position) &amp;&amp; position.every(val =&gt; val &lt; boardSize);
 }
 
 
