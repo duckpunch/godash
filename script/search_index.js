@@ -474,36 +474,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/browser.js",
-    "file/src/browser.js.html",
-    "src/browser.js",
-    "file"
-  ],
-  [
-    "src/index.js",
-    "file/src/index.js.html",
-    "src/index.js",
-    "file"
-  ],
-  [
-    "src/index.js~list",
-    "external/index.html",
-    "src/index.js~List",
-    "external"
-  ],
-  [
-    "src/index.js~map",
-    "external/index.html",
-    "src/index.js~Map",
-    "external"
-  ],
-  [
-    "src/index.js~set",
-    "external/index.html",
-    "src/index.js~Set",
-    "external"
-  ],
-  [
     "src/position.js",
     "file/src/position.js.html",
     "src/position.js",
