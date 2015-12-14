@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "godash/src/position.js~position",
+    "function/index.html#static-function-Position",
+    "<span>Position</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
+    "function"
+  ],
+  [
     "godash/src/sequence.js~sequence",
     "class/src/sequence.js~Sequence.html",
     "<span>Sequence</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
@@ -34,24 +40,6 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-WHITE",
     "<span>WHITE</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
     "variable"
-  ],
-  [
-    "godash/src/position.js~isvalidposition",
-    "function/index.html#static-function-isValidPosition",
-    "<span>isValidPosition</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/position.js~position",
-    "function/index.html#static-function-position",
-    "<span>position</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
-    "function"
-  ],
-  [
-    "godash/src/position.js~positions",
-    "function/index.html#static-function-positions",
-    "<span>positions</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
-    "function"
   ],
   [
     "builtinexternal/ecmascriptexternal.js~array",
@@ -538,12 +526,6 @@ window.esdocSearchIndex = [
     "class/src/sequence.js~Variation.html#instance-member-variationData",
     "src/sequence.js~Variation#variationData",
     "member"
-  ],
-  [
-    "src/transforms.js",
-    "file/src/transforms.js.html",
-    "src/transforms.js",
-    "file"
   ],
   [
     "src/utils.js",

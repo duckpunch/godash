@@ -45,9 +45,7 @@
   <h2><a href="function/">Function</a></h2>
   <ul>
     
-  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-position">position</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-positions">positions</a></span></li>
+  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-Position">Position</a></span></li>
 </ul>
 </div>
 
@@ -66,8 +64,8 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/analysis.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {curry, compose, map, fill, zip, range, identity, flatten} from &apos;lodash&apos;;
-import {List, Set} from &apos;immutable&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {curry, compose, isNumber, map, fill, zip, range, identity, flatten} from &apos;lodash&apos;;
+import {Map, List, Set} from &apos;immutable&apos;;
 
 
 /**
@@ -272,9 +270,47 @@ export function prettyString(board) {
 }
 
 
-export default {
-    isLegalMove, oppositeColor, liberties, group
-};
+/**
+ * @private
+ */
+export function emptyBoard(size) {
+    if (!isNumber(size) || size &lt;= 0 || size !== parseInt(size)) {
+        throw &apos;An empty board must be created from a positive integer.&apos;;
+    }
+
+    return Map().set(SIZE_KEY, size);
+}
+
+/**
+ * @private
+ */
+export function addMove(board, position, color) {
+    if (!isLegalMove(board, position, color)) {
+        throw &apos;Not a valid position&apos;;
+    }
+
+    if (board.has(position)) {
+        throw &apos;There is already a stone there&apos;;
+    }
+
+    const killed = matchingAdjacentPositions(board, position, oppositeColor(color)).reduce(
+        (acc, pos) =&gt; acc.union(liberties(board, pos) === 1 ? group(board, pos) : Set()),
+        Set()
+    );
+
+    return removeMoves(board, killed).set(position, color);
+}
+
+
+/**
+ * @private
+ */
+export function removeMoves(board, positions) {
+    return positions.reduce(
+        (acc, position) =&gt; acc.delete(position),
+        board
+    );
+}
 </code></pre>
 
 </div>

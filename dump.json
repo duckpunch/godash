@@ -9,7 +9,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {curry, compose, map, fill, zip, range, identity, flatten} from 'lodash';\nimport {List, Set} from 'immutable';\n\n\n/**\n * Value on a board representing a black stone.\n */\nexport const BLACK = 'black';\n\n\n/**\n * Value on a board representing a white stone.\n */\nexport const WHITE = 'white';\n\n\n/**\n * @private\n */\nexport const EMPTY = null;\n\n\n/**\n * @private\n */\nexport const SIZE_KEY = 'size';\n\n\n/**\n * @private\n */\nexport function allPossibleMoves(size) {\n    return Set(flatten(map(\n        range(size),\n        i => map(\n            zip(range(size), fill(Array(size), i)),\n            List\n        )\n    )));\n}\n\n\n/**\n * Returns unoccupied positions on the board.\n *\n * @private\n * @param {Map} board\n * @returns {Set}\n */\nexport function emptyPositions(board) {\n    return allPossibleMoves(board.get(SIZE_KEY)).subtract(board.keys());\n}\n\n\n/**\n * Gets the spaces immediately touching the passed position.\n *\n * Considers the board size and acts correctly on sides and corners.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @returns {Set}\n */\nexport function adjacentPositions(board, position) {\n    const inc = i => i + 1;\n    const dec = i => i - 1;\n    const size = board.get(SIZE_KEY);\n    const [x, y] = [position.first(), position.last()];\n    const check = compose(\n        curry(Math.min, 2)(size - 1),\n        curry(Math.max, 2)(0)\n    );\n\n    return Set([\n        [identity, inc],\n        [identity, dec],\n        [inc, identity],\n        [dec, identity],\n    ].map(\n        ([first, last]) => List.of(check(first(x)), check(last(y)))\n    )).subtract(Set.of(position));\n}\n\n\n/**\n * Similar to {@link adjacentPositions}, but filters on a state.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @param {string} color\n * @returns {Set}\n */\nexport function matchingAdjacentPositions(board, position, color) {\n    if (color === undefined) {\n        color = board.get(position, EMPTY);\n    }\n\n    return adjacentPositions(board, position)\n        .filter(pos => board.get(pos, EMPTY) === color);\n}\n\n\n/**\n * Gets a set of positions of the logical group associated with the given position.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @returns {Set}\n */\nexport function group(board, position) {\n    let found = Set();\n    let queue = Set.of(position);\n\n    while (!queue.isEmpty()) {\n        const current = queue.first();\n        const more_matching = matchingAdjacentPositions(board, current);\n\n        found = found.add(current);\n        queue = queue.rest().union(more_matching.subtract(found));\n    }\n\n    return found;\n}\n\n\n/**\n * Counts liberties for the stone at the given position.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @returns {number}\n */\nexport function liberties(board, position) {\n    return group(board, position).reduce(\n        (acc, pos) => acc.union(matchingAdjacentPositions(board, pos, EMPTY)),\n        Set()\n    ).size;\n}\n\n\n/**\n * Returns {@link BLACK} if {@link WHITE}, {@link WHITE} if {@link BLACK}.\n *\n * @private\n * @param {string} color\n * @throws {string} when color is neither black nor white\n * @returns {string}\n */\nexport function oppositeColor(color) {\n    if (color !== BLACK && color !== WHITE) {\n        throw 'Must pass in a color';\n    }\n    return color === BLACK ? WHITE : BLACK;\n}\n\n\n/**\n * Checks if given position is a valid play for the given color.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @param {List} color\n * @returns {boolean}\n */\nexport function isLegalMove(board, position, color) {\n    const will_have_liberty = liberties(board.set(position, color), position) > 0;\n    const will_kill_something = matchingAdjacentPositions(board, position, oppositeColor(color))\n        .some(pos => liberties(board, pos) === 1);\n\n    return will_have_liberty || will_kill_something;\n}\n\n\n/**\n * @private\n */\nexport function prettyString(board) {\n    const size = board.get(SIZE_KEY);\n    let pretty_string = '';\n\n    for (var i = 0; i < size; i++) {\n        for (var j = 0; j < size; j++) {\n            let color = board.get(List.of(i, j), EMPTY);\n            switch(color) {\n                case BLACK:\n                    pretty_string += 'O';\n                    break;\n                case WHITE:\n                    pretty_string += 'X';\n                    break;\n                case EMPTY:\n                    pretty_string += '+';\n                    break;\n            }\n        }\n        pretty_string += '\\n';\n    }\n    return pretty_string;\n}\n\n\nexport default {\n    isLegalMove, oppositeColor, liberties, group\n};\n"
+    "content": "import {curry, compose, isNumber, map, fill, zip, range, identity, flatten} from 'lodash';\nimport {Map, List, Set} from 'immutable';\n\n\n/**\n * Value on a board representing a black stone.\n */\nexport const BLACK = 'black';\n\n\n/**\n * Value on a board representing a white stone.\n */\nexport const WHITE = 'white';\n\n\n/**\n * @private\n */\nexport const EMPTY = null;\n\n\n/**\n * @private\n */\nexport const SIZE_KEY = 'size';\n\n\n/**\n * @private\n */\nexport function allPossibleMoves(size) {\n    return Set(flatten(map(\n        range(size),\n        i => map(\n            zip(range(size), fill(Array(size), i)),\n            List\n        )\n    )));\n}\n\n\n/**\n * Returns unoccupied positions on the board.\n *\n * @private\n * @param {Map} board\n * @returns {Set}\n */\nexport function emptyPositions(board) {\n    return allPossibleMoves(board.get(SIZE_KEY)).subtract(board.keys());\n}\n\n\n/**\n * Gets the spaces immediately touching the passed position.\n *\n * Considers the board size and acts correctly on sides and corners.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @returns {Set}\n */\nexport function adjacentPositions(board, position) {\n    const inc = i => i + 1;\n    const dec = i => i - 1;\n    const size = board.get(SIZE_KEY);\n    const [x, y] = [position.first(), position.last()];\n    const check = compose(\n        curry(Math.min, 2)(size - 1),\n        curry(Math.max, 2)(0)\n    );\n\n    return Set([\n        [identity, inc],\n        [identity, dec],\n        [inc, identity],\n        [dec, identity],\n    ].map(\n        ([first, last]) => List.of(check(first(x)), check(last(y)))\n    )).subtract(Set.of(position));\n}\n\n\n/**\n * Similar to {@link adjacentPositions}, but filters on a state.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @param {string} color\n * @returns {Set}\n */\nexport function matchingAdjacentPositions(board, position, color) {\n    if (color === undefined) {\n        color = board.get(position, EMPTY);\n    }\n\n    return adjacentPositions(board, position)\n        .filter(pos => board.get(pos, EMPTY) === color);\n}\n\n\n/**\n * Gets a set of positions of the logical group associated with the given position.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @returns {Set}\n */\nexport function group(board, position) {\n    let found = Set();\n    let queue = Set.of(position);\n\n    while (!queue.isEmpty()) {\n        const current = queue.first();\n        const more_matching = matchingAdjacentPositions(board, current);\n\n        found = found.add(current);\n        queue = queue.rest().union(more_matching.subtract(found));\n    }\n\n    return found;\n}\n\n\n/**\n * Counts liberties for the stone at the given position.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @returns {number}\n */\nexport function liberties(board, position) {\n    return group(board, position).reduce(\n        (acc, pos) => acc.union(matchingAdjacentPositions(board, pos, EMPTY)),\n        Set()\n    ).size;\n}\n\n\n/**\n * Returns {@link BLACK} if {@link WHITE}, {@link WHITE} if {@link BLACK}.\n *\n * @private\n * @param {string} color\n * @throws {string} when color is neither black nor white\n * @returns {string}\n */\nexport function oppositeColor(color) {\n    if (color !== BLACK && color !== WHITE) {\n        throw 'Must pass in a color';\n    }\n    return color === BLACK ? WHITE : BLACK;\n}\n\n\n/**\n * Checks if given position is a valid play for the given color.\n *\n * @private\n * @param {Map} board\n * @param {List} position\n * @param {List} color\n * @returns {boolean}\n */\nexport function isLegalMove(board, position, color) {\n    const will_have_liberty = liberties(board.set(position, color), position) > 0;\n    const will_kill_something = matchingAdjacentPositions(board, position, oppositeColor(color))\n        .some(pos => liberties(board, pos) === 1);\n\n    return will_have_liberty || will_kill_something;\n}\n\n\n/**\n * @private\n */\nexport function prettyString(board) {\n    const size = board.get(SIZE_KEY);\n    let pretty_string = '';\n\n    for (var i = 0; i < size; i++) {\n        for (var j = 0; j < size; j++) {\n            let color = board.get(List.of(i, j), EMPTY);\n            switch(color) {\n                case BLACK:\n                    pretty_string += 'O';\n                    break;\n                case WHITE:\n                    pretty_string += 'X';\n                    break;\n                case EMPTY:\n                    pretty_string += '+';\n                    break;\n            }\n        }\n        pretty_string += '\\n';\n    }\n    return pretty_string;\n}\n\n\n/**\n * @private\n */\nexport function emptyBoard(size) {\n    if (!isNumber(size) || size <= 0 || size !== parseInt(size)) {\n        throw 'An empty board must be created from a positive integer.';\n    }\n\n    return Map().set(SIZE_KEY, size);\n}\n\n/**\n * @private\n */\nexport function addMove(board, position, color) {\n    if (!isLegalMove(board, position, color)) {\n        throw 'Not a valid position';\n    }\n\n    if (board.has(position)) {\n        throw 'There is already a stone there';\n    }\n\n    const killed = matchingAdjacentPositions(board, position, oppositeColor(color)).reduce(\n        (acc, pos) => acc.union(liberties(board, pos) === 1 ? group(board, pos) : Set()),\n        Set()\n    );\n\n    return removeMoves(board, killed).set(position, color);\n}\n\n\n/**\n * @private\n */\nexport function removeMoves(board, positions) {\n    return positions.reduce(\n        (acc, position) => acc.delete(position),\n        board\n    );\n}\n"
   },
   {
     "kind": "variable",
@@ -509,6 +509,108 @@
     "generator": false
   },
   {
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "emptyBoard",
+    "memberof": "src/analysis.js",
+    "longname": "src/analysis.js~emptyBoard",
+    "access": "private",
+    "export": true,
+    "importPath": "godash/src/analysis.js",
+    "importStyle": "{emptyBoard}",
+    "description": null,
+    "lineNumber": 210,
+    "params": [
+      {
+        "name": "size",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "addMove",
+    "memberof": "src/analysis.js",
+    "longname": "src/analysis.js~addMove",
+    "access": "private",
+    "export": true,
+    "importPath": "godash/src/analysis.js",
+    "importStyle": "{addMove}",
+    "description": null,
+    "lineNumber": 221,
+    "params": [
+      {
+        "name": "board",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "position",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "color",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "removeMoves",
+    "memberof": "src/analysis.js",
+    "longname": "src/analysis.js~removeMoves",
+    "access": "private",
+    "export": true,
+    "importPath": "godash/src/analysis.js",
+    "importStyle": "{removeMoves}",
+    "description": null,
+    "lineNumber": 242,
+    "params": [
+      {
+        "name": "board",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "positions",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
     "kind": "file",
     "static": true,
     "variation": null,
@@ -518,7 +620,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {Map, List} from 'immutable';\nimport {MapSchema, FixedListSchema, OneOf, Exactly} from 'immutable-schema';\n\nimport {isPositiveInteger} from './utils';\nimport {\n    SIZE_KEY, allPossibleMoves, group, liberties, isLegalMove,\n    BLACK, WHITE, EMPTY, prettyString,\n} from './analysis';\nimport {\n    emptyBoard, addBlackMove, addWhiteMove, addMove, removeMoves,\n} from './transforms';\n\n\n/**\n * @private\n */\nexport const isValidBoardMap = MapSchema(\n    FixedListSchema(isNumber, isNumber), OneOf(BLACK, WHITE),\n    Exactly(SIZE_KEY), isPositiveInteger\n);\n\n\n/**\n * Represents a board state.\n * @example\n * var Immutable = require('immutable');\n *\n * var board1 = Board(19);\n * var board2_data = Immutable.Map().set('size', 19);\n * var board2 = Board(board2_data);\n *\n * assert(board1.equals(board2));\n */\nexport class Board {\n    /**\n     * @param {Map} board_data argument specifying either the backing Map or the size\n     * @throws {TypeError} when board_data is neither a proper board Map or a positive integer\n     */\n    constructor(board_data) {\n        if (isValidBoardMap(board_data)) {\n            this._positions = board_data;\n        } else if (isPositiveInteger(board_data)) {\n            this._positions = emptyBoard(board_data);\n        } else {\n            throw TypeError('Instantiate a Board with a Map or a positive integer');\n        }\n    }\n\n    /**\n     * Immutable data structure holding the positions in a {@link Map}.\n     *\n     * @returns {Map}\n     */\n    get positions() {\n        return this._positions;\n    }\n\n    /**\n     * Positive integer representing the size of the board.\n     *\n     * @returns {number}\n     */\n    get board_size() {\n        return this.positions.get(SIZE_KEY);\n    }\n\n    /**\n     * Adds a black move at the specified position.  Follows the rules of go\n     * which means dead stones will be removed.\n     *\n     * @param {List} position\n     * @throws {string} when the move is not valid\n     * @returns {Board}\n     * @see {@link addMove}\n     */\n    addBlackMove(position) {\n        return new Board(addBlackMove(this.positions, position));\n    }\n\n    /**\n     * Adds a white move at the specified position.  Follows the rules of go\n     * which means dead stones will be removed.\n     *\n     * @param {List} position\n     * @throws {string} when the move is not valid\n     * @returns {Board}\n     * @see {@link addMove}\n     */\n    addWhiteMove(position) {\n        return new Board(addWhiteMove(this.positions, position));\n    }\n\n    /**\n     * Adds a move at the specified position.  Follows the rules of go\n     * which means dead stones will be removed.\n     *\n     * @param {List} position\n     * @param {string} color\n     * @throws {string} when the move is not valid\n     * @returns {Board}\n     * @example\n     * var board = Board(3);\n     * var new_board = board.addBlackMove(position(1, 0));\n     *\n     * console.log(board.toPrettyString());\n     * // +++\n     * // +++\n     * // +++\n     * console.log(new_board.toPrettyString());\n     * // +++\n     * // O++\n     * // +++\n     *\n     * @example\n     * var board = Board(3)\n     *     .addBlackMove(position(0, 1))\n     *     .addBlackMove(position(2, 1))\n     *     .addBlackMove(position(1, 2))\n     *     .addWhiteMove(position(1, 1));\n     * var new_board.addBlackMove(position(1, 0));\n     *\n     * console.log(board.toPrettyString());\n     * // +O+\n     * // +XO\n     * // +O+\n     * console.log(new_board.toPrettyString());\n     * // +O+\n     * // O+O\n     * // +O+\n     */\n    addMove(position, color) {\n        return new Board(addMove(this.positions, position, color));\n    }\n\n    /**\n     * Removes positions.  Positions that are not on the board are ignored.\n     *\n     * @param {Set} positions\n     * @returns {Board}\n     */\n    removeMoves(positions) {\n        return new Board(removeMoves(this.positions, positions));\n    }\n\n    /**\n     * A set of all possible moves on the board, even the occupied ones.\n     *\n     * @returns {Set} contains Lists (2-tuples)\n     */\n    allPossibleMoves() {\n        return allPossibleMoves(this.board_size);\n    }\n\n    /**\n     * Gets a set of positions of the logical group associated with the given position.\n     *\n     * @param {List} position\n     * @returns {Set}\n     */\n    group(position) {\n        return group(this.positions, position);\n    }\n\n    /**\n     * Check if a move is legal for black\n     *\n     * @param {List} position\n     * @returns {boolean}\n     */\n    isLegalBlackMove(position) {\n        return isLegalMove(this.positions, position, BLACK);\n    }\n\n    /**\n     * Check if a move is legal for white\n     *\n     * @param {List} position\n     * @returns {boolean}\n     */\n    isLegalWhiteMove(position) {\n        return isLegalMove(this.positions, position, WHITE);\n    }\n\n    /**\n     * Counts liberties for the stone at the given position.\n     *\n     * @param {List} position\n     * @returns {number}\n     */\n    liberties(position) {\n        return liberties(this.positions, position);\n    }\n\n    /**\n     * Compare with another board.\n     *\n     * @param {*} other_board Board or Board.positions\n     * @returns {boolean}\n     */\n    equals(other_board) {\n        if (!other_board) {\n            throw TypeError('Pass in another board to compare');\n        }\n\n        return this.positions.equals(other_board.positions || other_board);\n    }\n\n    /**\n     * @returns {string} ASCII board\n     */\n    toPrettyString() {\n        return prettyString(this.positions);\n    }\n}\n"
+    "content": "import {Map, List} from 'immutable';\nimport {MapSchema, FixedListSchema, OneOf, Exactly} from 'immutable-schema';\n\nimport {isPositiveInteger} from './utils';\nimport {\n    SIZE_KEY, allPossibleMoves, group, liberties, isLegalMove,\n    BLACK, WHITE, EMPTY, prettyString, emptyBoard, removeMoves, addMove\n} from './analysis';\n\n\n/**\n * @private\n */\nexport const isValidBoardMap = MapSchema(\n    FixedListSchema(isNumber, isNumber), OneOf(BLACK, WHITE),\n    Exactly(SIZE_KEY), isPositiveInteger\n);\n\n\n/**\n * Represents a board state.\n * @example\n * var Immutable = require('immutable');\n *\n * var board1 = Board(19);\n * var board2_data = Immutable.Map().set('size', 19);\n * var board2 = Board(board2_data);\n *\n * assert(board1.equals(board2));\n */\nexport class Board {\n    /**\n     * @param {Map} board_data argument specifying either the backing Map or the size\n     * @throws {TypeError} when board_data is neither a proper board Map or a positive integer\n     */\n    constructor(board_data) {\n        if (isValidBoardMap(board_data)) {\n            this._positions = board_data;\n        } else if (isPositiveInteger(board_data)) {\n            this._positions = emptyBoard(board_data);\n        } else {\n            throw TypeError('Instantiate a Board with a Map or a positive integer');\n        }\n    }\n\n    /**\n     * Immutable data structure holding the positions in a {@link Map}.\n     *\n     * @returns {Map}\n     */\n    get positions() {\n        return this._positions;\n    }\n\n    /**\n     * Positive integer representing the size of the board.\n     *\n     * @returns {number}\n     */\n    get board_size() {\n        return this.positions.get(SIZE_KEY);\n    }\n\n    /**\n     * Adds a black move at the specified position.  Follows the rules of go\n     * which means dead stones will be removed.\n     *\n     * @param {List} position\n     * @throws {string} when the move is not valid\n     * @returns {Board}\n     * @see {@link addMove}\n     */\n    addBlackMove(position) {\n        return this.addMove(position, BLACK);\n    }\n\n    /**\n     * Adds a white move at the specified position.  Follows the rules of go\n     * which means dead stones will be removed.\n     *\n     * @param {List} position\n     * @throws {string} when the move is not valid\n     * @returns {Board}\n     * @see {@link addMove}\n     */\n    addWhiteMove(position) {\n        return this.addMove(position, WHITE);\n    }\n\n    /**\n     * Adds a move at the specified position.  Follows the rules of go\n     * which means dead stones will be removed.\n     *\n     * @param {List} position\n     * @param {string} color\n     * @throws {string} when the move is not valid\n     * @returns {Board}\n     * @example\n     * var board = Board(3);\n     * var new_board = board.addBlackMove(position(1, 0));\n     *\n     * console.log(board.toPrettyString());\n     * // +++\n     * // +++\n     * // +++\n     * console.log(new_board.toPrettyString());\n     * // +++\n     * // O++\n     * // +++\n     *\n     * @example\n     * var board = Board(3)\n     *     .addBlackMove(position(0, 1))\n     *     .addBlackMove(position(2, 1))\n     *     .addBlackMove(position(1, 2))\n     *     .addWhiteMove(position(1, 1));\n     * var new_board.addBlackMove(position(1, 0));\n     *\n     * console.log(board.toPrettyString());\n     * // +O+\n     * // +XO\n     * // +O+\n     * console.log(new_board.toPrettyString());\n     * // +O+\n     * // O+O\n     * // +O+\n     */\n    addMove(position, color) {\n        return new Board(addMove(this.positions, position, color));\n    }\n\n    /**\n     * Removes positions.  Positions that are not on the board are ignored.\n     *\n     * @param {Set} positions\n     * @returns {Board}\n     */\n    removeMoves(positions) {\n        return new Board(removeMoves(this.positions, positions));\n    }\n\n    /**\n     * A set of all possible moves on the board, even the occupied ones.\n     *\n     * @returns {Set} contains Lists (2-tuples)\n     */\n    allPossibleMoves() {\n        return allPossibleMoves(this.board_size);\n    }\n\n    /**\n     * Gets a set of positions of the logical group associated with the given position.\n     *\n     * @param {List} position\n     * @returns {Set}\n     */\n    group(position) {\n        return group(this.positions, position);\n    }\n\n    /**\n     * Check if a move is legal for black\n     *\n     * @param {List} position\n     * @returns {boolean}\n     */\n    isLegalBlackMove(position) {\n        return isLegalMove(this.positions, position, BLACK);\n    }\n\n    /**\n     * Check if a move is legal for white\n     *\n     * @param {List} position\n     * @returns {boolean}\n     */\n    isLegalWhiteMove(position) {\n        return isLegalMove(this.positions, position, WHITE);\n    }\n\n    /**\n     * Counts liberties for the stone at the given position.\n     *\n     * @param {List} position\n     * @returns {number}\n     */\n    liberties(position) {\n        return liberties(this.positions, position);\n    }\n\n    /**\n     * Compare with another board.\n     *\n     * @param {*} other_board Board or Board.positions\n     * @returns {boolean}\n     */\n    equals(other_board) {\n        if (!other_board) {\n            throw TypeError('Pass in another board to compare');\n        }\n\n        return this.positions.equals(other_board.positions || other_board);\n    }\n\n    /**\n     * @returns {string} ASCII board\n     */\n    toPrettyString() {\n        return prettyString(this.positions);\n    }\n}\n"
   },
   {
     "kind": "variable",
@@ -532,7 +634,7 @@
     "importPath": "godash/src/board.js",
     "importStyle": "{isValidBoardMap}",
     "description": null,
-    "lineNumber": 17,
+    "lineNumber": 14,
     "type": {
       "types": [
         "*"
@@ -554,7 +656,7 @@
     "examples": [
       "var Immutable = require('immutable');\n\nvar board1 = Board(19);\nvar board2_data = Immutable.Map().set('size', 19);\nvar board2 = Board(board2_data);\n\nassert(board1.equals(board2));"
     ],
-    "lineNumber": 34,
+    "lineNumber": 31,
     "interface": false
   },
   {
@@ -566,7 +668,7 @@
     "longname": "src/board.js~Board#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 39,
+    "lineNumber": 36,
     "params": [
       {
         "nullable": null,
@@ -598,7 +700,7 @@
     "longname": "src/board.js~Board#_positions",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 38,
     "undocument": true,
     "type": {
       "types": [
@@ -615,7 +717,7 @@
     "longname": "src/board.js~Board#_positions",
     "access": null,
     "description": null,
-    "lineNumber": 43,
+    "lineNumber": 40,
     "undocument": true,
     "type": {
       "types": [
@@ -632,7 +734,7 @@
     "longname": "src/board.js~Board#positions",
     "access": null,
     "description": "Immutable data structure holding the positions in a {@link Map}.",
-    "lineNumber": 54,
+    "lineNumber": 51,
     "unknown": [
       {
         "tagName": "@returns",
@@ -663,7 +765,7 @@
     "longname": "src/board.js~Board#board_size",
     "access": null,
     "description": "Positive integer representing the size of the board.",
-    "lineNumber": 63,
+    "lineNumber": 60,
     "unknown": [
       {
         "tagName": "@returns",
@@ -697,7 +799,7 @@
     "see": [
       "{@link addMove}"
     ],
-    "lineNumber": 76,
+    "lineNumber": 73,
     "unknown": [
       {
         "tagName": "@returns",
@@ -746,7 +848,7 @@
     "see": [
       "{@link addMove}"
     ],
-    "lineNumber": 89,
+    "lineNumber": 86,
     "unknown": [
       {
         "tagName": "@returns",
@@ -796,7 +898,7 @@
       "var board = Board(3);\nvar new_board = board.addBlackMove(position(1, 0));\n\nconsole.log(board.toPrettyString());\n// +++\n// +++\n// +++\nconsole.log(new_board.toPrettyString());\n// +++\n// O++\n// +++",
       "var board = Board(3)\n    .addBlackMove(position(0, 1))\n    .addBlackMove(position(2, 1))\n    .addBlackMove(position(1, 2))\n    .addWhiteMove(position(1, 1));\nvar new_board.addBlackMove(position(1, 0));\n\nconsole.log(board.toPrettyString());\n// +O+\n// +XO\n// +O+\nconsole.log(new_board.toPrettyString());\n// +O+\n// O+O\n// +O+"
     ],
-    "lineNumber": 131,
+    "lineNumber": 128,
     "unknown": [
       {
         "tagName": "@returns",
@@ -852,7 +954,7 @@
     "longname": "src/board.js~Board#removeMoves",
     "access": null,
     "description": "Removes positions.  Positions that are not on the board are ignored.",
-    "lineNumber": 141,
+    "lineNumber": 138,
     "unknown": [
       {
         "tagName": "@returns",
@@ -890,7 +992,7 @@
     "longname": "src/board.js~Board#allPossibleMoves",
     "access": null,
     "description": "A set of all possible moves on the board, even the occupied ones.",
-    "lineNumber": 150,
+    "lineNumber": 147,
     "unknown": [
       {
         "tagName": "@returns",
@@ -917,7 +1019,7 @@
     "longname": "src/board.js~Board#group",
     "access": null,
     "description": "Gets a set of positions of the logical group associated with the given position.",
-    "lineNumber": 160,
+    "lineNumber": 157,
     "unknown": [
       {
         "tagName": "@returns",
@@ -955,7 +1057,7 @@
     "longname": "src/board.js~Board#isLegalBlackMove",
     "access": null,
     "description": "Check if a move is legal for black",
-    "lineNumber": 170,
+    "lineNumber": 167,
     "unknown": [
       {
         "tagName": "@returns",
@@ -993,7 +1095,7 @@
     "longname": "src/board.js~Board#isLegalWhiteMove",
     "access": null,
     "description": "Check if a move is legal for white",
-    "lineNumber": 180,
+    "lineNumber": 177,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1031,7 +1133,7 @@
     "longname": "src/board.js~Board#liberties",
     "access": null,
     "description": "Counts liberties for the stone at the given position.",
-    "lineNumber": 190,
+    "lineNumber": 187,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1069,7 +1171,7 @@
     "longname": "src/board.js~Board#equals",
     "access": null,
     "description": "Compare with another board.",
-    "lineNumber": 200,
+    "lineNumber": 197,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1107,7 +1209,7 @@
     "longname": "src/board.js~Board#toPrettyString",
     "access": null,
     "description": null,
-    "lineNumber": 211,
+    "lineNumber": 208,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1135,21 +1237,21 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {Set, List} from 'immutable';\nimport {FixedListSchema} from 'immutable-schema';\n\nimport {isPositiveInteger} from './utils';\n\n\n/**\n * Returns a coordinate type compatible with the rest of godash.\n *\n * @param {number} x\n * @param {number} y\n * @returns {List} representing a possible coordinate on the board\n * @throws {TypeError} arguments are not integers greater than or equal to 0\n */\nexport function position(x, y) {\n    const valid_x = x === 0 || isPositiveInteger(x);\n    const valid_y = y === 0 || isPositiveInteger(y);\n\n    if (!valid_x || !valid_y) {\n        throw TypeError('Both passed arguments must be integers greater than or equal to 0');\n    }\n\n    return List.of(x, y);\n}\n\n\n/**\n * Validates a position with a board size.\n *\n * @returns {boolean}\n */\nexport function isValidPosition(position, board_size) {\n    return matchesPositionType(position) && position.every(val => val < board_size);\n}\n\n\n/**\n * @private\n */\nexport const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);\n\n\n/**\n * Returns a {@link Set} of positions compatible with areas of godash that need a collection\n * of positions.\n *\n * @param {*} raw_positions anything that is compatible with the constructor arguments for Set\n * @returns {Set}\n */\nexport function positions(raw_positions) {\n    const position_set = Set(raw_positions);\n\n    if (!position_set.every(matchesPositionType)) {\n        throw TypeError('Must pass an iterable of positions,' +\n            ' Immutable.List types of length 2, containing non-negative integers');\n    }\n\n    return position_set;\n}\n"
+    "content": "import {List} from 'immutable';\nimport {FixedListSchema} from 'immutable-schema';\n\nimport {isPositiveInteger} from './utils';\n\n\n/**\n * Returns a coordinate type compatible with the rest of godash.\n *\n * @param {number} x\n * @param {number} y\n * @param {number} board_size optional board size to validate against\n * @returns {List} representing a possible coordinate on the board\n * @throws {TypeError} arguments are not integers greater than or equal to 0\n * @throws {TypeError} first two arguments don't validate against board size\n */\nexport function Position(x, y, board_size) {\n    const position = List.of(x, y);\n\n    if (matchesPositionType(position)) {\n        throw TypeError('Both passed arguments must be integers greater than or equal to 0');\n    }\n\n    if (board_size && !isValidPosition(position, board_size)) {\n        throw TypeError('Position doesn\\'t fit a the passed board size');\n    }\n\n    return position;\n}\n\n\n/**\n * @private\n */\nfunction isValidPosition(position, board_size) {\n    return matchesPositionType(position) && position.every(val => val < board_size);\n}\n\n\n/**\n * @private\n */\nexport const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);\n"
   },
   {
     "kind": "function",
     "static": true,
     "variation": null,
-    "name": "position",
+    "name": "Position",
     "memberof": "src/position.js",
-    "longname": "src/position.js~position",
+    "longname": "src/position.js~Position",
     "access": null,
     "export": true,
     "importPath": "godash/src/position.js",
-    "importStyle": "{position}",
+    "importStyle": "{Position}",
     "description": "Returns a coordinate type compatible with the rest of godash.",
-    "lineNumber": 15,
+    "lineNumber": 17,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1176,6 +1278,16 @@
         "optional": false,
         "name": "y",
         "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "board_size",
+        "description": "optional board size to validate against"
       }
     ],
     "return": {
@@ -1192,6 +1304,12 @@
           "TypeError"
         ],
         "description": "arguments are not integers greater than or equal to 0"
+      },
+      {
+        "types": [
+          "TypeError"
+        ],
+        "description": "first two arguments don't validate against board size"
       }
     ],
     "generator": false
@@ -1203,18 +1321,12 @@
     "name": "isValidPosition",
     "memberof": "src/position.js",
     "longname": "src/position.js~isValidPosition",
-    "access": null,
-    "export": true,
+    "access": "private",
+    "export": false,
     "importPath": "godash/src/position.js",
-    "importStyle": "{isValidPosition}",
-    "description": "Validates a position with a board size.",
-    "lineNumber": 32,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{boolean}"
-      }
-    ],
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 35,
     "params": [
       {
         "name": "position",
@@ -1230,12 +1342,9 @@
       }
     ],
     "return": {
-      "nullable": null,
       "types": [
-        "boolean"
-      ],
-      "spread": false,
-      "description": ""
+        "*"
+      ]
     },
     "generator": false
   },
@@ -1251,53 +1360,12 @@
     "importPath": "godash/src/position.js",
     "importStyle": "{matchesPositionType}",
     "description": null,
-    "lineNumber": 40,
+    "lineNumber": 43,
     "type": {
       "types": [
         "*"
       ]
     }
-  },
-  {
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "positions",
-    "memberof": "src/position.js",
-    "longname": "src/position.js~positions",
-    "access": null,
-    "export": true,
-    "importPath": "godash/src/position.js",
-    "importStyle": "{positions}",
-    "description": "Returns a {@link Set} of positions compatible with areas of godash that need a collection\nof positions.",
-    "lineNumber": 50,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{Set}"
-      }
-    ],
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "*"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "raw_positions",
-        "description": "anything that is compatible with the constructor arguments for Set"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Set"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "generator": false
   },
   {
     "kind": "file",
@@ -1309,7 +1377,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {isNumber} from 'lodash';\nimport {Map} from 'immutable';\nimport {MapSchema, ListSchema, Exactly} from 'immutable-schema';\n\nimport {isValidBoardMap, Board} from './board';\nimport {matchesPositionType} from './position';\n\n\n// This schema isn't as thorough as it can be.\nconst isValidVariationMap = MapSchema(\n    ListSchema(isNumber),\n    MapSchema(\n        Exactly('board'), isValidBoardMap,\n        Exactly('last_move'), matchesPositionType,\n        Exactly('metadata'), Map.isMap\n    )\n);\n\n\nexport class Node {\n    constructor(nodeData) {\n        this.board = new Board(nodeData.get('board'));\n        this.metadata = nodeData.get('metadata', Map());\n    }\n\n    getBoard() {\n        return this.board;\n    }\n\n    getMetadata() {\n        return this.metadata;\n    }\n\n    // id in tree\n    // move to get here\n    // current board\n    // next node(s)\n    // prev node\n    // has next\n    // has lots of next\n    // add move, returns tree\n}\n\n\nexport class Variation {\n    constructor(variationData) {\n        if (!isValidVariationMap(variationData)) {\n            throw 'Invalid variation map';\n        }\n\n        this.variationData = variationData;\n    }\n\n    getNodeByPath(path) {\n        if (this.variationData.has(path)) {\n            return new Node(this.variationData.get(path));\n        } else {\n            throw 'No node at the passed path';\n        }\n    }\n\n    getSequence(...path) {\n        return new Sequence(this.variationData.get(path));\n    }\n\n    // addMove(position, color, path)\n    // getSequence(...path):List\n    // backed by a map, index by path\n    // e.g. [move_number, paths, to, take]\n}\n\n\nexport class Sequence {\n}\n"
+    "content": "import {isNumber} from 'lodash';\nimport {Map} from 'immutable';\nimport {MapSchema, ListSchema, Exactly} from 'immutable-schema';\n\nimport {isValidBoardMap, Board} from './board';\nimport {matchesPositionType} from './position';\n\n\n// This schema isn't as thorough as it can be.\nconst isValidVariationMap = MapSchema(\n    ListSchema(isNumber),\n    MapSchema(\n        Exactly('board'), isValidBoardMap,\n        Exactly('last_move'), matchesPositionType,\n        Exactly('metadata'), Map.isMap\n    )\n);\n\n\n/**\n * Node represents a Board in a Variation.  That is, the board state along with any metadata\n * like annotations.\n */\nexport class Node {\n    constructor(nodeData) {\n        this.board = new Board(nodeData.get('board'));\n        this.metadata = nodeData.get('metadata', Map());\n    }\n\n    getBoard() {\n        return this.board;\n    }\n\n    getMetadata() {\n        return this.metadata;\n    }\n\n    // id in tree\n    // move to get here\n    // current board\n    // next node(s)\n    // prev node\n    // has next\n    // has lots of next\n    // add move, returns tree\n}\n\n\nexport class Variation {\n    constructor(variationData) {\n        if (!isValidVariationMap(variationData)) {\n            throw 'Invalid variation map';\n        }\n\n        this.variationData = variationData;\n    }\n\n    getNodeByPath(path) {\n        if (this.variationData.has(path)) {\n            return new Node(this.variationData.get(path));\n        } else {\n            throw 'No node at the passed path';\n        }\n    }\n\n    getSequence(...path) {\n        return new Sequence(this.variationData.get(path));\n    }\n\n    // addMove(position, color, path)\n    // getSequence(...path):List\n    // backed by a map, index by path\n    // e.g. [move_number, paths, to, take]\n}\n\n\nexport class Sequence {\n}\n"
   },
   {
     "kind": "variable",
@@ -1342,9 +1410,8 @@
     "export": true,
     "importPath": "godash/src/sequence.js",
     "importStyle": "{Node}",
-    "description": null,
-    "lineNumber": 20,
-    "undocument": true,
+    "description": "Node represents a Board in a Variation.  That is, the board state along with any metadata\nlike annotations.",
+    "lineNumber": 24,
     "interface": false
   },
   {
@@ -1356,7 +1423,7 @@
     "longname": "src/sequence.js~Node#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 21,
+    "lineNumber": 25,
     "undocument": true,
     "params": [
       {
@@ -1377,7 +1444,7 @@
     "longname": "src/sequence.js~Node#board",
     "access": null,
     "description": null,
-    "lineNumber": 22,
+    "lineNumber": 26,
     "undocument": true,
     "type": {
       "types": [
@@ -1394,7 +1461,7 @@
     "longname": "src/sequence.js~Node#metadata",
     "access": null,
     "description": null,
-    "lineNumber": 23,
+    "lineNumber": 27,
     "undocument": true,
     "type": {
       "types": [
@@ -1411,7 +1478,7 @@
     "longname": "src/sequence.js~Node#getBoard",
     "access": null,
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 30,
     "undocument": true,
     "params": [],
     "return": {
@@ -1430,7 +1497,7 @@
     "longname": "src/sequence.js~Node#getMetadata",
     "access": null,
     "description": null,
-    "lineNumber": 30,
+    "lineNumber": 34,
     "undocument": true,
     "params": [],
     "return": {
@@ -1452,7 +1519,7 @@
     "importPath": "godash/src/sequence.js",
     "importStyle": "{Variation}",
     "description": null,
-    "lineNumber": 45,
+    "lineNumber": 49,
     "undocument": true,
     "interface": false
   },
@@ -1465,7 +1532,7 @@
     "longname": "src/sequence.js~Variation#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 46,
+    "lineNumber": 50,
     "undocument": true,
     "params": [
       {
@@ -1486,7 +1553,7 @@
     "longname": "src/sequence.js~Variation#variationData",
     "access": null,
     "description": null,
-    "lineNumber": 51,
+    "lineNumber": 55,
     "undocument": true,
     "type": {
       "types": [
@@ -1503,7 +1570,7 @@
     "longname": "src/sequence.js~Variation#getNodeByPath",
     "access": null,
     "description": null,
-    "lineNumber": 54,
+    "lineNumber": 58,
     "undocument": true,
     "params": [
       {
@@ -1529,7 +1596,7 @@
     "longname": "src/sequence.js~Variation#getSequence",
     "access": null,
     "description": null,
-    "lineNumber": 62,
+    "lineNumber": 66,
     "undocument": true,
     "params": [
       {
@@ -1559,191 +1626,9 @@
     "importPath": "godash/src/sequence.js",
     "importStyle": "{Sequence}",
     "description": null,
-    "lineNumber": 73,
+    "lineNumber": 77,
     "undocument": true,
     "interface": false
-  },
-  {
-    "kind": "file",
-    "static": true,
-    "variation": null,
-    "name": "src/transforms.js",
-    "memberof": null,
-    "longname": "src/transforms.js",
-    "access": null,
-    "description": null,
-    "lineNumber": 1,
-    "content": "import {isNumber} from 'lodash';\nimport {Map, Set} from 'immutable';\n\nimport {\n    BLACK, WHITE, SIZE_KEY, isLegalMove, oppositeColor,\n    matchingAdjacentPositions, liberties, group\n} from './analysis';\n\n\n/**\n * @private\n */\nexport function emptyBoard(size) {\n    if (!isNumber(size) || size <= 0 || size !== parseInt(size)) {\n        throw 'An empty board must be created from a positive integer.';\n    }\n\n    return Map().set(SIZE_KEY, size);\n}\n\n/**\n * @private\n */\nexport function addMove(board, position, color) {\n    if (!isLegalMove(board, position, color)) {\n        throw 'Not a valid position';\n    }\n\n    if (board.has(position)) {\n        throw 'There is already a stone there';\n    }\n\n    const killed = matchingAdjacentPositions(board, position, oppositeColor(color)).reduce(\n        (acc, pos) => acc.union(liberties(board, pos) === 1 ? group(board, pos) : Set()),\n        Set()\n    );\n\n    return removeMoves(board, killed).set(position, color);\n}\n\n\n/**\n * @private\n */\nexport function addBlackMove(board, position) {\n    return addMove(board, position, BLACK);\n}\n\n\n/**\n * @private\n */\nexport function addWhiteMove(board, position) {\n    return addMove(board, position, WHITE);\n}\n\n\n/**\n * @private\n */\nexport function removeMoves(board, positions) {\n    return positions.reduce(\n        (acc, position) => acc.delete(position),\n        board\n    );\n}\n\n\nexport default {\n    emptyBoard, addBlackMove, addWhiteMove, removeMoves\n};\n"
-  },
-  {
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "emptyBoard",
-    "memberof": "src/transforms.js",
-    "longname": "src/transforms.js~emptyBoard",
-    "access": "private",
-    "export": true,
-    "importPath": "godash/src/transforms.js",
-    "importStyle": "{emptyBoard}",
-    "description": null,
-    "lineNumber": 13,
-    "params": [
-      {
-        "name": "size",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "addMove",
-    "memberof": "src/transforms.js",
-    "longname": "src/transforms.js~addMove",
-    "access": "private",
-    "export": true,
-    "importPath": "godash/src/transforms.js",
-    "importStyle": "{addMove}",
-    "description": null,
-    "lineNumber": 24,
-    "params": [
-      {
-        "name": "board",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "position",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "color",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "addBlackMove",
-    "memberof": "src/transforms.js",
-    "longname": "src/transforms.js~addBlackMove",
-    "access": "private",
-    "export": true,
-    "importPath": "godash/src/transforms.js",
-    "importStyle": "{addBlackMove}",
-    "description": null,
-    "lineNumber": 45,
-    "params": [
-      {
-        "name": "board",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "position",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "addWhiteMove",
-    "memberof": "src/transforms.js",
-    "longname": "src/transforms.js~addWhiteMove",
-    "access": "private",
-    "export": true,
-    "importPath": "godash/src/transforms.js",
-    "importStyle": "{addWhiteMove}",
-    "description": null,
-    "lineNumber": 53,
-    "params": [
-      {
-        "name": "board",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "position",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "function",
-    "static": true,
-    "variation": null,
-    "name": "removeMoves",
-    "memberof": "src/transforms.js",
-    "longname": "src/transforms.js~removeMoves",
-    "access": "private",
-    "export": true,
-    "importPath": "godash/src/transforms.js",
-    "importStyle": "{removeMoves}",
-    "description": null,
-    "lineNumber": 61,
-    "params": [
-      {
-        "name": "board",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "positions",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
   },
   {
     "kind": "file",
