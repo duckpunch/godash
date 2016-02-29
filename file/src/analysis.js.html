@@ -63,7 +63,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/analysis.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {curry, compose, isNumber, map, fill, zip, range, identity, flatten} from &apos;lodash&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {curry, flowRight, isNumber, map, fill, zip, range, identity, flatten} from &apos;lodash&apos;;
 import {Map, List, Set} from &apos;immutable&apos;;
 
 
@@ -132,7 +132,7 @@ export function adjacentPositions(board, position) {
     const dec = i =&gt; i - 1;
     const size = board.get(SIZE_KEY);
     const [x, y] = [position.first(), position.last()];
-    const check = compose(
+    const check = flowRight(
         curry(Math.min, 2)(size - 1),
         curry(Math.max, 2)(0)
     );
