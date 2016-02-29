@@ -1,4 +1,4 @@
-import {curry, compose, isNumber, map, fill, zip, range, identity, flatten} from 'lodash';
+import {curry, flowRight, isNumber, map, fill, zip, range, identity, flatten} from 'lodash';
 import {Map, List, Set} from 'immutable';
 
 
@@ -67,7 +67,7 @@ export function adjacentPositions(board, position) {
     const dec = i => i - 1;
     const size = board.get(SIZE_KEY);
     const [x, y] = [position.first(), position.last()];
-    const check = compose(
+    const check = flowRight(
         curry(Math.min, 2)(size - 1),
         curry(Math.max, 2)(0)
     );
