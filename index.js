@@ -1,6 +1,7 @@
 import {BLACK, WHITE} from './src/analysis';
 import {Board} from './src/board';
-import {Position} from './src/position';
+import {Position, sgfToXY} from './src/position';
+import {Variation, sgfToVariation} from './src/sequence';
 
 
 /**
@@ -24,9 +25,20 @@ function _Board(...args) {
 _Board.prototype = Board.prototype;
 
 
+function _Variation(...args) {
+    return new Variation(...args);
+}
+
+
+_Variation.prototype = Variation.prototype;
+
+
 export default {
     Board: _Board,
+    Variation: _Variation,
     Position,
     BLACK,
     WHITE,
+    sgfToXY,
+    sgfToVariation,
 };
