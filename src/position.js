@@ -1,3 +1,4 @@
+import {isString} from 'lodash';
 import {List} from 'immutable';
 import {FixedListSchema} from 'immutable-schema';
 
@@ -26,6 +27,16 @@ export function Position(x, y, boardSize) {
     }
 
     return position;
+}
+
+
+
+export function sgfToXY(sgf) {
+    if (isString(sgf) && sgf.length == 2) {
+        return [sgf.charCodeAt(0) - 97, sgf.charCodeAt(1) - 97];
+    } else {
+        throw TypeError('Must pass a string of length 2');
+    }
 }
 
 

@@ -1,9 +1,10 @@
-import {isNumber} from 'lodash';
+import {tail, isNumber, reduce} from 'lodash';
 import {Map} from 'immutable';
 import {MapSchema, ListSchema, Exactly} from 'immutable-schema';
 
 import {isValidBoardMap, Board} from './board';
 import {matchesPositionType} from './position';
+import {parseSGF} from './utils';
 
 
 // This schema isn't as thorough as it can be.
@@ -78,3 +79,22 @@ export class Variation {
         this._root;
     }
 }
+
+
+export function sgfToVariation(rawSgf) {
+    const [infoMove, ...gameSequence] = parseSGF(rawSgf);
+    const boardSequence = [];
+
+    let board = Board(parseInt(infoMove.SZ));
+    boardSequence.push(board);
+    for (let i = 0; i < gameSequence.length; i++) {
+
+    }
+}
+
+
+
+
+
+
+
