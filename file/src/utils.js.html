@@ -63,7 +63,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/utils.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {isNumber} from &apos;lodash&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {tail, fromPairs, map, slice, forEach, isNumber, trim} from &apos;lodash&apos;;
 
 
 /**
@@ -71,6 +71,32 @@
  */
 export function isPositiveInteger(num) {
     return isNumber(num) &amp;&amp; num === parseInt(num) &amp;&amp; num &gt; 0;
+}
+
+
+/**
+ * @private
+ */
+export function parseSGF(raw_sgf_string) {
+    const moves = tail(raw_sgf_string.split(&apos;;&apos;));
+    return map(moves, parseMove);
+}
+
+
+/**
+ * @private
+ */
+export function parseMove(move) {
+    const token = /[A-Z][A-Z]?\[[^\]]+\]/g;
+    const move_tokens = move.match(token);
+
+    if (move_tokens) {
+        const key_value = /([A-Z][A-Z]?)\[([\s\S]+)\]/;
+        const pairs = map(move_tokens, token =&gt; slice(key_value.exec(token), 1, 3));
+        return fromPairs(pairs);
+    } else {
+        return {};
+    }
 }
 </code></pre>
 

@@ -1628,7 +1628,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {isNumber} from 'lodash';\n\n\n/**\n * @private\n */\nexport function isPositiveInteger(num) {\n    return isNumber(num) && num === parseInt(num) && num > 0;\n}\n"
+    "content": "import {tail, fromPairs, map, slice, forEach, isNumber, trim} from 'lodash';\n\n\n/**\n * @private\n */\nexport function isPositiveInteger(num) {\n    return isNumber(num) && num === parseInt(num) && num > 0;\n}\n\n\n/**\n * @private\n */\nexport function parseSGF(raw_sgf_string) {\n    const moves = tail(raw_sgf_string.split(';'));\n    return map(moves, parseMove);\n}\n\n\n/**\n * @private\n */\nexport function parseMove(move) {\n    const token = /[A-Z][A-Z]?\\[[^\\]]+\\]/g;\n    const move_tokens = move.match(token);\n\n    if (move_tokens) {\n        const key_value = /([A-Z][A-Z]?)\\[([\\s\\S]+)\\]/;\n        const pairs = map(move_tokens, token => slice(key_value.exec(token), 1, 3));\n        return fromPairs(pairs);\n    } else {\n        return {};\n    }\n}\n"
   },
   {
     "kind": "function",
@@ -1646,6 +1646,62 @@
     "params": [
       {
         "name": "num",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "parseSGF",
+    "memberof": "src/utils.js",
+    "longname": "src/utils.js~parseSGF",
+    "access": "private",
+    "export": true,
+    "importPath": "godash/src/utils.js",
+    "importStyle": "{parseSGF}",
+    "description": null,
+    "lineNumber": 15,
+    "params": [
+      {
+        "name": "raw_sgf_string",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "parseMove",
+    "memberof": "src/utils.js",
+    "longname": "src/utils.js~parseMove",
+    "access": "private",
+    "export": true,
+    "importPath": "godash/src/utils.js",
+    "importStyle": "{parseMove}",
+    "description": null,
+    "lineNumber": 24,
+    "params": [
+      {
+        "name": "move",
         "types": [
           "*"
         ]
