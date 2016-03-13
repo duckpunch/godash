@@ -104,6 +104,11 @@ export class Variation {
 }
 
 
+/**
+ * Convert raw SGF into Variation
+ *
+ * @param {string} rawSgf SGF string to convert
+ */
 export function sgfToVariation(rawSgf) {
     const [infoMove, ...gameSequence] = parseSGF(rawSgf);
 
