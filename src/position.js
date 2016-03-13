@@ -30,7 +30,9 @@ export function Position(x, y, boardSize) {
 }
 
 
-
+/**
+ * Convert sgf coordinates to godash coordinates
+ */
 export function sgfToXY(sgf) {
     if (isString(sgf) && sgf.length == 2) {
         return [sgf.charCodeAt(0) - 97, sgf.charCodeAt(1) - 97];
