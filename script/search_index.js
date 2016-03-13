@@ -12,12 +12,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "godash/src/sequence.js~node",
-    "class/src/sequence.js~Node.html",
-    "<span>Node</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
-    "class"
-  ],
-  [
     "godash/src/position.js~position",
     "function/index.html#static-function-Position",
     "<span>Position</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
@@ -34,6 +28,18 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-WHITE",
     "<span>WHITE</span> <span class=\"search-result-import-path\">godash/src/analysis.js</span>",
     "variable"
+  ],
+  [
+    "godash/src/sequence.js~sgftovariation",
+    "function/index.html#static-function-sgfToVariation",
+    "<span>sgfToVariation</span> <span class=\"search-result-import-path\">godash/src/sequence.js</span>",
+    "function"
+  ],
+  [
+    "godash/src/position.js~sgftoxy",
+    "function/index.html#static-function-sgfToXY",
+    "<span>sgfToXY</span> <span class=\"search-result-import-path\">godash/src/position.js</span>",
+    "function"
   ],
   [
     "builtinexternal/ecmascriptexternal.js~array",
@@ -468,28 +474,16 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/sequence.js~node#board",
-    "class/src/sequence.js~Node.html#instance-get-board",
-    "src/sequence.js~Node#board",
-    "member"
-  ],
-  [
-    "src/sequence.js~node#variation",
-    "class/src/sequence.js~Node.html#instance-get-variation",
-    "src/sequence.js~Node#variation",
-    "member"
-  ],
-  [
     "src/sequence.js~variation#constructor",
     "class/src/sequence.js~Variation.html#instance-constructor-constructor",
     "src/sequence.js~Variation#constructor",
     "method"
   ],
   [
-    "src/sequence.js~variation#root",
-    "class/src/sequence.js~Variation.html#instance-get-root",
-    "src/sequence.js~Variation#root",
-    "member"
+    "src/sequence.js~variation#getboardat",
+    "class/src/sequence.js~Variation.html#instance-method-getBoardAt",
+    "src/sequence.js~Variation#getBoardAt",
+    "method"
   ],
   [
     "src/utils.js",

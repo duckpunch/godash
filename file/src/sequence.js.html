@@ -33,7 +33,6 @@
   <ul>
     
   <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
-<li data-ice="classDoc"><span><a href="class/src/sequence.js~Node.html">Node</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/sequence.js~Variation.html">Variation</a></span></li>
 </ul>
 </div>
@@ -45,6 +44,8 @@
   <ul>
     
   <li data-ice="functionDoc"><span><a href="function/index.html#static-function-Position">Position</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-sgfToVariation">sgfToVariation</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-sgfToXY">sgfToXY</a></span></li>
 </ul>
 </div>
 
@@ -63,59 +64,12 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/sequence.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {isNumber} from &apos;lodash&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {forEach} from &apos;lodash&apos;;
 import {Map} from &apos;immutable&apos;;
-import {MapSchema, ListSchema, Exactly} from &apos;immutable-schema&apos;;
 
-import {isValidBoardMap, Board} from &apos;./board&apos;;
-import {matchesPositionType} from &apos;./position&apos;;
-
-
-// This schema isn&apos;t as thorough as it can be.
-// The keys must be sequential
-const isValidVariationMap = MapSchema(
-    ListSchema(isNumber),
-    MapSchema(
-        Exactly(&apos;board&apos;), isValidBoardMap,
-        Exactly(&apos;last_move&apos;), matchesPositionType,
-        Exactly(&apos;metadata&apos;), Map.isMap
-    )
-);
-
-
-/**
- * Node represents a Board in a Variation.  That is, the board state along with any metadata
- * like annotations.
- *
- * This class is not intended to be instantiated by public consumers.
- */
-export class Node {
-    /**
-     * @private
-     */
-    constructor(board, variation) {
-        this._board = board;
-        this._variation = variation;
-    }
-
-    /**
-     * Board state at this node
-     *
-     * @returns {Board}
-     */
-    get board() {
-        return this._board;
-    }
-
-    /**
-     * Variation for this Node
-     *
-     * @returns {Variation}
-     */
-    get variation() {
-        return this._variation;
-    }
-}
+import {Board} from &apos;./board&apos;;
+import {Position, sgfToXY} from &apos;./position&apos;;
+import {parseSGF} from &apos;./utils&apos;;
 
 
 /**
@@ -131,17 +85,48 @@ export class Variation {
         if (!boardSize) {
             boardSize = 19;
         }
-        this._root = new Node(new Board(boardSize), this);
+        this._variation = Map().set(List.of(0), (new Board(boardSize))._position);
     }
 
     /**
-     * Root node of this variation tree.
+     * Get the board at provided index.
      *
-     * @returns {Node}
+     * @param {number} index index to fetch
      */
-    get root() {
-        this._root;
+    getBoardAt(index) {
+        const key = List.of(index);
+        if (this._variation.has(key)) {
+            return new Board(this._variation.get(key));
+        } else {
+            return null;
+        }
     }
+}
+
+
+export function sgfToVariation(rawSgf) {
+    const [infoMove, ...gameSequence] = parseSGF(rawSgf);
+
+    let rawVariation = (new Variation(parseInt(infoMove.SZ)))._variation;
+    let board = rawVariation.getBoardAt(0);
+
+    // TODO: Use actual position methods after they&apos;re written instead of building
+    // raw immutable data
+    forEach(gameSequence, (move, index) =&gt; {
+        if (move.B) {
+            board = board.addBlackMove(Position(...sgfToXY(move.B)));
+            rawVariation = rawVariation.set(List.of(index + 1), board._position);
+        } else if (move.W) {
+            board = board.addWhiteMove(Position(...sgfToXY(move.W)));
+            rawVariation = rawVariation.set(List.of(index + 1), board._position);
+        } else {
+            throw Error(&apos;Something broken - missing move?&apos;);
+        }
+    });
+
+    const variation = new Variation();
+    variation._variation = rawVariation;
+    return variation;
 }
 </code></pre>
 

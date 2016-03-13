@@ -33,7 +33,6 @@
   <ul>
     
   <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
-<li data-ice="classDoc"><span><a href="class/src/sequence.js~Node.html">Node</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/sequence.js~Variation.html">Variation</a></span></li>
 </ul>
 </div>
@@ -45,6 +44,8 @@
   <ul>
     
   <li data-ice="functionDoc"><span><a href="function/index.html#static-function-Position">Position</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-sgfToVariation">sgfToVariation</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-sgfToXY">sgfToXY</a></span></li>
 </ul>
 </div>
 
@@ -63,7 +64,8 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/position.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {List} from &apos;immutable&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {isString} from &apos;lodash&apos;;
+import {List} from &apos;immutable&apos;;
 import {FixedListSchema} from &apos;immutable-schema&apos;;
 
 import {isPositiveInteger} from &apos;./utils&apos;;
@@ -91,6 +93,16 @@ export function Position(x, y, boardSize) {
     }
 
     return position;
+}
+
+
+
+export function sgfToXY(sgf) {
+    if (isString(sgf) &amp;&amp; sgf.length == 2) {
+        return [sgf.charCodeAt(0) - 97, sgf.charCodeAt(1) - 97];
+    } else {
+        throw TypeError(&apos;Must pass a string of length 2&apos;);
+    }
 }
 
 

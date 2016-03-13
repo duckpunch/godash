@@ -1237,7 +1237,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {List} from 'immutable';\nimport {FixedListSchema} from 'immutable-schema';\n\nimport {isPositiveInteger} from './utils';\n\n\n/**\n * Returns a coordinate type compatible with the rest of godash.\n *\n * @param {number} x\n * @param {number} y\n * @param {number} board_size optional board size to validate against\n * @returns {List} representing a possible coordinate on the board\n * @throws {TypeError} arguments are not integers greater than or equal to 0\n * @throws {TypeError} first two arguments don't validate against board size\n */\nexport function Position(x, y, boardSize) {\n    const position = List.of(x, y);\n\n    if (matchesPositionType(position)) {\n        throw TypeError('Both passed arguments must be integers greater than or equal to 0');\n    }\n\n    if (board_size && !isValidPosition(position, boardSize)) {\n        throw TypeError('Position doesn\\'t fit a the passed board size');\n    }\n\n    return position;\n}\n\n\n/**\n * @private\n */\nfunction isValidPosition(position, boardSize) {\n    return matchesPositionType(position) && position.every(val => val < boardSize);\n}\n\n\n/**\n * @private\n */\nexport const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);\n"
+    "content": "import {isString} from 'lodash';\nimport {List} from 'immutable';\nimport {FixedListSchema} from 'immutable-schema';\n\nimport {isPositiveInteger} from './utils';\n\n\n/**\n * Returns a coordinate type compatible with the rest of godash.\n *\n * @param {number} x\n * @param {number} y\n * @param {number} board_size optional board size to validate against\n * @returns {List} representing a possible coordinate on the board\n * @throws {TypeError} arguments are not integers greater than or equal to 0\n * @throws {TypeError} first two arguments don't validate against board size\n */\nexport function Position(x, y, boardSize) {\n    const position = List.of(x, y);\n\n    if (matchesPositionType(position)) {\n        throw TypeError('Both passed arguments must be integers greater than or equal to 0');\n    }\n\n    if (board_size && !isValidPosition(position, boardSize)) {\n        throw TypeError('Position doesn\\'t fit a the passed board size');\n    }\n\n    return position;\n}\n\n\n\nexport function sgfToXY(sgf) {\n    if (isString(sgf) && sgf.length == 2) {\n        return [sgf.charCodeAt(0) - 97, sgf.charCodeAt(1) - 97];\n    } else {\n        throw TypeError('Must pass a string of length 2');\n    }\n}\n\n\n/**\n * @private\n */\nfunction isValidPosition(position, boardSize) {\n    return matchesPositionType(position) && position.every(val => val < boardSize);\n}\n\n\n/**\n * @private\n */\nexport const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);\n"
   },
   {
     "kind": "function",
@@ -1251,7 +1251,7 @@
     "importPath": "godash/src/position.js",
     "importStyle": "{Position}",
     "description": "Returns a coordinate type compatible with the rest of godash.",
-    "lineNumber": 17,
+    "lineNumber": 18,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1318,6 +1318,35 @@
     "kind": "function",
     "static": true,
     "variation": null,
+    "name": "sgfToXY",
+    "memberof": "src/position.js",
+    "longname": "src/position.js~sgfToXY",
+    "access": null,
+    "export": true,
+    "importPath": "godash/src/position.js",
+    "importStyle": "{sgfToXY}",
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "params": [
+      {
+        "name": "sgf",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
     "name": "isValidPosition",
     "memberof": "src/position.js",
     "longname": "src/position.js~isValidPosition",
@@ -1326,7 +1355,7 @@
     "importPath": "godash/src/position.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 35,
+    "lineNumber": 46,
     "params": [
       {
         "name": "position",
@@ -1360,7 +1389,7 @@
     "importPath": "godash/src/position.js",
     "importStyle": "{matchesPositionType}",
     "description": null,
-    "lineNumber": 43,
+    "lineNumber": 54,
     "type": {
       "types": [
         "*"
@@ -1377,164 +1406,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {isNumber} from 'lodash';\nimport {Map} from 'immutable';\nimport {MapSchema, ListSchema, Exactly} from 'immutable-schema';\n\nimport {isValidBoardMap, Board} from './board';\nimport {matchesPositionType} from './position';\n\n\n// This schema isn't as thorough as it can be.\n// The keys must be sequential\nconst isValidVariationMap = MapSchema(\n    ListSchema(isNumber),\n    MapSchema(\n        Exactly('board'), isValidBoardMap,\n        Exactly('last_move'), matchesPositionType,\n        Exactly('metadata'), Map.isMap\n    )\n);\n\n\n/**\n * Node represents a Board in a Variation.  That is, the board state along with any metadata\n * like annotations.\n *\n * This class is not intended to be instantiated by public consumers.\n */\nexport class Node {\n    /**\n     * @private\n     */\n    constructor(board, variation) {\n        this._board = board;\n        this._variation = variation;\n    }\n\n    /**\n     * Board state at this node\n     *\n     * @returns {Board}\n     */\n    get board() {\n        return this._board;\n    }\n\n    /**\n     * Variation for this Node\n     *\n     * @returns {Variation}\n     */\n    get variation() {\n        return this._variation;\n    }\n}\n\n\n/**\n * Tree of moves, represented by Nodes.\n */\nexport class Variation {\n    /**\n     * Create a Variation.\n     *\n     * @param {number} boardSize optional board size, defaults to 19\n     */\n    constructor(boardSize) {\n        if (!boardSize) {\n            boardSize = 19;\n        }\n        this._root = new Node(new Board(boardSize), this);\n    }\n\n    /**\n     * Root node of this variation tree.\n     *\n     * @returns {Node}\n     */\n    get root() {\n        this._root;\n    }\n}\n"
-  },
-  {
-    "kind": "variable",
-    "static": true,
-    "variation": null,
-    "name": "isValidVariationMap",
-    "memberof": "src/sequence.js",
-    "longname": "src/sequence.js~isValidVariationMap",
-    "access": null,
-    "export": false,
-    "importPath": "godash/src/sequence.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "kind": "class",
-    "static": true,
-    "variation": null,
-    "name": "Node",
-    "memberof": "src/sequence.js",
-    "longname": "src/sequence.js~Node",
-    "access": null,
-    "export": true,
-    "importPath": "godash/src/sequence.js",
-    "importStyle": "{Node}",
-    "description": "Node represents a Board in a Variation.  That is, the board state along with any metadata\nlike annotations.\n\nThis class is not intended to be instantiated by public consumers.",
-    "lineNumber": 27,
-    "interface": false
-  },
-  {
-    "kind": "constructor",
-    "static": false,
-    "variation": null,
-    "name": "constructor",
-    "memberof": "src/sequence.js~Node",
-    "longname": "src/sequence.js~Node#constructor",
-    "access": "private",
-    "description": null,
-    "lineNumber": 31,
-    "params": [
-      {
-        "name": "board",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "variation",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "generator": false
-  },
-  {
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_board",
-    "memberof": "src/sequence.js~Node",
-    "longname": "src/sequence.js~Node#_board",
-    "access": null,
-    "description": null,
-    "lineNumber": 32,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "_variation",
-    "memberof": "src/sequence.js~Node",
-    "longname": "src/sequence.js~Node#_variation",
-    "access": null,
-    "description": null,
-    "lineNumber": 33,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "kind": "get",
-    "static": false,
-    "variation": null,
-    "name": "board",
-    "memberof": "src/sequence.js~Node",
-    "longname": "src/sequence.js~Node#board",
-    "access": null,
-    "description": "Board state at this node",
-    "lineNumber": 41,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{Board}"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Board"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "get",
-    "static": false,
-    "variation": null,
-    "name": "variation",
-    "memberof": "src/sequence.js~Node",
-    "longname": "src/sequence.js~Node#variation",
-    "access": null,
-    "description": "Variation for this Node",
-    "lineNumber": 50,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{Variation}"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Variation"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
+    "content": "import {forEach} from 'lodash';\nimport {Map} from 'immutable';\n\nimport {Board} from './board';\nimport {Position, sgfToXY} from './position';\nimport {parseSGF} from './utils';\n\n\n/**\n * Tree of moves, represented by Nodes.\n */\nexport class Variation {\n    /**\n     * Create a Variation.\n     *\n     * @param {number} boardSize optional board size, defaults to 19\n     */\n    constructor(boardSize) {\n        if (!boardSize) {\n            boardSize = 19;\n        }\n        this._variation = Map().set(List.of(0), (new Board(boardSize))._position);\n    }\n\n    /**\n     * Get the board at provided index.\n     *\n     * @param {number} index index to fetch\n     */\n    getBoardAt(index) {\n        const key = List.of(index);\n        if (this._variation.has(key)) {\n            return new Board(this._variation.get(key));\n        } else {\n            return null;\n        }\n    }\n}\n\n\nexport function sgfToVariation(rawSgf) {\n    const [infoMove, ...gameSequence] = parseSGF(rawSgf);\n\n    let rawVariation = (new Variation(parseInt(infoMove.SZ)))._variation;\n    let board = rawVariation.getBoardAt(0);\n\n    // TODO: Use actual position methods after they're written instead of building\n    // raw immutable data\n    forEach(gameSequence, (move, index) => {\n        if (move.B) {\n            board = board.addBlackMove(Position(...sgfToXY(move.B)));\n            rawVariation = rawVariation.set(List.of(index + 1), board._position);\n        } else if (move.W) {\n            board = board.addWhiteMove(Position(...sgfToXY(move.W)));\n            rawVariation = rawVariation.set(List.of(index + 1), board._position);\n        } else {\n            throw Error('Something broken - missing move?');\n        }\n    });\n\n    const variation = new Variation();\n    variation._variation = rawVariation;\n    return variation;\n}\n"
   },
   {
     "kind": "class",
@@ -1548,7 +1420,7 @@
     "importPath": "godash/src/sequence.js",
     "importStyle": "{Variation}",
     "description": "Tree of moves, represented by Nodes.",
-    "lineNumber": 59,
+    "lineNumber": 12,
     "interface": false
   },
   {
@@ -1560,7 +1432,7 @@
     "longname": "src/sequence.js~Variation#constructor",
     "access": null,
     "description": "Create a Variation.",
-    "lineNumber": 65,
+    "lineNumber": 18,
     "params": [
       {
         "nullable": null,
@@ -1579,12 +1451,12 @@
     "kind": "member",
     "static": false,
     "variation": null,
-    "name": "_root",
+    "name": "_variation",
     "memberof": "src/sequence.js~Variation",
-    "longname": "src/sequence.js~Variation#_root",
+    "longname": "src/sequence.js~Variation#_variation",
     "access": null,
     "description": null,
-    "lineNumber": 69,
+    "lineNumber": 22,
     "undocument": true,
     "type": {
       "types": [
@@ -1593,28 +1465,60 @@
     }
   },
   {
-    "kind": "get",
+    "kind": "method",
     "static": false,
     "variation": null,
-    "name": "root",
+    "name": "getBoardAt",
     "memberof": "src/sequence.js~Variation",
-    "longname": "src/sequence.js~Variation#root",
+    "longname": "src/sequence.js~Variation#getBoardAt",
     "access": null,
-    "description": "Root node of this variation tree.",
-    "lineNumber": 77,
-    "unknown": [
+    "description": "Get the board at provided index.",
+    "lineNumber": 30,
+    "params": [
       {
-        "tagName": "@returns",
-        "tagValue": "{Node}"
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "index",
+        "description": "index to fetch"
       }
     ],
     "return": {
-      "nullable": null,
       "types": [
-        "Node"
-      ],
-      "spread": false,
-      "description": ""
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "sgfToVariation",
+    "memberof": "src/sequence.js",
+    "longname": "src/sequence.js~sgfToVariation",
+    "access": null,
+    "export": true,
+    "importPath": "godash/src/sequence.js",
+    "importStyle": "{sgfToVariation}",
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [
+      {
+        "name": "rawSgf",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
     },
     "generator": false
   },
