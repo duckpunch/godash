@@ -13,6 +13,7 @@ describe('parseSGF', function() {
 
     it('produces a list from an SGF with no variation and multi-attributes', function() {
         const parsed_sequence = parseSGF('(;GM[1]TM[7200];B[ab];W[cd])');
+
         assert.deepEqual(parsed_sequence, [
             {GM: '1', TM: '7200'},
             {B: 'ab'},
