@@ -1,6 +1,6 @@
 {
   "name": "godash",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Immutable data structures and utilities to represent Go",
   "homepage": "https://github.com/duckpunch/godash",
   "repository": {
