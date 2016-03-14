@@ -45,9 +45,10 @@ export class Variation {
  */
 export function sgfToVariation(rawSgf) {
     const [infoMove, ...gameSequence] = parseSGF(rawSgf);
+    const variation = new Variation(parseInt(infoMove.SZ));
 
-    let rawVariation = (new Variation(parseInt(infoMove.SZ)))._variation;
-    let board = rawVariation.getBoardAt(0);
+    let rawVariation = variation._variation;
+    let board = variation.getBoardAt(0);
 
     // TODO: Use actual position methods after they're written instead of building
     // raw immutable data
@@ -63,7 +64,6 @@ export function sgfToVariation(rawSgf) {
         }
     });
 
-    const variation = new Variation();
     variation._variation = rawVariation;
     return variation;
 }
