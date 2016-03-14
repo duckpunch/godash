@@ -6,7 +6,7 @@ module.exports = {
     ],
     output: {
         library: 'godash',
-        libraryTarget: 'amd',
+        libraryTarget: 'umd',
         filename: path.join(__dirname, './dist/godash.js')
     },
     module: {
