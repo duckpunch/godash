@@ -2,7 +2,7 @@ import {isString} from 'lodash';
 import {List} from 'immutable';
 import {FixedListSchema} from 'immutable-schema';
 
-import {isPositiveInteger} from './utils';
+import {isPositiveIntegerOrZero} from './utils';
 
 
 /**
@@ -53,4 +53,4 @@ function isValidPosition(position, boardSize) {
 /**
  * @private
  */
-export const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);
+export const matchesPositionType = FixedListSchema(isPositiveIntegerOrZero, isPositiveIntegerOrZero);

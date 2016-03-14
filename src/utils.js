@@ -12,6 +12,14 @@ export function isPositiveInteger(num) {
 /**
  * @private
  */
+export function isPositiveIntegerOrZero(num) {
+    return isNumber(num) && num === parseInt(num) && num >= 0;
+}
+
+
+/**
+ * @private
+ */
 export function parseSGF(raw_sgf_string) {
     const moves = tail(raw_sgf_string.split(';'));
     return map(moves, parseMove);

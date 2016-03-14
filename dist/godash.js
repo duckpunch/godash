@@ -41065,6 +41065,7 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	exports.isPositiveInteger = isPositiveInteger;
+	exports.isPositiveIntegerOrZero = isPositiveIntegerOrZero;
 	exports.parseSGF = parseSGF;
 	exports.parseMove = parseMove;
 
@@ -41075,6 +41076,13 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	 */
 	function isPositiveInteger(num) {
 	    return (0, _lodash.isNumber)(num) && num === parseInt(num) && num > 0;
+	}
+
+	/**
+	 * @private
+	 */
+	function isPositiveIntegerOrZero(num) {
+	    return (0, _lodash.isNumber)(num) && num === parseInt(num) && num >= 0;
 	}
 
 	/**
@@ -41177,7 +41185,7 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	/**
 	 * @private
 	 */
-	var matchesPositionType = exports.matchesPositionType = (0, _immutableSchema.FixedListSchema)(_utils.isPositiveInteger, _utils.isPositiveInteger);
+	var matchesPositionType = exports.matchesPositionType = (0, _immutableSchema.FixedListSchema)(_utils.isPositiveIntegerOrZero, _utils.isPositiveIntegerOrZero);
 
 /***/ },
 /* 10 */
