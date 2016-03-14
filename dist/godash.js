@@ -1,4 +1,14 @@
-define("godash", [], function() { return /******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["godash"] = factory();
+	else
+		root["godash"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -41300,4 +41310,6 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	}
 
 /***/ }
-/******/ ])});;
+/******/ ])
+});
+;
