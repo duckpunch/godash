@@ -18,7 +18,7 @@ import {isPositiveInteger} from './utils';
 export function Position(x, y, boardSize) {
     const position = List.of(x, y);
 
-    if (matchesPositionType(position)) {
+    if (!matchesPositionType(position)) {
         throw TypeError('Both passed arguments must be integers greater than or equal to 0');
     }
 
