@@ -20472,6 +20472,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _immutable = __webpack_require__(5);
 
+	var _lodash = __webpack_require__(3);
+
 	var _immutableSchema = __webpack_require__(7);
 
 	var _utils = __webpack_require__(8);
@@ -20483,7 +20485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * @private
 	 */
-	var isValidBoardMap = exports.isValidBoardMap = (0, _immutableSchema.MapSchema)((0, _immutableSchema.FixedListSchema)(isNumber, isNumber), (0, _immutableSchema.OneOf)(_analysis.BLACK, _analysis.WHITE), (0, _immutableSchema.Exactly)(_analysis.SIZE_KEY), _utils.isPositiveInteger);
+	var isValidBoardMap = exports.isValidBoardMap = (0, _immutableSchema.MapSchema)((0, _immutableSchema.FixedListSchema)(_lodash.isNumber, _lodash.isNumber), (0, _immutableSchema.OneOf)(_analysis.BLACK, _analysis.WHITE), (0, _immutableSchema.Exactly)(_analysis.SIZE_KEY), _utils.isPositiveInteger);
 
 	/**
 	 * Represents a board state.
