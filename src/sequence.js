@@ -1,5 +1,5 @@
 import {forEach} from 'lodash';
-import {Map} from 'immutable';
+import {Map, List} from 'immutable';
 
 import {Board} from './board';
 import {Position, sgfToXY} from './position';

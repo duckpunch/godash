@@ -41227,7 +41227,7 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	        if (!boardSize) {
 	            boardSize = 19;
 	        }
-	        this._variation = (0, _immutable.Map)().set(List.of(0), new _board.Board(boardSize)._position);
+	        this._variation = (0, _immutable.Map)().set(_immutable.List.of(0), new _board.Board(boardSize)._position);
 	    }
 
 	    /**
@@ -41240,7 +41240,7 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	    _createClass(Variation, [{
 	        key: 'getBoardAt',
 	        value: function getBoardAt(index) {
-	            var key = List.of(index);
+	            var key = _immutable.List.of(index);
 	            if (this._variation.has(key)) {
 	                return new _board.Board(this._variation.get(key));
 	            } else {
@@ -41276,10 +41276,10 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	    (0, _lodash.forEach)(gameSequence, function (move, index) {
 	        if (move.B) {
 	            board = board.addBlackMove(_position.Position.apply(undefined, _toConsumableArray((0, _position.sgfToXY)(move.B))));
-	            rawVariation = rawVariation.set(List.of(index + 1), board._position);
+	            rawVariation = rawVariation.set(_immutable.List.of(index + 1), board._position);
 	        } else if (move.W) {
 	            board = board.addWhiteMove(_position.Position.apply(undefined, _toConsumableArray((0, _position.sgfToXY)(move.W))));
-	            rawVariation = rawVariation.set(List.of(index + 1), board._position);
+	            rawVariation = rawVariation.set(_immutable.List.of(index + 1), board._position);
 	        } else {
 	            throw Error('Something broken - missing move?');
 	        }
