@@ -41147,7 +41147,7 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	        throw TypeError('Both passed arguments must be integers greater than or equal to 0');
 	    }
 
-	    if (board_size && !isValidPosition(position, boardSize)) {
+	    if (boardSize && !isValidPosition(position, boardSize)) {
 	        throw TypeError('Position doesn\'t fit a the passed board size');
 	    }
 
