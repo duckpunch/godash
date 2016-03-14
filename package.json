@@ -39,6 +39,7 @@
     "webpack": "^1.12.14"
   },
   "scripts": {
+    "prepublish": "webpack",
     "test": "karma start"
   }
 }

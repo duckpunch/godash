@@ -41268,8 +41268,10 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 
 	    var gameSequence = _parseSGF2.slice(1);
 
-	    var rawVariation = new Variation(parseInt(infoMove.SZ))._variation;
-	    var board = rawVariation.getBoardAt(0);
+	    var variation = new Variation(parseInt(infoMove.SZ));
+
+	    var rawVariation = variation._variation;
+	    var board = variation.getBoardAt(0);
 
 	    // TODO: Use actual position methods after they're written instead of building
 	    // raw immutable data
@@ -41285,7 +41287,6 @@ define("godash", [], function() { return /******/ (function(modules) { // webpac
 	        }
 	    });
 
-	    var variation = new Variation();
 	    variation._variation = rawVariation;
 	    return variation;
 	}

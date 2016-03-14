@@ -19,7 +19,7 @@ export class Variation {
         if (!boardSize) {
             boardSize = 19;
         }
-        this._variation = Map().set(List.of(0), (new Board(boardSize))._position);
+        this._variation = Map().set(List.of(0), (new Board(boardSize))._positions);
     }
 
     /**
