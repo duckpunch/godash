@@ -243,7 +243,7 @@
           "type": "ImportSpecifier",
           "local": {
             "type": "Identifier",
-            "name": "position",
+            "name": "Position",
             "range": [
               80,
               88
@@ -261,7 +261,7 @@
           },
           "imported": {
             "type": "Identifier",
-            "name": "position",
+            "name": "Position",
             "range": [
               80,
               88
@@ -296,10 +296,10 @@
           "type": "ImportSpecifier",
           "local": {
             "type": "Identifier",
-            "name": "isValidPosition",
+            "name": "sgfToXY",
             "range": [
               90,
-              105
+              97
             ],
             "loc": {
               "start": {
@@ -308,16 +308,16 @@
               },
               "end": {
                 "line": 3,
-                "column": 33
+                "column": 25
               }
             }
           },
           "imported": {
             "type": "Identifier",
-            "name": "isValidPosition",
+            "name": "sgfToXY",
             "range": [
               90,
-              105
+              97
             ],
             "loc": {
               "start": {
@@ -326,13 +326,13 @@
               },
               "end": {
                 "line": 3,
-                "column": 33
+                "column": 25
               }
             }
           },
           "range": [
             90,
-            105
+            97
           ],
           "loc": {
             "start": {
@@ -341,7 +341,7 @@
             },
             "end": {
               "line": 3,
-              "column": 33
+              "column": 25
             }
           }
         }
@@ -351,23 +351,23 @@
         "value": "./position",
         "raw": "'./position'",
         "range": [
-          112,
-          124
+          104,
+          116
         ],
         "loc": {
           "start": {
             "line": 3,
-            "column": 40
+            "column": 32
           },
           "end": {
             "line": 3,
-            "column": 52
+            "column": 44
           }
         }
       },
       "range": [
         72,
-        125
+        117
       ],
       "loc": {
         "start": {
@@ -376,6 +376,150 @@
         },
         "end": {
           "line": 3,
+          "column": 45
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Variation",
+            "range": [
+              126,
+              135
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 8
+              },
+              "end": {
+                "line": 4,
+                "column": 17
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Variation",
+            "range": [
+              126,
+              135
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 8
+              },
+              "end": {
+                "line": 4,
+                "column": 17
+              }
+            }
+          },
+          "range": [
+            126,
+            135
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 8
+            },
+            "end": {
+              "line": 4,
+              "column": 17
+            }
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "sgfToVariation",
+            "range": [
+              137,
+              151
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 19
+              },
+              "end": {
+                "line": 4,
+                "column": 33
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "sgfToVariation",
+            "range": [
+              137,
+              151
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 19
+              },
+              "end": {
+                "line": 4,
+                "column": 33
+              }
+            }
+          },
+          "range": [
+            137,
+            151
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 19
+            },
+            "end": {
+              "line": 4,
+              "column": 33
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./sequence",
+        "raw": "'./sequence'",
+        "range": [
+          158,
+          170
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 40
+          },
+          "end": {
+            "line": 4,
+            "column": 52
+          }
+        }
+      },
+      "range": [
+        118,
+        171
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
           "column": 53
         }
       },
@@ -384,16 +528,16 @@
           "type": "Block",
           "value": "*\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n ",
           "range": [
-            128,
-            204
+            174,
+            250
           ],
           "loc": {
             "start": {
-              "line": 6,
+              "line": 7,
               "column": 0
             },
             "end": {
-              "line": 8,
+              "line": 9,
               "column": 3
             }
           }
@@ -402,16 +546,16 @@
           "type": "Block",
           "value": "*\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n ",
           "range": [
-            206,
-            284
+            252,
+            330
           ],
           "loc": {
             "start": {
-              "line": 10,
+              "line": 11,
               "column": 0
             },
             "end": {
-              "line": 12,
+              "line": 13,
               "column": 3
             }
           }
@@ -420,16 +564,16 @@
           "type": "Block",
           "value": "*\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n ",
           "range": [
-            286,
-            362
+            332,
+            408
           ],
           "loc": {
             "start": {
-              "line": 14,
+              "line": 15,
               "column": 0
             },
             "end": {
-              "line": 16,
+              "line": 17,
               "column": 3
             }
           }
@@ -442,16 +586,16 @@
         "type": "Identifier",
         "name": "_Board",
         "range": [
-          374,
-          380
+          420,
+          426
         ],
         "loc": {
           "start": {
-            "line": 19,
+            "line": 20,
             "column": 9
           },
           "end": {
-            "line": 19,
+            "line": 20,
             "column": 15
           }
         }
@@ -463,31 +607,31 @@
             "type": "Identifier",
             "name": "args",
             "range": [
-              384,
-              388
+              430,
+              434
             ],
             "loc": {
               "start": {
-                "line": 19,
+                "line": 20,
                 "column": 19
               },
               "end": {
-                "line": 19,
+                "line": 20,
                 "column": 23
               }
             }
           },
           "range": [
-            381,
-            388
+            427,
+            434
           ],
           "loc": {
             "start": {
-              "line": 19,
+              "line": 20,
               "column": 16
             },
             "end": {
-              "line": 19,
+              "line": 20,
               "column": 23
             }
           }
@@ -504,16 +648,16 @@
                 "type": "Identifier",
                 "name": "Board",
                 "range": [
-                  407,
-                  412
+                  453,
+                  458
                 ],
                 "loc": {
                   "start": {
-                    "line": 20,
+                    "line": 21,
                     "column": 15
                   },
                   "end": {
-                    "line": 20,
+                    "line": 21,
                     "column": 20
                   }
                 }
@@ -525,78 +669,78 @@
                     "type": "Identifier",
                     "name": "args",
                     "range": [
-                      416,
-                      420
+                      462,
+                      466
                     ],
                     "loc": {
                       "start": {
-                        "line": 20,
+                        "line": 21,
                         "column": 24
                       },
                       "end": {
-                        "line": 20,
+                        "line": 21,
                         "column": 28
                       }
                     }
                   },
                   "range": [
-                    413,
-                    420
+                    459,
+                    466
                   ],
                   "loc": {
                     "start": {
-                      "line": 20,
+                      "line": 21,
                       "column": 21
                     },
                     "end": {
-                      "line": 20,
+                      "line": 21,
                       "column": 28
                     }
                   }
                 }
               ],
               "range": [
-                403,
-                421
+                449,
+                467
               ],
               "loc": {
                 "start": {
-                  "line": 20,
+                  "line": 21,
                   "column": 11
                 },
                 "end": {
-                  "line": 20,
+                  "line": 21,
                   "column": 29
                 }
               }
             },
             "range": [
-              396,
-              422
+              442,
+              468
             ],
             "loc": {
               "start": {
-                "line": 20,
+                "line": 21,
                 "column": 4
               },
               "end": {
-                "line": 20,
+                "line": 21,
                 "column": 30
               }
             }
           }
         ],
         "range": [
-          390,
-          424
+          436,
+          470
         ],
         "loc": {
           "start": {
-            "line": 19,
+            "line": 20,
             "column": 25
           },
           "end": {
-            "line": 21,
+            "line": 22,
             "column": 1
           }
         }
@@ -604,16 +748,16 @@
       "generator": false,
       "expression": false,
       "range": [
-        365,
-        424
+        411,
+        470
       ],
       "loc": {
         "start": {
-          "line": 19,
+          "line": 20,
           "column": 0
         },
         "end": {
-          "line": 21,
+          "line": 22,
           "column": 1
         }
       },
@@ -622,16 +766,16 @@
           "type": "Block",
           "value": "*\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n ",
           "range": [
-            128,
-            204
+            174,
+            250
           ],
           "loc": {
             "start": {
-              "line": 6,
+              "line": 7,
               "column": 0
             },
             "end": {
-              "line": 8,
+              "line": 9,
               "column": 3
             }
           }
@@ -640,16 +784,16 @@
           "type": "Block",
           "value": "*\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n ",
           "range": [
-            206,
-            284
+            252,
+            330
           ],
           "loc": {
             "start": {
-              "line": 10,
+              "line": 11,
               "column": 0
             },
             "end": {
-              "line": 12,
+              "line": 13,
               "column": 3
             }
           }
@@ -658,16 +802,16 @@
           "type": "Block",
           "value": "*\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n ",
           "range": [
-            286,
-            362
+            332,
+            408
           ],
           "loc": {
             "start": {
-              "line": 14,
+              "line": 15,
               "column": 0
             },
             "end": {
-              "line": 16,
+              "line": 17,
               "column": 3
             }
           }
@@ -686,16 +830,16 @@
             "type": "Identifier",
             "name": "_Board",
             "range": [
-              427,
-              433
+              473,
+              479
             ],
             "loc": {
               "start": {
-                "line": 24,
+                "line": 25,
                 "column": 0
               },
               "end": {
-                "line": 24,
+                "line": 25,
                 "column": 6
               }
             }
@@ -704,31 +848,31 @@
             "type": "Identifier",
             "name": "prototype",
             "range": [
-              434,
-              443
+              480,
+              489
             ],
             "loc": {
               "start": {
-                "line": 24,
+                "line": 25,
                 "column": 7
               },
               "end": {
-                "line": 24,
+                "line": 25,
                 "column": 16
               }
             }
           },
           "range": [
-            427,
-            443
+            473,
+            489
           ],
           "loc": {
             "start": {
-              "line": 24,
+              "line": 25,
               "column": 0
             },
             "end": {
-              "line": 24,
+              "line": 25,
               "column": 16
             }
           }
@@ -740,16 +884,16 @@
             "type": "Identifier",
             "name": "Board",
             "range": [
-              446,
-              451
+              492,
+              497
             ],
             "loc": {
               "start": {
-                "line": 24,
+                "line": 25,
                 "column": 19
               },
               "end": {
-                "line": 24,
+                "line": 25,
                 "column": 24
               }
             }
@@ -758,62 +902,387 @@
             "type": "Identifier",
             "name": "prototype",
             "range": [
-              452,
-              461
+              498,
+              507
             ],
             "loc": {
               "start": {
-                "line": 24,
+                "line": 25,
                 "column": 25
               },
               "end": {
-                "line": 24,
+                "line": 25,
                 "column": 34
               }
             }
           },
           "range": [
-            446,
-            461
+            492,
+            507
           ],
           "loc": {
             "start": {
-              "line": 24,
+              "line": 25,
               "column": 19
             },
             "end": {
-              "line": 24,
+              "line": 25,
               "column": 34
             }
           }
         },
         "range": [
-          427,
-          461
+          473,
+          507
         ],
         "loc": {
           "start": {
-            "line": 24,
+            "line": 25,
             "column": 0
           },
           "end": {
-            "line": 24,
+            "line": 25,
             "column": 34
           }
         }
       },
       "range": [
-        427,
-        462
+        473,
+        508
       ],
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 0
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 35
+        }
+      }
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "_Variation",
+        "range": [
+          520,
+          530
+        ],
+        "loc": {
+          "start": {
+            "line": 28,
+            "column": 9
+          },
+          "end": {
+            "line": 28,
+            "column": 19
+          }
+        }
+      },
+      "params": [
+        {
+          "type": "RestElement",
+          "argument": {
+            "type": "Identifier",
+            "name": "args",
+            "range": [
+              534,
+              538
+            ],
+            "loc": {
+              "start": {
+                "line": 28,
+                "column": 23
+              },
+              "end": {
+                "line": 28,
+                "column": 27
+              }
+            }
+          },
+          "range": [
+            531,
+            538
+          ],
+          "loc": {
+            "start": {
+              "line": 28,
+              "column": 20
+            },
+            "end": {
+              "line": 28,
+              "column": 27
+            }
+          }
+        }
+      ],
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "ReturnStatement",
+            "argument": {
+              "type": "NewExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "Variation",
+                "range": [
+                  557,
+                  566
+                ],
+                "loc": {
+                  "start": {
+                    "line": 29,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 29,
+                    "column": 24
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "SpreadElement",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "args",
+                    "range": [
+                      570,
+                      574
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 29,
+                        "column": 28
+                      },
+                      "end": {
+                        "line": 29,
+                        "column": 32
+                      }
+                    }
+                  },
+                  "range": [
+                    567,
+                    574
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 29,
+                      "column": 25
+                    },
+                    "end": {
+                      "line": 29,
+                      "column": 32
+                    }
+                  }
+                }
+              ],
+              "range": [
+                553,
+                575
+              ],
+              "loc": {
+                "start": {
+                  "line": 29,
+                  "column": 11
+                },
+                "end": {
+                  "line": 29,
+                  "column": 33
+                }
+              }
+            },
+            "range": [
+              546,
+              576
+            ],
+            "loc": {
+              "start": {
+                "line": 29,
+                "column": 4
+              },
+              "end": {
+                "line": 29,
+                "column": 34
+              }
+            }
+          }
+        ],
+        "range": [
+          540,
+          578
+        ],
+        "loc": {
+          "start": {
+            "line": 28,
+            "column": 29
+          },
+          "end": {
+            "line": 30,
+            "column": 1
+          }
+        }
+      },
+      "generator": false,
+      "expression": false,
+      "range": [
+        511,
+        578
+      ],
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 0
+        },
+        "end": {
+          "line": 30,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "_Variation",
+            "range": [
+              581,
+              591
+            ],
+            "loc": {
+              "start": {
+                "line": 33,
+                "column": 0
+              },
+              "end": {
+                "line": 33,
+                "column": 10
+              }
+            }
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "prototype",
+            "range": [
+              592,
+              601
+            ],
+            "loc": {
+              "start": {
+                "line": 33,
+                "column": 11
+              },
+              "end": {
+                "line": 33,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            581,
+            601
+          ],
+          "loc": {
+            "start": {
+              "line": 33,
+              "column": 0
+            },
+            "end": {
+              "line": 33,
+              "column": 20
+            }
+          }
+        },
+        "right": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "Variation",
+            "range": [
+              604,
+              613
+            ],
+            "loc": {
+              "start": {
+                "line": 33,
+                "column": 23
+              },
+              "end": {
+                "line": 33,
+                "column": 32
+              }
+            }
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "prototype",
+            "range": [
+              614,
+              623
+            ],
+            "loc": {
+              "start": {
+                "line": 33,
+                "column": 33
+              },
+              "end": {
+                "line": 33,
+                "column": 42
+              }
+            }
+          },
+          "range": [
+            604,
+            623
+          ],
+          "loc": {
+            "start": {
+              "line": 33,
+              "column": 23
+            },
+            "end": {
+              "line": 33,
+              "column": 42
+            }
+          }
+        },
+        "range": [
+          581,
+          623
+        ],
+        "loc": {
+          "start": {
+            "line": 33,
+            "column": 0
+          },
+          "end": {
+            "line": 33,
+            "column": 42
+          }
+        }
+      },
+      "range": [
+        581,
+        624
+      ],
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 0
+        },
+        "end": {
+          "line": 33,
+          "column": 43
         }
       }
     },
@@ -828,16 +1297,16 @@
               "type": "Identifier",
               "name": "Board",
               "range": [
-                486,
-                491
+                648,
+                653
               ],
               "loc": {
                 "start": {
-                  "line": 28,
+                  "line": 37,
                   "column": 4
                 },
                 "end": {
-                  "line": 28,
+                  "line": 37,
                   "column": 9
                 }
               }
@@ -846,16 +1315,16 @@
               "type": "Identifier",
               "name": "_Board",
               "range": [
-                493,
-                499
+                655,
+                661
               ],
               "loc": {
                 "start": {
-                  "line": 28,
+                  "line": 37,
                   "column": 11
                 },
                 "end": {
-                  "line": 28,
+                  "line": 37,
                   "column": 17
                 }
               }
@@ -865,16 +1334,16 @@
             "shorthand": false,
             "computed": false,
             "range": [
-              486,
-              499
+              648,
+              661
             ],
             "loc": {
               "start": {
-                "line": 28,
+                "line": 37,
                 "column": 4
               },
               "end": {
-                "line": 28,
+                "line": 37,
                 "column": 17
               }
             }
@@ -883,36 +1352,93 @@
             "type": "Property",
             "key": {
               "type": "Identifier",
-              "name": "position",
+              "name": "Variation",
               "range": [
-                505,
-                513
+                667,
+                676
               ],
               "loc": {
                 "start": {
-                  "line": 29,
+                  "line": 38,
                   "column": 4
                 },
                 "end": {
-                  "line": 29,
+                  "line": 38,
+                  "column": 13
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "_Variation",
+              "range": [
+                678,
+                688
+              ],
+              "loc": {
+                "start": {
+                  "line": 38,
+                  "column": 15
+                },
+                "end": {
+                  "line": 38,
+                  "column": 25
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              667,
+              688
+            ],
+            "loc": {
+              "start": {
+                "line": 38,
+                "column": 4
+              },
+              "end": {
+                "line": 38,
+                "column": 25
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "Position",
+              "range": [
+                694,
+                702
+              ],
+              "loc": {
+                "start": {
+                  "line": 39,
+                  "column": 4
+                },
+                "end": {
+                  "line": 39,
                   "column": 12
                 }
               }
             },
             "value": {
               "type": "Identifier",
-              "name": "position",
+              "name": "Position",
               "range": [
-                505,
-                513
+                694,
+                702
               ],
               "loc": {
                 "start": {
-                  "line": 29,
+                  "line": 39,
                   "column": 4
                 },
                 "end": {
-                  "line": 29,
+                  "line": 39,
                   "column": 12
                 }
               }
@@ -922,16 +1448,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              505,
-              513
+              694,
+              702
             ],
             "loc": {
               "start": {
-                "line": 29,
+                "line": 39,
                 "column": 4
               },
               "end": {
-                "line": 29,
+                "line": 39,
                 "column": 12
               }
             }
@@ -940,75 +1466,18 @@
             "type": "Property",
             "key": {
               "type": "Identifier",
-              "name": "isValidPosition",
-              "range": [
-                519,
-                534
-              ],
-              "loc": {
-                "start": {
-                  "line": 30,
-                  "column": 4
-                },
-                "end": {
-                  "line": 30,
-                  "column": 19
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "isValidPosition",
-              "range": [
-                519,
-                534
-              ],
-              "loc": {
-                "start": {
-                  "line": 30,
-                  "column": 4
-                },
-                "end": {
-                  "line": 30,
-                  "column": 19
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              519,
-              534
-            ],
-            "loc": {
-              "start": {
-                "line": 30,
-                "column": 4
-              },
-              "end": {
-                "line": 30,
-                "column": 19
-              }
-            }
-          },
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
               "name": "BLACK",
               "range": [
-                540,
-                545
+                708,
+                713
               ],
               "loc": {
                 "start": {
-                  "line": 31,
+                  "line": 40,
                   "column": 4
                 },
                 "end": {
-                  "line": 31,
+                  "line": 40,
                   "column": 9
                 }
               }
@@ -1017,16 +1486,16 @@
               "type": "Identifier",
               "name": "BLACK",
               "range": [
-                540,
-                545
+                708,
+                713
               ],
               "loc": {
                 "start": {
-                  "line": 31,
+                  "line": 40,
                   "column": 4
                 },
                 "end": {
-                  "line": 31,
+                  "line": 40,
                   "column": 9
                 }
               }
@@ -1036,16 +1505,16 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              540,
-              545
+              708,
+              713
             ],
             "loc": {
               "start": {
-                "line": 31,
+                "line": 40,
                 "column": 4
               },
               "end": {
-                "line": 31,
+                "line": 40,
                 "column": 9
               }
             }
@@ -1056,16 +1525,16 @@
               "type": "Identifier",
               "name": "WHITE",
               "range": [
-                551,
-                556
+                719,
+                724
               ],
               "loc": {
                 "start": {
-                  "line": 32,
+                  "line": 41,
                   "column": 4
                 },
                 "end": {
-                  "line": 32,
+                  "line": 41,
                   "column": 9
                 }
               }
@@ -1074,16 +1543,16 @@
               "type": "Identifier",
               "name": "WHITE",
               "range": [
-                551,
-                556
+                719,
+                724
               ],
               "loc": {
                 "start": {
-                  "line": 32,
+                  "line": 41,
                   "column": 4
                 },
                 "end": {
-                  "line": 32,
+                  "line": 41,
                   "column": 9
                 }
               }
@@ -1093,32 +1562,146 @@
             "shorthand": true,
             "computed": false,
             "range": [
-              551,
-              556
+              719,
+              724
             ],
             "loc": {
               "start": {
-                "line": 32,
+                "line": 41,
                 "column": 4
               },
               "end": {
-                "line": 32,
+                "line": 41,
                 "column": 9
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "sgfToXY",
+              "range": [
+                730,
+                737
+              ],
+              "loc": {
+                "start": {
+                  "line": 42,
+                  "column": 4
+                },
+                "end": {
+                  "line": 42,
+                  "column": 11
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "sgfToXY",
+              "range": [
+                730,
+                737
+              ],
+              "loc": {
+                "start": {
+                  "line": 42,
+                  "column": 4
+                },
+                "end": {
+                  "line": 42,
+                  "column": 11
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "range": [
+              730,
+              737
+            ],
+            "loc": {
+              "start": {
+                "line": 42,
+                "column": 4
+              },
+              "end": {
+                "line": 42,
+                "column": 11
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "sgfToVariation",
+              "range": [
+                743,
+                757
+              ],
+              "loc": {
+                "start": {
+                  "line": 43,
+                  "column": 4
+                },
+                "end": {
+                  "line": 43,
+                  "column": 18
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "sgfToVariation",
+              "range": [
+                743,
+                757
+              ],
+              "loc": {
+                "start": {
+                  "line": 43,
+                  "column": 4
+                },
+                "end": {
+                  "line": 43,
+                  "column": 18
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "range": [
+              743,
+              757
+            ],
+            "loc": {
+              "start": {
+                "line": 43,
+                "column": 4
+              },
+              "end": {
+                "line": 43,
+                "column": 18
               }
             }
           }
         ],
         "range": [
-          480,
-          559
+          642,
+          760
         ],
         "loc": {
           "start": {
-            "line": 27,
+            "line": 36,
             "column": 15
           },
           "end": {
-            "line": 33,
+            "line": 44,
             "column": 1
           }
         },
@@ -1126,16 +1709,16 @@
         "trailingComments": []
       },
       "range": [
-        465,
-        560
+        627,
+        761
       ],
       "loc": {
         "start": {
-          "line": 27,
+          "line": 36,
           "column": 0
         },
         "end": {
-          "line": 33,
+          "line": 44,
           "column": 2
         }
       }
@@ -1144,7 +1727,7 @@
   "sourceType": "module",
   "range": [
     0,
-    560
+    761
   ],
   "loc": {
     "start": {
@@ -1152,7 +1735,7 @@
       "column": 0
     },
     "end": {
-      "line": 33,
+      "line": 44,
       "column": 2
     }
   },
@@ -1161,16 +1744,16 @@
       "type": "Block",
       "value": "*\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n ",
       "range": [
-        128,
-        204
+        174,
+        250
       ],
       "loc": {
         "start": {
-          "line": 6,
+          "line": 7,
           "column": 0
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 3
         }
       }
@@ -1179,16 +1762,16 @@
       "type": "Block",
       "value": "*\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n ",
       "range": [
-        206,
-        284
+        252,
+        330
       ],
       "loc": {
         "start": {
-          "line": 10,
+          "line": 11,
           "column": 0
         },
         "end": {
-          "line": 12,
+          "line": 13,
           "column": 3
         }
       }
@@ -1197,16 +1780,16 @@
       "type": "Block",
       "value": "*\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n ",
       "range": [
-        286,
-        362
+        332,
+        408
       ],
       "loc": {
         "start": {
-          "line": 14,
+          "line": 15,
           "column": 0
         },
         "end": {
-          "line": 16,
+          "line": 17,
           "column": 3
         }
       }

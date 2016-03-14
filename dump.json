@@ -1231,6 +1231,82 @@
     "kind": "file",
     "static": true,
     "variation": null,
+    "name": "src/index.js",
+    "memberof": null,
+    "longname": "src/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import {BLACK, WHITE} from './analysis';\nimport {Board} from './board';\nimport {Position, sgfToXY} from './position';\nimport {Variation, sgfToVariation} from './sequence';\n\n\n/**\n * @external {Map} http://facebook.github.io/immutable-js/docs/#/Map\n */\n\n/**\n * @external {List} http://facebook.github.io/immutable-js/docs/#/List\n */\n\n/**\n * @external {Set} http://facebook.github.io/immutable-js/docs/#/Set\n */\n\n\nfunction _Board(...args) {\n    return new Board(...args);\n}\n\n\n_Board.prototype = Board.prototype;\n\n\nfunction _Variation(...args) {\n    return new Variation(...args);\n}\n\n\n_Variation.prototype = Variation.prototype;\n\n\nexport default {\n    Board: _Board,\n    Variation: _Variation,\n    Position,\n    BLACK,\n    WHITE,\n    sgfToXY,\n    sgfToVariation,\n};\n"
+  },
+  {
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "http://facebook.github.io/immutable-js/docs/#/Map",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~Map",
+    "access": null,
+    "description": null
+  },
+  {
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "List",
+    "externalLink": "http://facebook.github.io/immutable-js/docs/#/List",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~List",
+    "access": null,
+    "description": null
+  },
+  {
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "http://facebook.github.io/immutable-js/docs/#/Set",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~Set",
+    "access": null,
+    "description": null,
+    "lineNumber": 20
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "_Variation",
+    "memberof": "src/index.js",
+    "longname": "src/index.js~_Variation",
+    "access": null,
+    "export": false,
+    "importPath": "godash/src/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "file",
+    "static": true,
+    "variation": null,
     "name": "src/position.js",
     "memberof": null,
     "longname": "src/position.js",

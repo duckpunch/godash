@@ -33,8 +33,6 @@
   <ul>
     
   <li data-ice="classDoc"><span><a href="class/src/board.js~Board.html">Board</a></span></li>
-<li data-ice="classDoc"><span><a href="class/src/sequence.js~Node.html">Node</a></span></li>
-<li data-ice="classDoc"><span><a href="class/src/sequence.js~Sequence.html">Sequence</a></span></li>
 <li data-ice="classDoc"><span><a href="class/src/sequence.js~Variation.html">Variation</a></span></li>
 </ul>
 </div>
@@ -45,9 +43,9 @@
   <h2><a href="function/">Function</a></h2>
   <ul>
     
-  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-isValidPosition">isValidPosition</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-position">position</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-positions">positions</a></span></li>
+  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-Position">Position</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-sgfToVariation">sgfToVariation</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-sgfToXY">sgfToXY</a></span></li>
 </ul>
 </div>
 
@@ -76,7 +74,8 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {BLACK, WHITE} from &apos;./analysis&apos;;
 import {Board} from &apos;./board&apos;;
-import {position, isValidPosition} from &apos;./position&apos;;
+import {Position, sgfToXY} from &apos;./position&apos;;
+import {Variation, sgfToVariation} from &apos;./sequence&apos;;
 
 
 /**
@@ -100,12 +99,22 @@ function _Board(...args) {
 _Board.prototype = Board.prototype;
 
 
+function _Variation(...args) {
+    return new Variation(...args);
+}
+
+
+_Variation.prototype = Variation.prototype;
+
+
 export default {
     Board: _Board,
-    position,
-    isValidPosition,
+    Variation: _Variation,
+    Position,
     BLACK,
     WHITE,
+    sgfToXY,
+    sgfToVariation,
 };
 </code></pre>
 
