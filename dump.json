@@ -1313,7 +1313,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {isString} from 'lodash';\nimport {List} from 'immutable';\nimport {FixedListSchema} from 'immutable-schema';\n\nimport {isPositiveInteger} from './utils';\n\n\n/**\n * Returns a coordinate type compatible with the rest of godash.\n *\n * @param {number} x\n * @param {number} y\n * @param {number} board_size optional board size to validate against\n * @returns {List} representing a possible coordinate on the board\n * @throws {TypeError} arguments are not integers greater than or equal to 0\n * @throws {TypeError} first two arguments don't validate against board size\n */\nexport function Position(x, y, boardSize) {\n    const position = List.of(x, y);\n\n    if (matchesPositionType(position)) {\n        throw TypeError('Both passed arguments must be integers greater than or equal to 0');\n    }\n\n    if (board_size && !isValidPosition(position, boardSize)) {\n        throw TypeError('Position doesn\\'t fit a the passed board size');\n    }\n\n    return position;\n}\n\n\n/**\n * Convert sgf coordinates to godash coordinates\n */\nexport function sgfToXY(sgf) {\n    if (isString(sgf) && sgf.length == 2) {\n        return [sgf.charCodeAt(0) - 97, sgf.charCodeAt(1) - 97];\n    } else {\n        throw TypeError('Must pass a string of length 2');\n    }\n}\n\n\n/**\n * @private\n */\nfunction isValidPosition(position, boardSize) {\n    return matchesPositionType(position) && position.every(val => val < boardSize);\n}\n\n\n/**\n * @private\n */\nexport const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);\n"
+    "content": "import {isString} from 'lodash';\nimport {List} from 'immutable';\nimport {FixedListSchema} from 'immutable-schema';\n\nimport {isPositiveIntegerOrZero} from './utils';\n\n\n/**\n * Returns a coordinate type compatible with the rest of godash.\n *\n * @param {number} x\n * @param {number} y\n * @param {number} board_size optional board size to validate against\n * @returns {List} representing a possible coordinate on the board\n * @throws {TypeError} arguments are not integers greater than or equal to 0\n * @throws {TypeError} first two arguments don't validate against board size\n */\nexport function Position(x, y, boardSize) {\n    const position = List.of(x, y);\n\n    if (!matchesPositionType(position)) {\n        throw TypeError('Both passed arguments must be integers greater than or equal to 0');\n    }\n\n    if (boardSize && !isValidPosition(position, boardSize)) {\n        throw TypeError('Position doesn\\'t fit a the passed board size');\n    }\n\n    return position;\n}\n\n\n/**\n * Convert sgf coordinates to godash coordinates\n */\nexport function sgfToXY(sgf) {\n    if (isString(sgf) && sgf.length == 2) {\n        return [sgf.charCodeAt(0) - 97, sgf.charCodeAt(1) - 97];\n    } else {\n        throw TypeError('Must pass a string of length 2');\n    }\n}\n\n\n/**\n * @private\n */\nfunction isValidPosition(position, boardSize) {\n    return matchesPositionType(position) && position.every(val => val < boardSize);\n}\n\n\n/**\n * @private\n */\nexport const matchesPositionType = FixedListSchema(isPositiveIntegerOrZero, isPositiveIntegerOrZero);\n"
   },
   {
     "kind": "function",
@@ -1481,7 +1481,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {forEach} from 'lodash';\nimport {Map} from 'immutable';\n\nimport {Board} from './board';\nimport {Position, sgfToXY} from './position';\nimport {parseSGF} from './utils';\n\n\n/**\n * Tree of moves, represented by Nodes.\n */\nexport class Variation {\n    /**\n     * Create a Variation.\n     *\n     * @param {number} boardSize optional board size, defaults to 19\n     */\n    constructor(boardSize) {\n        if (!boardSize) {\n            boardSize = 19;\n        }\n        this._variation = Map().set(List.of(0), (new Board(boardSize))._position);\n    }\n\n    /**\n     * Get the board at provided index.\n     *\n     * @param {number} index index to fetch\n     */\n    getBoardAt(index) {\n        const key = List.of(index);\n        if (this._variation.has(key)) {\n            return new Board(this._variation.get(key));\n        } else {\n            return null;\n        }\n    }\n}\n\n\n/**\n * Convert raw SGF into Variation\n *\n * @param {string} rawSgf SGF string to convert\n */\nexport function sgfToVariation(rawSgf) {\n    const [infoMove, ...gameSequence] = parseSGF(rawSgf);\n\n    let rawVariation = (new Variation(parseInt(infoMove.SZ)))._variation;\n    let board = rawVariation.getBoardAt(0);\n\n    // TODO: Use actual position methods after they're written instead of building\n    // raw immutable data\n    forEach(gameSequence, (move, index) => {\n        if (move.B) {\n            board = board.addBlackMove(Position(...sgfToXY(move.B)));\n            rawVariation = rawVariation.set(List.of(index + 1), board._position);\n        } else if (move.W) {\n            board = board.addWhiteMove(Position(...sgfToXY(move.W)));\n            rawVariation = rawVariation.set(List.of(index + 1), board._position);\n        } else {\n            throw Error('Something broken - missing move?');\n        }\n    });\n\n    const variation = new Variation();\n    variation._variation = rawVariation;\n    return variation;\n}\n"
+    "content": "import {forEach} from 'lodash';\nimport {Map, List} from 'immutable';\n\nimport {Board} from './board';\nimport {Position, sgfToXY} from './position';\nimport {parseSGF} from './utils';\n\n\n/**\n * Tree of moves, represented by Nodes.\n */\nexport class Variation {\n    /**\n     * Create a Variation.\n     *\n     * @param {number} boardSize optional board size, defaults to 19\n     */\n    constructor(boardSize) {\n        if (!boardSize) {\n            boardSize = 19;\n        }\n        this._variation = Map().set(List.of(0), (new Board(boardSize))._positions);\n    }\n\n    /**\n     * Get the board at provided index.\n     *\n     * @param {number} index index to fetch\n     */\n    getBoardAt(index) {\n        const key = List.of(index);\n        if (this._variation.has(key)) {\n            return new Board(this._variation.get(key));\n        } else {\n            return null;\n        }\n    }\n}\n\n\n/**\n * Convert raw SGF into Variation\n *\n * @param {string} rawSgf SGF string to convert\n */\nexport function sgfToVariation(rawSgf) {\n    const [infoMove, ...gameSequence] = parseSGF(rawSgf);\n    const variation = new Variation(parseInt(infoMove.SZ));\n\n    let rawVariation = variation._variation;\n    let board = variation.getBoardAt(0);\n\n    // TODO: Use actual position methods after they're written instead of building\n    // raw immutable data\n    forEach(gameSequence, (move, index) => {\n        if (move.B) {\n            board = board.addBlackMove(Position(...sgfToXY(move.B)));\n            rawVariation = rawVariation.set(List.of(index + 1), board._position);\n        } else if (move.W) {\n            board = board.addWhiteMove(Position(...sgfToXY(move.W)));\n            rawVariation = rawVariation.set(List.of(index + 1), board._position);\n        } else {\n            throw Error('Something broken - missing move?');\n        }\n    });\n\n    variation._variation = rawVariation;\n    return variation;\n}\n"
   },
   {
     "kind": "class",
@@ -1610,7 +1610,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {tail, fromPairs, map, slice, forEach, isNumber, trim} from 'lodash';\n\n\n/**\n * @private\n */\nexport function isPositiveInteger(num) {\n    return isNumber(num) && num === parseInt(num) && num > 0;\n}\n\n\n/**\n * @private\n */\nexport function parseSGF(raw_sgf_string) {\n    const moves = tail(raw_sgf_string.split(';'));\n    return map(moves, parseMove);\n}\n\n\n/**\n * @private\n */\nexport function parseMove(move) {\n    const token = /[A-Z][A-Z]?\\[[^\\]]+\\]/g;\n    const move_tokens = move.match(token);\n\n    if (move_tokens) {\n        const key_value = /([A-Z][A-Z]?)\\[([\\s\\S]+)\\]/;\n        const pairs = map(move_tokens, token => slice(key_value.exec(token), 1, 3));\n        return fromPairs(pairs);\n    } else {\n        return {};\n    }\n}\n"
+    "content": "import {tail, fromPairs, map, slice, forEach, isNumber, trim} from 'lodash';\n\n\n/**\n * @private\n */\nexport function isPositiveInteger(num) {\n    return isNumber(num) && num === parseInt(num) && num > 0;\n}\n\n\n/**\n * @private\n */\nexport function isPositiveIntegerOrZero(num) {\n    return isNumber(num) && num === parseInt(num) && num >= 0;\n}\n\n\n/**\n * @private\n */\nexport function parseSGF(raw_sgf_string) {\n    const moves = tail(raw_sgf_string.split(';'));\n    return map(moves, parseMove);\n}\n\n\n/**\n * @private\n */\nexport function parseMove(move) {\n    const token = /[A-Z][A-Z]?\\[[^\\]]+\\]/g;\n    const move_tokens = move.match(token);\n\n    if (move_tokens) {\n        const key_value = /([A-Z][A-Z]?)\\[([\\s\\S]+)\\]/;\n        const pairs = map(move_tokens, token => slice(key_value.exec(token), 1, 3));\n        return fromPairs(pairs);\n    } else {\n        return {};\n    }\n}\n"
   },
   {
     "kind": "function",
@@ -1644,6 +1644,34 @@
     "kind": "function",
     "static": true,
     "variation": null,
+    "name": "isPositiveIntegerOrZero",
+    "memberof": "src/utils.js",
+    "longname": "src/utils.js~isPositiveIntegerOrZero",
+    "access": "private",
+    "export": true,
+    "importPath": "godash/src/utils.js",
+    "importStyle": "{isPositiveIntegerOrZero}",
+    "description": null,
+    "lineNumber": 15,
+    "params": [
+      {
+        "name": "num",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
     "name": "parseSGF",
     "memberof": "src/utils.js",
     "longname": "src/utils.js~parseSGF",
@@ -1652,7 +1680,7 @@
     "importPath": "godash/src/utils.js",
     "importStyle": "{parseSGF}",
     "description": null,
-    "lineNumber": 15,
+    "lineNumber": 23,
     "params": [
       {
         "name": "raw_sgf_string",
@@ -1680,7 +1708,7 @@
     "importPath": "godash/src/utils.js",
     "importStyle": "{parseMove}",
     "description": null,
-    "lineNumber": 24,
+    "lineNumber": 32,
     "params": [
       {
         "name": "move",

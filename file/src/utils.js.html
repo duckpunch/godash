@@ -86,6 +86,14 @@ export function isPositiveInteger(num) {
 /**
  * @private
  */
+export function isPositiveIntegerOrZero(num) {
+    return isNumber(num) &amp;&amp; num === parseInt(num) &amp;&amp; num &gt;= 0;
+}
+
+
+/**
+ * @private
+ */
 export function parseSGF(raw_sgf_string) {
     const moves = tail(raw_sgf_string.split(&apos;;&apos;));
     return map(moves, parseMove);

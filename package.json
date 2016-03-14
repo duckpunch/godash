@@ -1,6 +1,6 @@
 {
   "name": "godash",
-  "version": "0.4.6",
+  "version": "0.4.14",
   "description": "Immutable data structures and utilities to represent Go",
   "homepage": "https://github.com/duckpunch/godash",
   "repository": {
@@ -39,6 +39,7 @@
     "webpack": "^1.12.14"
   },
   "scripts": {
+    "prepublish": "webpack",
     "test": "karma start"
   }
 }

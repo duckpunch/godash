@@ -73,7 +73,7 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/sequence.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {forEach} from &apos;lodash&apos;;
-import {Map} from &apos;immutable&apos;;
+import {Map, List} from &apos;immutable&apos;;
 
 import {Board} from &apos;./board&apos;;
 import {Position, sgfToXY} from &apos;./position&apos;;
@@ -93,7 +93,7 @@ export class Variation {
         if (!boardSize) {
             boardSize = 19;
         }
-        this._variation = Map().set(List.of(0), (new Board(boardSize))._position);
+        this._variation = Map().set(List.of(0), (new Board(boardSize))._positions);
     }
 
     /**
@@ -119,9 +119,10 @@ export class Variation {
  */
 export function sgfToVariation(rawSgf) {
     const [infoMove, ...gameSequence] = parseSGF(rawSgf);
+    const variation = new Variation(parseInt(infoMove.SZ));
 
-    let rawVariation = (new Variation(parseInt(infoMove.SZ)))._variation;
-    let board = rawVariation.getBoardAt(0);
+    let rawVariation = variation._variation;
+    let board = variation.getBoardAt(0);
 
     // TODO: Use actual position methods after they&apos;re written instead of building
     // raw immutable data
@@ -137,7 +138,6 @@ export function sgfToVariation(rawSgf) {
         }
     });
 
-    const variation = new Variation();
     variation._variation = rawVariation;
     return variation;
 }

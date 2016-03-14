@@ -76,7 +76,7 @@
 import {List} from &apos;immutable&apos;;
 import {FixedListSchema} from &apos;immutable-schema&apos;;
 
-import {isPositiveInteger} from &apos;./utils&apos;;
+import {isPositiveIntegerOrZero} from &apos;./utils&apos;;
 
 
 /**
@@ -92,11 +92,11 @@ import {isPositiveInteger} from &apos;./utils&apos;;
 export function Position(x, y, boardSize) {
     const position = List.of(x, y);
 
-    if (matchesPositionType(position)) {
+    if (!matchesPositionType(position)) {
         throw TypeError(&apos;Both passed arguments must be integers greater than or equal to 0&apos;);
     }
 
-    if (board_size &amp;&amp; !isValidPosition(position, boardSize)) {
+    if (boardSize &amp;&amp; !isValidPosition(position, boardSize)) {
         throw TypeError(&apos;Position doesn\&apos;t fit a the passed board size&apos;);
     }
 
@@ -127,7 +127,7 @@ function isValidPosition(position, boardSize) {
 /**
  * @private
  */
-export const matchesPositionType = FixedListSchema(isPositiveInteger, isPositiveInteger);
+export const matchesPositionType = FixedListSchema(isPositiveIntegerOrZero, isPositiveIntegerOrZero);
 </code></pre>
 
 </div>
