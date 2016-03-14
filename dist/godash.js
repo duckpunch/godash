@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["godash"] = factory();
+	else
+		root["godash"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -20717,9 +20727,19 @@
 
 /***/ },
 /* 7 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	/******/ (function(modules) { // webpackBootstrap
+	(function webpackUniversalModuleDefinition(root, factory) {
+		if(true)
+			module.exports = factory();
+		else if(typeof define === 'function' && define.amd)
+			define([], factory);
+		else if(typeof exports === 'object')
+			exports["immutable-schema"] = factory();
+		else
+			root["immutable-schema"] = factory();
+	})(this, function() {
+	return /******/ (function(modules) { // webpackBootstrap
 	/******/ 	// The module cache
 	/******/ 	var installedModules = {};
 
@@ -41036,7 +41056,9 @@
 		}));
 
 	/***/ }
-	/******/ ]);
+	/******/ ])
+	});
+	;
 
 /***/ },
 /* 8 */
@@ -41277,4 +41299,6 @@
 	}
 
 /***/ }
-/******/ ]);
+/******/ ])
+});
+;

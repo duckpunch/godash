@@ -1,4 +1,5 @@
 import {Map, List} from 'immutable';
+import {isNumber} from 'lodash';
 import {MapSchema, FixedListSchema, OneOf, Exactly} from 'immutable-schema';
 
 import {isPositiveInteger} from './utils';
