@@ -55,10 +55,10 @@ export function sgfToVariation(rawSgf) {
     forEach(gameSequence, (move, index) => {
         if (move.B) {
             board = board.addBlackMove(Position(...sgfToXY(move.B)));
-            rawVariation = rawVariation.set(List.of(index + 1), board._position);
+            rawVariation = rawVariation.set(List.of(index + 1), board._positions);
         } else if (move.W) {
             board = board.addWhiteMove(Position(...sgfToXY(move.W)));
-            rawVariation = rawVariation.set(List.of(index + 1), board._position);
+            rawVariation = rawVariation.set(List.of(index + 1), board._positions);
         } else {
             throw Error('Something broken - missing move?');
         }
