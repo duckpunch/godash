@@ -41296,10 +41296,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    (0, _lodash.forEach)(gameSequence, function (move, index) {
 	        if (move.B) {
 	            board = board.addBlackMove(_position.Position.apply(undefined, _toConsumableArray((0, _position.sgfToXY)(move.B))));
-	            rawVariation = rawVariation.set(_immutable.List.of(index + 1), board._position);
+	            rawVariation = rawVariation.set(_immutable.List.of(index + 1), board._positions);
 	        } else if (move.W) {
 	            board = board.addWhiteMove(_position.Position.apply(undefined, _toConsumableArray((0, _position.sgfToXY)(move.W))));
-	            rawVariation = rawVariation.set(_immutable.List.of(index + 1), board._position);
+	            rawVariation = rawVariation.set(_immutable.List.of(index + 1), board._positions);
 	        } else {
 	            throw Error('Something broken - missing move?');
 	        }
