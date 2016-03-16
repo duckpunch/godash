@@ -510,6 +510,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/sequence.js~variation#getcommentsat",
+    "class/src/sequence.js~Variation.html#instance-method-getCommentsAt",
+    "src/sequence.js~Variation#getCommentsAt",
+    "method"
+  ],
+  [
     "src/utils.js",
     "file/src/utils.js.html",
     "src/utils.js",

@@ -1481,7 +1481,41 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import {forEach} from 'lodash';\nimport {Map, List} from 'immutable';\n\nimport {Board} from './board';\nimport {Position, sgfToXY} from './position';\nimport {parseSGF} from './utils';\n\n\n/**\n * Tree of moves, represented by Nodes.\n */\nexport class Variation {\n    /**\n     * Create a Variation.\n     *\n     * @param {number} boardSize optional board size, defaults to 19\n     */\n    constructor(boardSize) {\n        if (!boardSize) {\n            boardSize = 19;\n        }\n        this._variation = Map().set(List.of(0), (new Board(boardSize))._positions);\n    }\n\n    /**\n     * Get the board at provided index.\n     *\n     * @param {number} index index to fetch\n     */\n    getBoardAt(index) {\n        const key = List.of(index);\n        if (this._variation.has(key)) {\n            return new Board(this._variation.get(key));\n        } else {\n            return null;\n        }\n    }\n}\n\n\n/**\n * Convert raw SGF into Variation\n *\n * @param {string} rawSgf SGF string to convert\n */\nexport function sgfToVariation(rawSgf) {\n    const [infoMove, ...gameSequence] = parseSGF(rawSgf);\n    const variation = new Variation(parseInt(infoMove.SZ));\n\n    let rawVariation = variation._variation;\n    let board = variation.getBoardAt(0);\n\n    // TODO: Use actual position methods after they're written instead of building\n    // raw immutable data\n    forEach(gameSequence, (move, index) => {\n        if (move.B) {\n            board = board.addBlackMove(Position(...sgfToXY(move.B)));\n            rawVariation = rawVariation.set(List.of(index + 1), board._positions);\n        } else if (move.W) {\n            board = board.addWhiteMove(Position(...sgfToXY(move.W)));\n            rawVariation = rawVariation.set(List.of(index + 1), board._positions);\n        } else {\n            throw Error('Something broken - missing move?');\n        }\n    });\n\n    variation._variation = rawVariation;\n    return variation;\n}\n"
+    "content": "import {forEach} from 'lodash';\nimport {Map, List} from 'immutable';\n\nimport {Board} from './board';\nimport {Position, sgfToXY} from './position';\nimport {parseSGF} from './utils';\n\n\n/**\n * @private\n */\nfunction makeMoveMap(boardPositions, comments) {\n    return Map()\n        .set('board', boardPositions)\n        .set('comments', comments);\n}\n\n/**\n * Tree of moves, represented by Nodes.\n */\nexport class Variation {\n    /**\n     * Create a Variation.\n     *\n     * @param {number} boardSize optional board size, defaults to 19\n     */\n    constructor(boardSize) {\n        if (!boardSize) {\n            boardSize = 19;\n        }\n        this._variation = Map().set(\n            List.of(0),\n            makeMoveMap(\n                (new Board(boardSize))._positions,\n                ''\n            )\n        );\n    }\n\n    /**\n     * Get the board at provided index.\n     *\n     * @param {number} index index to fetch\n     */\n    getBoardAt(index) {\n        return new Board(this._getDataAt(index, 'board'));\n    }\n\n    /**\n     * Get the comments at provided index.\n     *\n     * @param {number} index index to fetch\n     */\n    getCommentsAt(index) {\n        return this._getDataAt(index, 'comments');\n    }\n\n    /**\n     * @private\n     */\n    _getDataAt(index, dataKey) {\n        const key = List.of(index);\n        if (this._variation.has(key)) {\n            return this._variation.get(key).get(dataKey);\n        } else {\n            return null;\n        }\n    }\n}\n\n\n/**\n * Convert raw SGF into Variation\n *\n * @param {string} rawSgf SGF string to convert\n */\nexport function sgfToVariation(rawSgf) {\n    const [infoMove, ...gameSequence] = parseSGF(rawSgf);\n    const variation = new Variation(parseInt(infoMove.SZ));\n\n    let rawVariation = variation._variation;\n    let board = variation.getBoardAt(0);\n\n    // TODO: Use actual position methods after they're written instead of building\n    // raw immutable data\n    forEach(gameSequence, (move, index) => {\n        if (move.B) {\n            board = board.addBlackMove(Position(...sgfToXY(move.B)));\n        } else if (move.W) {\n            board = board.addWhiteMove(Position(...sgfToXY(move.W)));\n        } else {\n            throw Error('Something broken - missing move?');\n        }\n\n        rawVariation = rawVariation.set(\n            List.of(index + 1),\n            makeMoveMap(\n                board._positions,\n                move.C || ''\n            )\n        );\n    });\n\n    variation._variation = rawVariation;\n    return variation;\n}\n"
+  },
+  {
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "makeMoveMap",
+    "memberof": "src/sequence.js",
+    "longname": "src/sequence.js~makeMoveMap",
+    "access": "private",
+    "export": false,
+    "importPath": "godash/src/sequence.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "params": [
+      {
+        "name": "boardPositions",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "comments",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
   },
   {
     "kind": "class",
@@ -1495,7 +1529,7 @@
     "importPath": "godash/src/sequence.js",
     "importStyle": "{Variation}",
     "description": "Tree of moves, represented by Nodes.",
-    "lineNumber": 12,
+    "lineNumber": 21,
     "interface": false
   },
   {
@@ -1507,7 +1541,7 @@
     "longname": "src/sequence.js~Variation#constructor",
     "access": null,
     "description": "Create a Variation.",
-    "lineNumber": 18,
+    "lineNumber": 27,
     "params": [
       {
         "nullable": null,
@@ -1531,7 +1565,7 @@
     "longname": "src/sequence.js~Variation#_variation",
     "access": null,
     "description": null,
-    "lineNumber": 22,
+    "lineNumber": 31,
     "undocument": true,
     "type": {
       "types": [
@@ -1548,7 +1582,7 @@
     "longname": "src/sequence.js~Variation#getBoardAt",
     "access": null,
     "description": "Get the board at provided index.",
-    "lineNumber": 30,
+    "lineNumber": 45,
     "params": [
       {
         "nullable": null,
@@ -1559,6 +1593,66 @@
         "optional": false,
         "name": "index",
         "description": "index to fetch"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getCommentsAt",
+    "memberof": "src/sequence.js~Variation",
+    "longname": "src/sequence.js~Variation#getCommentsAt",
+    "access": null,
+    "description": "Get the comments at provided index.",
+    "lineNumber": 54,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "index",
+        "description": "index to fetch"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getDataAt",
+    "memberof": "src/sequence.js~Variation",
+    "longname": "src/sequence.js~Variation#_getDataAt",
+    "access": "private",
+    "description": null,
+    "lineNumber": 61,
+    "params": [
+      {
+        "name": "index",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "dataKey",
+        "types": [
+          "*"
+        ]
       }
     ],
     "return": {
@@ -1580,7 +1674,7 @@
     "importPath": "godash/src/sequence.js",
     "importStyle": "{sgfToVariation}",
     "description": "Convert raw SGF into Variation",
-    "lineNumber": 46,
+    "lineNumber": 77,
     "params": [
       {
         "nullable": null,
