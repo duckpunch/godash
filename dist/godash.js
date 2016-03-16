@@ -41245,22 +41245,54 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (!boardSize) {
 	            boardSize = 19;
 	        }
-	        this._variation = (0, _immutable.Map)().set(_immutable.List.of(0), new _board.Board(boardSize)._positions);
+	        this._variation = (0, _immutable.Map)().set(_immutable.List.of(0), _makeMoveMap(new _board.Board(boardSize)._positions, ''));
 	    }
 
 	    /**
-	     * Get the board at provided index.
-	     *
-	     * @param {number} index index to fetch
+	     * @private
 	     */
 
 
 	    _createClass(Variation, [{
+	        key: '_makeMoveMap',
+	        value: function _makeMoveMap(boardPositions, comments) {
+	            return (0, _immutable.Map)().set('board', boardPositions).set('comments', comments);
+	        }
+
+	        /**
+	         * Get the board at provided index.
+	         *
+	         * @param {number} index index to fetch
+	         */
+
+	    }, {
 	        key: 'getBoardAt',
 	        value: function getBoardAt(index) {
+	            return new _board.Board(this._getDataAt(index, 'board'));
+	        }
+
+	        /**
+	         * Get the comments at provided index.
+	         *
+	         * @param {number} index index to fetch
+	         */
+
+	    }, {
+	        key: 'getCommentsAt',
+	        value: function getCommentsAt(index) {
+	            return this._getDataAt(index, 'comments');
+	        }
+
+	        /**
+	         * @private
+	         */
+
+	    }, {
+	        key: '_getDataAt',
+	        value: function _getDataAt(index, dataKey) {
 	            var key = _immutable.List.of(index);
 	            if (this._variation.has(key)) {
-	                return new _board.Board(this._variation.get(key));
+	                return this._variation.get(key).get(dataKey);
 	            } else {
 	                return null;
 	            }
@@ -41296,13 +41328,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    (0, _lodash.forEach)(gameSequence, function (move, index) {
 	        if (move.B) {
 	            board = board.addBlackMove(_position.Position.apply(undefined, _toConsumableArray((0, _position.sgfToXY)(move.B))));
-	            rawVariation = rawVariation.set(_immutable.List.of(index + 1), board._positions);
 	        } else if (move.W) {
 	            board = board.addWhiteMove(_position.Position.apply(undefined, _toConsumableArray((0, _position.sgfToXY)(move.W))));
-	            rawVariation = rawVariation.set(_immutable.List.of(index + 1), board._positions);
 	        } else {
 	            throw Error('Something broken - missing move?');
 	        }
+
+	        rawVariation = rawVariation.set(_immutable.List.of(index + 1), rawVariation._makeMoveMap(board._positions, move.C || ''));
 	    });
 
 	    variation._variation = rawVariation;
