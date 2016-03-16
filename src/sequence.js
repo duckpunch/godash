@@ -7,6 +7,15 @@ import {parseSGF} from './utils';
 
 
 /**
+ * @private
+ */
+function makeMoveMap(boardPositions, comments) {
+    return Map()
+        .set('board', boardPositions)
+        .set('comments', comments);
+}
+
+/**
  * Tree of moves, represented by Nodes.
  */
 export class Variation {
@@ -21,20 +30,11 @@ export class Variation {
         }
         this._variation = Map().set(
             List.of(0),
-            _makeMoveMap(
+            makeMoveMap(
                 (new Board(boardSize))._positions,
                 ''
             )
         );
-    }
-
-    /**
-     * @private
-     */
-    _makeMoveMap(boardPositions, comments) {
-        return Map()
-            .set('board', boardPositions)
-            .set('comments', comments);
     }
 
     /**
@@ -94,7 +94,7 @@ export function sgfToVariation(rawSgf) {
 
         rawVariation = rawVariation.set(
             List.of(index + 1),
-            rawVariation._makeMoveMap(
+            makeMoveMap(
                 board._positions,
                 move.C || ''
             )
