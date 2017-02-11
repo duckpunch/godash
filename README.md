@@ -8,14 +8,14 @@ godash
 
 A Javascript utility library to handle go board manipulations in immutable data structures.
 
-This library strives only to represent the rules of [Go][0] and corresponding basic analysis.
-Immutability is delivered by [ImmutableJS][1] and other basic javascript manipulations are done with
-[lodash][2], this library's namesake.
+This library strives only to represent the rules of [Go][go] and corresponding basic analysis.
+Immutability is delivered by [ImmutableJS][immutable] and other basic javascript manipulations are done with
+[lodash][lodash], this library's namesake.
 
 Getting Started
 ---------------
 
-Install `godash` via [npm][3].
+Install `godash` via [npm][npm].
 
     npm install godash
 
@@ -34,7 +34,7 @@ standard_opening.positions.has(tengen); // true
 
 ### Browser
 
-Grab the [compiled script][4] and just use it.
+Grab the [compiled script][compiled] and just use it.
 
 ```html
 <script src="godash.min.js"></script>
@@ -47,7 +47,7 @@ Grab the [compiled script][4] and just use it.
 Examples
 --------
 
-- A [simple goban][5] in [React][6]
+- A [simple goban][goban] in [React][react]
 
 Roadmap
 -------
@@ -59,10 +59,10 @@ Then, in no particular order.
 - SGF support (import and export)
 - Annotations (comments and marks)
 
-[0]: https://en.wikipedia.org/wiki/Go_%28game%29
-[1]: http://facebook.github.io/immutable-js/
-[2]: https://lodash.com/
-[3]: https://www.npmjs.com/package/godash
-[4]: https://github.com/duckpunch/godash/blob/master/dist/godash.min.js
-[5]: http://duckpunch.github.io/react-simple-goban
-[6]: https://facebook.github.io/react/
+[compiled]: https://github.com/duckpunch/godash/blob/master/dist/godash.min.js
+[go]: https://en.wikipedia.org/wiki/Go_%28game%29
+[goban]: http://duckpunch.github.io/react-simple-goban
+[immutable]: http://facebook.github.io/immutable-js/
+[lodash]: https://lodash.com/
+[npm]: https://www.npmjs.com/package/godash
+[react]: https://facebook.github.io/react/
