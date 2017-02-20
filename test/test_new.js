@@ -1,10 +1,18 @@
 import assert from 'assert';
-import {Set} from 'immutable';
 import {
+    Set,
+    Map,
+} from 'immutable';
+import {
+    WHITE,
+    BLACK,
+    EMPTY,
     Board,
     Coordinate,
     sgfPointToCoordinate,
     adjacentCoordinates,
+    matchingAdjacentCoordinates,
+    group,
 } from '../src/new';
 
 
@@ -79,6 +87,129 @@ describe('adjacentCoordinates', function() {
                 Set.of(
                     new Coordinate(18, 17),
                     new Coordinate(17, 18),
+                )
+            )
+        );
+    });
+});
+
+describe('matchingAdjacentCoordinates', function() {
+    const coordinate = new Coordinate(9, 9);
+    const board = new Board({
+        moves: Map.of(
+            new Coordinate(9, 8), BLACK,
+            new Coordinate(9, 10), WHITE,
+            new Coordinate(8, 9), WHITE,
+        )
+    });
+
+    it('yields correct matches for white', function() {
+        assert.ok(
+            matchingAdjacentCoordinates(board, coordinate, WHITE).equals(
+                Set.of(
+                    new Coordinate(9, 10),
+                    new Coordinate(8, 9),
+                )
+            )
+        );
+    });
+
+    it('yields correct matches for black', function() {
+        assert.ok(
+            matchingAdjacentCoordinates(board, coordinate, BLACK).equals(
+                Set.of(
+                    new Coordinate(9, 8),
+                )
+            )
+        );
+    });
+
+    it('yields correct matches for empty', function() {
+        assert.ok(
+            matchingAdjacentCoordinates(board, coordinate, EMPTY).equals(
+                Set.of(
+                    new Coordinate(10, 9),
+                )
+            )
+        );
+    });
+});
+
+describe('group', function() {
+    it('finds a group of 1', function() {
+        const coordinate = new Coordinate(2, 2);
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 2), BLACK,
+            )
+        });
+
+        assert.ok(
+            group(board, coordinate).equals(
+                Set.of(
+                    new Coordinate(2, 2),
+                )
+            )
+        );
+    });
+
+    it('finds a group of 2', function() {
+        const coordinate = new Coordinate(2, 2);
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 2), BLACK,
+                new Coordinate(2, 1), BLACK,
+            )
+        });
+
+        assert.ok(
+            group(board, coordinate).equals(
+                Set.of(
+                    new Coordinate(2, 2),
+                    new Coordinate(2, 1),
+                )
+            )
+        );
+    });
+
+    it('finds a group of 1 with adjacent opposite color', function() {
+        const coordinate = new Coordinate(2, 2);
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 2), BLACK,
+                new Coordinate(2, 1), WHITE,
+            )
+        });
+
+        assert.ok(
+            group(board, coordinate).equals(
+                Set.of(
+                    new Coordinate(2, 2),
+                )
+            )
+        );
+    });
+
+    it('finds empty triangle', function() {
+        const coordinate = new Coordinate(2, 2);
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 2), BLACK,
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(1, 2), BLACK,
+            )
+        });
+
+        assert.ok(
+            group(board, coordinate).equals(
+                Set.of(
+                    new Coordinate(2, 2),
+                    new Coordinate(2, 1),
+                    new Coordinate(1, 2),
                 )
             )
         );

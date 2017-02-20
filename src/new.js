@@ -25,9 +25,37 @@ export function adjacentCoordinates(board, coordinate) {
     ).filter(c => c.every(validRange));
 }
 
+export function sgfPointToCoordinate(sgfPoint) {
+    if (isString(sgfPoint) && sgfPoint.length === 2) {
+        return new Coordinate(
+            sgfPoint.charCodeAt(0) - 97,
+            sgfPoint.charCodeAt(1) - 97,
+        );
+    } else {
+        throw TypeError('Must pass a string of length 2');
+    }
+}
+
 export function matchingAdjacentCoordinates(board, coordinate, color) {
+    const colorToMatch = color === undefined ? board.moves.get(coordinate, EMPTY) : color;
+
     return adjacentCoordinates(board, coordinate)
-        .filter(c => board.moves.get(coordinate) === color);
+        .filter(c => board.moves.get(c, EMPTY) === colorToMatch);
+}
+
+export function group(board, coordinate) {
+    let found = Set();
+    let queue = Set.of(coordinate);
+
+    while (!queue.isEmpty()) {
+        const current = queue.first();
+        const more_matching = matchingAdjacentCoordinates(board, current);
+
+        found = found.add(current);
+        queue = queue.rest().union(more_matching.subtract(found));
+    }
+
+    return found;
 }
 
 export function addMove(board, coordinate, color) {
@@ -68,21 +96,6 @@ export function placeStone(board, coordinate, color, force = false) {
     } else {
         return board.setIn(['moves', coordinate], color);
     }
-}
-
-export function group(board, coordinate) {
-    let found = Set();
-    let queue = Set.of(coordinate);
-
-    while (!queue.isEmpty()) {
-        const current = queue.first();
-        const more_matching = matchingAdjacentCoordinates(board, current);
-
-        found = found.add(current);
-        queue = queue.rest().union(more_matching.subtract(found));
-    }
-
-    return found;
 }
 
 export function liberties(board, coordinate) {
@@ -153,14 +166,3 @@ export function toAsciiBoard() {
 
 export function constructBoard(board, sequence) {}
 export function sgfToJS(sgf) {}
-
-export function sgfPointToCoordinate(sgfPoint) {
-    if (isString(sgfPoint) && sgfPoint.length === 2) {
-        return new Coordinate(
-            sgfPoint.charCodeAt(0) - 97,
-            sgfPoint.charCodeAt(1) - 97,
-        );
-    } else {
-        throw TypeError('Must pass a string of length 2');
-    }
-}
