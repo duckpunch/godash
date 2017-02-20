@@ -19,6 +19,9 @@ import {
     isLegalMove,
     removeStone,
     removeStones,
+    addMove,
+    placeStone,
+    placeStones,
 } from '../src/new';
 
 
@@ -53,7 +56,7 @@ describe('sgfPointToCoordinate', function() {
 });
 
 describe('adjacentCoordinates', function() {
-    it('yields the correct 4 when position is in center', function() {
+    it('yields the correct 4 when coordinate is in center', function() {
         const coordinate = new Coordinate(9, 9);
         const board = new Board();
 
@@ -69,7 +72,7 @@ describe('adjacentCoordinates', function() {
         );
     });
 
-    it('yields the correct 3 when position is on side', function() {
+    it('yields the correct 3 when coordinate is on side', function() {
         const coordinate = new Coordinate(0, 9);
         const board = new Board();
 
@@ -84,7 +87,7 @@ describe('adjacentCoordinates', function() {
         );
     });
 
-    it('yields the correct 2 when position is corner', function() {
+    it('yields the correct 2 when coordinate is corner', function() {
         const coordinate = new Coordinate(18, 18);
         const board = new Board();
 
@@ -444,5 +447,160 @@ describe('removeStones', function() {
 
         assert.equal(updatedBoard.moves.get(new Coordinate(3, 4)), WHITE);
         assert.equal(updatedBoard.moves.get(new Coordinate(9, 10)), BLACK);
+    });
+});
+
+describe('addMove', function() {
+    it('adds a move to simple empty board', function() {
+        const board = new Board();
+
+        assert.equal(
+            addMove(board, new Coordinate(9, 9), BLACK).moves.get(new Coordinate(9, 9)),
+            BLACK
+        );
+    });
+
+    it('throws if adding same move twice', function() {
+        const board = new Board();
+
+        assert.throws(function() {
+            const coordinate = new Coordinate(9, 9);
+
+            addMove(
+                addMove(board, coordinate, BLACK),
+                coordinate,
+                WHITE,
+            );
+        });
+    });
+
+    it('kills groups that run out of liberties', function() {
+        const board = new Board({
+            dimensions: 3,
+            moves: Map.of(
+                new Coordinate(1, 0), WHITE,
+                new Coordinate(1, 1), WHITE,
+                new Coordinate(2, 0), BLACK,
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(1, 2), BLACK,
+            ),
+        });
+
+        const newBoard = addMove(board, new Coordinate(2, 2), WHITE);
+
+        assert.ok(
+            Set.of(
+                new Coordinate(1, 0),
+                new Coordinate(1, 1),
+                new Coordinate(2, 2),
+                new Coordinate(1, 2),
+            ).equals(Set(newBoard.moves.keys()))
+        );
+    });
+
+    it('can kill 3 stone groups', function() {
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(0, 0), BLACK,
+                new Coordinate(0, 1), BLACK,
+                new Coordinate(0, 2), BLACK,
+                new Coordinate(1, 0), WHITE,
+                new Coordinate(1, 1), WHITE,
+                new Coordinate(1, 2), WHITE,
+                new Coordinate(2, 0), BLACK,
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(2, 2), BLACK,
+            ),
+        });
+
+        const newBoard = addMove(board, new Coordinate(1, 3), BLACK);
+
+        assert.ok(
+            Set.of(
+                new Coordinate(0, 0),
+                new Coordinate(0, 1),
+                new Coordinate(0, 2),
+                new Coordinate(2, 0),
+                new Coordinate(2, 1),
+                new Coordinate(2, 2),
+                new Coordinate(1, 3),
+            ).equals(Set(newBoard.moves.keys()))
+        );
+    });
+});
+
+describe('placeStone', function() {
+    it('can place a stone on an empty board', function() {
+        const board = new Board();
+
+        assert.equal(
+            placeStone(board, new Coordinate(9, 9), BLACK).moves.get(new Coordinate(9, 9)),
+            BLACK
+        );
+    });
+
+    it('throws if placing onto a coordinate with an opposite stone color', function() {
+        const board = new Board();
+
+        assert.throws(function() {
+            const coordinate = new Coordinate(9, 9);
+
+            placeStone(
+                placeStone(board, coordinate, BLACK),
+                coordinate,
+                WHITE,
+            );
+        });
+    });
+
+    it('can force an existing opposite color stone placement', function() {
+        const board = new Board();
+        const coordinate = new Coordinate(9, 9);
+
+        const blackStoneBoard = placeStone(board, coordinate, BLACK);
+        const whiteStoneBoard = placeStone(blackStoneBoard, coordinate, WHITE, true);
+
+        assert.equal(whiteStoneBoard.moves.get(coordinate), WHITE);
+    });
+
+    it('can place a stone that breaks the rules', function() {
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(2, 3), BLACK,
+                new Coordinate(1, 2), BLACK,
+                new Coordinate(3, 2), BLACK,
+            ),
+        });
+        const coordinate = new Coordinate(2, 2);
+
+        const newBoard = placeStone(board, coordinate, WHITE);
+
+        assert.equal(newBoard.moves.get(coordinate), WHITE);
+    });
+});
+
+describe('placeStones', function() {
+    it('can place a bunch of stones', function() {
+        const coordinates = Set.of(
+            new Coordinate(2, 1),
+            new Coordinate(2, 3),
+            new Coordinate(1, 2),
+            new Coordinate(3, 2),
+        );
+        const board = placeStones(new Board(), coordinates, BLACK);
+
+        assert.ok(
+            Set.of(
+                new Coordinate(2, 1),
+                new Coordinate(2, 3),
+                new Coordinate(1, 2),
+                new Coordinate(3, 2),
+            ).equals(
+                Set(board.moves.keys())
+            )
+        );
     });
 });

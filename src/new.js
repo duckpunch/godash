@@ -121,7 +121,7 @@ export function addMove(board, coordinate, color) {
         throw 'There is already a stone there';
     }
 
-    const killed = matchingAdjacentCoordinates(board, position, oppositeColor(color)).reduce(
+    const killed = matchingAdjacentCoordinates(board, coordinate, oppositeColor(color)).reduce(
         (acc, coord) => acc.union(libertyCount(board, coord) === 1 ? group(board, coord) : Set()),
         Set()
     );
@@ -132,11 +132,18 @@ export function addMove(board, coordinate, color) {
 export function placeStone(board, coordinate, color, force = false) {
     const currentColor = board.moves.get(coordinate, EMPTY);
 
-    if (oppositeColor(currentColor) === color && (!force)) {
+    if ((!force) && oppositeColor(currentColor) === color) {
         throw 'There is already a stone there.  Pass force=true to override.';
     } else {
         return board.setIn(['moves', coordinate], color);
     }
+}
+
+export function placeStones(board, coordinates, color, force = false) {
+    return coordinates.reduce(
+        (acc, coordinate) => placeStone(acc, coordinate, color, force),
+        board,
+    );
 }
 
 export function toAsciiBoard() {
