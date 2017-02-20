@@ -16,6 +16,7 @@ import {
     oppositeColor,
     liberties,
     libertyCount,
+    isLegalMove,
 } from '../src/new';
 
 
@@ -244,7 +245,6 @@ describe('oppositeColor', function() {
 
 describe('liberties and libertyCount', function() {
     it('find values for 1 stone', function() {
-        const coordinate = new Coordinate(2, 2);
         const board = new Board({
             dimensions: 5,
             moves: Map.of(
@@ -264,7 +264,6 @@ describe('liberties and libertyCount', function() {
     });
 
     it('find values for group of 2', function() {
-        const coordinate = new Coordinate(2, 2);
         const board = new Board({
             dimensions: 5,
             moves: Map.of(
@@ -327,5 +326,63 @@ describe('liberties and libertyCount', function() {
             )
         ));
         assert.equal(libertyCount(board, new Coordinate(2, 2)), 7);
+    });
+});
+
+describe('isLegalMove', function() {
+    it('identifies suicide moves as invalid', function() {
+        const board = new Board({
+            dimensions: 3,
+            moves: Map.of(
+                new Coordinate(1, 0), BLACK,
+                new Coordinate(0, 1), BLACK,
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(1, 2), BLACK,
+            )
+        });
+
+        assert.ok(!isLegalMove(board, new Coordinate(1, 1), WHITE));
+    });
+
+    it('allows filling in a ponnuki', function() {
+        const board = new Board({
+            dimensions: 3,
+            moves: Map.of(
+                new Coordinate(1, 0), BLACK,
+                new Coordinate(0, 1), BLACK,
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(1, 2), BLACK,
+            )
+        });
+
+        assert.ok(isLegalMove(board, new Coordinate(1, 1), BLACK));
+    });
+
+    it('marks suicide in corner as invalid', function() {
+        const board = new Board({
+            dimensions: 3,
+            moves: Map.of(
+                new Coordinate(2, 0), BLACK,
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(1, 2), BLACK,
+            )
+        });
+
+        assert.ok(!isLegalMove(board, new Coordinate(2, 2), WHITE));
+    });
+
+    it('marks suicide in corner that kills first as valid', function() {
+        const board = new Board({
+            dimensions: 3,
+            moves: Map.of(
+                new Coordinate(2, 0), BLACK,
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(1, 2), BLACK,
+                new Coordinate(1, 0), WHITE,
+                new Coordinate(1, 1), WHITE,
+            )
+        });
+
+        assert.ok(isLegalMove(board, new Coordinate(2, 2), WHITE));
     });
 });

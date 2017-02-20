@@ -1,7 +1,6 @@
 import {Set, Map, Record} from "immutable";
 import {isString, inRange} from 'lodash';
 
-
 export const BLACK = 'black';
 export const WHITE = 'white';
 export const EMPTY = null;
@@ -79,6 +78,27 @@ export function libertyCount(board, coordinate) {
     return liberties(board, coordinate).size;
 }
 
+export function isLegalMove(board, coordinate, color) {
+    const will_have_liberties = libertyCount(
+        board.setIn(['moves', coordinate], color),
+        coordinate,
+    ) > 0;
+
+    const will_kill_something = matchingAdjacentCoordinates(
+        board, coordinate, oppositeColor(color)
+    ).some(coord => libertyCount(board, coord) === 1);
+
+    return will_have_liberties || will_kill_something;
+}
+
+export function isLegalBlackMove(board, coordinate) {
+    return isLegalMove(board, coordinate, BLACK)
+}
+
+export function isLegalWhiteMove(board, coordinate) {
+    return isLegalMove(board, coordinate, WHITE)
+}
+
 export function addMove(board, coordinate, color) {
     if (!isLegalMove(board, coordinate, color)) {
         throw 'Not a valid position';
@@ -117,27 +137,6 @@ export function placeStone(board, coordinate, color, force = false) {
     } else {
         return board.setIn(['moves', coordinate], color);
     }
-}
-
-export function isLegalMove(board, coordinate, color) {
-    const will_have_liberties = libertyCount(
-        board.setIn(['moves', coordinate], color),
-        coordinate,
-    ) > 0;
-
-    const will_kill_something = matchingAdjacentCoordinates(
-        board, coordinate, oppositeColor(color)
-    ).some(coord => libertyCount(board, coord) === 1);
-
-    return will_have_liberties || will_kill_something;
-}
-
-export function isLegalBlackMove(board, coordinate) {
-    return isLegalMove(board, coordinate, BLACK)
-}
-
-export function isLegalWhiteMove(board, coordinate) {
-    return isLegalMove(board, coordinate, WHITE)
 }
 
 export function toAsciiBoard() {
