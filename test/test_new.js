@@ -17,6 +17,8 @@ import {
     liberties,
     libertyCount,
     isLegalMove,
+    removeStone,
+    removeStones,
 } from '../src/new';
 
 
@@ -384,5 +386,63 @@ describe('isLegalMove', function() {
         });
 
         assert.ok(isLegalMove(board, new Coordinate(2, 2), WHITE));
+    });
+});
+
+describe('removeStone', function() {
+    it('can remove a specified stone', function() {
+        const board = new Board({
+            moves: Map.of(
+                new Coordinate(9, 9), BLACK,
+            ),
+        });
+
+        const updatedBoard = removeStone(board, new Coordinate(9,9));
+
+        assert.equal(
+            updatedBoard.moves.get(new Coordinate(9, 9)),
+            EMPTY,
+        );
+    });
+
+    it('does not blow up even if a coordinate is not there', function() {
+        const board = new Board();
+
+        const updatedBoard = removeStone(board, new Coordinate(9,9));
+
+        assert.equal(
+            updatedBoard.moves.get(new Coordinate(9, 9)),
+            EMPTY,
+        );
+    });
+});
+
+describe('removeStones', function() {
+    it('can remove a bunch of stones', function() {
+        const board = new Board({
+            moves: Map.of(
+                new Coordinate(9, 9), BLACK,
+                new Coordinate(3, 4), WHITE,
+                new Coordinate(9, 10), BLACK,
+                new Coordinate(5, 9), WHITE,
+                new Coordinate(3, 9), BLACK,
+            ),
+        });
+
+        const updatedBoard = removeStones(
+            board,
+            Set.of(
+                new Coordinate(9, 9),
+                new Coordinate(3, 9),
+                new Coordinate(5, 9),
+            ),
+        );
+
+        assert.equal(updatedBoard.moves.get(new Coordinate(9, 9)), EMPTY);
+        assert.equal(updatedBoard.moves.get(new Coordinate(3, 9)), EMPTY);
+        assert.equal(updatedBoard.moves.get(new Coordinate(5, 9)), EMPTY);
+
+        assert.equal(updatedBoard.moves.get(new Coordinate(3, 4)), WHITE);
+        assert.equal(updatedBoard.moves.get(new Coordinate(9, 10)), BLACK);
     });
 });

@@ -99,6 +99,19 @@ export function isLegalWhiteMove(board, coordinate) {
     return isLegalMove(board, coordinate, WHITE)
 }
 
+export function removeStone(board, coordinate) {
+    return board.set('moves', board.moves.delete(coordinate));
+}
+
+export function removeStones(board, coordinates) {
+    return board.setIn(['moves'],
+        coordinates.reduce(
+            (acc, coordinate) => acc.delete(coordinate),
+            board.moves,
+        )
+    );
+}
+
 export function addMove(board, coordinate, color) {
     if (!isLegalMove(board, coordinate, color)) {
         throw 'Not a valid position';
@@ -113,20 +126,7 @@ export function addMove(board, coordinate, color) {
         Set()
     );
 
-    return removeStones(board, killed).setIn(['moves'], coordinate, color);
-}
-
-export function removeStone(board, coordinate) {
-    return board.set('moves', board.moves.delete(coordinate));
-}
-
-export function removeStones(board, coordinates) {
-    return board.setIn('moves',
-        coordinates.reduce(
-            (acc, coordinate) => acc.delete(coordinate),
-            board.moves,
-        )
-    );
+    return removeStones(board, killed).setIn(['moves', coordinate], color);
 }
 
 export function placeStone(board, coordinate, color, force = false) {
