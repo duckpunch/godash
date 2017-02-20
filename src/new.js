@@ -58,6 +58,27 @@ export function group(board, coordinate) {
     return found;
 }
 
+export function oppositeColor(color) {
+    if (color === BLACK) {
+        return WHITE;
+    } else if (color === WHITE) {
+        return BLACK;
+    } else {
+        return EMPTY;
+    }
+}
+
+export function liberties(board, coordinate) {
+    return group(board, coordinate).reduce(
+        (acc, coord) => acc.union(matchingAdjacentCoordinates(board, coord, EMPTY)),
+        Set(),
+    );
+}
+
+export function libertyCount(board, coordinate) {
+    return liberties(board, coordinate).size;
+}
+
 export function addMove(board, coordinate, color) {
     if (!isLegalMove(board, coordinate, color)) {
         throw 'Not a valid position';
@@ -95,27 +116,6 @@ export function placeStone(board, coordinate, color, force = false) {
         throw 'There is already a stone there.  Pass force=true to override.';
     } else {
         return board.setIn(['moves', coordinate], color);
-    }
-}
-
-export function liberties(board, coordinate) {
-    return group(board, coordinate).reduce(
-        (acc, coord) => acc.union(matchingAdjacentCoordinates(board, coord, EMPTY)),
-        Set(),
-    );
-}
-
-export function libertyCount(board, coordinate) {
-    return liberties(board, coordinate).size;
-}
-
-export function oppositeColor(color) {
-    if (color === BLACK) {
-        return WHITE;
-    } else if (color === WHITE) {
-        return BLACK;
-    } else {
-        return null;
     }
 }
 

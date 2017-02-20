@@ -13,6 +13,9 @@ import {
     adjacentCoordinates,
     matchingAdjacentCoordinates,
     group,
+    oppositeColor,
+    liberties,
+    libertyCount,
 } from '../src/new';
 
 
@@ -213,5 +216,116 @@ describe('group', function() {
                 )
             )
         );
+    });
+});
+
+describe('oppositeColor', function() {
+    it('returns opposite of black', function() {
+        assert.equal(
+            oppositeColor(BLACK),
+            WHITE,
+        );
+    });
+
+    it('returns opposite of white', function() {
+        assert.equal(
+            oppositeColor(WHITE),
+            BLACK,
+        );
+    });
+
+    it('returns empty for random strings', function() {
+        assert.equal(
+            oppositeColor('derp'),
+            EMPTY,
+        );
+    });
+});
+
+describe('liberties and libertyCount', function() {
+    it('find values for 1 stone', function() {
+        const coordinate = new Coordinate(2, 2);
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 2), BLACK,
+            )
+        });
+
+        assert.ok(liberties(board, new Coordinate(2, 2)).equals(
+            Set.of(
+                new Coordinate(2, 1),
+                new Coordinate(1, 2),
+                new Coordinate(2, 3),
+                new Coordinate(3, 2),
+            )
+        ));
+        assert.equal(libertyCount(board, new Coordinate(2, 2)), 4);
+    });
+
+    it('find values for group of 2', function() {
+        const coordinate = new Coordinate(2, 2);
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 2), BLACK,
+                new Coordinate(2, 1), BLACK,
+            )
+        });
+
+        assert.ok(liberties(board, new Coordinate(2, 2)).equals(
+            Set.of(
+                new Coordinate(1, 2),
+                new Coordinate(2, 3),
+                new Coordinate(3, 2),
+                new Coordinate(2, 0),
+                new Coordinate(1, 1),
+                new Coordinate(3, 1),
+            )
+        ));
+        assert.equal(libertyCount(board, new Coordinate(2, 2)), 6);
+    });
+
+    it('properly decrement liberty with opposite color adjacent', function() {
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 2), BLACK,
+                new Coordinate(2, 1), WHITE,
+            )
+        });
+
+        assert.ok(liberties(board, new Coordinate(2, 2)).equals(
+            Set.of(
+                new Coordinate(1, 2),
+                new Coordinate(2, 3),
+                new Coordinate(3, 2),
+            )
+        ));
+        assert.equal(libertyCount(board, new Coordinate(2, 2)), 3);
+    });
+
+    it('count shared liberties in empty triangle', function() {
+        const board = new Board({
+            dimensions: 5,
+            moves: Map.of(
+                new Coordinate(2, 2), BLACK,
+                new Coordinate(2, 1), BLACK,
+                new Coordinate(3, 2), BLACK,
+            )
+        });
+
+        assert.ok(liberties(board, new Coordinate(2, 2)).equals(
+            Set.of(
+                new Coordinate(1, 2),
+                new Coordinate(2, 3),
+                new Coordinate(4, 2),
+                new Coordinate(2, 0),
+                new Coordinate(1, 1),
+                new Coordinate(3, 1),
+                new Coordinate(3, 3),
+            )
+        ));
+        assert.equal(libertyCount(board, new Coordinate(2, 2)), 7);
     });
 });
