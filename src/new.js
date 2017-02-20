@@ -1,5 +1,5 @@
 import {Set, Map, Record} from "immutable";
-import {isString} from 'lodash';
+import {isString, inRange} from 'lodash';
 
 
 export const BLACK = 'black';
@@ -15,14 +15,14 @@ export class Coordinate extends Record({x: 0, y: 0}, "Coordinate") {
 
 export function adjacentCoordinates(board, coordinate) {
     const {x, y} = coordinate;
-    const validRange = n => inRange(n, board.dimensions + 1);
+    const validRange = n => inRange(n, board.dimensions);
 
-    return Set.of([
+    return Set.of(
         new Coordinate(x, y + 1),
         new Coordinate(x, y - 1),
         new Coordinate(x + 1, y),
         new Coordinate(x - 1, y),
-    ]).filter(c => c.every(validRange));
+    ).filter(c => c.every(validRange));
 }
 
 export function matchingAdjacentCoordinates(board, coordinate, color) {

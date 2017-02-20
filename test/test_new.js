@@ -1,7 +1,10 @@
 import assert from 'assert';
+import {Set} from 'immutable';
 import {
+    Board,
     Coordinate,
     sgfPointToCoordinate,
+    adjacentCoordinates,
 } from '../src/new';
 
 
@@ -35,3 +38,49 @@ describe('sgfPointToCoordinate', function() {
     });
 });
 
+describe('adjacentCoordinates', function() {
+    it('yields the correct 4 when position is in center', function() {
+        const coordinate = new Coordinate(9, 9);
+        const board = new Board();
+
+        assert.ok(
+            adjacentCoordinates(board, coordinate).equals(
+                Set.of(
+                    new Coordinate(9, 8),
+                    new Coordinate(9, 10),
+                    new Coordinate(8, 9),
+                    new Coordinate(10, 9),
+                )
+            )
+        );
+    });
+
+    it('yields the correct 3 when position is on side', function() {
+        const coordinate = new Coordinate(0, 9);
+        const board = new Board();
+
+        assert.ok(
+            adjacentCoordinates(board, coordinate).equals(
+                Set.of(
+                    new Coordinate(0, 8),
+                    new Coordinate(0, 10),
+                    new Coordinate(1, 9),
+                )
+            )
+        );
+    });
+
+    it('yields the correct 2 when position is corner', function() {
+        const coordinate = new Coordinate(18, 18);
+        const board = new Board();
+
+        assert.ok(
+            adjacentCoordinates(board, coordinate).equals(
+                Set.of(
+                    new Coordinate(18, 17),
+                    new Coordinate(17, 18),
+                )
+            )
+        );
+    });
+});
