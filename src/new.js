@@ -147,7 +147,6 @@ export function placeStones(board, coordinates, color, force = false) {
 }
 
 export function toAsciiBoard(board) {
-    console.log(board.toString());
     const dimensions = board.dimensions;
     let pretty_string = '';
 

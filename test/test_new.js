@@ -615,4 +615,16 @@ describe('toAsciiBoard', function() {
             '+++\n'
         );
     });
+
+    it('can produce a board with one move', function() {
+        assert.equal(
+            toAsciiBoard(new Board({
+                dimensions: 3,
+                moves: Map.of(new Coordinate(1, 1), WHITE),
+            })),
+            '+++\n' +
+            '+X+\n' +
+            '+++\n'
+        );
+    });
 });
