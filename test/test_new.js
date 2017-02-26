@@ -22,6 +22,7 @@ import {
     addMove,
     placeStone,
     placeStones,
+    toAsciiBoard,
 } from '../src/new';
 
 
@@ -601,6 +602,17 @@ describe('placeStones', function() {
             ).equals(
                 Set(board.moves.keys())
             )
+        );
+    });
+});
+
+describe('toAsciiBoard', function() {
+    it('can produce a simple empty board', function() {
+        assert.equal(
+            toAsciiBoard(new Board({dimensions: 3})),
+            '+++\n' +
+            '+++\n' +
+            '+++\n'
         );
     });
 });
