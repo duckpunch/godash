@@ -5,7 +5,15 @@ export const BLACK = 'black';
 export const WHITE = 'white';
 export const EMPTY = null;
 
-export class Board extends Record({dimensions: 19, moves: Map()}, "Board") {}
+export class Board extends Record({dimensions: 19, moves: Map()}, "Board") {
+    constructor(dimensions = 19, ...moves) {
+        super({
+            dimensions,
+            moves: Map.of(...moves),
+        });
+    }
+}
+
 export class Coordinate extends Record({x: 0, y: 0}, "Coordinate") {
     constructor(x, y) {
         super({x, y});
