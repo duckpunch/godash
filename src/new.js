@@ -1,5 +1,5 @@
 import {Set, Map, Record} from "immutable";
-import {isString, inRange} from 'lodash';
+import {isString, inRange, trimStart} from 'lodash';
 
 export const BLACK = 'black';
 export const WHITE = 'white';
@@ -178,5 +178,179 @@ export function toAsciiBoard(board) {
     return pretty_string;
 }
 
-export function constructBoard(board, sequence) {}
-export function sgfToJS(sgf) {}
+export function constructBoard(sequence, board, startColor = BLACK) {
+    if (!board) {
+        board = new Board();
+    }
+
+    const opposite = oppositeColor(startColor);
+
+    return sequence.reduce(
+        (acc, coordinate, index) => addMove(
+            acc, coordinate,
+            index % 2 === 0 ? startColor : opposite,
+        ),
+        board,
+    );
+}
+
+export function sgfToJS(sgf) {
+    const rawSgf = `(
+        ;FF[4]GM[1]SZ[19];B[aa];W[bb]
+            (;B[cc];W[dd];B[ad];W[bd])
+            (;B[hh];W[hg]C[something interesting here\\(\\]])
+            (;B[gg];W[gh];B[hh]
+                (;W[hg];B[kk])
+                (;W[kl])
+            )
+    )`;
+
+    //  function breakdownTokens(tokens) => returns tuple of (array of tokens of one sequence, rest of the tokens)
+    //
+    //  function oneSeqIntoSingleArray(tokens)
+    //      remaining = tokens[1:]
+    //      doneWithMoves;
+    //      seq = null
+    //      while remaining
+    //          if start
+    //              if seq == null
+    //                  seq = []
+    //              [tokensOfOne, rest] = breakdownTokens(remaining)
+    //              seq.push(oneSeqIntoSingleArray(tokensOfOne))
+    //              remaining = rest
+
+    //  ret = []
+    //  current = null
+    //
+    //  let level = 0
+    //
+    //  for token in tokens
+    //      if token is start
+    //          if current
+    //              newCurrent = []
+    //          else
+    //              current = []
+    //
+    //          level += 1
+    //      if token is end
+    //          level -= 1
+    //
+    //  assert level === 0
+
+    //  current = null
+    //  remainingTokens = tokens
+    //  while remainingTokens
+    //      if start && current is null
+    //          current = []
+
+    //  pull off front/back and check it, should be start/end seq
+    //  ret = []
+    //  moveQueue = null
+    //  varStack = null
+    //
+    //  for token in tokens
+    //      if token.type in property/value
+    //          add to move queue
+    //      else
+    //          flush move queue
+    //          if new move
+    //              restart move queue
+
+    // tokenizer(raw)
+    // -> ["(", ";", "FF", "[" ,"....", "]"]
+
+    //  tokens = []
+    //  rest = raw
+    //  while rest
+    //      if char in {(, ), ;}
+    //          add to tokens
+    //      if char is [
+    //          send to function
+    //              get back [, stuff, ], rest
+    //              put first 3 in tokens, rest is rest
+    //      if char is a-z
+    //          send to function
+    //              get back identifier, rest
+    //              put identifier in tokens, rest is rest
+
+    //reduce(
+        //(acc, ??) => shortenedAcc,
+        //raw,
+    //)
+
+    //  seq = []
+    //  raw = trim(raw)
+    //  check wrapped in ()
+    //  raw = raw[1:-2]
+    //  current = null
+    //  remaining = raw
+    //  variations = false
+    //  while remaining > 0
+    //      if char == ";"
+    //          current = {}
+    //          seq.push(current)
+    //      if char is a-z
+    //          find all a-z to "[", store in var A
+    //          find all contents to "]", store in var B
+    //          current[A] = B
+    //          remaining = those parts removed
+    //      if char == "("
+    //          variations = true
+    //          find matching ")", skip over internal variations?
+
+    // -> [
+    //      {FF: 4, GM: 1, SZ: 19}, {B: "aa"}, {W: "bb"},
+    //      [
+    //        [{B: "cc"}, {W: "dd"}, {B: "ad"}, {W: "bd"}]
+    //        [{B: "hh"}, {W: "hg"}]
+    //        [
+    //          {B: "gg"}, {W: "gh"}, {B: "hh"},
+    //          [
+    //            [{W: "hg"}, {B: "kk"}],
+    //            [{W: "kl"}],
+    //          ]
+    //        ]
+    //      ],
+    //    ]
+}
+
+function tokenize(rawSgf) {
+    const tokens = [];
+
+    let remaining = rawSgf;
+    while (remaining) {
+        const [next, rest] = nextToken(trimStart(remaining));
+        tokens.push(next);
+
+        remaining = rest;
+    }
+
+    return tokens;
+}
+
+function nextToken(partialSgf) {
+    const property = /^[a-zA-Z]+/;
+    const value = /[^\\]\]/;
+    const first = partialSgf[0];
+
+    if (first === ';')
+        return [{type: 'new move'}, partialSgf.substr(1)];
+    else if (first === '(')
+        return [{type: 'start seq'}, partialSgf.substr(1)];
+    else if (first === ')')
+        return [{type: 'end seq'}, partialSgf.substr(1)];
+    else if (first.match(property)) {
+        const [match] = partialSgf.match(property);
+        return [{name: match, type: 'property'}, partialSgf.substr(match.length)];
+    } else if (first === '[' && partialSgf.match(value)) {
+        // value matches length 2, get index for closing bracket
+        const endIndex = partialSgf.match(value) + 1;
+        const propertyValue = partialSgf.substr(1, endIndex - 1).replace('\\', '');
+        return [
+            {propertyValue, type: 'property value'},
+            partialSgf.substr(endIndex + 1),
+        ];
+    } else {
+        throw 'Broken SGF string';
+    }
+}

@@ -1,8 +1,6 @@
 import assert from 'assert';
-import {
-    Set,
-    Map,
-} from 'immutable';
+import {Set} from 'immutable';
+import _ from 'lodash';
 import {
     WHITE,
     BLACK,
@@ -357,11 +355,9 @@ describe('isLegalMove', function() {
 
 describe('removeStone', function() {
     it('can remove a specified stone', function() {
-        const board = new Board({
-            moves: Map.of(
-                new Coordinate(9, 9), BLACK,
-            ),
-        });
+        const board = new Board(19,
+            new Coordinate(9, 9), BLACK,
+        );
 
         const updatedBoard = removeStone(board, new Coordinate(9,9));
 
@@ -576,5 +572,34 @@ describe('toAsciiBoard', function() {
             '+X+\n' +
             '+++\n'
         );
+    });
+});
+
+describe('tomfoolery', function() {
+    it('can do things', function() {
+        const stuff = 'hithere';
+        //for (var c = 0; c < stuff.length; c++) {
+            //console.log(c, stuff[c], stuff.substr(c));
+        //}
+
+        console.log(_.head(stuff), _.tail(stuff));
+
+        _.reduce(
+            stuff,
+            (acc, c, i, whole) => {
+                console.log(c, i, whole);
+                return acc;
+            },
+            []
+        );
+
+        const a = [];
+        ']12]3\\]]'.replace(
+            /((?!\\)\])|([0-9])/g, function(match) {
+                console.log(match);
+                a.push(match);
+            }
+        );
+        console.log(a);
     });
 });
