@@ -24,7 +24,11 @@ var tengen = new godash.Coordinate(9, 9); // 0-based
 
 board.moves.has(tengen); // false
 
-var standard_opening = placeStone(board, tengen, godash.BLACK);
+var standard_opening = placeStone(
+    board,
+    tengen,
+    godash.BLACK
+);
 standard_opening.moves.has(tengen); // true
 ```
 
