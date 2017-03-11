@@ -21,6 +21,10 @@ import {
     placeStone,
     placeStones,
     toAsciiBoard,
+    constructBoard,
+    compactMoves,
+    tokenize,
+    sgfToJS,
 } from '../src/new';
 
 
@@ -575,31 +579,164 @@ describe('toAsciiBoard', function() {
     });
 });
 
-describe('tomfoolery', function() {
-    it('can do things', function() {
-        const stuff = 'hithere';
-        //for (var c = 0; c < stuff.length; c++) {
-            //console.log(c, stuff[c], stuff.substr(c));
-        //}
+describe('constructBoard', function() {
+    it('can add a single stone', function() {
+        const board = constructBoard([
+            new Coordinate(9, 9)
+        ]);
 
-        console.log(_.head(stuff), _.tail(stuff));
-
-        _.reduce(
-            stuff,
-            (acc, c, i, whole) => {
-                console.log(c, i, whole);
-                return acc;
-            },
-            []
+        assert.ok(
+            Set.of(
+                new Coordinate(9, 9),
+            ).equals(
+                Set(board.moves.keys())
+            )
         );
+    });
 
-        const a = [];
-        ']12]3\\]]'.replace(
-            /((?!\\)\])|([0-9])/g, function(match) {
-                console.log(match);
-                a.push(match);
-            }
+    it('can kill a stone', function() {
+        const stoneToKill = new Coordinate(8, 9);
+        const board = constructBoard([
+            new Coordinate(9, 9),
+            new Coordinate(9, 10),
+            new Coordinate(8, 10),
+            stoneToKill,
+            new Coordinate(8, 8),
+            new Coordinate(9, 8),
+            new Coordinate(7, 9),
+        ]);
+
+        assert.ok(
+            Set.of(
+                new Coordinate(9, 9),
+                new Coordinate(9, 10),
+                new Coordinate(8, 10),
+                new Coordinate(8, 8),
+                new Coordinate(9, 8),
+                new Coordinate(7, 9),
+            ).equals(
+                Set(board.moves.keys())
+            )
         );
-        console.log(a);
+    });
+});
+
+describe('tokenize', function() {
+    const testCases = [
+        {
+            description: 'does tokenizing',
+            input: '()',
+            expected: ['(', ')'],
+        },
+        {
+            description: 'does basics',
+            input: '(;B[aa])',
+            expected: ['(', ';', ['B', 'aa'], ')'],
+        },
+        {
+            description: 'handles escapes',
+            input: '(;B[aa]C[\\[\\] hello there])',
+            expected: ['(', ';', ['B', 'aa'], ['C', '[] hello there'], ')'],
+        },
+        {
+            description: 'handles escaped backslashes',
+            input: '(;B[aa]C[\\[\\] \\\\ hello there])',
+            expected: ['(', ';', ['B', 'aa'], ['C', '[] \\ hello there'], ')'],
+        },
+    ];
+
+    for (let i = 0; i < testCases.length; i++) {
+        const testCase = testCases[i];
+        it(testCase.description, function() {
+            assert.deepEqual(
+                tokenize(testCase.input),
+                testCase.expected,
+            );
+        })
+    }
+});
+
+describe('compactMoves', function() {
+    const testCases = [
+        {
+            description: 'does nothing to starts and stops',
+            input: ['(', ')'],
+            expected: ['(', ')'],
+        },
+        {
+            description: 'compacts a simple move',
+            input: ['(', ';', ['B', 'aa'], ['W', 'bb'], ')'],
+            expected: ['(', {B: 'aa', W: 'bb'}, ')'],
+        },
+        {
+            description: 'handles variations',
+            input: [
+                '(',
+                ';', ['B', 'aa'], ['W', 'bb'],
+                ';', ['B', 'cc'],
+                ';', ['W', 'dd'],
+                '(',
+                ';', ['B', 'ee'],
+                ')',
+                '(',
+                ';', ['B', 'ff'],
+                ')',
+                ')',
+            ],
+            expected: [
+                '(',
+                {B: 'aa', W: 'bb'},
+                {B: 'cc'},
+                {W: 'dd'},
+                '(',
+                {B: 'ee'},
+                ')',
+                '(',
+                {B: 'ff'},
+                ')',
+                ')',
+            ],
+        },
+    ];
+
+    for (let i = 0; i < testCases.length; i++) {
+        const testCase = testCases[i];
+        it(testCase.description, function() {
+            assert.deepEqual(
+                compactMoves(testCase.input),
+                testCase.expected,
+            );
+        })
+    }
+});
+
+describe('sgfToJS', function() {
+    it('can parse a real looking SGF', function () {
+        const rawSgf = `(
+            ;FF[4]GM[1]SZ[19];B[aa];W[bb]
+                (;B[cc];W[dd];B[ad];W[bd])
+                (;B[hh];W[hg]C[what a move!])
+                (;B[gg];W[gh];B[hh]
+                    (;W[hg];B[kk])
+                    (;W[kl])
+                )
+        )`;
+
+        const expected = [
+            {FF: '4', GM: '1', SZ: '19'}, {B: 'aa'}, {W: 'bb'},
+            [
+                [{B: 'cc'}, {W: 'dd'}, {B: 'ad'}, {W: 'bd'}],
+                [{B: 'hh'}, {W: 'hg', C: 'what a move!'}],
+                [
+                    {B: 'gg'}, {W: 'gh'}, {B: 'hh'},
+                    [
+                        [{W: 'hg'}, {B: 'kk'}],
+                        [{W: 'kl'}],
+                    ]
+                ]
+            ],
+        ];
+
+        assert.deepEqual(expected, sgfToJS(rawSgf));
     });
 });

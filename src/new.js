@@ -1,9 +1,12 @@
 import {Set, Map, Record} from "immutable";
-import {isString, inRange, trimStart} from 'lodash';
+import {isArray, last, fromPairs, isString, inRange, trimStart, startsWith} from 'lodash';
 
 export const BLACK = 'black';
 export const WHITE = 'white';
 export const EMPTY = null;
+const START_MOVE = ';';
+const START = '(';
+const END = ')';
 
 export class Board extends Record({dimensions: 19, moves: Map()}, "Board") {
     constructor(dimensions = 19, ...moves) {
@@ -195,126 +198,81 @@ export function constructBoard(sequence, board, startColor = BLACK) {
 }
 
 export function sgfToJS(sgf) {
-    const rawSgf = `(
-        ;FF[4]GM[1]SZ[19];B[aa];W[bb]
-            (;B[cc];W[dd];B[ad];W[bd])
-            (;B[hh];W[hg]C[something interesting here\\(\\]])
-            (;B[gg];W[gh];B[hh]
-                (;W[hg];B[kk])
-                (;W[kl])
-            )
-    )`;
+    let mainLine = null;
+    const variationStack = [];
+    const tokens = compactMoves(tokenize(sgf));
 
-    //  function breakdownTokens(tokens) => returns tuple of (array of tokens of one sequence, rest of the tokens)
-    //
-    //  function oneSeqIntoSingleArray(tokens)
-    //      remaining = tokens[1:]
-    //      doneWithMoves;
-    //      seq = null
-    //      while remaining
-    //          if start
-    //              if seq == null
-    //                  seq = []
-    //              [tokensOfOne, rest] = breakdownTokens(remaining)
-    //              seq.push(oneSeqIntoSingleArray(tokensOfOne))
-    //              remaining = rest
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i]
+        const current = last(variationStack);
 
-    //  ret = []
-    //  current = null
-    //
-    //  let level = 0
-    //
-    //  for token in tokens
-    //      if token is start
-    //          if current
-    //              newCurrent = []
-    //          else
-    //              current = []
-    //
-    //          level += 1
-    //      if token is end
-    //          level -= 1
-    //
-    //  assert level === 0
+        switch(token) {
+            case START:
+                const nextVariation = [];
 
-    //  current = null
-    //  remainingTokens = tokens
-    //  while remainingTokens
-    //      if start && current is null
-    //          current = []
+                if (mainLine === null) {
+                    mainLine = nextVariation;
+                }
 
-    //  pull off front/back and check it, should be start/end seq
-    //  ret = []
-    //  moveQueue = null
-    //  varStack = null
-    //
-    //  for token in tokens
-    //      if token.type in property/value
-    //          add to move queue
-    //      else
-    //          flush move queue
-    //          if new move
-    //              restart move queue
+                variationStack.push(nextVariation);
 
-    // tokenizer(raw)
-    // -> ["(", ";", "FF", "[" ,"....", "]"]
+                if (current) {
+                    if (!isArray(last(current))) {
+                        current.push([nextVariation]);
+                    } else {
+                        last(current).push(nextVariation);
+                    }
+                }
+                break;
+            case END:
+                variationStack.pop();
+                break;
+            default:
+                current.push(token);
+                break;
+        }
+    }
 
-    //  tokens = []
-    //  rest = raw
-    //  while rest
-    //      if char in {(, ), ;}
-    //          add to tokens
-    //      if char is [
-    //          send to function
-    //              get back [, stuff, ], rest
-    //              put first 3 in tokens, rest is rest
-    //      if char is a-z
-    //          send to function
-    //              get back identifier, rest
-    //              put identifier in tokens, rest is rest
+    if (variationStack.length > 0) {
+        throw 'broken thing with too few ENDs';
+    }
 
-    //reduce(
-        //(acc, ??) => shortenedAcc,
-        //raw,
-    //)
-
-    //  seq = []
-    //  raw = trim(raw)
-    //  check wrapped in ()
-    //  raw = raw[1:-2]
-    //  current = null
-    //  remaining = raw
-    //  variations = false
-    //  while remaining > 0
-    //      if char == ";"
-    //          current = {}
-    //          seq.push(current)
-    //      if char is a-z
-    //          find all a-z to "[", store in var A
-    //          find all contents to "]", store in var B
-    //          current[A] = B
-    //          remaining = those parts removed
-    //      if char == "("
-    //          variations = true
-    //          find matching ")", skip over internal variations?
-
-    // -> [
-    //      {FF: 4, GM: 1, SZ: 19}, {B: "aa"}, {W: "bb"},
-    //      [
-    //        [{B: "cc"}, {W: "dd"}, {B: "ad"}, {W: "bd"}]
-    //        [{B: "hh"}, {W: "hg"}]
-    //        [
-    //          {B: "gg"}, {W: "gh"}, {B: "hh"},
-    //          [
-    //            [{W: "hg"}, {B: "kk"}],
-    //            [{W: "kl"}],
-    //          ]
-    //        ]
-    //      ],
-    //    ]
+    return mainLine;
 }
 
-function tokenize(rawSgf) {
+export function compactMoves(tokens) {
+    const compacted = [];
+    let current = null;
+
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+        switch(token) {
+            case START:
+            case END:
+                if (current !== null) {
+                    compacted.push(fromPairs(current));
+                    current = null;
+                }
+
+                compacted.push(token);
+                break;
+            case START_MOVE:
+                if (current !== null) {
+                    compacted.push(fromPairs(current));
+                    current = null;
+                }
+                current = [];
+                break;
+            default:
+                current.push(token);
+                break;
+        }
+    }
+
+    return compacted;
+}
+
+export function tokenize(rawSgf) {
     const tokens = [];
 
     let remaining = rawSgf;
@@ -328,29 +286,38 @@ function tokenize(rawSgf) {
     return tokens;
 }
 
-function nextToken(partialSgf) {
-    const property = /^[a-zA-Z]+/;
-    const value = /[^\\]\]/;
+export function nextToken(partialSgf) {
+    const keyPattern = /^[a-zA-Z]+/;
+    const valuePattern = /[^\\]\]/;
     const first = partialSgf[0];
 
-    if (first === ';')
-        return [{type: 'new move'}, partialSgf.substr(1)];
-    else if (first === '(')
-        return [{type: 'start seq'}, partialSgf.substr(1)];
-    else if (first === ')')
-        return [{type: 'end seq'}, partialSgf.substr(1)];
-    else if (first.match(property)) {
-        const [match] = partialSgf.match(property);
-        return [{name: match, type: 'property'}, partialSgf.substr(match.length)];
-    } else if (first === '[' && partialSgf.match(value)) {
-        // value matches length 2, get index for closing bracket
-        const endIndex = partialSgf.match(value) + 1;
-        const propertyValue = partialSgf.substr(1, endIndex - 1).replace('\\', '');
-        return [
-            {propertyValue, type: 'property value'},
-            partialSgf.substr(endIndex + 1),
-        ];
-    } else {
-        throw 'Broken SGF string';
+    switch(first) {
+        case START:
+        case END:
+        case START_MOVE:
+            return [first, partialSgf.substr(1)];
+        default:
+            if (partialSgf.match(keyPattern) === null) {
+                throw 'Invalid SGF';
+            }
+
+            const key = partialSgf.match(keyPattern)[0];
+            const rest = partialSgf.substr(key.length).trim();
+            const valueMatch = rest.match(valuePattern);
+
+            if (!startsWith(rest, '[') || valueMatch === null) {
+                throw 'Invalid SGF';
+            }
+
+            const backslashSentinel = '@@BACKSLASH@@';
+            const value = rest.substr(1, valueMatch.index)
+                .replace(/\\\\/g, backslashSentinel)
+                .replace(/\\/g, '')
+                .replace(backslashSentinel, '\\');
+
+            return [
+                [key, value],
+                rest.substr(valueMatch.index + 2),
+            ];
     }
 }
