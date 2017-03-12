@@ -173,14 +173,14 @@ export function toAsciiBoard(board) {
     return pretty_string;
 }
 
-export function constructBoard(sequence, board, startColor = BLACK) {
+export function constructBoard(coordinates, board = null, startColor = BLACK) {
     if (!board) {
         board = new Board();
     }
 
     const opposite = oppositeColor(startColor);
 
-    return sequence.reduce(
+    return coordinates.reduce(
         (acc, coordinate, index) => addMove(
             acc, coordinate,
             index % 2 === 0 ? startColor : opposite,
