@@ -1,0 +1,9 @@
+.md-typeset h3 {
+    visibility: hidden;
+    margin: 0 !important;
+    font-size: xx-small;
+}
+
+.md-nav .md-nav .md-nav {
+    display: none;
+}
