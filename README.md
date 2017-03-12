@@ -1,4 +1,4 @@
-# godash
+# Utilities for the game of Go
 
 [![npm](https://img.shields.io/npm/v/godash.svg)][npm]
 [![Build Status](https://travis-ci.org/duckpunch/godash.svg)][ci]

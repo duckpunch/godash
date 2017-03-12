@@ -49,8 +49,8 @@ Class representing a Go board.  Inherits from [`Immutable.Record`][imm-record].
 #### Arguments
 
 * `dimensions` `(number)`: Size of the board, defaulted to 19x19.
-* `...moves` `(number)`: Moves to be placed on the board.  They should be
-  provided in pairs of arguments - Coordinate and color.
+* `...moves` `(Coordinate, string)`: Moves to be placed on the board.  They
+  should be provided in pairs of arguments - Coordinate and color.
 
 #### Properties
 
