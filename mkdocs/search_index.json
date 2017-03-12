@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Utilities for the game of Go\n\n\n\n\n\n\nData structures and utilities to represent the \ngame of Go\n.\n\n\nThis library depends on \nImmutable.js\n and \nlodash\n.\n\n\nGetting Started\n\n\nInstall \ngodash\n via \nnpm\n.\n\n\nnpm install godash\n\n\n\nrequire\n and use it in your modules.\n\n\nvar go = require('godash');\nvar board = new godash.Board(19);\nvar tengen = new godash.Coordinate(9, 9); // 0-based\n\nboard.moves.has(tengen); // false\n\nvar standardOpening = placeStone(\n    board,\n    tengen,\n    godash.BLACK\n);\nstandardOpening.moves.has(tengen); // true\n\n\n\n\nRoadmap\n\n\nGodash doesn't currently do very much parameter checking.  It'd probably be\nnice to add that.\n\n\nThere also isn't much support for writing SGFs.  This, too, might be added in\nthe future.  Further, reading SGFs is a bit brittle at the moment since the\nfull SGF spec is not implemented.", 
+            "text": "Utilities for the game of Go\n\n\n\n\n\n\nData structures and utilities to represent the \ngame of Go\n.\n\n\nThis library depends on \nImmutable.js\n and \nlodash\n.\n\n\nGetting Started\n\n\nInstall \ngodash\n via \nnpm\n.\n\n\nnpm install godash\n\n\n\nrequire\n and use it in your modules.\n\n\nvar go = require('godash');\nvar board = new godash.Board(19);\nvar tengen = new godash.Coordinate(9, 9); // 0-based\n\nboard.moves.has(tengen); // false\n\nvar standardOpening = placeStone(\n    board,\n    tengen,\n    godash.BLACK\n);\nstandardOpening.moves.has(tengen); // true\n\n\n\n\nWhy Godash?\n\n\nGodash provides the \"primitives\" for Go manipulations necessary for creating\nUIs that go beyond a simple SGF player.  You can mix and match the functions\nprovided to create whatever wacky UI you want without having to reinvent the\nwheel every time.\n\n\nGodash also strives to keep a clean and simple API so that new functionality\ncan be easily extended.\n\n\nCheck out the \ndocumentation\n to see what Godash provides.\n\n\nRoadmap\n\n\nGodash doesn't currently do very much parameter checking.  It'd probably be\nnice to add that.\n\n\nThere also isn't much support for writing SGFs.  This, too, might be added in\nthe future.  Further, reading SGFs is a bit brittle at the moment since the\nfull SGF spec is not implemented.", 
             "title": "Home"
         }, 
         {
@@ -14,6 +14,11 @@
             "location": "/#getting-started", 
             "text": "Install  godash  via  npm .  npm install godash  require  and use it in your modules.  var go = require('godash');\nvar board = new godash.Board(19);\nvar tengen = new godash.Coordinate(9, 9); // 0-based\n\nboard.moves.has(tengen); // false\n\nvar standardOpening = placeStone(\n    board,\n    tengen,\n    godash.BLACK\n);\nstandardOpening.moves.has(tengen); // true", 
             "title": "Getting Started"
+        }, 
+        {
+            "location": "/#why-godash", 
+            "text": "Godash provides the \"primitives\" for Go manipulations necessary for creating\nUIs that go beyond a simple SGF player.  You can mix and match the functions\nprovided to create whatever wacky UI you want without having to reinvent the\nwheel every time.  Godash also strives to keep a clean and simple API so that new functionality\ncan be easily extended.  Check out the  documentation  to see what Godash provides.", 
+            "title": "Why Godash?"
         }, 
         {
             "location": "/#roadmap", 
