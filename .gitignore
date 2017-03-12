@@ -4,3 +4,4 @@ build
 *.sw*
 .DS_Store
 npm-debug.log
+site
