@@ -469,7 +469,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return pretty_string;
 	}
 
-	function constructBoard(sequence, board) {
+	function constructBoard(coordinates) {
+	    var board = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 	    var startColor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : BLACK;
 
 	    if (!board) {
@@ -478,7 +479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var opposite = oppositeColor(startColor);
 
-	    return sequence.reduce(function (acc, coordinate, index) {
+	    return coordinates.reduce(function (acc, coordinate, index) {
 	        return addMove(acc, coordinate, index % 2 === 0 ? startColor : opposite);
 	    }, board);
 	}
