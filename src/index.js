@@ -1,4 +1,5 @@
 import {
+    coordinateToSgfPoint,
     sgfPointToCoordinate,
     sgfToJS,
 } from './sgf';
@@ -39,6 +40,7 @@ export default {
     placeStones,
     removeStone,
     removeStones,
+    coordinateToSgfPoint,
     sgfPointToCoordinate,
     sgfToJS,
     toAsciiBoard,
