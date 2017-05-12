@@ -595,6 +595,32 @@ Constant representing an empty space.
 
 Utilities to support [SGF][sgf] ingestion.
 
+### coordinateToSgfPoint
+
+```javascript
+godash.coordinateToSgfPoint(coordinate)
+```
+
+Converts a [`Coordinate`](#coordinate) to an [SGF Point][sgf-point] in the form
+of a Javascript `String`.
+
+#### Arguments
+
+* `coordinate` `(Coordinate)`: godash [`Coordinate`](#coordinate)
+
+#### Returns
+
+`(string)`: 2-character string representing an [SGF Point][sgf-point]
+
+#### Example
+
+```javascript
+coordinateToSgfPoint(new Coordinate(0, 0))
+// => "aa"
+```
+
+---
+
 ### sgfPointToCoordinate
 
 ---

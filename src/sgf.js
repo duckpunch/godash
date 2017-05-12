@@ -14,6 +14,10 @@ export const START_MOVE = ';';
 export const START = '(';
 export const END = ')';
 
+export function coordinateToSgfPoint(coordinate) {
+    return String.fromCharCode(97 + coordinate.x) + String.fromCharCode(97 + coordinate.y);
+}
+
 export function sgfPointToCoordinate(sgfPoint) {
     if (isString(sgfPoint) && sgfPoint.length === 2) {
         return new Coordinate(

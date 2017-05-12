@@ -5,10 +5,21 @@ import {
 } from '../src/board';
 import {
     compactMoves,
+    coordinateToSgfPoint,
     sgfPointToCoordinate,
     sgfToJS,
     tokenize,
 } from '../src/sgf';
+
+describe('coordinateToSgfPoint', function() {
+    it('converts (0, 0) to "aa"', function() {
+        assert.equal(
+            coordinateToSgfPoint(
+                new Coordinate(0, 0)
+            ), 'aa'
+        );
+    });
+});
 
 describe('sgfPointToCoordinate', function() {
     it('converts "aa" to (0, 0)', function() {
