@@ -9,9 +9,9 @@
       
       
       
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
+        <link rel="shortcut icon" href="../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs+mkdocs-material#1.0.3">
+      <meta name="generator" content="mkdocs-0.16.1, mkdocs-material-1.1.1">
     
     
       
@@ -19,7 +19,11 @@
       
     
     
-      <script src="../assets/javascripts/modernizr-facb31f4a3.js"></script>
+      <script src="../assets/javascripts/modernizr-56ade86843.js"></script>
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application-4ebe3f1d68.css">
+      
     
     
       
@@ -32,11 +36,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application-f3ab63f78a.css">
-      
-      
-        <link rel="stylesheet" href="../style.css">
-      
+      <link rel="stylesheet" href="../style.css">
     
     
   </head>
@@ -62,9 +62,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="Godash" class=" md-icon md-icon--home  md-header-nav__button">
-          
-        </a>
+        
+          <a href=".." title="Godash" class="md-icon md-icon--home md-header-nav__button">
+          </a>
+        
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
@@ -87,7 +88,7 @@
   <div class="md-search__overlay"></div>
   <div class="md-search__inner">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
       <label class="md-icon md-search__icon" for="search"></label>
     </form>
     <div class="md-search__output">
@@ -100,9 +101,9 @@
         
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
+        <div class="md-header-nav__source">
+          
             
-              
 
 
   
@@ -121,14 +122,16 @@
     </div>
   </a>
 
-            
-          </div>
+          
+        </div>
       </div>
     </div>
   </nav>
 </header>
     
     <div class="md-container">
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -136,11 +139,11 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
-    <i class=" md-icon md-icon--home  md-nav__button">
-      
-    </i>
+    
+      <i class="md-icon md-icon--home md-nav__button"></i>
+    
     Godash
   </label>
   
@@ -170,20 +173,28 @@
     
       
       
+      
+
+
   <li class="md-nav__item">
-    
-      <a href=".." title="Home" class="md-nav__link">
-        Home
-      </a>
-    
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
   </li>
 
     
       
       
-  <li class="md-nav__item">
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
@@ -721,8 +732,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sgfpointtocoordinate" title="sgfPointToCoordinate" class="md-nav__link">
-    sgfPointToCoordinate
+  <a href="#coordinatetosgfpoint" title="coordinateToSgfPoint" class="md-nav__link">
+    coordinateToSgfPoint
   </a>
   
     <nav class="md-nav">
@@ -755,8 +766,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sgftojs" title="sgfToJS" class="md-nav__link">
-    sgfToJS
+  <a href="#sgfpointtocoordinate" title="sgfPointToCoordinate" class="md-nav__link">
+    sgfPointToCoordinate
   </a>
   
     <nav class="md-nav">
@@ -778,6 +789,40 @@
         
           <li class="md-nav__item">
   <a href="#example_15" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sgftojs" title="sgfToJS" class="md-nav__link">
+    sgfToJS
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments_16" title="Arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_14" title="Returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_16" title="Example" class="md-nav__link">
     Example
   </a>
   
@@ -1337,8 +1382,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sgfpointtocoordinate" title="sgfPointToCoordinate" class="md-nav__link">
-    sgfPointToCoordinate
+  <a href="#coordinatetosgfpoint" title="coordinateToSgfPoint" class="md-nav__link">
+    coordinateToSgfPoint
   </a>
   
     <nav class="md-nav">
@@ -1371,8 +1416,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sgftojs" title="sgfToJS" class="md-nav__link">
-    sgfToJS
+  <a href="#sgfpointtocoordinate" title="sgfPointToCoordinate" class="md-nav__link">
+    sgfPointToCoordinate
   </a>
   
     <nav class="md-nav">
@@ -1394,6 +1439,40 @@
         
           <li class="md-nav__item">
   <a href="#example_15" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sgftojs" title="sgfToJS" class="md-nav__link">
+    sgfToJS
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments_16" title="Arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_14" title="Returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_16" title="Example" class="md-nav__link">
     Example
   </a>
   
@@ -1896,20 +1975,38 @@ toAsciiBoard(board);
 <p>Constant representing an empty space.</p>
 <h2 id="sgf">SGF</h2>
 <p>Utilities to support <a href="http://www.red-bean.com/sgf/index.html">SGF</a> ingestion.</p>
+<h3 id="coordinatetosgfpoint">coordinateToSgfPoint</h3>
+<pre><code class="javascript">godash.coordinateToSgfPoint(coordinate)
+</code></pre>
+
+<p>Converts a <a href="#coordinate"><code>Coordinate</code></a> to an <a href="http://www.red-bean.com/sgf/go.html">SGF Point</a> in the form
+of a Javascript <code>String</code>.</p>
+<h4 id="arguments_14">Arguments</h4>
+<ul>
+<li><code>coordinate</code> <code>(Coordinate)</code>: godash <a href="#coordinate"><code>Coordinate</code></a></li>
+</ul>
+<h4 id="returns_12">Returns</h4>
+<p><code>(string)</code>: 2-character string representing an <a href="http://www.red-bean.com/sgf/go.html">SGF Point</a></p>
+<h4 id="example_14">Example</h4>
+<pre><code class="javascript">coordinateToSgfPoint(new Coordinate(0, 0))
+// =&gt; &quot;aa&quot;
+</code></pre>
+
+<hr />
 <h3 id="sgfpointtocoordinate">sgfPointToCoordinate</h3>
 <hr />
 <pre><code class="javascript">godash.sgfPointToCoordinate(sgfPoint)
 </code></pre>
 
 <p>Converts an <a href="http://www.red-bean.com/sgf/go.html">SGF Point</a> to a <a href="#coordinate"><code>Coordinate</code></a>.</p>
-<h4 id="arguments_14">Arguments</h4>
+<h4 id="arguments_15">Arguments</h4>
 <ul>
 <li><code>sgfPoint</code> <code>(string)</code>: 2-character string representing an <a href="http://www.red-bean.com/sgf/go.html">SGF
   Point</a>.</li>
 </ul>
-<h4 id="returns_12">Returns</h4>
+<h4 id="returns_13">Returns</h4>
 <p><a href="#coordinate"><code>(Coordinate)</code></a>: Coordinate for the passed string.</p>
-<h4 id="example_14">Example</h4>
+<h4 id="example_15">Example</h4>
 <pre><code class="javascript">sgfPointToCoordinate('hi').toString();
 // =&gt; Coordinate { &quot;x&quot;: 7, &quot;y&quot;: 8 }
 </code></pre>
@@ -1921,14 +2018,14 @@ toAsciiBoard(board);
 
 <p>Converts a raw <a href="http://www.red-bean.com/sgf/index.html">SGF</a> string into a plain Javascript array.  Note that
 unlike <a href="#board_1"><code>Board</code></a>, the results of this function is a mutable object.</p>
-<h4 id="arguments_15">Arguments</h4>
+<h4 id="arguments_16">Arguments</h4>
 <ul>
 <li><code>sgf</code> <code>(string)</code>: Raw <a href="http://www.red-bean.com/sgf/index.html">SGF</a> string to be parsed.</li>
 </ul>
-<h4 id="returns_13">Returns</h4>
+<h4 id="returns_14">Returns</h4>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>(Array)</code></a>: Plain Javascript array that breaks down SGF variations and
 turns moves into objects.</p>
-<h4 id="example_15">Example</h4>
+<h4 id="example_16">Example</h4>
 <pre><code class="javascript">var rawSgf = `(
     ;FF[4]GM[1]SZ[19];B[aa];W[bb]
         (;B[cc];W[dd];B[ad];W[bd])
@@ -1955,6 +2052,7 @@ sgfToJS(rawSgf);
 //        ]
 //    ];
 </code></pre>
+              
               
             </article>
           </div>
@@ -2012,8 +2110,8 @@ sgfToJS(rawSgf);
       
     </div>
     
-      <script src="../assets/javascripts/application-2afe21e0b2.js"></script>
-      <script>var config={url:{base:".."}},app=new Application(config);app.initialize()</script>
+      <script src="../assets/javascripts/application-30ac6a1727.js"></script>
+      <script>app.initialize({url:{base:".."}})</script>
       
     
     
