@@ -121,7 +121,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var START = exports.START = '(';
 	var END = exports.END = ')';
 
-	function coordinateToSgfPoint(coordinate) {}
+	function coordinateToSgfPoint(coordinate) {
+	    return String.fromCharCode(97 + coordinate.x) + String.fromCharCode(97 + coordinate.y);
+	}
 
 	function sgfPointToCoordinate(sgfPoint) {
 	    if ((0, _lodash.isString)(sgfPoint) && sgfPoint.length === 2) {

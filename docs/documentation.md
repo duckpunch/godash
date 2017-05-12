@@ -597,6 +597,8 @@ Utilities to support [SGF][sgf] ingestion.
 
 ### coordinateToSgfPoint
 
+---
+
 ```javascript
 godash.coordinateToSgfPoint(coordinate)
 ```
@@ -618,8 +620,6 @@ of a Javascript `String`.
 coordinateToSgfPoint(new Coordinate(0, 0))
 // => "aa"
 ```
-
----
 
 ### sgfPointToCoordinate
 
