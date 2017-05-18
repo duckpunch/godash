@@ -177,6 +177,47 @@ toAsciiBoard(ponnuki);
 //    +O+
 ```
 
+### difference
+
+---
+
+```javascript
+godash.difference(board1, board2)
+```
+
+Finds the moves on the first board that are not on the second board.
+
+#### Arguments
+
+* `board1` [`(Board)`](#board_1): First board.
+* `board2` [`(Board)`](#board_1): Board with moves to subtract from first board.
+
+#### Returns
+
+[`(Immutable.Set)`][imm-set]: Set containing [`Immutable.List`][imm-list] of
+[`Coordinate`](#coordinate) and color (`string`).
+
+#### Example
+
+```javascript
+var atari = new Board(3,
+    new Coordinate(1, 0), BLACK,
+    new Coordinate(0, 1), BLACK,
+    new Coordinate(1, 2), BLACK,
+    new Coordinate(1, 1), WHITE,
+);
+
+toAsciiBoard(atari);
+// => +O+
+//    OXO
+//    +++
+
+var captured = difference(atari, addMove(atari, new Coordinate(2, 1), BLACK));
+
+captured.toString();
+// 'Set { List [ Coordinate { "x": 1, "y": 1 }, "white" ] }'
+```
+
 ### group
 
 ---
@@ -698,6 +739,7 @@ sgfToJS(rawSgf);
 ```
 
 [array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+[imm-list]: https://facebook.github.io/immutable-js/docs/#/List
 [imm-map]: https://facebook.github.io/immutable-js/docs/#/Map
 [imm-record]: https://facebook.github.io/immutable-js/docs/#/Record
 [imm-set]: https://facebook.github.io/immutable-js/docs/#/Set

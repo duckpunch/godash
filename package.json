@@ -40,7 +40,8 @@
   },
   "scripts": {
     "prepublish": "webpack",
-    "watch": "karma start --no-single-run",
+    "watch": "webpack --watch --progress --debug",
+    "watch-test": "karma start --no-single-run",
     "test": "karma start"
   }
 }

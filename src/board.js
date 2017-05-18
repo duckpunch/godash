@@ -1,6 +1,7 @@
 import {
     Set,
     Map,
+    List,
     Record,
 } from "immutable";
 import {
@@ -36,6 +37,17 @@ export function adjacentCoordinates(board, coordinate) {
         new Coordinate(x + 1, y),
         new Coordinate(x - 1, y),
     ).filter(c => c.every(validRange));
+}
+
+export function difference(board1, board2) {
+    if (board1.dimensions !== board2.dimensions) {
+        throw 'board sizes do not match';
+    }
+
+    const board1Set = Set(board1.moves.entrySeq().map(a => List(a)));
+    const board2Set = Set(board2.moves.entrySeq().map(a => List(a)));
+
+    return board1Set.subtract(board2Set);
 }
 
 export function matchingAdjacentCoordinates(board, coordinate, color) {

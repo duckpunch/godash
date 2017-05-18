@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {Set} from 'immutable';
+import {Set, List} from 'immutable';
 import {
     BLACK,
     Board,
@@ -9,6 +9,7 @@ import {
     addMove,
     adjacentCoordinates,
     constructBoard,
+    difference,
     group,
     isLegalMove,
     liberties,
@@ -581,6 +582,66 @@ describe('constructBoard', function() {
             ).equals(
                 Set(board.moves.keys())
             )
+        );
+    });
+});
+
+describe('difference', function() {
+    it('can produce a simple difference', function() {
+        const board1 = new Board(5,
+            new Coordinate(3, 2), BLACK,
+            new Coordinate(4, 2), BLACK,
+        );
+
+        const board2 = new Board(5,
+            new Coordinate(2, 2), BLACK,
+        );
+
+        assert.ok(
+            difference(board1, board2)
+                .equals(Set.of(
+                    List.of(new Coordinate(3, 2), BLACK),
+                    List.of(new Coordinate(4, 2), BLACK),
+                ))
+        );
+    });
+
+    it('throws when board sizes are different', function() {
+        assert.throws(function() {
+            difference(new Board(5), new Board(10))
+        });
+    });
+
+    it('returns empty set when both boards are equal', function() {
+        const board1 = new Board(5,
+            new Coordinate(2, 2), BLACK,
+        );
+
+        const board2 = new Board(5,
+            new Coordinate(2, 2), BLACK,
+        );
+
+        assert.ok(
+            difference(board1, board2).equals(Set())
+        );
+    });
+
+    it('successfully finds the captured stone', function() {
+        const atari = new Board(3,
+            new Coordinate(1, 0), BLACK,
+            new Coordinate(0, 1), BLACK,
+            new Coordinate(1, 2), BLACK,
+            new Coordinate(1, 1), WHITE,
+        );
+        const captured = difference(
+            atari,
+            addMove(atari, new Coordinate(2, 1), BLACK)
+        );
+
+        assert.ok(
+            Set.of(
+                List.of(new Coordinate(1, 1), WHITE)
+            ).equals(captured)
         );
     });
 });
