@@ -88,6 +88,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    placeStones: _board.placeStones,
 	    removeStone: _board.removeStone,
 	    removeStones: _board.removeStones,
+	    coordinateToSgfPoint: _sgf.coordinateToSgfPoint,
 	    sgfPointToCoordinate: _sgf.sgfPointToCoordinate,
 	    sgfToJS: _sgf.sgfToJS,
 	    toAsciiBoard: _board.toAsciiBoard
