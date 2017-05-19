@@ -85,7 +85,8 @@ godash.addMove(board, coordinate, color)
 
 Function to add a move onto a board while respecting the rules.  Since no
 sequence information is available, this function does not respect
-[ko][ko-rule].
+[ko][ko-rule].  Use [`followupKo()`](#followupko) if you want to do
+[ko][ko-rule]-related things.
 
 #### Arguments
 
@@ -218,6 +219,52 @@ captured.toString();
 // 'Set { List [ Coordinate { "x": 1, "y": 1 }, "white" ] }'
 ```
 
+### followupKo
+
+---
+
+```javascript
+godash.followupKo(board, coordinate, color)
+```
+
+Determines move that would be illegal under the [ko rule][ko-rule].
+
+#### Arguments
+
+* `board` [`(Board)`](#board_1): Starting board.
+* `coordinate` [`(Coordinate)`](#Coordinate): Intended placement of stone.
+* `color` `(string)`: Stone color - [`BLACK`](#black) or [`WHITE`](#white).
+
+#### Returns
+
+[`(Coordinate)`](#Coordinate): Position of illegal followup or `null` if none
+exists.
+
+#### Example
+
+```javascript
+const koPosition = new Board(4,
+    new Coordinate(1, 0), BLACK,
+    new Coordinate(0, 1), BLACK,
+    new Coordinate(1, 2), BLACK,
+    new Coordinate(1, 1), WHITE,
+    new Coordinate(2, 0), WHITE,
+    new Coordinate(2, 2), WHITE,
+    new Coordinate(3, 1), WHITE,
+);
+
+toAsciiBoard(koPosition);
+// => +O++
+//    OXO+
+//    X+X+
+//    +X++
+
+const koStart = new Coordinate(2, 1);
+
+followupKo(koPosition, koStart, BLACK).toString();
+// => 'Coordinate { "x": 1, "y": 1 }'
+```
+
 ### group
 
 ---
@@ -272,7 +319,8 @@ godash.isLegalMove(board, coordinate, color)
 ```
 
 Determine whether the coordinate-color combination provided is a legal move for
-the board.  [Ko][ko-rule] is not considered.
+the board.  [Ko][ko-rule] is not considered.  Use [`followupKo()`](#followupko)
+if you want to do [ko][ko-rule]-related things.
 
 #### Arguments
 
