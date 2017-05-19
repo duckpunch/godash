@@ -50,6 +50,40 @@ export function difference(board1, board2) {
     return board1Set.subtract(board2Set);
 }
 
+export function followupKo(board, coordinate, color) {
+    if (!isLegalMove(board, coordinate, color)) {
+        return null;
+    }
+
+    const postMoveBoard = addMove(board, coordinate, color);
+    const capturedStones = difference(board, postMoveBoard);
+
+    if (capturedStones.size === 0 || capturedStones.size > 1) {
+        return null;
+    }
+
+    const capturedMove = capturedStones.first();
+    const capturedCoordinate = capturedMove.get(0);
+    const capturedColor = capturedMove.get(1);
+
+    // The situation is ko if playing the next move captures only the move that
+    // was played here.
+
+    const koTest = difference(
+        postMoveBoard,
+        addMove(postMoveBoard, capturedCoordinate, capturedColor)
+    );
+
+    if (koTest.size === 1) {
+        const koTestCoordinate = koTest.first().get(0);
+        if (koTestCoordinate.equals(coordinate)) {
+            return capturedCoordinate;
+        }
+    }
+
+    return null;
+}
+
 export function matchingAdjacentCoordinates(board, coordinate, color) {
     const colorToMatch = color === undefined ? board.moves.get(coordinate, EMPTY) : color;
 

@@ -10,6 +10,7 @@ import {
     adjacentCoordinates,
     constructBoard,
     difference,
+    followupKo,
     group,
     isLegalMove,
     liberties,
@@ -642,6 +643,33 @@ describe('difference', function() {
             Set.of(
                 List.of(new Coordinate(1, 1), WHITE)
             ).equals(captured)
+        );
+    });
+});
+
+describe('followupKo', function() {
+    it('can detect ko', function() {
+        const koPosition = new Board(4,
+            new Coordinate(1, 0), BLACK,
+            new Coordinate(0, 1), BLACK,
+            new Coordinate(1, 2), BLACK,
+            new Coordinate(1, 1), WHITE,
+            new Coordinate(2, 0), WHITE,
+            new Coordinate(2, 2), WHITE,
+            new Coordinate(3, 1), WHITE,
+        );
+        const koStart = new Coordinate(2, 1);
+
+        assert.ok(
+            (new Coordinate(1, 1)).equals(
+                followupKo(koPosition, koStart, BLACK)
+            )
+        );
+    });
+
+    it('returns null when the move is purely additive', function() {
+        assert.ok(
+            followupKo(new Board(3), new Coordinate(1, 1), BLACK) === null
         );
     });
 });
