@@ -20,8 +20,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "immutable": "^3.8.1",
-    "lodash": "^4.17.4"
+    "immutable": "^3.8.2",
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
@@ -39,7 +39,7 @@
     "webpack": "^1.12.14"
   },
   "scripts": {
-    "prepublish": "webpack",
+    "prepare": "webpack",
     "watch": "webpack --watch --progress --debug",
     "watch-test": "karma start --no-single-run",
     "test": "karma start"
