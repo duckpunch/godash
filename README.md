@@ -16,7 +16,7 @@ Install `godash` via [npm][npm].
 `require` and use it in your modules.
 
 ```javascript
-var go = require('godash');
+var godash = require('godash');
 var board = new godash.Board(19);
 var tengen = new godash.Coordinate(9, 9); // 0-based
 
