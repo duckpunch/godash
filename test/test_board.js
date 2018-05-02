@@ -585,6 +585,43 @@ describe('constructBoard', function() {
             )
         );
     });
+
+    it('can kill a stone without actual Coordinate', function() {
+        const stoneToKill = {x: 8, y: 9};
+        const board = constructBoard([
+            {x: 9, y: 9},
+            {x: 9, y: 10},
+            {x: 8, y: 10},
+            stoneToKill,
+            {x: 8, y: 8},
+            {x: 9, y: 8},
+            {x: 7, y: 9},
+        ]);
+
+        assert.ok(
+            Set.of(
+                new Coordinate(9, 9),
+                new Coordinate(9, 10),
+                new Coordinate(8, 10),
+                new Coordinate(8, 8),
+                new Coordinate(9, 8),
+                new Coordinate(7, 9),
+            ).equals(
+                Set(board.moves.keys())
+            )
+        );
+    });
+
+    it('throws when coordinates are not parseable', function() {
+        assert.throws(function() {
+            constructBoard([
+                new Coordinate(9, 9),
+                new Coordinate(9, 10),
+                {x: 5},
+            ]);
+        });
+
+    });
 });
 
 describe('difference', function() {
