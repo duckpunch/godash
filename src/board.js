@@ -3,6 +3,7 @@ import {
     Map,
     List,
     Record,
+    isImmutable,
 } from "immutable";
 import {
     concat,
@@ -236,10 +237,22 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
     const opposite = oppositeColor(startColor);
 
     return coordinates.reduce(
-        (acc, coordinate, index) => addMove(
-            acc, coordinate,
-            index % 2 === 0 ? startColor : opposite,
-        ),
+        (acc, coordinate, index) => {
+            const isCoordinate = coordinate.constructor.name === 'Coordinate';
+            const hasXY = coordinate.hasOwnProperty('x') && coordinate.hasOwnProperty('y');
+
+            if (!(isCoordinate || hasXY)) {
+                throw 'You must pass coordinates or coordinate-like objects.';
+            }
+
+            const checkedCoordinate = isCoordinate ?
+                coordinate : new Coordinate(coordinate.x, coordinate.y);
+
+            return addMove(
+                acc, checkedCoordinate,
+                index % 2 === 0 ? startColor : opposite,
+            );
+        },
         board,
     );
 }
