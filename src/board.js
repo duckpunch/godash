@@ -5,7 +5,10 @@ import {
     Record,
 } from "immutable";
 import {
+    concat,
     inRange,
+    isInteger,
+    take,
 } from 'lodash';
 
 export const BLACK = 'black';
@@ -26,6 +29,10 @@ export class Coordinate extends Record({x: 0, y: 0}, "Coordinate") {
         super({x, y});
     }
 }
+
+export const TENGEN_9 = new Coordinate(4, 4),
+export const TENGEN_13 = new Coordinate(6, 6);
+export const TENGEN_19 = new Coordinate(9, 9);
 
 export function adjacentCoordinates(board, coordinate) {
     const {x, y} = coordinate;
@@ -235,4 +242,62 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
         ),
         board,
     );
+}
+
+export function handicapBoard(size, handicap) {
+    if (size !== 9 && size !== 13 && size !== 19) {
+        throw 'Only 9, 13, 19 allowed - use placeStone for non standard sizes';
+    }
+    if (!inRange(handicap, 0, 10) || isInteger(handicap)) {
+        throw 'Handicap must be an integer between 0 and 9';
+    }
+
+    const nonTengenHandicap = {
+        9: [
+            new Coordinate(2, 2),
+            new Coordinate(6, 6),
+            new Coordinate(2, 6),
+            new Coordinate(6, 2),
+            new Coordinate(6, 4),
+            new Coordinate(2, 4),
+            new Coordinate(4, 2),
+            new Coordinate(4, 6),
+        ],
+        13: [
+            new Coordinate(3, 3),
+            new Coordinate(9, 9),
+            new Coordinate(3, 9),
+            new Coordinate(9, 3),
+            new Coordinate(9, 6),
+            new Coordinate(3, 6),
+            new Coordinate(6, 3),
+            new Coordinate(6, 9),
+        ],
+        19: [
+            new Coordinate(3, 3),
+            new Coordinate(15, 15),
+            new Coordinate(15, 3),
+            new Coordinate(3, 15),
+            new Coordinate(15, 9),
+            new Coordinate(3, 9),
+            new Coordinate(9, 3),
+            new Coordinate(9, 15),
+        ],
+    }[size];
+    const tengen = {
+        9: TENGEN_9,
+        13: TENGEN_13,
+        19: TENGEN_19,
+    }[size];
+    const board = new Board(size);
+
+    if (handicap < 5) {
+        return placeStones(board, take(nonTengenHandicap, handicap), BLACK);
+    } else if (handicap === 5) {
+        return placeStones(board, concat(take(nonTengenHandicap, 4), tengen), BLACK);
+    } else if (handicap === 6) {
+        return placeStones(board, take(nonTengenHandicap, 6), BLACK);
+    } else {
+        return placeStones(board, concat(take(nonTengenHandicap, handicap - 1), tengen), BLACK);
+    }
 }
