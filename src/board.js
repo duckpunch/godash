@@ -248,7 +248,7 @@ export function handicapBoard(size, handicap) {
     if (size !== 9 && size !== 13 && size !== 19) {
         throw 'Only 9, 13, 19 allowed - use placeStone for non standard sizes';
     }
-    if (!inRange(handicap, 0, 10) || isInteger(handicap)) {
+    if (!inRange(handicap, 0, 10) || !isInteger(handicap)) {
         throw 'Handicap must be an integer between 0 and 9';
     }
 
