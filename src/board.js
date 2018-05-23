@@ -30,7 +30,7 @@ export class Coordinate extends Record({x: 0, y: 0}, "Coordinate") {
     }
 }
 
-export const TENGEN_9 = new Coordinate(4, 4),
+export const TENGEN_9 = new Coordinate(4, 4);
 export const TENGEN_13 = new Coordinate(6, 6);
 export const TENGEN_19 = new Coordinate(9, 9);
 
