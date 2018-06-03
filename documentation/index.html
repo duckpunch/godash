@@ -1,17 +1,38 @@
 
+
+
+
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
       
       
-        <link rel="shortcut icon" href="../assets/images/favicon.png">
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
       
-      <meta name="generator" content="mkdocs-0.16.1, mkdocs-material-1.1.1">
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.3">
     
     
       
@@ -19,17 +40,15 @@
       
     
     
-      <script src="../assets/javascripts/modernizr-56ade86843.js"></script>
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/application-4ebe3f1d68.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
       
     
     
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
-        
-        
-        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
@@ -41,75 +60,109 @@
     
   </head>
   
-  
-  
-  
-    <body>
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
         
         
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <header class="md-header">
+      <a href="#board" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <a href=".." title="Godash" class="md-icon md-icon--home md-header-nav__button">
-          </a>
-        
+        <a href=".." title="Godash" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">fiber_smart_record</i>
+          
+        </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
+              <span class="md-header-nav__topic">
+                Godash
+              </span>
+              <span class="md-header-nav__topic">
+                Documentation
+              </span>
             
-            Documentation
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
-<div class="md-search" data-md-component="search">
-  <div class="md-search__overlay"></div>
-  <div class="md-search__inner">
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result"></div>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
       </div>
     </div>
   </div>
 </div>
+          
         
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <div class="md-header-nav__source">
-          
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
             
 
 
   
 
 
-  <a href="https://github.com/duckpunch/godash" title="Go to repository" class="md-source" data-md-source="github">
+  <a href="https://github.com/duckpunch/godash/" title="Go to repository" class="md-source" data-md-source="github">
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
@@ -122,14 +175,16 @@
     </div>
   </a>
 
-          
+          </div>
         </div>
-      </div>
+      
     </div>
   </nav>
 </header>
     
     <div class="md-container">
+      
+        
       
       
       <main class="md-main">
@@ -141,9 +196,11 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
-    
-      <i class="md-icon md-icon--home md-nav__button"></i>
-    
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon">fiber_smart_record</i>
+      
+    </span>
     Godash
   </label>
   
@@ -154,7 +211,7 @@
   
 
 
-  <a href="https://github.com/duckpunch/godash" title="Go to repository" class="md-source" data-md-source="github">
+  <a href="https://github.com/duckpunch/godash/" title="Go to repository" class="md-source" data-md-source="github">
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
@@ -193,8 +250,6 @@
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
@@ -460,8 +515,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#islegalmove" title="isLegalMove" class="md-nav__link">
-    isLegalMove
+  <a href="#handicapboard" title="handicapBoard" class="md-nav__link">
+    handicapBoard
   </a>
   
     <nav class="md-nav">
@@ -494,8 +549,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#liberties" title="liberties" class="md-nav__link">
-    liberties
+  <a href="#islegalmove" title="isLegalMove" class="md-nav__link">
+    isLegalMove
   </a>
   
     <nav class="md-nav">
@@ -528,8 +583,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#libertycount" title="libertyCount" class="md-nav__link">
-    libertyCount
+  <a href="#liberties" title="liberties" class="md-nav__link">
+    liberties
   </a>
   
     <nav class="md-nav">
@@ -562,8 +617,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#oppositecolor" title="oppositeColor" class="md-nav__link">
-    oppositeColor
+  <a href="#libertycount" title="libertyCount" class="md-nav__link">
+    libertyCount
   </a>
   
     <nav class="md-nav">
@@ -596,8 +651,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#placestone" title="placeStone" class="md-nav__link">
-    placeStone
+  <a href="#oppositecolor" title="oppositeColor" class="md-nav__link">
+    oppositeColor
   </a>
   
     <nav class="md-nav">
@@ -630,8 +685,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#placestones" title="placeStones" class="md-nav__link">
-    placeStones
+  <a href="#placestone" title="placeStone" class="md-nav__link">
+    placeStone
   </a>
   
     <nav class="md-nav">
@@ -664,8 +719,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removestone" title="removeStone" class="md-nav__link">
-    removeStone
+  <a href="#placestones" title="placeStones" class="md-nav__link">
+    placeStones
   </a>
   
     <nav class="md-nav">
@@ -698,8 +753,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removestones" title="removeStones" class="md-nav__link">
-    removeStones
+  <a href="#removestone" title="removeStone" class="md-nav__link">
+    removeStone
   </a>
   
     <nav class="md-nav">
@@ -732,8 +787,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#toasciiboard" title="toAsciiBoard" class="md-nav__link">
-    toAsciiBoard
+  <a href="#removestones" title="removeStones" class="md-nav__link">
+    removeStones
   </a>
   
     <nav class="md-nav">
@@ -766,42 +821,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#black" title="BLACK" class="md-nav__link">
-    BLACK
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#white" title="WHITE" class="md-nav__link">
-    WHITE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#empty" title="EMPTY" class="md-nav__link">
-    EMPTY
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sgf" title="SGF" class="md-nav__link">
-    SGF
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#coordinatetosgfpoint" title="coordinateToSgfPoint" class="md-nav__link">
-    coordinateToSgfPoint
+  <a href="#toasciiboard" title="toAsciiBoard" class="md-nav__link">
+    toAsciiBoard
   </a>
   
     <nav class="md-nav">
@@ -834,8 +855,63 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sgfpointtocoordinate" title="sgfPointToCoordinate" class="md-nav__link">
-    sgfPointToCoordinate
+  <a href="#black" title="BLACK" class="md-nav__link">
+    BLACK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#white" title="WHITE" class="md-nav__link">
+    WHITE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empty" title="EMPTY" class="md-nav__link">
+    EMPTY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tengen_9" title="TENGEN_9" class="md-nav__link">
+    TENGEN_9
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tengen_13" title="TENGEN_13" class="md-nav__link">
+    TENGEN_13
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tengen_19" title="TENGEN_19" class="md-nav__link">
+    TENGEN_19
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sgf" title="SGF" class="md-nav__link">
+    SGF
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coordinatetosgfpoint" title="coordinateToSgfPoint" class="md-nav__link">
+    coordinateToSgfPoint
   </a>
   
     <nav class="md-nav">
@@ -868,8 +944,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sgftojs" title="sgfToJS" class="md-nav__link">
-    sgfToJS
+  <a href="#sgfpointtocoordinate" title="sgfPointToCoordinate" class="md-nav__link">
+    sgfPointToCoordinate
   </a>
   
     <nav class="md-nav">
@@ -901,10 +977,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sgftojs" title="sgfToJS" class="md-nav__link">
+    sgfToJS
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments_19" title="Arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_17" title="Returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_19" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
       
     </ul>
   
@@ -1178,8 +1292,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#islegalmove" title="isLegalMove" class="md-nav__link">
-    isLegalMove
+  <a href="#handicapboard" title="handicapBoard" class="md-nav__link">
+    handicapBoard
   </a>
   
     <nav class="md-nav">
@@ -1212,8 +1326,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#liberties" title="liberties" class="md-nav__link">
-    liberties
+  <a href="#islegalmove" title="isLegalMove" class="md-nav__link">
+    isLegalMove
   </a>
   
     <nav class="md-nav">
@@ -1246,8 +1360,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#libertycount" title="libertyCount" class="md-nav__link">
-    libertyCount
+  <a href="#liberties" title="liberties" class="md-nav__link">
+    liberties
   </a>
   
     <nav class="md-nav">
@@ -1280,8 +1394,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#oppositecolor" title="oppositeColor" class="md-nav__link">
-    oppositeColor
+  <a href="#libertycount" title="libertyCount" class="md-nav__link">
+    libertyCount
   </a>
   
     <nav class="md-nav">
@@ -1314,8 +1428,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#placestone" title="placeStone" class="md-nav__link">
-    placeStone
+  <a href="#oppositecolor" title="oppositeColor" class="md-nav__link">
+    oppositeColor
   </a>
   
     <nav class="md-nav">
@@ -1348,8 +1462,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#placestones" title="placeStones" class="md-nav__link">
-    placeStones
+  <a href="#placestone" title="placeStone" class="md-nav__link">
+    placeStone
   </a>
   
     <nav class="md-nav">
@@ -1382,8 +1496,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removestone" title="removeStone" class="md-nav__link">
-    removeStone
+  <a href="#placestones" title="placeStones" class="md-nav__link">
+    placeStones
   </a>
   
     <nav class="md-nav">
@@ -1416,8 +1530,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#removestones" title="removeStones" class="md-nav__link">
-    removeStones
+  <a href="#removestone" title="removeStone" class="md-nav__link">
+    removeStone
   </a>
   
     <nav class="md-nav">
@@ -1450,8 +1564,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#toasciiboard" title="toAsciiBoard" class="md-nav__link">
-    toAsciiBoard
+  <a href="#removestones" title="removeStones" class="md-nav__link">
+    removeStones
   </a>
   
     <nav class="md-nav">
@@ -1484,42 +1598,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#black" title="BLACK" class="md-nav__link">
-    BLACK
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#white" title="WHITE" class="md-nav__link">
-    WHITE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#empty" title="EMPTY" class="md-nav__link">
-    EMPTY
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sgf" title="SGF" class="md-nav__link">
-    SGF
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#coordinatetosgfpoint" title="coordinateToSgfPoint" class="md-nav__link">
-    coordinateToSgfPoint
+  <a href="#toasciiboard" title="toAsciiBoard" class="md-nav__link">
+    toAsciiBoard
   </a>
   
     <nav class="md-nav">
@@ -1552,8 +1632,63 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sgfpointtocoordinate" title="sgfPointToCoordinate" class="md-nav__link">
-    sgfPointToCoordinate
+  <a href="#black" title="BLACK" class="md-nav__link">
+    BLACK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#white" title="WHITE" class="md-nav__link">
+    WHITE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empty" title="EMPTY" class="md-nav__link">
+    EMPTY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tengen_9" title="TENGEN_9" class="md-nav__link">
+    TENGEN_9
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tengen_13" title="TENGEN_13" class="md-nav__link">
+    TENGEN_13
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tengen_19" title="TENGEN_19" class="md-nav__link">
+    TENGEN_19
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sgf" title="SGF" class="md-nav__link">
+    SGF
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coordinatetosgfpoint" title="coordinateToSgfPoint" class="md-nav__link">
+    coordinateToSgfPoint
   </a>
   
     <nav class="md-nav">
@@ -1586,8 +1721,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sgftojs" title="sgfToJS" class="md-nav__link">
-    sgfToJS
+  <a href="#sgfpointtocoordinate" title="sgfPointToCoordinate" class="md-nav__link">
+    sgfPointToCoordinate
   </a>
   
     <nav class="md-nav">
@@ -1619,10 +1754,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sgftojs" title="sgfToJS" class="md-nav__link">
+    sgfToJS
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments_19" title="Arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_17" title="Returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_19" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
       
     </ul>
   
@@ -1634,8 +1807,10 @@
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
-               
               
+                
+                  <a href="https://github.com/duckpunch/godash/edit/master/docs/documentation.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
                 
                   <h1>Documentation</h1>
                 
@@ -1644,8 +1819,9 @@
 object.</p>
 <h3 id="coordinate">Coordinate</h3>
 <hr />
-<pre><code class="javascript">new godash.Coordinate(x, y)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">new</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">Coordinate</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Class representing a single location on a Go board.  Inherits from
 <a href="https://facebook.github.io/immutable-js/docs/#/Record"><code>Immutable.Record</code></a>.</p>
@@ -1660,19 +1836,21 @@ object.</p>
 <li><code>y</code> <code>(number)</code>: Location on the other axis.</li>
 </ul>
 <h4 id="example">Example</h4>
-<pre><code class="javascript">var tengen = new Coordinate(9, 9);
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">tengen</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
 
-tengen.toString();
-// =&gt; Coordinate { &quot;x&quot;: 9, &quot;y&quot;: 9 }
+<span class="nx">tengen</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="c1">// =&gt; Coordinate { &quot;x&quot;: 9, &quot;y&quot;: 9 }</span>
 
-tengen.x;
-// =&gt; 9
-</code></pre>
+<span class="nx">tengen</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+<span class="c1">// =&gt; 9</span>
+</pre></div>
+
 
 <h3 id="board_1">Board</h3>
 <hr />
-<pre><code class="javascript">new godash.Board(dimensions = 19, ...moves)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">new</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">Board</span><span class="p">(</span><span class="nx">dimensions</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span> <span class="p">...</span><span class="nx">moves</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Class representing a Go board.  Inherits from <a href="https://facebook.github.io/immutable-js/docs/#/Record"><code>Immutable.Record</code></a>.</p>
 <h4 id="arguments_1">Arguments</h4>
@@ -1689,22 +1867,25 @@ tengen.x;
   the value.</li>
 </ul>
 <h4 id="example_1">Example</h4>
-<pre><code class="javascript">var board = new Board();
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">();</span>
 
-board.toString();
-// =&gt; Board { &quot;dimensions&quot;: 19, &quot;moves&quot;: Map {} }
-</code></pre>
+<span class="nx">board</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="c1">// =&gt; Board { &quot;dimensions&quot;: 19, &quot;moves&quot;: Map {} }</span>
+</pre></div>
 
-<pre><code class="javascript">var smallBoard = new Board(5, new Coordinate(2, 2), BLACK);
 
-smallBoard.toString();
-// =&gt; Board { &quot;dimensions&quot;: 5, &quot;moves&quot;: Map { {&quot;x&quot;:2,&quot;y&quot;:2}: &quot;black&quot; } }
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">smallBoard</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">);</span>
+
+<span class="nx">smallBoard</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="c1">// =&gt; Board { &quot;dimensions&quot;: 5, &quot;moves&quot;: Map { {&quot;x&quot;:2,&quot;y&quot;:2}: &quot;black&quot; } }</span>
+</pre></div>
+
 
 <h3 id="addmove">addMove</h3>
 <hr />
-<pre><code class="javascript">godash.addMove(board, coordinate, color)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">addMove</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Function to add a move onto a board while respecting the rules.  Since no
 sequence information is available, this function does not respect
@@ -1720,34 +1901,36 @@ sequence information is available, this function does not respect
 <h4 id="returns">Returns</h4>
 <p><a href="#board_1"><code>(Board)</code></a>: New board with the move added.</p>
 <h4 id="example_2">Example</h4>
-<pre><code class="javascript">var atari = new Board(3,
-    new Coordinate(1, 0), BLACK,
-    new Coordinate(0, 1), BLACK,
-    new Coordinate(1, 2), BLACK,
-    new Coordinate(1, 1), WHITE
-);
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">atari</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span>
+<span class="p">);</span>
 
-toAsciiBoard(atari);
-// =&gt; +O+
-//    OXO
-//    +++
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">atari</span><span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    OXO</span>
+<span class="c1">//    +++</span>
 
-var killed = addMove(
-    atari,
-    new Coordinate(2, 1),
-    BLACK
-);
+<span class="kd">var</span> <span class="nx">killed</span> <span class="o">=</span> <span class="nx">addMove</span><span class="p">(</span>
+    <span class="nx">atari</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="nx">BLACK</span>
+<span class="p">);</span>
 
-toAsciiBoard(killed);
-// =&gt; +O+
-//    O+O
-//    +O+
-</code></pre>
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">killed</span><span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    O+O</span>
+<span class="c1">//    +O+</span>
+</pre></div>
+
 
 <h3 id="constructboard">constructBoard</h3>
 <hr />
-<pre><code class="javascript">godash.constructBoard(coordinates, board = null, startColor = godash.BLACK)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">constructBoard</span><span class="p">(</span><span class="nx">coordinates</span><span class="p">,</span> <span class="nx">board</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">startColor</span> <span class="o">=</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">BLACK</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Constructs a board for an array of coordinates.  This function iteratively
 calls <a href="#addmove"><code>addMove</code></a> while alternating colors.</p>
@@ -1762,36 +1945,38 @@ calls <a href="#addmove"><code>addMove</code></a> while alternating colors.</p>
 <h4 id="returns_1">Returns</h4>
 <p><a href="#board_1"><code>(Board)</code></a>: New board constructed from the coordinates.</p>
 <h4 id="example_3">Example</h4>
-<pre><code class="javascript">var tigersMouth = new Board(3,
-    new Coordinate(1, 0), BLACK,
-    new Coordinate(0, 1), BLACK,
-    new Coordinate(1, 2), BLACK
-);
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">tigersMouth</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span>
+<span class="p">);</span>
 
-toAsciiBoard(tigersMouth);
-// =&gt; +O+
-//    O+O
-//    +++
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">tigersMouth</span><span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    O+O</span>
+<span class="c1">//    +++</span>
 
-var selfAtari = new Coordinate(1, 1);
-var killingMove = new Coordinate(2, 1);
+<span class="kd">var</span> <span class="nx">selfAtari</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">killingMove</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
-var ponnuki = constructBoard(
-    [selfAtari, killingMove],
-    tigersMouth,
-    WHITE
-);
+<span class="kd">var</span> <span class="nx">ponnuki</span> <span class="o">=</span> <span class="nx">constructBoard</span><span class="p">(</span>
+    <span class="p">[</span><span class="nx">selfAtari</span><span class="p">,</span> <span class="nx">killingMove</span><span class="p">],</span>
+    <span class="nx">tigersMouth</span><span class="p">,</span>
+    <span class="nx">WHITE</span>
+<span class="p">);</span>
 
-toAsciiBoard(ponnuki);
-// =&gt; +O+
-//    O+O
-//    +O+
-</code></pre>
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    O+O</span>
+<span class="c1">//    +O+</span>
+</pre></div>
+
 
 <h3 id="difference">difference</h3>
 <hr />
-<pre><code class="javascript">godash.difference(board1, board2)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">difference</span><span class="p">(</span><span class="nx">board1</span><span class="p">,</span> <span class="nx">board2</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Finds the moves on the first board that are not on the second board.</p>
 <h4 id="arguments_4">Arguments</h4>
@@ -1803,28 +1988,30 @@ toAsciiBoard(ponnuki);
 <p><a href="https://facebook.github.io/immutable-js/docs/#/Set"><code>(Immutable.Set)</code></a>: Set containing <a href="https://facebook.github.io/immutable-js/docs/#/List"><code>Immutable.List</code></a> of
 <a href="#coordinate"><code>Coordinate</code></a> and color (<code>string</code>).</p>
 <h4 id="example_4">Example</h4>
-<pre><code class="javascript">var atari = new Board(3,
-    new Coordinate(1, 0), BLACK,
-    new Coordinate(0, 1), BLACK,
-    new Coordinate(1, 2), BLACK,
-    new Coordinate(1, 1), WHITE,
-);
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">atari</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+<span class="p">);</span>
 
-toAsciiBoard(atari);
-// =&gt; +O+
-//    OXO
-//    +++
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">atari</span><span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    OXO</span>
+<span class="c1">//    +++</span>
 
-var captured = difference(atari, addMove(atari, new Coordinate(2, 1), BLACK));
+<span class="kd">var</span> <span class="nx">captured</span> <span class="o">=</span> <span class="nx">difference</span><span class="p">(</span><span class="nx">atari</span><span class="p">,</span> <span class="nx">addMove</span><span class="p">(</span><span class="nx">atari</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">));</span>
 
-captured.toString();
-// 'Set { List [ Coordinate { &quot;x&quot;: 1, &quot;y&quot;: 1 }, &quot;white&quot; ] }'
-</code></pre>
+<span class="nx">captured</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="c1">// &#39;Set { List [ Coordinate { &quot;x&quot;: 1, &quot;y&quot;: 1 }, &quot;white&quot; ] }&#39;</span>
+</pre></div>
+
 
 <h3 id="followupko">followupKo</h3>
 <hr />
-<pre><code class="javascript">godash.followupKo(board, coordinate, color)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">followupKo</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Determines move that would be illegal under the <a href="https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko">ko rule</a>.</p>
 <h4 id="arguments_5">Arguments</h4>
@@ -1837,32 +2024,34 @@ captured.toString();
 <p><a href="#Coordinate"><code>(Coordinate)</code></a>: Position of illegal followup or <code>null</code> if none
 exists.</p>
 <h4 id="example_5">Example</h4>
-<pre><code class="javascript">const koPosition = new Board(4,
-    new Coordinate(1, 0), BLACK,
-    new Coordinate(0, 1), BLACK,
-    new Coordinate(1, 2), BLACK,
-    new Coordinate(1, 1), WHITE,
-    new Coordinate(2, 0), WHITE,
-    new Coordinate(2, 2), WHITE,
-    new Coordinate(3, 1), WHITE,
-);
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">koPosition</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+<span class="p">);</span>
 
-toAsciiBoard(koPosition);
-// =&gt; +O++
-//    OXO+
-//    X+X+
-//    +X++
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">koPosition</span><span class="p">);</span>
+<span class="c1">// =&gt; +O++</span>
+<span class="c1">//    OXO+</span>
+<span class="c1">//    X+X+</span>
+<span class="c1">//    +X++</span>
 
-const koStart = new Coordinate(2, 1);
+<span class="kr">const</span> <span class="nx">koStart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
-followupKo(koPosition, koStart, BLACK).toString();
-// =&gt; 'Coordinate { &quot;x&quot;: 1, &quot;y&quot;: 1 }'
-</code></pre>
+<span class="nx">followupKo</span><span class="p">(</span><span class="nx">koPosition</span><span class="p">,</span> <span class="nx">koStart</span><span class="p">,</span> <span class="nx">BLACK</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+<span class="c1">// =&gt; &#39;Coordinate { &quot;x&quot;: 1, &quot;y&quot;: 1 }&#39;</span>
+</pre></div>
+
 
 <h3 id="group">group</h3>
 <hr />
-<pre><code class="javascript">godash.group(board, coordinate)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">group</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Finds the set of coordinates which identifies the fully connected group for the
 given location.</p>
@@ -1875,393 +2064,479 @@ given location.</p>
 <p><a href="https://facebook.github.io/immutable-js/docs/#/Set"><code>(Immutable.Set)</code></a>: Set containing <a href="#coordinate"><code>Coordinate</code></a>
 members for the group.</p>
 <h4 id="example_6">Example</h4>
-<pre><code class="javascript">var board = new Board(3,
-    new Coordinate(1, 0), WHITE,
-    new Coordinate(0, 2), WHITE,
-    new Coordinate(1, 2), BLACK,
-    new Coordinate(2, 2), BLACK,
-    new Coordinate(2, 1), BLACK
-);
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span>
+<span class="p">);</span>
 
-toAsciiBoard(board);
-// =&gt; ++X
-//    X+O
-//    +OO
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
+<span class="c1">// =&gt; ++X</span>
+<span class="c1">//    X+O</span>
+<span class="c1">//    +OO</span>
 
-group(board, new Coordinate(2, 1)).toString();
-// =&gt; Set {
-//      Coordinate { &quot;x&quot;: 2, &quot;y&quot;: 1 },
-//      Coordinate { &quot;x&quot;: 2, &quot;y&quot;: 2 },
-//      Coordinate { &quot;x&quot;: 1, &quot;y&quot;: 2 }
-//    }
-</code></pre>
+<span class="nx">group</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)).</span><span class="nx">toString</span><span class="p">();</span>
+<span class="c1">// =&gt; Set {</span>
+<span class="c1">//      Coordinate { &quot;x&quot;: 2, &quot;y&quot;: 1 },</span>
+<span class="c1">//      Coordinate { &quot;x&quot;: 2, &quot;y&quot;: 2 },</span>
+<span class="c1">//      Coordinate { &quot;x&quot;: 1, &quot;y&quot;: 2 }</span>
+<span class="c1">//    }</span>
+</pre></div>
+
+
+<h3 id="handicapboard">handicapBoard</h3>
+<hr />
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">handicapBoard</span><span class="p">(</span><span class="nx">size</span><span class="p">,</span> <span class="nx">handicap</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Creates a new <a href="#board_1">Board</a> with the correct number of handicap stones
+placed.  Only standard board sizes (9, 13, 19) are allowed.</p>
+<h4 id="arguments_7">Arguments</h4>
+<ul>
+<li><code>size</code> <code>(number)</code>: Size of the board, must be 9, 13, or 19.</li>
+<li><code>handicap</code> <code>(number)</code>: Number of handicaps, must be 0-9.</li>
+</ul>
+<h4 id="returns_5">Returns</h4>
+<p><a href="#board_1"><code>(Board)</code></a>: New board with correct handicaps placed.</p>
+<h4 id="example_7">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">handicapBoard</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
+<span class="c1">// =&gt; +++++++++</span>
+<span class="c1">//    +++++++++</span>
+<span class="c1">//    ++O+++O++</span>
+<span class="c1">//    +++++++++</span>
+<span class="c1">//    +++++++++</span>
+<span class="c1">//    +++++++++</span>
+<span class="c1">//    ++O+++O++</span>
+<span class="c1">//    +++++++++</span>
+<span class="c1">//    +++++++++</span>
+</pre></div>
+
 
 <h3 id="islegalmove">isLegalMove</h3>
 <hr />
-<pre><code class="javascript">godash.isLegalMove(board, coordinate, color)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Determine whether the coordinate-color combination provided is a legal move for
 the board.  <a href="https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko">Ko</a> is not considered.  Use <a href="#followupko"><code>followupKo()</code></a>
 if you want to do <a href="https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko">ko</a>-related things.</p>
-<h4 id="arguments_7">Arguments</h4>
+<h4 id="arguments_8">Arguments</h4>
 <ul>
 <li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board to inspect.</li>
 <li><code>coordinate</code> <a href="#coordinate"><code>(Coordinate)</code></a>: Location to check.</li>
 <li><code>color</code> <code>(string)</code>: Color to check - <a href="#black"><code>BLACK</code></a> or <a href="#white"><code>WHITE</code></a>.</li>
 </ul>
-<h4 id="returns_5">Returns</h4>
+<h4 id="returns_6">Returns</h4>
 <p><code>(boolean)</code>: Whether the move is legal.</p>
-<h4 id="example_7">Example</h4>
-<pre><code class="javascript">var ponnuki = new Board(3,
-    new Coordinate(1, 0), BLACK,
-    new Coordinate(0, 1), BLACK,
-    new Coordinate(1, 2), BLACK,
-    new Coordinate(2, 1), BLACK
-);
+<h4 id="example_8">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">ponnuki</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span>
+<span class="p">);</span>
 
-toAsciiBoard(ponnuki);
-// =&gt; +O+
-//    O+O
-//    +O+
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    O+O</span>
+<span class="c1">//    +O+</span>
 
-isLegalMove(ponnuki, new Coordinate(1, 1), BLACK)
-// =&gt; true
+<span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">)</span>
+<span class="c1">// =&gt; true</span>
 
-isLegalMove(ponnuki, new Coordinate(1, 1), WHITE)
-// =&gt; false
-</code></pre>
+<span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">)</span>
+<span class="c1">// =&gt; false</span>
+</pre></div>
+
 
 <h3 id="liberties">liberties</h3>
 <hr />
-<pre><code class="javascript">godash.liberties(board, coordinate)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">liberties</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Finds the set of all liberties for the given coordinate.  If the coordinate is
 part of a group, the set of liberties are the liberties for that group.</p>
-<h4 id="arguments_8">Arguments</h4>
-<ul>
-<li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board to inspect.</li>
-<li><code>coordinate</code> <a href="#coordinate"><code>(Coordinate)</code></a>: Coordinate to inspect.</li>
-</ul>
-<h4 id="returns_6">Returns</h4>
-<p><a href="https://facebook.github.io/immutable-js/docs/#/Set"><code>(Immutable.Set)</code></a>: Set containing <a href="#coordinate"><code>Coordinate</code></a>
-members for the liberties of the passed coordinate.</p>
-<h4 id="example_8">Example</h4>
-<pre><code class="javascript">var board = new Board(3, new Coordinate(1, 1), BLACK);
-var collectedLiberties = liberties(board, new Coordinate(1, 1));
-
-Immutable.Set.of(
-    new Coordinate(1, 0),
-    new Coordinate(0, 1),
-    new Coordinate(1, 2),
-    new Coordinate(2, 1)
-).equals(collectedLiberties);
-// =&gt; true
-</code></pre>
-
-<h3 id="libertycount">libertyCount</h3>
-<hr />
-<pre><code class="javascript">godash.libertyCount(board, coordinate)
-</code></pre>
-
-<p>Counts the liberties for the given coordinate.  If the coordinate is
-part of a group, liberties for the entire group is counted.</p>
 <h4 id="arguments_9">Arguments</h4>
 <ul>
 <li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board to inspect.</li>
 <li><code>coordinate</code> <a href="#coordinate"><code>(Coordinate)</code></a>: Coordinate to inspect.</li>
 </ul>
 <h4 id="returns_7">Returns</h4>
-<p><code>(number)</code>: Count of liberties for the passed coordinate.</p>
+<p><a href="https://facebook.github.io/immutable-js/docs/#/Set"><code>(Immutable.Set)</code></a>: Set containing <a href="#coordinate"><code>Coordinate</code></a>
+members for the liberties of the passed coordinate.</p>
 <h4 id="example_9">Example</h4>
-<pre><code class="javascript">var board = new Board(3, new Coordinate(1, 1), BLACK);
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">collectedLiberties</span> <span class="o">=</span> <span class="nx">liberties</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
 
-libertyCount(board, new Coordinate(1, 1)) === 4;
-// =&gt; true
-</code></pre>
+<span class="nx">Immutable</span><span class="p">.</span><span class="nx">Set</span><span class="p">.</span><span class="k">of</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">).</span><span class="nx">equals</span><span class="p">(</span><span class="nx">collectedLiberties</span><span class="p">);</span>
+<span class="c1">// =&gt; true</span>
+</pre></div>
+
+
+<h3 id="libertycount">libertyCount</h3>
+<hr />
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">libertyCount</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Counts the liberties for the given coordinate.  If the coordinate is
+part of a group, liberties for the entire group is counted.</p>
+<h4 id="arguments_10">Arguments</h4>
+<ul>
+<li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board to inspect.</li>
+<li><code>coordinate</code> <a href="#coordinate"><code>(Coordinate)</code></a>: Coordinate to inspect.</li>
+</ul>
+<h4 id="returns_8">Returns</h4>
+<p><code>(number)</code>: Count of liberties for the passed coordinate.</p>
+<h4 id="example_10">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">);</span>
+
+<span class="nx">libertyCount</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">===</span> <span class="mi">4</span><span class="p">;</span>
+<span class="c1">// =&gt; true</span>
+</pre></div>
+
 
 <h3 id="oppositecolor">oppositeColor</h3>
 <hr />
-<pre><code class="javascript">godash.oppositeColor(color)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">oppositeColor</span><span class="p">(</span><span class="nx">color</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Toggles the passed color.</p>
-<h4 id="arguments_10">Arguments</h4>
+<h4 id="arguments_11">Arguments</h4>
 <ul>
 <li><code>color</code> <code>(string)</code>: <a href="#black"><code>BLACK</code></a> or <a href="#white"><code>WHITE</code></a>.</li>
 </ul>
-<h4 id="returns_8">Returns</h4>
+<h4 id="returns_9">Returns</h4>
 <p><code>(string)</code>: Color opposite of the one provided.</p>
-<h4 id="example_10">Example</h4>
-<pre><code class="javascript">oppositeColor(BLACK) === WHITE
-// =&gt; true
+<h4 id="example_11">Example</h4>
+<div class="codehilite"><pre><span></span><span class="nx">oppositeColor</span><span class="p">(</span><span class="nx">BLACK</span><span class="p">)</span> <span class="o">===</span> <span class="nx">WHITE</span>
+<span class="c1">// =&gt; true</span>
 
-oppositeColor(WHITE) === BLACK
-// =&gt; true
-</code></pre>
+<span class="nx">oppositeColor</span><span class="p">(</span><span class="nx">WHITE</span><span class="p">)</span> <span class="o">===</span> <span class="nx">BLACK</span>
+<span class="c1">// =&gt; true</span>
+</pre></div>
+
 
 <h3 id="placestone">placeStone</h3>
 <hr />
-<pre><code class="javascript">godash.placeStone(board, coordinate, color, force = false)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">placeStone</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">,</span> <span class="nx">color</span><span class="p">,</span> <span class="nx">force</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Places a stone on the board, ignoring the rules of Go.</p>
-<h4 id="arguments_11">Arguments</h4>
+<h4 id="arguments_12">Arguments</h4>
 <ul>
 <li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board to add stone.</li>
 <li><code>coordinate</code> <a href="#coordinate"><code>(Coordinate)</code></a>: Location to add stone.</li>
 <li><code>color</code> <code>(string)</code>: Stone color - <a href="#black"><code>BLACK</code></a> or <a href="#white"><code>WHITE</code></a>.</li>
 <li><code>force</code> <code>(boolean)</code>: Optionally allow placement over existing stones.</li>
 </ul>
-<h4 id="returns_9">Returns</h4>
+<h4 id="returns_10">Returns</h4>
 <p><a href="#board_1"><code>(Board)</code></a>: New board with the stone placed.</p>
-<h4 id="example_11">Example</h4>
-<pre><code class="javascript">var ponnuki = new Board(3,
-    new Coordinate(1, 0), BLACK,
-    new Coordinate(0, 1), BLACK,
-    new Coordinate(1, 2), BLACK,
-    new Coordinate(2, 1), BLACK
-);
+<h4 id="example_12">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">ponnuki</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span>
+<span class="p">);</span>
 
-toAsciiBoard(ponnuki);
-// =&gt; +O+
-//    O+O
-//    +O+
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    O+O</span>
+<span class="c1">//    +O+</span>
 
-toAsciiBoard(
-    placeStone(ponnuki, new Coordinate(1, 1), WHITE)
-);
-// =&gt; +O+
-//    OXO
-//    +O+
-</code></pre>
+<span class="nx">toAsciiBoard</span><span class="p">(</span>
+    <span class="nx">placeStone</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    OXO</span>
+<span class="c1">//    +O+</span>
+</pre></div>
+
 
 <h3 id="placestones">placeStones</h3>
 <hr />
-<pre><code class="javascript">godash.placeStones(board, coordinates, color, force = false)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">placeStones</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinates</span><span class="p">,</span> <span class="nx">color</span><span class="p">,</span> <span class="nx">force</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Places a set of stones onto the board, ignoring the rules of Go.</p>
-<h4 id="arguments_12">Arguments</h4>
+<h4 id="arguments_13">Arguments</h4>
 <ul>
 <li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board to add stone.</li>
 <li><code>coordinate</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>(Array)</code></a>: Stones to place.</li>
 <li><code>color</code> <code>(string)</code>: Stone color - <a href="#black"><code>BLACK</code></a> or <a href="#white"><code>WHITE</code></a>.</li>
 <li><code>force</code> <code>(boolean)</code>: Optionally allow placement over existing stones.</li>
 </ul>
-<h4 id="returns_10">Returns</h4>
+<h4 id="returns_11">Returns</h4>
 <p><a href="#board_1"><code>(Board)</code></a>: New board with the stones placed.</p>
-<h4 id="example_12">Example</h4>
-<pre><code class="javascript">var board = new Board(3, new Coordinate(1, 1), WHITE);
+<h4 id="example_13">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">);</span>
 
-toAsciiBoard(board);
-// =&gt; +++
-//    +X+
-//    +++
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
+<span class="c1">// =&gt; +++</span>
+<span class="c1">//    +X+</span>
+<span class="c1">//    +++</span>
 
-toAsciiBoard(
-    placeStones(board, [
-        new Coordinate(1, 0),
-        new Coordinate(0, 1),
-        new Coordinate(1, 2),
-        new Coordinate(2, 1)
-    ], BLACK)
-);
-// =&gt; +O+
-//    OXO
-//    +O+
-</code></pre>
+<span class="nx">toAsciiBoard</span><span class="p">(</span>
+    <span class="nx">placeStones</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">],</span> <span class="nx">BLACK</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    OXO</span>
+<span class="c1">//    +O+</span>
+</pre></div>
+
 
 <h3 id="removestone">removeStone</h3>
 <hr />
-<pre><code class="javascript">godash.removeStone(board, coordinate)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">removeStone</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Make a given coordinate empty on the board.</p>
-<h4 id="arguments_13">Arguments</h4>
+<h4 id="arguments_14">Arguments</h4>
 <ul>
 <li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board from which to remove the stone.</li>
 <li><code>coordinate</code> <a href="#coordinate"><code>(Coordinate)</code></a>: Location of the stone.</li>
 </ul>
-<h4 id="returns_11">Returns</h4>
+<h4 id="returns_12">Returns</h4>
 <p><a href="#board_1"><code>(Board)</code></a>: New board with the stone removed.</p>
-<h4 id="example_13">Example</h4>
-<pre><code class="javascript">var board = new Board(3, new Coordinate(1, 1), WHITE);
+<h4 id="example_14">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">);</span>
 
-toAsciiBoard(board);
-// =&gt; +++
-//    +X+
-//    +++
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
+<span class="c1">// =&gt; +++</span>
+<span class="c1">//    +X+</span>
+<span class="c1">//    +++</span>
 
-toAsciiBoard(
-    removeStone(board, new Coordinate(1, 1))
-);
-// =&gt; +++
-//    +++
-//    +++
-</code></pre>
+<span class="nx">toAsciiBoard</span><span class="p">(</span>
+    <span class="nx">removeStone</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">);</span>
+<span class="c1">// =&gt; +++</span>
+<span class="c1">//    +++</span>
+<span class="c1">//    +++</span>
+</pre></div>
+
 
 <h3 id="removestones">removeStones</h3>
 <hr />
-<pre><code class="javascript">godash.removeStones(board, coordinates)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">removeStones</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinates</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Makes several coordinates empty on the board.</p>
-<h4 id="arguments_14">Arguments</h4>
+<h4 id="arguments_15">Arguments</h4>
 <ul>
 <li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board from which to remove the stones.</li>
 <li><code>coordinate</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>(Array)</code></a>: Location of the stones.</li>
 </ul>
-<h4 id="returns_12">Returns</h4>
+<h4 id="returns_13">Returns</h4>
 <p><a href="#board_1"><code>(Board)</code></a>: New board with the stones removed.</p>
-<h4 id="example_14">Example</h4>
-<pre><code class="javascript">var board = new Board(3,
-    new Coordinate(1, 0), WHITE,
-    new Coordinate(1, 1), WHITE,
-    new Coordinate(1, 2), BLACK
-);
+<h4 id="example_15">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span>
+<span class="p">);</span>
 
-toAsciiBoard(board);
-// =&gt; +++
-//    XXO
-//    +++
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
+<span class="c1">// =&gt; +++</span>
+<span class="c1">//    XXO</span>
+<span class="c1">//    +++</span>
 
-toAsciiBoard(
-    removeStones(board, [
-        new Coordinate(1, 1),
-        new Coordinate(1, 2)
-    ])
-);
-// =&gt; +++
-//    X++
-//    +++
-</code></pre>
+<span class="nx">toAsciiBoard</span><span class="p">(</span>
+    <span class="nx">removeStones</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">])</span>
+<span class="p">);</span>
+<span class="c1">// =&gt; +++</span>
+<span class="c1">//    X++</span>
+<span class="c1">//    +++</span>
+</pre></div>
+
 
 <h3 id="toasciiboard">toAsciiBoard</h3>
 <hr />
-<pre><code class="javascript">godash.toAsciiBoard(board)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Constructs an ASCII representation of the board.</p>
-<h4 id="arguments_15">Arguments</h4>
+<h4 id="arguments_16">Arguments</h4>
 <ul>
 <li><code>board</code> <a href="#board_1"><code>(Board)</code></a>: Board from which to add the move.</li>
 </ul>
-<h4 id="returns_13">Returns</h4>
+<h4 id="returns_14">Returns</h4>
 <p><code>(string)</code>: ASCII representation of the board.</p>
-<h4 id="example_15">Example</h4>
-<pre><code class="javascript">var board = new Board(3,
-    new Coordinate(1, 0), BLACK,
-    new Coordinate(0, 1), BLACK,
-    new Coordinate(1, 2), BLACK,
-    new Coordinate(1, 1), WHITE
-);
+<h4 id="example_16">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span>
+<span class="p">);</span>
 
-toAsciiBoard(board);
-// =&gt; +O+
-//    OXO
-//    +++
-</code></pre>
+<span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
+<span class="c1">// =&gt; +O+</span>
+<span class="c1">//    OXO</span>
+<span class="c1">//    +++</span>
+</pre></div>
+
 
 <h3 id="black">BLACK</h3>
 <hr />
-<pre><code class="javascript">godash.BLACK = 'black'
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">BLACK</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+</pre></div>
+
 
 <p>Constant representing the stone color black.</p>
 <h3 id="white">WHITE</h3>
 <hr />
-<pre><code class="javascript">godash.WHITE = 'white'
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">WHITE</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span>
+</pre></div>
+
 
 <p>Constant representing the stone color white.</p>
 <h3 id="empty">EMPTY</h3>
 <hr />
-<pre><code class="javascript">godash.EMPTY = null
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">EMPTY</span> <span class="o">=</span> <span class="kc">null</span>
+</pre></div>
+
 
 <p>Constant representing an empty space.</p>
+<h3 id="tengen_9">TENGEN_9</h3>
+<hr />
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">TENGEN_9</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Constant representing tengen on a 9x9 board.</p>
+<h3 id="tengen_13">TENGEN_13</h3>
+<hr />
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">TENGEN_13</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Constant representing tengen on a 13x13 board.</p>
+<h3 id="tengen_19">TENGEN_19</h3>
+<hr />
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">TENGEN_19</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Constant representing tengen on a 19x19 board.</p>
 <h2 id="sgf">SGF</h2>
 <p>Utilities to support <a href="http://www.red-bean.com/sgf/index.html">SGF</a> ingestion.</p>
 <h3 id="coordinatetosgfpoint">coordinateToSgfPoint</h3>
 <hr />
-<pre><code class="javascript">godash.coordinateToSgfPoint(coordinate)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">coordinateToSgfPoint</span><span class="p">(</span><span class="nx">coordinate</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Converts a <a href="#coordinate"><code>Coordinate</code></a> to an <a href="http://www.red-bean.com/sgf/go.html">SGF Point</a> in the form
 of a Javascript <code>String</code>.</p>
-<h4 id="arguments_16">Arguments</h4>
+<h4 id="arguments_17">Arguments</h4>
 <ul>
 <li><code>coordinate</code> <code>(Coordinate)</code>: godash <a href="#coordinate"><code>Coordinate</code></a></li>
 </ul>
-<h4 id="returns_14">Returns</h4>
+<h4 id="returns_15">Returns</h4>
 <p><code>(string)</code>: 2-character string representing an <a href="http://www.red-bean.com/sgf/go.html">SGF Point</a></p>
-<h4 id="example_16">Example</h4>
-<pre><code class="javascript">coordinateToSgfPoint(new Coordinate(0, 0))
-// =&gt; &quot;aa&quot;
-</code></pre>
+<h4 id="example_17">Example</h4>
+<div class="codehilite"><pre><span></span><span class="nx">coordinateToSgfPoint</span><span class="p">(</span><span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1">// =&gt; &quot;aa&quot;</span>
+</pre></div>
+
 
 <h3 id="sgfpointtocoordinate">sgfPointToCoordinate</h3>
 <hr />
-<pre><code class="javascript">godash.sgfPointToCoordinate(sgfPoint)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">sgfPointToCoordinate</span><span class="p">(</span><span class="nx">sgfPoint</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Converts an <a href="http://www.red-bean.com/sgf/go.html">SGF Point</a> to a <a href="#coordinate"><code>Coordinate</code></a>.</p>
-<h4 id="arguments_17">Arguments</h4>
+<h4 id="arguments_18">Arguments</h4>
 <ul>
 <li><code>sgfPoint</code> <code>(string)</code>: 2-character string representing an <a href="http://www.red-bean.com/sgf/go.html">SGF
   Point</a>.</li>
 </ul>
-<h4 id="returns_15">Returns</h4>
+<h4 id="returns_16">Returns</h4>
 <p><a href="#coordinate"><code>(Coordinate)</code></a>: Coordinate for the passed string.</p>
-<h4 id="example_17">Example</h4>
-<pre><code class="javascript">sgfPointToCoordinate('hi').toString();
-// =&gt; Coordinate { &quot;x&quot;: 7, &quot;y&quot;: 8 }
-</code></pre>
+<h4 id="example_18">Example</h4>
+<div class="codehilite"><pre><span></span><span class="nx">sgfPointToCoordinate</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+<span class="c1">// =&gt; Coordinate { &quot;x&quot;: 7, &quot;y&quot;: 8 }</span>
+</pre></div>
+
 
 <h3 id="sgftojs">sgfToJS</h3>
 <hr />
-<pre><code class="javascript">godash.sgfToJS(sgf)
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="nx">godash</span><span class="p">.</span><span class="nx">sgfToJS</span><span class="p">(</span><span class="nx">sgf</span><span class="p">)</span>
+</pre></div>
+
 
 <p>Converts a raw <a href="http://www.red-bean.com/sgf/index.html">SGF</a> string into a plain Javascript array.  Note that
 unlike <a href="#board_1"><code>Board</code></a>, the results of this function is a mutable object.</p>
-<h4 id="arguments_18">Arguments</h4>
+<h4 id="arguments_19">Arguments</h4>
 <ul>
 <li><code>sgf</code> <code>(string)</code>: Raw <a href="http://www.red-bean.com/sgf/index.html">SGF</a> string to be parsed.</li>
 </ul>
-<h4 id="returns_16">Returns</h4>
+<h4 id="returns_17">Returns</h4>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>(Array)</code></a>: Plain Javascript array that breaks down SGF variations and
 turns moves into objects.</p>
-<h4 id="example_18">Example</h4>
-<pre><code class="javascript">var rawSgf = `(
-    ;FF[4]GM[1]SZ[19];B[aa];W[bb]
-        (;B[cc];W[dd];B[ad];W[bd])
-        (;B[hh];W[hg]C[what a move!])
-        (;B[gg];W[gh];B[hh]
-            (;W[hg];B[kk])
-            (;W[kl])
-        )
-)`;
+<h4 id="example_19">Example</h4>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">rawSgf</span> <span class="o">=</span> <span class="sb">`(</span>
+<span class="sb">    ;FF[4]GM[1]SZ[19];B[aa];W[bb]</span>
+<span class="sb">        (;B[cc];W[dd];B[ad];W[bd])</span>
+<span class="sb">        (;B[hh];W[hg]C[what a move!])</span>
+<span class="sb">        (;B[gg];W[gh];B[hh]</span>
+<span class="sb">            (;W[hg];B[kk])</span>
+<span class="sb">            (;W[kl])</span>
+<span class="sb">        )</span>
+<span class="sb">)`</span><span class="p">;</span>
 
-sgfToJS(rawSgf);
-// =&gt; [
-//        {FF: '4', GM: '1', SZ: '19'}, {B: 'aa'}, {W: 'bb'},
-//        [
-//            [{B: 'cc'}, {W: 'dd'}, {B: 'ad'}, {W: 'bd'}],
-//            [{B: 'hh'}, {W: 'hg', C: 'what a move!'}],
-//            [
-//                {B: 'gg'}, {W: 'gh'}, {B: 'hh'},
-//                [
-//                    [{W: 'hg'}, {B: 'kk'}],
-//                    [{W: 'kl'}]
-//                ]
-//            ]
-//        ]
-//    ];
-</code></pre>
+<span class="nx">sgfToJS</span><span class="p">(</span><span class="nx">rawSgf</span><span class="p">);</span>
+<span class="c1">// =&gt; [</span>
+<span class="c1">//        {FF: &#39;4&#39;, GM: &#39;1&#39;, SZ: &#39;19&#39;}, {B: &#39;aa&#39;}, {W: &#39;bb&#39;},</span>
+<span class="c1">//        [</span>
+<span class="c1">//            [{B: &#39;cc&#39;}, {W: &#39;dd&#39;}, {B: &#39;ad&#39;}, {W: &#39;bd&#39;}],</span>
+<span class="c1">//            [{B: &#39;hh&#39;}, {W: &#39;hg&#39;, C: &#39;what a move!&#39;}],</span>
+<span class="c1">//            [</span>
+<span class="c1">//                {B: &#39;gg&#39;}, {W: &#39;gh&#39;}, {B: &#39;hh&#39;},</span>
+<span class="c1">//                [</span>
+<span class="c1">//                    [{W: &#39;hg&#39;}, {B: &#39;kk&#39;}],</span>
+<span class="c1">//                    [{W: &#39;kl&#39;}]</span>
+<span class="c1">//                ]</span>
+<span class="c1">//            ]</span>
+<span class="c1">//        ]</span>
+<span class="c1">//    ];</span>
+</pre></div>
+                
+                  
+                
               
+              
+                
+
+
               
             </article>
           </div>
@@ -2297,9 +2572,9 @@ sgfToJS(rawSgf);
       <div class="md-footer-copyright">
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="http://www.mkdocs.org">MkDocs</a>
         and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
@@ -2319,8 +2594,9 @@ sgfToJS(rawSgf);
       
     </div>
     
-      <script src="../assets/javascripts/application-30ac6a1727.js"></script>
-      <script>app.initialize({url:{base:".."}})</script>
+      <script src="../assets/javascripts/application.b438e6c5.js"></script>
+      
+      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
       
     
     
