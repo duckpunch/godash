@@ -310,6 +310,43 @@ group(board, new Coordinate(2, 1)).toString();
 //    }
 ```
 
+### handicapBoard
+
+---
+
+```javascript
+godash.handicapBoard(size, handicap)
+```
+
+Creates a new [Board](#board_1) with the correct number of handicap stones
+placed.  Only standard board sizes (9, 13, 19) are allowed.
+
+#### Arguments
+
+* `size` `(number)`: Size of the board, must be 9, 13, or 19.
+* `handicap` `(number)`: Number of handicaps, must be 0-9.
+
+#### Returns
+
+[`(Board)`](#board_1): New board with correct handicaps placed.
+
+#### Example
+
+```javascript
+var board = handicapBoard(9, 4);
+
+toAsciiBoard(board);
+// => +++++++++
+//    +++++++++
+//    ++O+++O++
+//    +++++++++
+//    +++++++++
+//    +++++++++
+//    ++O+++O++
+//    +++++++++
+//    +++++++++
+```
+
 ### isLegalMove
 
 ---
@@ -679,6 +716,36 @@ godash.EMPTY = null
 ```
 
 Constant representing an empty space.
+
+### TENGEN_9
+
+---
+
+```javascript
+godash.TENGEN_9 = new Coordinate(4, 4);
+```
+
+Constant representing tengen on a 9x9 board.
+
+### TENGEN_13
+
+---
+
+```javascript
+godash.TENGEN_13 = new Coordinate(6, 6);
+```
+
+Constant representing tengen on a 13x13 board.
+
+### TENGEN_19
+
+---
+
+```javascript
+godash.TENGEN_19 = new Coordinate(9, 9);
+```
+
+Constant representing tengen on a 19x19 board.
 
 ## SGF
 

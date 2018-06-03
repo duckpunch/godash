@@ -310,6 +310,8 @@ export function handicapBoard(size, handicap) {
         return placeStones(board, concat(take(nonTengenHandicap, 4), tengen), BLACK);
     } else if (handicap === 6) {
         return placeStones(board, take(nonTengenHandicap, 6), BLACK);
+    } else if (handicap === 8) {
+        return placeStones(board, nonTengenHandicap, BLACK);
     } else {
         return placeStones(board, concat(take(nonTengenHandicap, handicap - 1), tengen), BLACK);
     }
