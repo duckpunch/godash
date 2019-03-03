@@ -54,7 +54,7 @@ full SGF spec is not implemented.
 ## Related Projects
 
 * [Elixir port][port] - port to [Elixir][elixir] by [kokolegorille][koko]
-* [pizza][pizza] - an anonymous go server
+* [pizza][pizza] - an anonymous go server ([source][pizza-code])
 * [react-go-board][rgb] - a simple go board component for [React][react]
 * [Way to Go][wtg] - a rewrite of Hiroki Mori's [Interactive Way to Go][iwtg]
 
@@ -68,6 +68,7 @@ full SGF spec is not implemented.
 [lodash]: https://lodash.com/
 [npm]: https://www.npmjs.com/package/godash
 [pizza]: https://pizza.duckpun.ch/
+[pizza-code]: https://gitlab.com/duckpunch/pizza
 [port]: https://github.com/kokolegorille/go
 [react]: https://reactjs.org/
 [rgb]: https://github.com/duckpunch/react-go-board
