@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
     entry: [
         './src/index'
@@ -7,16 +5,16 @@ module.exports = {
     output: {
         library: 'godash',
         libraryTarget: 'umd',
-        filename: path.join(__dirname, './dist/godash.js')
+        filename: './dist/godash.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 query: {
-                    presets: ['env']
+                    presets: ['@babel/preset-env']
                 }
             }
         ]
