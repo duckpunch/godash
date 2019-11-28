@@ -10,6 +10,7 @@ import {
     inRange,
     isInteger,
     take,
+    has,
 } from 'lodash';
 
 export const BLACK = 'black';
@@ -239,7 +240,7 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
     return coordinates.reduce(
         (acc, coordinate, index) => {
             const isCoordinate = coordinate.constructor.name === 'Coordinate';
-            const hasXY = coordinate.hasOwnProperty('x') && coordinate.hasOwnProperty('y');
+            const hasXY = has(coordinate, 'x') && has(coordinate, 'y');
 
             if (!(isCoordinate || hasXY)) {
                 throw 'You must pass coordinates or coordinate-like objects.';
