@@ -6,7 +6,7 @@ module.exports = {
     output: {
         library: 'godash',
         libraryTarget: 'umd',
-        filename: './dist/godash.js'
+        filename: 'godash.js'
     },
     module: {
         rules: [
