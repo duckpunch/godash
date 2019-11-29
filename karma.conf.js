@@ -4,6 +4,7 @@ var webpackCfg = require('./webpack.config');
 module.exports = function(config) {
     config.set({
         basePath: '',
+        browsers: ['ChromeHeadless'],
         files: [
             'test/*.js'
         ],
