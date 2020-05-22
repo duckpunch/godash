@@ -7,8 +7,12 @@
     "type": "git",
     "url": "https://github.com/duckpunch/godash.git"
   },
+  "typings": "types/index.d.ts",
+  "main": "dist/godash.js",
   "files": [
-    "src/*"
+    "src",
+    "dist/*.js",
+    "types/*.d.ts"
   ],
   "keywords": [
     "go",
