@@ -27,7 +27,7 @@ import {
 
 import { coordinateToSgfPoint, sgfPointToCoordinate, sgfToJS } from './sgf';
 
-const godash: {
+declare const godash: {
   default: {
     BLACK: Color;
     WHITE: Color;

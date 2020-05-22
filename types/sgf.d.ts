@@ -1,4 +1,4 @@
-import { Coordinate } from '../src/board'
+import { Coordinate } from './board'
 
 type JSr = { [key: string]: string } | JSr[];
 type JS = JSr[];
