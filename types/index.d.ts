@@ -1,6 +1,5 @@
-import { coordinateToSgfPoint, sgfPointToCoordinate, sgfToJS } from '../src/sgf';
-
 import {
+  Color,
   BLACK,
   Board,
   Coordinate,
@@ -24,7 +23,9 @@ import {
   removeStone,
   removeStones,
   toAsciiBoard,
-} from '../src/board';
+} from './board';
+
+import { coordinateToSgfPoint, sgfPointToCoordinate, sgfToJS } from './sgf';
 
 const godash: {
   default: {
