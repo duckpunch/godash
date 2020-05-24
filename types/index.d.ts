@@ -1,5 +1,4 @@
 import {
-    Color,
     BLACK,
     Board,
     Coordinate,
@@ -32,34 +31,32 @@ import {
 } from './sgf';
 
 declare const godash: {
-    default: {
-        BLACK: Color;
-        WHITE: Color;
-        EMPTY: Color;
-        Board: typeof Board;
-        Coordinate: typeof Coordinate;
-        TENGEN_13: Coordinate;
-        TENGEN_19: Coordinate;
-        TENGEN_9: Coordinate;
-        difference: typeof difference;
-        followupKo: typeof followupKo;
-        group: typeof group;
-        oppositeColor: typeof oppositeColor;
-        liberties: typeof liberties;
-        libertyCount: typeof libertyCount;
-        isLegalMove: typeof isLegalMove;
-        removeStone: typeof removeStone;
-        removeStones: typeof removeStones;
-        addMove: typeof addMove;
-        placeStone: typeof placeStone;
-        placeStones: typeof placeStones;
-        toAsciiBoard: typeof toAsciiBoard;
-        constructBoard: typeof constructBoard;
-        handicapBoard: typeof handicapBoard;
-        coordinateToSgfPoint: typeof coordinateToSgfPoint;
-        sgfPointToCoordinate: typeof sgfPointToCoordinate;
-        sgfToJS: typeof sgfToJS;
-    };
+    BLACK: typeof BLACK;
+    WHITE: typeof WHITE;
+    EMPTY: typeof EMPTY;
+    Board: typeof Board;
+    Coordinate: typeof Coordinate;
+    TENGEN_13: typeof TENGEN_13;
+    TENGEN_19: typeof TENGEN_19;
+    TENGEN_9: typeof TENGEN_9;
+    difference: typeof difference;
+    followupKo: typeof followupKo;
+    group: typeof group;
+    oppositeColor: typeof oppositeColor;
+    liberties: typeof liberties;
+    libertyCount: typeof libertyCount;
+    isLegalMove: typeof isLegalMove;
+    removeStone: typeof removeStone;
+    removeStones: typeof removeStones;
+    addMove: typeof addMove;
+    placeStone: typeof placeStone;
+    placeStones: typeof placeStones;
+    toAsciiBoard: typeof toAsciiBoard;
+    constructBoard: typeof constructBoard;
+    handicapBoard: typeof handicapBoard;
+    coordinateToSgfPoint: typeof coordinateToSgfPoint;
+    sgfPointToCoordinate: typeof sgfPointToCoordinate;
+    sgfToJS: typeof sgfToJS;
 };
 
-export = godash.default;
+export = godash;
