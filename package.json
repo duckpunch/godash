@@ -7,13 +7,8 @@
     "type": "git",
     "url": "https://github.com/duckpunch/godash.git"
   },
-  "typings": "types/index.d.ts",
   "main": "dist/godash.js",
-  "files": [
-    "src",
-    "dist/*.js",
-    "types/*.d.ts"
-  ],
+  "types": "types/index.d.ts",
   "keywords": [
     "go",
     "weiqi",
@@ -32,7 +27,6 @@
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
-    "@types/lodash": "^4.14.152",
     "babel-loader": "^8.0.6",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "^3.1.0",
