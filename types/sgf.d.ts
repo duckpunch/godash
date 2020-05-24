@@ -1,6 +1,6 @@
-import { Coordinate } from './board'
+import {Coordinate} from './board'
 
-type JSr = { [key: string]: string } | JSr[];
+type JSr = {[key: string]: string} | JSr[];
 type JS = JSr[];
 type Token = string | [string, string];
 
@@ -14,9 +14,7 @@ export declare function sgfPointToCoordinate(sgfPoint: string): Coordinate;
 
 export declare function sgfToJS(sgf: string): JS;
 
-export declare function compactMoves(
-  tokens: Token[]
-): (Token | { [key: string]: string })[];
+export declare function compactMoves(tokens: Token[]): (Token | {[key: string]: string})[];
 
 export declare function tokenize(rawSgf: string): Token[];
 
