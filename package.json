@@ -8,6 +8,7 @@
     "url": "https://github.com/duckpunch/godash.git"
   },
   "main": "dist/godash.js",
+  "types": "types/index.d.ts",
   "keywords": [
     "go",
     "weiqi",
