@@ -1,11 +1,10 @@
+const path = require('path');
+
 module.exports = {
     mode: 'production',
-    entry: [
-        './src/index'
-    ],
+    entry: './src/index.js',
     output: {
-        library: 'godash',
-        libraryTarget: 'umd',
+        path: path.resolve(__dirname, 'dist'),
         filename: 'godash.js'
     },
     module: {
@@ -13,9 +12,11 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['@babel/preset-env']
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
                 }
             }
         ]
