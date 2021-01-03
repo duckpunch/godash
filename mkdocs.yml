@@ -1,18 +1,11 @@
 site_name: Godash
 repo_name: 'duckpunch/godash'
 repo_url: 'https://github.com/duckpunch/godash'
-pages:
-  - Home: index.md
-  - Documentation: documentation.md
 theme:
   name: material
-  logo:
-    icon: fiber_smart_record
+  icon:
+    logo: fontawesome/solid/adjust
 extra_css:
   - style.css
 markdown_extensions:
   - codehilite
-extra:
-  social:
-    - type: 'github'
-      link: 'https://github.com/duckpunch'

@@ -1,10 +1,20 @@
+/**
+ * Utilities for an immutable Board object.
+ *
+ * @module Board
+ */
+
+/**
+ * @external Record
+ * @see https://immutable-js.github.io/immutable-js/docs/#/Record
+ */
 import {
     Set,
     Map,
     List,
     Record,
     isImmutable,
-} from "immutable";
+} from 'immutable';
 import {
     concat,
     inRange,
@@ -13,10 +23,20 @@ import {
     hasIn,
 } from 'lodash';
 
+/** Constant representing the stone color black. */
 export const BLACK = 'black';
+
+/** Constant representing the stone color white. */
 export const WHITE = 'white';
+
+/** Constant representing an empty space. */
 export const EMPTY = null;
 
+/**
+ * Class representing a Go board.
+ *
+ * @extends Record
+ */
 export class Board extends Record({dimensions: 19, moves: Map()}, "Board") {
     constructor(dimensions = 19, ...moves) {
         super({
@@ -26,6 +46,11 @@ export class Board extends Record({dimensions: 19, moves: Map()}, "Board") {
     }
 }
 
+/**
+ * Class representing a single location on a Go board.
+ *
+ * @extends Record
+ */
 export class Coordinate extends Record({x: 0, y: 0}, "Coordinate") {
     constructor(x, y) {
         super({x, y});
