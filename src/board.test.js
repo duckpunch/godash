@@ -22,7 +22,7 @@ import {
     removeStone,
     removeStones,
     toAsciiBoard,
-} from '../src/board';
+} from './board';
 
 describe('adjacentCoordinates', function() {
     it('yields the correct 4 when coordinate is in center', function() {

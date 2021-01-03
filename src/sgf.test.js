@@ -9,7 +9,7 @@ import {
     sgfPointToCoordinate,
     sgfToJS,
     tokenize,
-} from '../src/sgf';
+} from './sgf';
 
 describe('coordinateToSgfPoint', function() {
     it('converts (0, 0) to "aa"', function() {
