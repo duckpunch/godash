@@ -5,7 +5,14 @@ theme:
   name: material
   icon:
     logo: fontawesome/solid/adjust
-extra_css:
-  - style.css
+#extra_css:
+  #- style.css
 markdown_extensions:
+  - toc:
+      permalink: true
   - codehilite
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
