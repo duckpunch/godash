@@ -8,6 +8,10 @@
  * @external Record
  * @see https://immutable-js.github.io/immutable-js/docs/#/Record
  */
+
+/**
+ * @external Set
+ */
 import {
     Set,
     Map,
@@ -23,17 +27,17 @@ import {
     hasIn,
 } from 'lodash';
 
-/** Constant representing the stone color black. */
+/** The color black. */
 export const BLACK = 'black';
 
-/** Constant representing the stone color white. */
+/** The color white. */
 export const WHITE = 'white';
 
-/** Constant representing an empty space. */
+/** An empty space. */
 export const EMPTY = null;
 
 /**
- * Class representing a Go board.
+ * Representation of a board position.
  *
  * @extends Record
  */
@@ -47,7 +51,7 @@ export class Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
 }
 
 /**
- * Class representing a single location on a Go board.
+ * A zero-based tuple representing a single location on a Go board.
  *
  * @extends Record
  */
@@ -57,8 +61,13 @@ export class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
     }
 }
 
+/** Center point on a 9x9 board. */
 export const TENGEN_9 = new Coordinate(4, 4);
+
+/** Center point on a 13x13 board. */
 export const TENGEN_13 = new Coordinate(6, 6);
+
+/** Center point on a 19x19 board. */
 export const TENGEN_19 = new Coordinate(9, 9);
 
 export function adjacentCoordinates(board, coordinate) {
@@ -73,6 +82,31 @@ export function adjacentCoordinates(board, coordinate) {
     ).filter(c => c.every(validRange));
 }
 
+/**
+ * Finds the moves on the first board that are not on the second board.
+ *
+ * @example
+ * var atari = new Board(3,
+ *     new Coordinate(1, 0), BLACK,
+ *     new Coordinate(0, 1), BLACK,
+ *     new Coordinate(1, 2), BLACK,
+ *     new Coordinate(1, 1), WHITE,
+ * );
+ *
+ * toAsciiBoard(atari);
+ * // => +O+
+ * //    OXO
+ * //    +++
+ *
+ * var captured = difference(atari, addMove(atari, new Coordinate(2, 1), BLACK));
+ *
+ * captured.toString();
+ * // 'Set { List [ Coordinate { "x": 1, "y": 1 }, "white" ] }'
+ *
+ * @param {Board} board1 - First board.
+ * @param {Board} board2 - Board with moves to subtract from first board.
+ * @returns {Set}
+ */
 export function difference(board1, board2) {
     if (board1.dimensions !== board2.dimensions) {
         throw 'board sizes do not match';
