@@ -45,6 +45,8 @@ new godash.Coordinate(x, y)
 godash.BLACK
 ```
 
+The color black.
+
 ## Functions
 
 ### addMove
@@ -58,7 +60,7 @@ sequence information is available, this function does not respect
 [ko][ko-rule].  Use `followupKo()` if you want to do [ko][ko-rule]-related
 things.
 
-??? tldr "Arguments"
+!!! tldr "Arguments"
     `dimensions`
     :   Size of board.
 

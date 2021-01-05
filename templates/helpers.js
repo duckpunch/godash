@@ -9,3 +9,17 @@ Handlebars.registerHelper('kind', (context, kind, options) => {
         .join('')
     );
 });
+
+Handlebars.registerHelper(
+    'renderParams',
+    params => params.map(param => param.name).join(', '),
+);
+
+Handlebars.registerHelper(
+    'indentRest',
+    (content, spaces) => {
+        var lines = content.split('\n');
+        var indent = Array(spaces + 1).join(' ');
+        return lines[0] + '\n' + lines.slice(1).map(line => indent + line).join('\n');
+    },
+);

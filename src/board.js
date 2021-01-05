@@ -27,10 +27,18 @@ import {
     hasIn,
 } from 'lodash';
 
-/** The color black. */
+/**
+ * The color black.
+ *
+ * @type {string}
+ */
 export const BLACK = 'black';
 
-/** The color white. */
+/**
+ * The color white.
+ *
+ * @type {string}
+ */
 export const WHITE = 'white';
 
 /** An empty space. */
@@ -61,13 +69,25 @@ export class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
     }
 }
 
-/** Center point on a 9x9 board. */
+/**
+ * Center point on a 9x9 board.
+ *
+ * @type {Coordinate}
+ */
 export const TENGEN_9 = new Coordinate(4, 4);
 
-/** Center point on a 13x13 board. */
+/**
+ * Center point on a 13x13 board.
+ *
+ * @type {Coordinate}
+ */
 export const TENGEN_13 = new Coordinate(6, 6);
 
-/** Center point on a 19x19 board. */
+/**
+ * Center point on a 19x19 board.
+ *
+ * @type {Coordinate}
+ */
 export const TENGEN_19 = new Coordinate(9, 9);
 
 export function adjacentCoordinates(board, coordinate) {
@@ -105,7 +125,8 @@ export function adjacentCoordinates(board, coordinate) {
  *
  * @param {Board} board1 - First board.
  * @param {Board} board2 - Board with moves to subtract from first board.
- * @returns {Set}
+ * @returns {Set} Set containing pairs of `Coordinate` and color remaining in
+ * the difference.
  */
 export function difference(board1, board2) {
     if (board1.dimensions !== board2.dimensions) {
@@ -118,6 +139,38 @@ export function difference(board1, board2) {
     return board1Set.subtract(board2Set);
 }
 
+/**
+ * Determines move that would be illegal under the [ko
+ * rule](https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko)
+ *
+ * @example
+ * const koPosition = new Board(4,
+ *     new Coordinate(1, 0), BLACK,
+ *     new Coordinate(0, 1), BLACK,
+ *     new Coordinate(1, 2), BLACK,
+ *     new Coordinate(1, 1), WHITE,
+ *     new Coordinate(2, 0), WHITE,
+ *     new Coordinate(2, 2), WHITE,
+ *     new Coordinate(3, 1), WHITE,
+ * );
+ *
+ * toAsciiBoard(koPosition);
+ * // => +O++
+ * //    OXO+
+ * //    X+X+
+ * //    +X++
+ *
+ * const koStart = new Coordinate(2, 1);
+ *
+ * followupKo(koPosition, koStart, BLACK).toString();
+ * // => 'Coordinate { "x": 1, "y": 1 }'
+ *
+ * @param {Board} board - Starting board.
+ * @param {Coordinate} coordinate - Intended placement of stone.
+ * @param {string} color - Stone color.
+ * @returns {Coordinate} Position of illegal followup or `null` if
+ * none exists.
+ */
 export function followupKo(board, coordinate, color) {
     if (!isLegalMove(board, coordinate, color)) {
         return null;
