@@ -6,12 +6,6 @@
 * {{id}}
 {{/kind}}
 
-## Constants
-
-{{#kind @root "constant"}}
-* {{id}}
-{{/kind}}
-
 ## Functions
 
 {{#kind @root "function"}}
@@ -26,12 +20,12 @@ godash.{{name}}({{renderParams params}})
 
 !!! tldr "Arguments"
     {{#each this.params}}
-    * `{{name}}` - {{indentRest description 4}}
+    * `{{name}}` `({{lookup type.names 0}})` - {{{indentRest description 4}}}
     {{/each}}
 
 !!! tldr "Returns"
     {{#each this.returns}}
-    `{{lookup type.names 0}}` - {{indentRest description 4}}
+    `{{lookup type.names 0}}` - {{{indentRest description 4}}}
     {{/each}}
 
 ??? example "Examples"
@@ -40,5 +34,18 @@ godash.{{name}}({{renderParams params}})
     {{{indentRest this 4}}}
     ```
     {{/each}}
+
+{{/kind}}
+
+## Constants
+
+{{#kind @root "constant"}}
+### {{name}}
+
+```javascript
+godash.{{name}}
+```
+
+{{description}}
 
 {{/kind}}
