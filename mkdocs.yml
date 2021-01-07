@@ -5,6 +5,8 @@ theme:
   name: material
   icon:
     logo: fontawesome/solid/adjust
+  features:
+    - toc.integrate
 markdown_extensions:
   - toc:
       permalink: true

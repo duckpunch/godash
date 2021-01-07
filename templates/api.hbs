@@ -2,21 +2,31 @@
 
 ## Classes
 
-{{#kind @root "class"}}
-* {{id}}
+{{#kind @root "class" "module:Board"}}
+### {{name}}
 {{/kind}}
 
-## Functions
+## Constants
 
-{{#kind @root "function"}}
+{{#kind @root "constant" "module:Board"}}
+### {{name}}
 
+```javascript
+godash.{{name}}
+```
+
+{{description}}
+
+{{/kind}}
+
+{{#*inline "function"}}
 ### {{name}}
 
 ```javascript
 godash.{{name}}({{renderParams params}})
 ```
 
-{{description}}
+{{{description}}}
 
 !!! tldr "Arguments"
     {{#each this.params}}
@@ -35,17 +45,18 @@ godash.{{name}}({{renderParams params}})
     ```
     {{/each}}
 
+---
+
+{{/inline}}
+
+## Board utilities
+
+{{#kind @root "function" "module:Board"}}
+{{>function}}
 {{/kind}}
 
-## Constants
+## SGF utilities
 
-{{#kind @root "constant"}}
-### {{name}}
-
-```javascript
-godash.{{name}}
-```
-
-{{description}}
-
+{{#kind @root "function" "module:SGF"}}
+{{>function}}
 {{/kind}}
