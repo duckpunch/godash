@@ -30,6 +30,7 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "jest": "^26.6.3",
+    "jsdoc-to-markdown": "^6.0.1",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.1"
   },
@@ -37,6 +38,7 @@
     "prepare": "webpack",
     "watch": "webpack --watch --progress --debug",
     "watch-test": "jest --coverage --watch",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "update-api-docs": "jsdoc2md --files src/board.js --files src/sgf.js --template templates/api.hbs --helper templates/helpers.js > docs/api.md"
   }
 }

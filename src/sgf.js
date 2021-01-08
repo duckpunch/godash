@@ -1,3 +1,7 @@
+/**
+ * @module SGF
+ */
+
 import {
     Coordinate,
 } from './board';
@@ -14,10 +18,35 @@ export const START_MOVE = ';';
 export const START = '(';
 export const END = ')';
 
+/**
+ * Converts a [`Coordinate`](#coordinate) to an [SGF Point][sgf-point] in the
+ * form of a Javascript `String`.
+ *
+ * [sgf-point]: http://www.red-bean.com/sgf/go.html
+ *
+ * @example
+ * coordinateToSgfPoint(new Coordinate(0, 0))
+ * // => "aa"
+ *
+ * @param {Coordinate} coordinate - Coordinate to convert.
+ * @return {string} 2-character string representing an [SGF Point][sgf-point]
+ */
 export function coordinateToSgfPoint(coordinate) {
     return String.fromCharCode(97 + coordinate.x) + String.fromCharCode(97 + coordinate.y);
 }
 
+/**
+ * Converts an [SGF Point][sgf-point] to a [`Coordinate`](#coordinate).
+ *
+ * [sgf-point]: http://www.red-bean.com/sgf/go.html
+ *
+ * @example
+ * sgfPointToCoordinate('hi').toString();
+ * // => Coordinate { "x": 7, "y": 8 }
+ *
+ * @param {string} sgfPoint - 2-character string representing an [SGF Point][sgf-point]
+ * @return {Coordinate} Corresponding [`Coordinate`](#coordinate).
+ */
 export function sgfPointToCoordinate(sgfPoint) {
     if (isString(sgfPoint) && sgfPoint.length === 2) {
         return new Coordinate(
@@ -29,6 +58,42 @@ export function sgfPointToCoordinate(sgfPoint) {
     }
 }
 
+/**
+ * Converts a raw [SGF][sgf] string into a plain Javascript array.  Note that
+ * unlike [`Board`](#board), the results of this function is a mutable object.
+ *
+ * [sgf]: http://www.red-bean.com/sgf/index.html
+ *
+ * @example
+ * var rawSgf = `(
+ *     ;FF[4]GM[1]SZ[19];B[aa];W[bb]
+ *         (;B[cc];W[dd];B[ad];W[bd])
+ *         (;B[hh];W[hg]C[what a move!])
+ *         (;B[gg];W[gh];B[hh]
+ *             (;W[hg];B[kk])
+ *             (;W[kl])
+ *         )
+ * )`;
+ *
+ * sgfToJS(rawSgf);
+ * // => [
+ * //        {FF: '4', GM: '1', SZ: '19'}, {B: 'aa'}, {W: 'bb'},
+ * //        [
+ * //            [{B: 'cc'}, {W: 'dd'}, {B: 'ad'}, {W: 'bd'}],
+ * //            [{B: 'hh'}, {W: 'hg', C: 'what a move!'}],
+ * //            [
+ * //                {B: 'gg'}, {W: 'gh'}, {B: 'hh'},
+ * //                [
+ * //                    [{W: 'hg'}, {B: 'kk'}],
+ * //                    [{W: 'kl'}]
+ * //                ]
+ * //            ]
+ * //        ]
+ * //    ];
+ *
+ * @param {string} sgf - Raw [SGF][sgf] string to be parsed.
+ * @return {Array} Unpacked SGF in plain Javascript objects.
+ */
 export function sgfToJS(sgf) {
     let mainLine = null;
     const variationStack = [];

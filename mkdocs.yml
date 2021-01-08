@@ -1,18 +1,21 @@
 site_name: Godash
 repo_name: 'duckpunch/godash'
 repo_url: 'https://github.com/duckpunch/godash'
-pages:
-  - Home: index.md
-  - Documentation: documentation.md
 theme:
   name: material
-  logo:
-    icon: fiber_smart_record
-extra_css:
-  - style.css
+  icon:
+    logo: fontawesome/solid/adjust
+  features:
+    - toc.integrate
 markdown_extensions:
+  - toc:
+      permalink: true
   - codehilite
-extra:
-  social:
-    - type: 'github'
-      link: 'https://github.com/duckpunch'
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - def_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
