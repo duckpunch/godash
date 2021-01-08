@@ -3,39 +3,6 @@
 Utilities surrounding the board centering around an immutable [Board](#board_1)
 object.
 
-### Coordinate
-
----
-
-```javascript
-new godash.Coordinate(x, y)
-```
-
-Class representing a single location on a Go board.  Inherits from
-[`Immutable.Record`][imm-record].
-
-#### Arguments
-
-* `x` `(number)`: Location on one axis.
-* `y` `(number)`: Location on the other axis.
-
-#### Properties
-
-* `x` `(number)`: Location on one axis.
-* `y` `(number)`: Location on the other axis.
-
-#### Example
-
-```javascript
-var tengen = new Coordinate(9, 9);
-
-tengen.toString();
-// => Coordinate { "x": 9, "y": 9 }
-
-tengen.x;
-// => 9
-```
-
 ### Board
 
 ---

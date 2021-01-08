@@ -3,7 +3,77 @@
 ## Classes
 
 ### Board
+
+```javascript
+new godash.Board(dimensions = 19, ...moves)
+```
+
+Representation of a board position.
+
+Extends [`Immutable.Record`][imm-record].
+
+[imm-record]: https://immutable-js.github.io/immutable-js/docs/#/Record
+
+!!! tldr "Constructor Arguments"
+    * `dimensions` `(number)` - Size of the board, defaulted to 19.
+    * `...moves` `(Coordinate, string)` - Moves to be placed on the board.
+    There should be an even number of arguments in pairs - `Coordinate` and
+    color constant.
+
+!!! tldr "Properties"
+    * `dimensions` `(number)` - Size of the board.
+    * `moves` [`(Immutable.Map)`][imm-map] - Stones present on this board.
+    [`Coordinate`](#coordinate) keys with either [`BLACK`](#black) or
+    [`WHITE`](#white) values.
+
+[imm-map]: https://immutable-js.github.io/immutable-js/docs/#/Map
+
+??? example "Examples"
+    ```javascript
+    var board = new Board();
+
+    board.toString();
+    // => Board { "dimensions": 19, "moves": Map {} }
+    ```
+
+    ```javascript
+    var smallBoard = new Board(5, new Coordinate(2, 2), BLACK);
+
+    smallBoard.toString();
+    // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
+    ```
+
 ### Coordinate
+
+```javascript
+new godash.Coordinate(x, y)
+```
+
+A zero-based tuple representing a single location on a Go board.
+
+Extends [`Immutable.Record`][imm-record].
+
+[imm-record]: https://immutable-js.github.io/immutable-js/docs/#/Record
+
+!!! tldr "Constructor Arguments"
+    * `x` `(number)` - Location on the X-axis.
+    * `y` `(number)` - Location on the Y-axis.
+
+!!! tldr "Properties"
+    * `x` `(number)` - Location on the X-axis.
+    * `y` `(number)` - Location on the Y-axis.
+
+??? example "Examples"
+    ```javascript
+    var tengen = new Coordinate(9, 9);
+
+    tengen.toString();
+    // => Coordinate { "x": 9, "y": 9 }
+
+    tengen.x;
+    // => 9
+    ```
+
 
 ## Constants
 
