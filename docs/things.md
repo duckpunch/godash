@@ -15,14 +15,6 @@ godash.BLACK
 
 The color black.
 
-### WHITE
-
-```javascript
-godash.WHITE
-```
-
-The color white.
-
 ### EMPTY
 
 ```javascript
@@ -30,14 +22,6 @@ godash.EMPTY
 ```
 
 An empty space.
-
-### TENGEN_9
-
-```javascript
-godash.TENGEN_9
-```
-
-Center point on a 9x9 board.
 
 ### TENGEN_13
 
@@ -55,9 +39,129 @@ godash.TENGEN_19
 
 Center point on a 19x19 board.
 
+### TENGEN_9
+
+```javascript
+godash.TENGEN_9
+```
+
+Center point on a 9x9 board.
+
+### WHITE
+
+```javascript
+godash.WHITE
+```
+
+The color white.
+
 
 
 ## Board utilities
+
+### addMove
+
+```javascript
+godash.addMove(board, coordinates, color)
+```
+
+Function to add a move onto a board while respecting the rules.  Since no
+sequence information is available, this function does not respect
+[ko][ko-rule].  Use `followupKo` if you want to do [ko][ko-rule]-related
+things.
+
+[ko-rule]: https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko
+
+!!! tldr "Arguments"
+    * `board` `(Board)` - Board from which to add the move.
+
+    * `coordinates` `(Coordinate)` - Location to add the move.
+
+    * `color` `(string)` - Color of the move.
+
+
+!!! tldr "Returns"
+    `Board` - New board with the move played.
+
+
+??? example "Examples"
+    ```javascript
+    var atari = new Board(3,
+        new Coordinate(1, 0), BLACK,
+        new Coordinate(0, 1), BLACK,
+        new Coordinate(1, 2), BLACK,
+        new Coordinate(1, 1), WHITE
+    );
+    
+    toAsciiBoard(atari);
+    // => +O+
+    //    OXO
+    //    +++
+    
+    var killed = addMove(
+        atari,
+        new Coordinate(2, 1),
+        BLACK
+    );
+    
+    toAsciiBoard(killed);
+    // => +O+
+    //    O+O
+    //    +O+
+    ```
+
+---
+
+### constructBoard
+
+```javascript
+godash.constructBoard(coordinates, board, startColor)
+```
+
+Constructs a board for an array of coordinates.  This function iteratively
+calls `addMove` while alternating colors.
+
+!!! tldr "Arguments"
+    * `coordinates` `(Array)` - Ordered `Coordinate` moves.
+
+    * `board` `(Board)` - Optional starting board.  Empty 19x19, if omitted.
+
+    * `startColor` `(string)` - Optional starting color, defaulted to `BLACK`.
+
+
+!!! tldr "Returns"
+    `Board` - New board constructed from the coordinates.
+
+
+??? example "Examples"
+    ```javascript
+    var tigersMouth = new Board(3,
+        new Coordinate(1, 0), BLACK,
+        new Coordinate(0, 1), BLACK,
+        new Coordinate(1, 2), BLACK
+    );
+    
+    toAsciiBoard(tigersMouth);
+    // => +O+
+    //    O+O
+    //    +++
+    
+    var selfAtari = new Coordinate(1, 1);
+    var killingMove = new Coordinate(2, 1);
+    
+    var ponnuki = constructBoard(
+        [selfAtari, killingMove],
+        tigersMouth,
+        WHITE
+    );
+    
+    toAsciiBoard(ponnuki);
+    // => +O+
+    //    O+O
+    //    +O+
+    ```
+
+---
 
 ### difference
 
@@ -190,30 +294,131 @@ the given location.
 
 ---
 
-### oppositeColor
+### handicapBoard
 
 ```javascript
-godash.oppositeColor(color)
+godash.handicapBoard(size, handicap)
 ```
 
-Toggles the passed color.
+Creates a new `Board` with the correct number of handicap stones placed.
+Only standard board sizes (9, 13, 19) are allowed.
 
 !!! tldr "Arguments"
-    * `color` `(string)` - `godash.BLACK` or `godash.WHITE`
+    * `size` `(number)` - Size of board, must be 9, 13, or 19.
+
+    * `handicap` `(number)` - Number of handicaps, must be 0-9.
 
 
 !!! tldr "Returns"
-    `string` - Color opposite of the one provided.
+    `Board` - New board with handicaps placed.
 
 
 ??? example "Examples"
     ```javascript
-    oppositeColor(BLACK) === WHITE
+    var board = handicapBoard(9, 4);
+    
+    toAsciiBoard(board);
+    // => +++++++++
+    //    +++++++++
+    //    ++O+++O++
+    //    +++++++++
+    //    +++++++++
+    //    +++++++++
+    //    ++O+++O++
+    //    +++++++++
+    //    +++++++++
+    ```
+
+---
+
+### isLegalBlackMove
+
+```javascript
+godash.isLegalBlackMove(board, coordinate)
+```
+
+Partial application of `isLegalMove`, fixing the color to `BLACK`.
+
+!!! tldr "Arguments"
+    * `board` `(Board)` - Board to inspect.
+
+    * `coordinate` `(Coordinate)` - Location to check.
+
+
+!!! tldr "Returns"
+    `boolean` - Whether the move is legal.
+
+
+??? example "Examples"
+
+---
+
+### isLegalMove
+
+```javascript
+godash.isLegalMove(board, coordinate, color)
+```
+
+Determine whether the coordinate-color combination provided is a legal move
+for the board.  [Ko][ko-rule] is not considered.  Use `followupKo` if you
+want to do [ko][ko-rule]-related things.
+
+[ko-rule]: https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko
+
+!!! tldr "Arguments"
+    * `board` `(Board)` - Board to inspect.
+
+    * `coordinate` `(Coordinate)` - Location to check.
+
+    * `color` `(string)` - Color to check - `BLACK` or `WHITE`.
+
+
+!!! tldr "Returns"
+    `boolean` - Whether the move is legal.
+
+
+??? example "Examples"
+    ```javascript
+    var ponnuki = new Board(3,
+        new Coordinate(1, 0), BLACK,
+        new Coordinate(0, 1), BLACK,
+        new Coordinate(1, 2), BLACK,
+        new Coordinate(2, 1), BLACK
+    );
+    
+    toAsciiBoard(ponnuki);
+    // => +O+
+    //    O+O
+    //    +O+
+    
+    isLegalMove(ponnuki, new Coordinate(1, 1), BLACK)
     // => true
     
-    oppositeColor(WHITE) === BLACK
-    // => true
+    isLegalMove(ponnuki, new Coordinate(1, 1), WHITE)
+    // => false
     ```
+
+---
+
+### isLegalWhiteMove
+
+```javascript
+godash.isLegalWhiteMove(board, coordinate)
+```
+
+Partial application of `isLegalMove`, fixing the color to `WHITE`.
+
+!!! tldr "Arguments"
+    * `board` `(Board)` - Board to inspect.
+
+    * `coordinate` `(Coordinate)` - Location to check.
+
+
+!!! tldr "Returns"
+    `boolean` - Whether the move is legal.
+
+
+??? example "Examples"
 
 ---
 
@@ -281,227 +486,29 @@ a group, liberties for the entire group is counted.
 
 ---
 
-### isLegalMove
+### oppositeColor
 
 ```javascript
-godash.isLegalMove(board, coordinate, color)
+godash.oppositeColor(color)
 ```
 
-Determine whether the coordinate-color combination provided is a legal move
-for the board.  [Ko][ko-rule] is not considered.  Use `followupKo` if you
-want to do [ko][ko-rule]-related things.
-
-[ko-rule]: https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko
+Toggles the passed color.
 
 !!! tldr "Arguments"
-    * `board` `(Board)` - Board to inspect.
-
-    * `coordinate` `(Coordinate)` - Location to check.
-
-    * `color` `(string)` - Color to check - `BLACK` or `WHITE`.
+    * `color` `(string)` - `godash.BLACK` or `godash.WHITE`
 
 
 !!! tldr "Returns"
-    `boolean` - Whether the move is legal.
+    `string` - Color opposite of the one provided.
 
 
 ??? example "Examples"
     ```javascript
-    var ponnuki = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(2, 1), BLACK
-    );
-    
-    toAsciiBoard(ponnuki);
-    // => +O+
-    //    O+O
-    //    +O+
-    
-    isLegalMove(ponnuki, new Coordinate(1, 1), BLACK)
+    oppositeColor(BLACK) === WHITE
     // => true
     
-    isLegalMove(ponnuki, new Coordinate(1, 1), WHITE)
-    // => false
-    ```
-
----
-
-### isLegalBlackMove
-
-```javascript
-godash.isLegalBlackMove(board, coordinate)
-```
-
-Partial application of `isLegalMove`, fixing the color to `BLACK`.
-
-!!! tldr "Arguments"
-    * `board` `(Board)` - Board to inspect.
-
-    * `coordinate` `(Coordinate)` - Location to check.
-
-
-!!! tldr "Returns"
-    `boolean` - Whether the move is legal.
-
-
-??? example "Examples"
-
----
-
-### isLegalWhiteMove
-
-```javascript
-godash.isLegalWhiteMove(board, coordinate)
-```
-
-Partial application of `isLegalMove`, fixing the color to `WHITE`.
-
-!!! tldr "Arguments"
-    * `board` `(Board)` - Board to inspect.
-
-    * `coordinate` `(Coordinate)` - Location to check.
-
-
-!!! tldr "Returns"
-    `boolean` - Whether the move is legal.
-
-
-??? example "Examples"
-
----
-
-### removeStone
-
-```javascript
-godash.removeStone(board, coordinate)
-```
-
-Make a given coordinate empty on the board.
-
-!!! tldr "Arguments"
-    * `board` `(Board)` - Board from which to remove the stone.
-
-    * `coordinate` `(Coordinate)` - Location of the stone.
-
-
-!!! tldr "Returns"
-    `Board` - New board with the stone removed.
-
-
-??? example "Examples"
-    ```javascript
-    var board = new Board(3, new Coordinate(1, 1), WHITE);
-    
-    toAsciiBoard(board);
-    // => +++
-    //    +X+
-    //    +++
-    
-    toAsciiBoard(
-        removeStone(board, new Coordinate(1, 1))
-    );
-    // => +++
-    //    +++
-    //    +++
-    ```
-
----
-
-### removeStones
-
-```javascript
-godash.removeStones(board, coordinates)
-```
-
-Makes several coordinates empty on the board.
-
-!!! tldr "Arguments"
-    * `board` `(Board)` - Board from which to remove the stone.
-
-    * `coordinates` `(Coordinate)` - Location of the stones.
-
-
-!!! tldr "Returns"
-    `Board` - New board with the stones removed.
-
-
-??? example "Examples"
-    ```javascript
-    var board = new Board(3,
-        new Coordinate(1, 0), WHITE,
-        new Coordinate(1, 1), WHITE,
-        new Coordinate(1, 2), BLACK
-    );
-    
-    toAsciiBoard(board);
-    // => +++
-    //    XXO
-    //    +++
-    
-    toAsciiBoard(
-        removeStones(board, [
-            new Coordinate(1, 1),
-            new Coordinate(1, 2)
-        ])
-    );
-    // => +++
-    //    X++
-    //    +++
-    ```
-
----
-
-### addMove
-
-```javascript
-godash.addMove(board, coordinates, color)
-```
-
-Function to add a move onto a board while respecting the rules.  Since no
-sequence information is available, this function does not respect
-[ko][ko-rule].  Use `followupKo` if you want to do [ko][ko-rule]-related
-things.
-
-[ko-rule]: https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko
-
-!!! tldr "Arguments"
-    * `board` `(Board)` - Board from which to add the move.
-
-    * `coordinates` `(Coordinate)` - Location to add the move.
-
-    * `color` `(string)` - Color of the move.
-
-
-!!! tldr "Returns"
-    `Board` - New board with the move played.
-
-
-??? example "Examples"
-    ```javascript
-    var atari = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(1, 1), WHITE
-    );
-    
-    toAsciiBoard(atari);
-    // => +O+
-    //    OXO
-    //    +++
-    
-    var killed = addMove(
-        atari,
-        new Coordinate(2, 1),
-        BLACK
-    );
-    
-    toAsciiBoard(killed);
-    // => +O+
-    //    O+O
-    //    +O+
+    oppositeColor(WHITE) === BLACK
+    // => true
     ```
 
 ---
@@ -598,6 +605,87 @@ Places a set of stones onto the board, ignoring the rules of Go.
 
 ---
 
+### removeStone
+
+```javascript
+godash.removeStone(board, coordinate)
+```
+
+Make a given coordinate empty on the board.
+
+!!! tldr "Arguments"
+    * `board` `(Board)` - Board from which to remove the stone.
+
+    * `coordinate` `(Coordinate)` - Location of the stone.
+
+
+!!! tldr "Returns"
+    `Board` - New board with the stone removed.
+
+
+??? example "Examples"
+    ```javascript
+    var board = new Board(3, new Coordinate(1, 1), WHITE);
+    
+    toAsciiBoard(board);
+    // => +++
+    //    +X+
+    //    +++
+    
+    toAsciiBoard(
+        removeStone(board, new Coordinate(1, 1))
+    );
+    // => +++
+    //    +++
+    //    +++
+    ```
+
+---
+
+### removeStones
+
+```javascript
+godash.removeStones(board, coordinates)
+```
+
+Makes several coordinates empty on the board.
+
+!!! tldr "Arguments"
+    * `board` `(Board)` - Board from which to remove the stone.
+
+    * `coordinates` `(Coordinate)` - Location of the stones.
+
+
+!!! tldr "Returns"
+    `Board` - New board with the stones removed.
+
+
+??? example "Examples"
+    ```javascript
+    var board = new Board(3,
+        new Coordinate(1, 0), WHITE,
+        new Coordinate(1, 1), WHITE,
+        new Coordinate(1, 2), BLACK
+    );
+    
+    toAsciiBoard(board);
+    // => +++
+    //    XXO
+    //    +++
+    
+    toAsciiBoard(
+        removeStones(board, [
+            new Coordinate(1, 1),
+            new Coordinate(1, 2)
+        ])
+    );
+    // => +++
+    //    X++
+    //    +++
+    ```
+
+---
+
 ### toAsciiBoard
 
 ```javascript
@@ -627,94 +715,6 @@ Constructs an ASCII representation of the board.
     // => +O+
     //    OXO
     //    +++
-    ```
-
----
-
-### constructBoard
-
-```javascript
-godash.constructBoard(coordinates, board, startColor)
-```
-
-Constructs a board for an array of coordinates.  This function iteratively
-calls `addMove` while alternating colors.
-
-!!! tldr "Arguments"
-    * `coordinates` `(Array)` - Ordered `Coordinate` moves.
-
-    * `board` `(Board)` - Optional starting board.  Empty 19x19, if omitted.
-
-    * `startColor` `(string)` - Optional starting color, defaulted to `BLACK`.
-
-
-!!! tldr "Returns"
-    `Board` - New board constructed from the coordinates.
-
-
-??? example "Examples"
-    ```javascript
-    var tigersMouth = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK
-    );
-    
-    toAsciiBoard(tigersMouth);
-    // => +O+
-    //    O+O
-    //    +++
-    
-    var selfAtari = new Coordinate(1, 1);
-    var killingMove = new Coordinate(2, 1);
-    
-    var ponnuki = constructBoard(
-        [selfAtari, killingMove],
-        tigersMouth,
-        WHITE
-    );
-    
-    toAsciiBoard(ponnuki);
-    // => +O+
-    //    O+O
-    //    +O+
-    ```
-
----
-
-### handicapBoard
-
-```javascript
-godash.handicapBoard(size, handicap)
-```
-
-Creates a new `Board` with the correct number of handicap stones placed.
-Only standard board sizes (9, 13, 19) are allowed.
-
-!!! tldr "Arguments"
-    * `size` `(number)` - Size of board, must be 9, 13, or 19.
-
-    * `handicap` `(number)` - Number of handicaps, must be 0-9.
-
-
-!!! tldr "Returns"
-    `Board` - New board with handicaps placed.
-
-
-??? example "Examples"
-    ```javascript
-    var board = handicapBoard(9, 4);
-    
-    toAsciiBoard(board);
-    // => +++++++++
-    //    +++++++++
-    //    ++O+++O++
-    //    +++++++++
-    //    +++++++++
-    //    +++++++++
-    //    ++O+++O++
-    //    +++++++++
-    //    +++++++++
     ```
 
 ---

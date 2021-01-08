@@ -1,5 +1,3 @@
-# Utilities for the game of Go
-
 [![npm](https://img.shields.io/npm/v/godash.svg)][npm]
 [![Build Status](https://travis-ci.org/duckpunch/godash.svg)][ci]
 
@@ -32,13 +30,9 @@ standardOpening.moves.has(tengen); // true
 
 ## Why Godash?
 
-Godash provides the "primitives" for Go manipulations necessary for creating
-UIs that go beyond a simple SGF player.  You can mix and match the functions
-provided to create whatever wacky UI you want without having to reinvent the
-wheel every time.
-
-Godash also strives to keep a clean and simple API so that new functionality
-can be easily extended.
+Godash provides the "primitives" for Go necessary for creating UIs that go
+beyond a simple SGF player.  You can create whatever UI you want without having
+to reinvent the wheel every time.
 
 Check out the [documentation][godash-docs] to see what Godash provides.
 
@@ -72,4 +66,4 @@ full SGF spec is not implemented.
 [port]: https://github.com/kokolegorille/go
 [react]: https://reactjs.org/
 [rgb]: https://github.com/duckpunch/react-go-board
-[wtg]: https://wtg.duckpun.ch/
+[wtg]: https://way-to-go.gitlab.io

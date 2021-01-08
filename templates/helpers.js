@@ -1,15 +1,14 @@
 // ./node_modules/.bin/jsdoc2md --files src/board.js --template things.hbs --helper templates/helpers.js
 var Handlebars = require('handlebars');
 
-Handlebars.registerHelper('kind', (context, kind, module, options) => {
-    return (
-        context
-        .filter(item => item.kind === kind)
-        .filter(item => item.memberof === module)
-        .map(item => options.fn(item))
-        .join('')
-    );
-});
+Handlebars.registerHelper('kind', (context, kind, module, options) => (
+    context
+    .filter(item => item.kind === kind)
+    .filter(item => item.memberof === module)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(item => options.fn(item))
+    .join('')
+));
 
 Handlebars.registerHelper(
     'renderParams',
