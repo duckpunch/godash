@@ -55,7 +55,7 @@ full SGF spec is not implemented.
 [ci]: https://travis-ci.org/duckpunch/godash
 [elixir]: https://elixir-lang.org/
 [go]: https://en.wikipedia.org/wiki/Go_%28game%29
-[godash-docs]: http://duckpunch.github.io/godash/documentation/
+[godash-docs]: https://duckpunch.github.io/godash/api/
 [immutable]: http://facebook.github.io/immutable-js/
 [iwtg]: http://playgo.to/iwtg/en/
 [koko]: https://github.com/kokolegorille/
