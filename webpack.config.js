@@ -5,7 +5,9 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'godash.js'
+        filename: 'godash.js',
+        libraryTarget: 'umd',
+        globalObject: 'this'
     },
     module: {
         rules: [

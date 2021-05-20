@@ -837,3 +837,29 @@ export function handicapBoard(size, handicap) {
         return placeStones(board, concat(take(nonTengenHandicap, handicap - 1), tengen), BLACK);
     }
 }
+
+export default {
+    BLACK,
+    Board,
+    Coordinate,
+    EMPTY,
+    WHITE,
+    TENGEN_9,
+    TENGEN_13,
+    TENGEN_19,
+    addMove,
+    constructBoard,
+    difference,
+    followupKo,
+    group,
+    handicapBoard,
+    isLegalMove,
+    liberties,
+    libertyCount,
+    oppositeColor,
+    placeStone,
+    placeStones,
+    removeStone,
+    removeStones,
+    toAsciiBoard,
+};

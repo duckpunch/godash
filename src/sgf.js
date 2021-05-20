@@ -218,3 +218,9 @@ export function nextToken(partialSgf) {
             ];
     }
 }
+
+export default {
+    coordinateToSgfPoint,
+    sgfPointToCoordinate,
+    sgfToJS,
+};
