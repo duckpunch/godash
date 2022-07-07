@@ -39,6 +39,7 @@
     "build": "webpack",
     "watch": "webpack --watch --progress --debug",
     "watch-test": "jest --coverage --watch",
+    "browser-test": "webpack --output-path browser/js/godash && node-qunit-puppeteer ./browser/runner.html",
     "test": "jest --coverage",
     "update-api-docs": "jsdoc2md --files src/board.js --files src/sgf.js --template templates/api.hbs --helper templates/helpers.js > docs/api.md"
   }
