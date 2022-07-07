@@ -134,6 +134,40 @@ export class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
 }
 
 /**
+ * ```javascript
+ * new godash.Move(coordinate, color)
+ * ```
+ *
+ * Representation of a move, composed of a [`Coordinate`](#coordinate) and a color.
+ *
+ * Extends [`Immutable.Record`][imm-record].
+ *
+ * [imm-record]: https://immutable-js.github.io/immutable-js/docs/#/Record
+ *
+ * !!! tldr "Constructor Arguments"
+ *     * `coordinate` ([`Coordinate`](#coordinate)) - Location of the move.
+ *     * `color` `(string)` - [`BLACK`](#black), [`WHITE`](#white), or
+ *     [`EMPTY`](#empty).
+ *
+ * !!! tldr "Properties"
+ *     * `coordinate` ([`Coordinate`](#coordinate)) - Location of the move.
+ *     * `color` `(string)` - [`BLACK`](#black), [`WHITE`](#white), or
+ *     [`EMPTY`](#empty).
+ *
+ * ??? example "Examples"
+ *     ```javascript
+ *     var tengen = new Move(new Coordinate(9, 9), BLACK);
+ *     ```
+ *
+ * @extends Record
+ */
+export class Move extends Record({coordinate: new Coordinate(), color: EMPTY}, 'Move') {
+    constructor(coordinate, color) {
+        super({coordinate, color});
+    }
+}
+
+/**
  * Center point on a 9x9 board.
  *
  * @type {Coordinate}
