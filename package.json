@@ -35,6 +35,7 @@
   },
   "scripts": {
     "prepare": "webpack",
+    "build": "webpack",
     "watch": "webpack --watch --progress --debug",
     "watch-test": "jest --coverage --watch",
     "test": "jest --coverage",
