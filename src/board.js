@@ -197,7 +197,7 @@ export function adjacentCoordinates(board, coordinate) {
         new Coordinate(x, y - 1),
         new Coordinate(x + 1, y),
         new Coordinate(x - 1, y),
-    ).filter(c => c.every(validRange));
+    ).filter(c => validRange(c.x) && validRange(c.y));
 }
 
 /**
