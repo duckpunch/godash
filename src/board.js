@@ -877,7 +877,7 @@ export default {
     Board,
     Coordinate,
     EMPTY,
-    MOVE,
+    Move,
     WHITE,
     TENGEN_9,
     TENGEN_13,
