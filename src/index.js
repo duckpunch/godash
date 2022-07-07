@@ -5,6 +5,7 @@ export const BLACK = board.BLACK;
 export const Board = board.Board;
 export const Coordinate = board.Coordinate;
 export const EMPTY = board.EMPTY;
+export const Move = board.Move;
 export const TENGEN_13 = board.TENGEN_13;
 export const TENGEN_19 = board.TENGEN_19;
 export const TENGEN_9 = board.TENGEN_9;
