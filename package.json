@@ -39,6 +39,8 @@
   "scripts": {
     "prepare": "webpack",
     "build": "webpack",
+    "lint": "eslint src",
+    "lint-fix": "eslint --fix src",
     "watch": "webpack --watch --progress --debug",
     "watch-test": "jest --coverage --watch",
     "browser-test": "webpack --output-path browser/js/godash && node-qunit-puppeteer ./browser/runner.html",
