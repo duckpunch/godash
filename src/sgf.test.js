@@ -1,5 +1,4 @@
 import assert from 'assert';
-import {Set} from 'immutable';
 import {
     Coordinate,
 } from '../src/board';
