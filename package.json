@@ -28,6 +28,7 @@
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
     "babel-loader": "^8.2.5",
+    "eslint": "^8.19.0",
     "jest": "^28.1.1",
     "jsdoc-to-markdown": "^7.1.1",
     "node-qunit-puppeteer": "^2.1.0",
