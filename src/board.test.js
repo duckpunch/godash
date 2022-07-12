@@ -5,6 +5,7 @@ import {
   Board,
   Coordinate,
   EMPTY,
+  Move,
   WHITE,
   addMove,
   adjacentCoordinates,
@@ -12,7 +13,10 @@ import {
   difference,
   followupKo,
   group,
+  handicapBoard,
   isLegalMove,
+  isLegalBlackMove,
+  isLegalWhiteMove,
   liberties,
   libertyCount,
   matchingAdjacentCoordinates,
@@ -287,6 +291,7 @@ describe('isLegalMove', function() {
     );
 
     assert.ok(!isLegalMove(board, new Coordinate(1, 1), WHITE));
+    assert.ok(!isLegalWhiteMove(board, new Coordinate(1, 1)));
   });
 
   it('allows filling in a ponnuki', function() {
@@ -298,6 +303,7 @@ describe('isLegalMove', function() {
     );
 
     assert.ok(isLegalMove(board, new Coordinate(1, 1), BLACK));
+    assert.ok(isLegalBlackMove(board, new Coordinate(1, 1)));
   });
 
   it('marks suicide in corner as invalid', function() {
@@ -385,6 +391,12 @@ describe('addMove', function() {
       addMove(board, new Coordinate(9, 9), BLACK).moves.get(new Coordinate(9, 9)),
       BLACK
     );
+  });
+
+  it('throws if move is illegal', function() {
+    assert.throws(function() {
+      addMove(new Board(5), new Coordinate(9, 9), BLACK);
+    });
   });
 
   it('throws if adding same move twice', function() {
@@ -528,24 +540,39 @@ describe('toAsciiBoard', function() {
     assert.equal(
       toAsciiBoard(new Board(3)),
       '+++\n' +
-            '+++\n' +
-            '+++\n'
+      '+++\n' +
+      '+++\n'
     );
   });
 
-  it('can produce a board with one move', function() {
+  it('can produce a board with one white move', function() {
     assert.equal(
       toAsciiBoard(new Board(3,
         new Coordinate(1, 1), WHITE
       )),
       '+++\n' +
-            '+X+\n' +
-            '+++\n'
+      '+X+\n' +
+      '+++\n'
+    );
+  });
+
+  it('can produce a board with one black move', function() {
+    assert.equal(
+      toAsciiBoard(new Board(3,
+        new Coordinate(1, 1), BLACK
+      )),
+      '+++\n' +
+      '+O+\n' +
+      '+++\n'
     );
   });
 });
 
 describe('constructBoard', function() {
+  it('can be created with a board passed', function() {
+    constructBoard([new Coordinate(9, 9)], new Board());
+  });
+
   it('can add a single stone', function() {
     const board = constructBoard([
       new Coordinate(9, 9)
@@ -708,5 +735,131 @@ describe('followupKo', function() {
     assert.ok(
       followupKo(new Board(3), new Coordinate(1, 1), BLACK) === null
     );
+  });
+
+  it('returns null when the new move is out of bounds', function() {
+    assert.ok(
+      followupKo(new Board(3), new Coordinate(10, 10), BLACK) === null
+    );
+  });
+
+  it('returns null when snapback happens', function() {
+    // x++++
+    // ox+++
+    // ox+++
+    // +o+++
+    // o++++
+    const board = placeStones(
+      placeStones(
+        new Board(5),
+        [
+          new Coordinate(0, 0),
+          new Coordinate(1, 1),
+          new Coordinate(1, 2),
+        ],
+        BLACK,
+      ),
+      [
+        new Coordinate(0, 1),
+        new Coordinate(0, 2),
+        new Coordinate(1, 3),
+        new Coordinate(0, 4),
+      ],
+      WHITE,
+    );
+
+    const captureCoordinate = new Coordinate(0, 3);
+
+    assert.ok(
+      followupKo(board, captureCoordinate, BLACK) === null
+    );
+  });
+
+  it('returns null when move gets snapped back', function() {
+    // ox+++
+    // +o+++
+    // xo+++
+    // o++++
+    // +++++
+    const board = placeStones(
+      placeStones(
+        new Board(5),
+        [
+          new Coordinate(0, 1),
+          new Coordinate(2, 0),
+        ],
+        BLACK,
+      ),
+      [
+        new Coordinate(0, 0),
+        new Coordinate(1, 1),
+        new Coordinate(2, 1),
+        new Coordinate(3, 0),
+      ],
+      WHITE,
+    );
+
+    const captureCoordinate = new Coordinate(1, 0);
+
+    assert.ok(
+      followupKo(board, captureCoordinate, BLACK) === null
+    );
+  });
+
+  it('returns null recapture move is illegal', function() {
+    // x++++
+    // ox+++
+    // +++++
+    // +++++
+    // +++++
+    const board = placeStones(
+      placeStones(
+        new Board(5),
+        [
+          new Coordinate(0, 0),
+          new Coordinate(1, 1),
+        ],
+        BLACK,
+      ),
+      [
+        new Coordinate(0, 1),
+      ],
+      WHITE,
+    );
+
+    const captureCoordinate = new Coordinate(0, 2);
+
+    assert.ok(
+      followupKo(board, captureCoordinate, BLACK) === null
+    );
+  });
+});
+
+describe('Move', function() {
+  it('can be instantiated', function() {
+    new Move(new Coordinate(), BLACK);
+  });
+});
+
+describe('handicapBoard', function() {
+  it('disallows non 9, 13, 19 board sizes', function() {
+    assert.throws(function() {
+      handicapBoard(10, 5);
+    });
+  });
+
+  it('disallows very high handicaps', function() {
+    assert.throws(function() {
+      handicapBoard(9, 15);
+    });
+  });
+
+  it('can create various handicap boards', function() {
+    const oneToNine = Array(9).fill(0).map((_, i) => i + 1);
+    for (const size of [9, 13, 19]) {
+      for (const handicaps of oneToNine) {
+        assert.ok(Boolean(handicapBoard(size, handicaps)));
+      }
+    }
   });
 });

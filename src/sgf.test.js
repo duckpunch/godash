@@ -5,6 +5,7 @@ import {
 import {
   compactMoves,
   coordinateToSgfPoint,
+  nextToken,
   sgfPointToCoordinate,
   sgfToJS,
   tokenize,
@@ -142,14 +143,14 @@ describe('compactMoves', function() {
 describe('sgfToJS', function() {
   it('can parse a real looking SGF', function() {
     const rawSgf = `(
-            ;FF[4]GM[1]SZ[19];B[aa];W[bb]
-                (;B[cc];W[dd];B[ad];W[bd])
-                (;B[hh];W[hg]C[what a move!])
-                (;B[gg];W[gh];B[hh]
-                    (;W[hg];B[kk])
-                    (;W[kl])
-                )
-        )`;
+        ;FF[4]GM[1]SZ[19];B[aa];W[bb]
+            (;B[cc];W[dd];B[ad];W[bd])
+            (;B[hh];W[hg]C[what a move!])
+            (;B[gg];W[gh];B[hh]
+                (;W[hg];B[kk])
+                (;W[kl])
+            )
+    )`;
 
     const expected = [
       {FF: '4', GM: '1', SZ: '19'}, {B: 'aa'}, {W: 'bb'},
@@ -167,5 +168,33 @@ describe('sgfToJS', function() {
     ];
 
     assert.deepEqual(expected, sgfToJS(rawSgf));
+  });
+
+  it('throws on broken SGF, pt 1', function() {
+    const brokenSgf = `(
+        ;FF[4]GM[1]SZ[19];B[aa];W[bb]
+            (;B[cc];W[dd];B[ad];W[bd])
+            (;B[hh];W[hg]C[what a move!])
+            (;B[gg];W[gh];B[hh]
+                (;W[hg];B[kk])
+                (;W[kl])
+    )`;
+    assert.throws(function() {
+      sgfToJS(brokenSgf);
+    });
+  });
+
+  it('throws on broken SGF, pt 2', function() {
+    const brokenSgf = 'ZOMG BROKEN';
+    assert.throws(function() {
+      sgfToJS(brokenSgf);
+    });
+  });
+
+  it('throws on broken token', function() {
+    const brokenToken = '1';
+    assert.throws(function() {
+      nextToken(brokenToken);
+    });
   });
 });
