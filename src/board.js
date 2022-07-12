@@ -284,20 +284,11 @@ export function followupKo(board, coordinate, color) {
   const capturedCoordinate = capturedMove.get(0);
   const capturedColor = capturedMove.get(1);
 
-  // The situation is ko if playing the next move captures only the move that
-  // was played here.
+  // The situation is ko if the board returns to the original state.
 
   if (isLegalMove(postMoveBoard, capturedCoordinate, capturedColor)) {
-    const koTest = difference(
-      postMoveBoard,
-      addMove(postMoveBoard, capturedCoordinate, capturedColor)
-    );
-
-    if (koTest.size === 1) {
-      const koTestCoordinate = koTest.first().get(0);
-      if (koTestCoordinate.equals(coordinate)) {
-        return capturedCoordinate;
-      }
+    if (board.equals(addMove(postMoveBoard, capturedCoordinate, capturedColor))) {
+      return capturedCoordinate;
     }
   }
 
