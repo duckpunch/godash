@@ -34,6 +34,7 @@ export default {
   Board,
   Coordinate,
   EMPTY,
+  Move,
   TENGEN_13,
   TENGEN_19,
   TENGEN_9,

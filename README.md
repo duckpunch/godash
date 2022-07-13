@@ -36,14 +36,10 @@ to reinvent the wheel every time.
 
 Check out the [documentation][godash-docs] to see what Godash provides.
 
-## Roadmap
+## Breaking changes from version 1 to 2
 
-Godash doesn't currently do very much parameter checking.  It'd probably be
-nice to add that.
-
-There also isn't much support for writing SGFs.  This, too, might be added in
-the future.  Further, reading SGFs is a bit brittle at the moment since the
-full SGF spec is not implemented.
+* Due to upgrading to `immutable@4`, `Board` and `Coordinate` are [no longer
+  subclasses of `Seq`][immutable-4].
 
 ## Related Projects
 
@@ -56,7 +52,8 @@ full SGF spec is not implemented.
 [elixir]: https://elixir-lang.org/
 [go]: https://en.wikipedia.org/wiki/Go_%28game%29
 [godash-docs]: https://duckpunch.github.io/godash/api/
-[immutable]: http://facebook.github.io/immutable-js/
+[immutable]: https://immutable-js.com/
+[immutable-4]: https://github.com/immutable-js/immutable-js/releases/tag/v4.0.0
 [iwtg]: http://playgo.to/iwtg/en/
 [koko]: https://github.com/kokolegorille/
 [lodash]: https://lodash.com/
