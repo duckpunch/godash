@@ -20,6 +20,7 @@ import {
 } from 'immutable';
 import {
   concat,
+  flatMap,
   inRange,
   isInteger,
   take,
@@ -56,9 +57,9 @@ export const EMPTY = null;
  *
  * !!! tldr "Constructor Arguments"
  *     * `dimensions` `(number)` - Size of the board, defaulted to 19.
- *     * `...moves` `(Coordinate, string)` - Moves to be placed on the board.
- *     There should be an even number of arguments in pairs - `Coordinate` and
- *     color constant.
+ *     * `...moves` `(Move|[Coordinate, string])` - Moves to be placed on the
+ *     board. This can either be [`Move`](#move) or ordered pairs -
+ *     `Coordinate` and color constant.
  *
  * !!! tldr "Properties"
  *     * `dimensions` `(number)` - Size of the board.
@@ -77,7 +78,14 @@ export const EMPTY = null;
  *     ```
  *
  *     ```javascript
- *     var smallBoard = new Board(5, new Coordinate(2, 2), BLACK);
+ *     var smallBoard = new Board(5, [new Coordinate(2, 2), BLACK]);
+ *
+ *     smallBoard.toString();
+ *     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
+ *     ```
+ *
+ *     ```javascript
+ *     var smallBoard = new Board(5, new Move(new Coordinate(2, 2), BLACK));
  *
  *     smallBoard.toString();
  *     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
@@ -87,9 +95,22 @@ export const EMPTY = null;
  */
 export class Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
   constructor(dimensions = 19, ...moves) {
+    const validMove = item => item instanceof Move;
+    const validPair = item => item instanceof Array && item.length === 2;
+
+    const [moveInstances, pairs, badParameters] = [
+      moves.filter(validMove),
+      moves.filter(validPair),
+      moves.filter(item => !validMove(item) && !validPair(item)),
+    ];
+    if (badParameters.length > 0) {
+      throw 'Invalid parameters';
+    }
     super({
       dimensions,
-      moves: Map.of(...moves),
+      moves: Map.of(...flatMap(pairs).concat(flatMap(
+        moveInstances.map(move => [move.coordinate, move.color])
+      ))),
     });
   }
 }

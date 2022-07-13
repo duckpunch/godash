@@ -40,6 +40,8 @@ Check out the [documentation][godash-docs] to see what Godash provides.
 
 * Due to upgrading to `immutable@4`, `Board` and `Coordinate` are [no longer
   subclasses of `Seq`][immutable-4].
+* `Board` constructor changed to take either pairs of `Coordinate` and color or
+  `Move`.
 
 ## Related Projects
 
