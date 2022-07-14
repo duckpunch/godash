@@ -225,10 +225,10 @@ export function adjacentCoordinates(board, coordinate) {
  *
  * @example
  * var atari = new Board(3,
- *     new Coordinate(1, 0), BLACK,
- *     new Coordinate(0, 1), BLACK,
- *     new Coordinate(1, 2), BLACK,
- *     new Coordinate(1, 1), WHITE,
+ *     [new Coordinate(1, 0), BLACK],
+ *     [new Coordinate(0, 1), BLACK],
+ *     [new Coordinate(1, 2), BLACK],
+ *     [new Coordinate(1, 1), WHITE],
  * );
  *
  * toAsciiBoard(atari);
@@ -263,13 +263,13 @@ export function difference(board1, board2) {
  *
  * @example
  * const koPosition = new Board(4,
- *     new Coordinate(1, 0), BLACK,
- *     new Coordinate(0, 1), BLACK,
- *     new Coordinate(1, 2), BLACK,
- *     new Coordinate(1, 1), WHITE,
- *     new Coordinate(2, 0), WHITE,
- *     new Coordinate(2, 2), WHITE,
- *     new Coordinate(3, 1), WHITE,
+ *     [new Coordinate(1, 0), BLACK],
+ *     [new Coordinate(0, 1), BLACK],
+ *     [new Coordinate(1, 2), BLACK],
+ *     [new Coordinate(1, 1), WHITE],
+ *     [new Coordinate(2, 0), WHITE],
+ *     [new Coordinate(2, 2), WHITE],
+ *     [new Coordinate(3, 1), WHITE],
  * );
  *
  * toAsciiBoard(koPosition);
@@ -576,10 +576,10 @@ export function removeStones(board, coordinates) {
  *
  * @example
  * var atari = new Board(3,
- *     new Coordinate(1, 0), BLACK,
- *     new Coordinate(0, 1), BLACK,
- *     new Coordinate(1, 2), BLACK,
- *     new Coordinate(1, 1), WHITE
+ *     [new Coordinate(1, 0), BLACK],
+ *     [new Coordinate(0, 1), BLACK],
+ *     [new Coordinate(1, 2), BLACK],
+ *     [new Coordinate(1, 1), WHITE],
  * );
  *
  * toAsciiBoard(atari);

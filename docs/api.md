@@ -16,9 +16,9 @@ Extends [`Immutable.Record`][imm-record].
 
 !!! tldr "Constructor Arguments"
     * `dimensions` `(number)` - Size of the board, defaulted to 19.
-    * `...moves` `(Coordinate, string)` - Moves to be placed on the board.
-    There should be an even number of arguments in pairs - `Coordinate` and
-    color constant.
+    * `...moves` `(Move|[Coordinate, string])` - Moves to be placed on the
+    board. This can either be [`Move`](#move) or ordered pairs -
+    `Coordinate` and color constant.
 
 !!! tldr "Properties"
     * `dimensions` `(number)` - Size of the board.
@@ -37,7 +37,14 @@ Extends [`Immutable.Record`][imm-record].
     ```
 
     ```javascript
-    var smallBoard = new Board(5, new Coordinate(2, 2), BLACK);
+    var smallBoard = new Board(5, [new Coordinate(2, 2), BLACK]);
+
+    smallBoard.toString();
+    // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
+    ```
+
+    ```javascript
+    var smallBoard = new Board(5, new Move(new Coordinate(2, 2), BLACK));
 
     smallBoard.toString();
     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
@@ -72,6 +79,33 @@ Extends [`Immutable.Record`][imm-record].
 
     tengen.x;
     // => 9
+    ```
+
+### Move
+
+```javascript
+new godash.Move(coordinate, color)
+```
+
+Representation of a move, composed of a [`Coordinate`](#coordinate) and a color.
+
+Extends [`Immutable.Record`][imm-record].
+
+[imm-record]: https://immutable-js.github.io/immutable-js/docs/#/Record
+
+!!! tldr "Constructor Arguments"
+    * `coordinate` ([`Coordinate`](#coordinate)) - Location of the move.
+    * `color` `(string)` - [`BLACK`](#black), [`WHITE`](#white), or
+    [`EMPTY`](#empty).
+
+!!! tldr "Properties"
+    * `coordinate` ([`Coordinate`](#coordinate)) - Location of the move.
+    * `color` `(string)` - [`BLACK`](#black), [`WHITE`](#white), or
+    [`EMPTY`](#empty).
+
+??? example "Examples"
+    ```javascript
+    var tengen = new Move(new Coordinate(9, 9), BLACK);
     ```
 
 
@@ -157,10 +191,10 @@ things.
 ??? example "Examples"
     ```javascript
     var atari = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(1, 1), WHITE
+        [new Coordinate(1, 0), BLACK],
+        [new Coordinate(0, 1), BLACK],
+        [new Coordinate(1, 2), BLACK],
+        [new Coordinate(1, 1), WHITE],
     );
     
     toAsciiBoard(atari);
@@ -254,10 +288,10 @@ Finds the moves on the first board that are not on the second board.
 ??? example "Examples"
     ```javascript
     var atari = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(1, 1), WHITE,
+        [new Coordinate(1, 0), BLACK],
+        [new Coordinate(0, 1), BLACK],
+        [new Coordinate(1, 2), BLACK],
+        [new Coordinate(1, 1), WHITE],
     );
     
     toAsciiBoard(atari);
@@ -297,13 +331,13 @@ rule](https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko)
 ??? example "Examples"
     ```javascript
     const koPosition = new Board(4,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(1, 1), WHITE,
-        new Coordinate(2, 0), WHITE,
-        new Coordinate(2, 2), WHITE,
-        new Coordinate(3, 1), WHITE,
+        [new Coordinate(1, 0), BLACK],
+        [new Coordinate(0, 1), BLACK],
+        [new Coordinate(1, 2), BLACK],
+        [new Coordinate(1, 1), WHITE],
+        [new Coordinate(2, 0), WHITE],
+        [new Coordinate(2, 2), WHITE],
+        [new Coordinate(3, 1), WHITE],
     );
     
     toAsciiBoard(koPosition);
