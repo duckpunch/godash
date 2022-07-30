@@ -31,6 +31,8 @@ export declare function adjacentCoordinates(board: Board, coordinate: Coordinate
 
 export declare function difference(board1: Board, board2: Board): Set<List<Coordinate | Color>>;
 
+export declare function followupKo(board: Board, move: Move): Coordinate | null;
+
 export declare function followupKo(board: Board, coordinate: Coordinate, color: Color): Coordinate | null;
 
 export declare function matchingAdjacentCoordinates(board: Board, coordinate: Coordinate, color: Color): Set<Coordinate>;
@@ -53,9 +55,9 @@ export declare function removeStone(board: Board, coordinate: Coordinate): Board
 
 export declare function removeStones(board: Board, coordinates: Coordinate[]): Board;
 
-export declare function addMove(board: Board, coordinateOrMove: Move): Board;
+export declare function addMove(board: Board, move: Move): Board;
 
-export declare function addMove(board: Board, coordinateOrMove: Coordinate, color: Color): Board;
+export declare function addMove(board: Board, coordinate: Coordinate, color: Color): Board;
 
 export declare function placeStone(board: Board, coordinate: Coordinate, color: Color, force?: boolean): Board;
 

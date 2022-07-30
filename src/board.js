@@ -284,12 +284,20 @@ export function difference(board1, board2) {
  * // => 'Coordinate { "x": 1, "y": 1 }'
  *
  * @param {Board} board - Starting board.
- * @param {Coordinate} coordinate - Intended placement of stone.
- * @param {string} color - Stone color.
+ * @param {Coordinate|Move} coordinateOrMove - Intended `Move` or location.
+ * @param {string} color? - Stone color.  Not needed if `Move` is passed.
  * @returns {Coordinate} Position of illegal followup or `null` if
  * none exists.
  */
-export function followupKo(board, coordinate, color) {
+export function followupKo(board, coordinateOrMove, color) {
+  let coordinate;
+  if (coordinateOrMove instanceof Move) {
+    color = coordinateOrMove.color;
+    coordinate = coordinateOrMove.coordinate;
+  } else {
+    coordinate = coordinateOrMove;
+  }
+
   if (!isLegalMove(board, coordinate, color)) {
     return null;
   }
@@ -599,15 +607,18 @@ export function removeStones(board, coordinates) {
  * //    +O+
  *
  * @param {Board} board - Board from which to add the move.
- * @param {Coordinate|Move} coordinateOrMove - Location to add the move.
+ * @param {Coordinate|Move} coordinateOrMove - Move or location of the move.
  * @param {string} color? - Color of the move.  Not needed if first coordinate
  * is a `Move`.
  * @return {Board} New board with the move played.
  */
-export function addMove(board, coordinate, color) {
-  if (coordinate instanceof Move) {
-    color = coordinate.color;
-    coordinate = coordinate.coordinate;
+export function addMove(board, coordinateOrMove, color) {
+  let coordinate;
+  if (coordinateOrMove instanceof Move) {
+    color = coordinateOrMove.color;
+    coordinate = coordinateOrMove.coordinate;
+  } else {
+    coordinate = coordinateOrMove;
   }
 
   if (!isLegalMove(board, coordinate, color)) {
