@@ -599,11 +599,17 @@ export function removeStones(board, coordinates) {
  * //    +O+
  *
  * @param {Board} board - Board from which to add the move.
- * @param {Coordinate} coordinates - Location to add the move.
- * @param {string} color - Color of the move.
+ * @param {Coordinate|Move} coordinateOrMove - Location to add the move.
+ * @param {string} color? - Color of the move.  Not needed if first coordinate
+ * is a `Move`.
  * @return {Board} New board with the move played.
  */
 export function addMove(board, coordinate, color) {
+  if (coordinate instanceof Move) {
+    color = coordinate.color;
+    coordinate = coordinate.coordinate;
+  }
+
   if (!isLegalMove(board, coordinate, color)) {
     throw 'Not a valid position';
   }

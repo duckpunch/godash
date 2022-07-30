@@ -32,6 +32,7 @@ const game = godash.sgfToJS(sgf).slice(0);
 (
   suite
   .add('addMove', () => {
+    // go to move 165
   })
   .on('cycle', event => {
     const benchmark = event.target;
