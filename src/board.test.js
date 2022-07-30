@@ -771,6 +771,25 @@ describe('difference', function() {
 });
 
 describe('followupKo', function() {
+  it('can detect ko with Move parameter', function() {
+    const koPosition = new Board(4,
+      [new Coordinate(1, 0), BLACK],
+      [new Coordinate(0, 1), BLACK],
+      [new Coordinate(1, 2), BLACK],
+      [new Coordinate(1, 1), WHITE],
+      [new Coordinate(2, 0), WHITE],
+      [new Coordinate(2, 2), WHITE],
+      [new Coordinate(3, 1), WHITE],
+    );
+    const koStart = new Coordinate(2, 1);
+
+    assert.ok(
+      (new Coordinate(1, 1)).equals(
+        followupKo(koPosition, new Move(koStart, BLACK))
+      )
+    );
+  });
+
   it('can detect ko', function() {
     const koPosition = new Board(4,
       [new Coordinate(1, 0), BLACK],
