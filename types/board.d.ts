@@ -12,11 +12,15 @@ export declare const WHITE: Color;
 export declare const EMPTY: Color;
 
 export declare class Board extends Record({dimensions: 19, moves: Map<Coordinate, Color>()}, 'Board') {
-    constructor(dimensions: number, ...moves: (Coordinate | Color)[]);
+    constructor(dimensions: number, ...moves: (Coordinate | Color | Move)[]);
 }
 
 export declare class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
     constructor(x: number, y: number);
+}
+
+export declare class Move extends Record({coordinate: new Coordinate(), color: EMPTY}, 'Move') {
+    constructor(coordinate: Coordinate, color: Color);
 }
 
 export declare const TENGEN_13: Coordinate;
@@ -49,7 +53,9 @@ export declare function removeStone(board: Board, coordinate: Coordinate): Board
 
 export declare function removeStones(board: Board, coordinates: Coordinate[]): Board;
 
-export declare function addMove(board: Board, coordinate: Coordinate, color: Color): Board;
+export declare function addMove(board: Board, coordinateOrMove: Move): Board;
+
+export declare function addMove(board: Board, coordinateOrMove: Coordinate, color: Color): Board;
 
 export declare function placeStone(board: Board, coordinate: Coordinate, color: Color, force?: boolean): Board;
 

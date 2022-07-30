@@ -434,6 +434,15 @@ describe('removeStones', function() {
 });
 
 describe('addMove', function() {
+  it('adds a Move to simple empty board', function() {
+    const board = new Board();
+
+    assert.equal(
+      addMove(board, new Move(new Coordinate(9, 9), BLACK)).moves.get(new Coordinate(9, 9)),
+      BLACK
+    );
+  });
+
   it('adds a move to simple empty board', function() {
     const board = new Board();
 
