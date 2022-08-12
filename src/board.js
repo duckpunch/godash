@@ -57,9 +57,7 @@ export const EMPTY = null;
  *
  * !!! tldr "Constructor Arguments"
  *     * `dimensions` `(number)` - Size of the board, defaulted to 19.
- *     * `...moves` `(Move|[Coordinate, string])` - Moves to be placed on the
- *     board. This can either be [`Move`](#move) or ordered pairs -
- *     `Coordinate` and color constant.
+ *     * `...moves` `(Move)` - Moves to be placed on the board.
  *
  * !!! tldr "Properties"
  *     * `dimensions` `(number)` - Size of the board.
@@ -78,7 +76,7 @@ export const EMPTY = null;
  *     ```
  *
  *     ```javascript
- *     var smallBoard = new Board(5, [new Coordinate(2, 2), BLACK]);
+ *     var smallBoard = new Board(5, new Move(new Coordinate(2, 2), BLACK));
  *
  *     smallBoard.toString();
  *     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
@@ -95,22 +93,11 @@ export const EMPTY = null;
  */
 export class Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
   constructor(dimensions = 19, ...moves) {
-    const validMove = item => item instanceof Move;
-    const validPair = item => item instanceof Array && item.length === 2;
-
-    const [moveInstances, pairs, badParameters] = [
-      moves.filter(validMove),
-      moves.filter(validPair),
-      moves.filter(item => !validMove(item) && !validPair(item)),
-    ];
-    if (badParameters.length > 0) {
-      throw 'Invalid parameters';
-    }
     super({
       dimensions,
-      moves: Map.of(...flatMap(pairs).concat(flatMap(
-        moveInstances.map(move => [move.coordinate, move.color])
-      ))),
+      moves: Map.of(...flatMap(
+        moves.map(move => [move.coordinate, move.color])
+      )),
     });
   }
 }
@@ -225,10 +212,10 @@ export function adjacentCoordinates(board, coordinate) {
  *
  * @example
  * var atari = new Board(3,
- *     [new Coordinate(1, 0), BLACK],
- *     [new Coordinate(0, 1), BLACK],
- *     [new Coordinate(1, 2), BLACK],
- *     [new Coordinate(1, 1), WHITE],
+ *     new Move(new Coordinate(1, 0), BLACK),
+ *     new Move(new Coordinate(0, 1), BLACK),
+ *     new Move(new Coordinate(1, 2), BLACK),
+ *     new Move(new Coordinate(1, 1), WHITE),
  * );
  *
  * toAsciiBoard(atari);
@@ -236,7 +223,7 @@ export function adjacentCoordinates(board, coordinate) {
  * //    OXO
  * //    +++
  *
- * var captured = difference(atari, addMove(atari, new Coordinate(2, 1), BLACK));
+ * var captured = difference(atari, addMove(atari, new Move(new Coordinate(2, 1), BLACK)));
  *
  * captured.toString();
  * // 'Set { List [ Coordinate { "x": 1, "y": 1 }, "white" ] }'
@@ -263,13 +250,13 @@ export function difference(board1, board2) {
  *
  * @example
  * const koPosition = new Board(4,
- *     [new Coordinate(1, 0), BLACK],
- *     [new Coordinate(0, 1), BLACK],
- *     [new Coordinate(1, 2), BLACK],
- *     [new Coordinate(1, 1), WHITE],
- *     [new Coordinate(2, 0), WHITE],
- *     [new Coordinate(2, 2), WHITE],
- *     [new Coordinate(3, 1), WHITE],
+ *     new Move(new Coordinate(1, 0), BLACK),
+ *     new Move(new Coordinate(0, 1), BLACK),
+ *     new Move(new Coordinate(1, 2), BLACK),
+ *     new Move(new Coordinate(1, 1), WHITE),
+ *     new Move(new Coordinate(2, 0), WHITE),
+ *     new Move(new Coordinate(2, 2), WHITE),
+ *     new Move(new Coordinate(3, 1), WHITE),
  * );
  *
  * toAsciiBoard(koPosition);
@@ -284,25 +271,16 @@ export function difference(board1, board2) {
  * // => 'Coordinate { "x": 1, "y": 1 }'
  *
  * @param {Board} board - Starting board.
- * @param {Coordinate|Move} coordinateOrMove - Intended `Move` or location.
- * @param {string} color? - Stone color.  Not needed if `Move` is passed.
+ * @param {Move} move - Intended `Move`.
  * @returns {Coordinate} Position of illegal followup or `null` if
  * none exists.
  */
-export function followupKo(board, coordinateOrMove, color) {
-  let coordinate;
-  if (coordinateOrMove instanceof Move) {
-    color = coordinateOrMove.color;
-    coordinate = coordinateOrMove.coordinate;
-  } else {
-    coordinate = coordinateOrMove;
-  }
-
-  if (!isLegalMove(board, coordinate, color)) {
+export function followupKo(board, move) {
+  if (!isLegalMove(board, move)) {
     return null;
   }
 
-  const postMoveBoard = addMove(board, coordinate, color);
+  const postMoveBoard = addMove(board, move);
   const capturedStones = difference(board, postMoveBoard);
 
   if (capturedStones.size === 0 || capturedStones.size > 1) {
@@ -315,8 +293,8 @@ export function followupKo(board, coordinateOrMove, color) {
 
   // The situation is ko if the board returns to the original state.
 
-  if (isLegalMove(postMoveBoard, capturedCoordinate, capturedColor)) {
-    if (board.equals(addMove(postMoveBoard, capturedCoordinate, capturedColor))) {
+  if (isLegalMove(postMoveBoard, new Move(capturedCoordinate, capturedColor))) {
+    if (board.equals(addMove(postMoveBoard, new Move(capturedCoordinate, capturedColor)))) {
       return capturedCoordinate;
     }
   }
@@ -337,11 +315,11 @@ export function matchingAdjacentCoordinates(board, coordinate, color) {
  *
  * @example
  * var board = new Board(3,
- *     new Coordinate(1, 0), WHITE,
- *     new Coordinate(0, 2), WHITE,
- *     new Coordinate(1, 2), BLACK,
- *     new Coordinate(2, 2), BLACK,
- *     new Coordinate(2, 1), BLACK
+ *     new Move(new Coordinate(1, 0), WHITE),
+ *     new Move(new Coordinate(0, 2), WHITE),
+ *     new Move(new Coordinate(1, 2), BLACK),
+ *     new Move(new Coordinate(2, 2), BLACK),
+ *     new Move(new Coordinate(2, 1), BLACK),
  * );
  *
  * toAsciiBoard(board);
@@ -403,7 +381,7 @@ export function oppositeColor(color) {
  * is part of a group, the set of liberties are the liberties for that group.
  *
  * @example
- * var board = new Board(3, new Coordinate(1, 1), BLACK);
+ * var board = new Board(3, new Move(new Coordinate(1, 1), BLACK));
  * var collectedLiberties = liberties(board, new Coordinate(1, 1));
  *
  * Immutable.Set.of(
@@ -453,10 +431,10 @@ export function libertyCount(board, coordinate) {
  *
  * @example
  * var ponnuki = new Board(3,
- *     new Coordinate(1, 0), BLACK,
- *     new Coordinate(0, 1), BLACK,
- *     new Coordinate(1, 2), BLACK,
- *     new Coordinate(2, 1), BLACK
+ *     new Move(new Coordinate(1, 0), BLACK),
+ *     new Move(new Coordinate(0, 1), BLACK),
+ *     new Move(new Coordinate(1, 2), BLACK),
+ *     new Move(new Coordinate(2, 1), BLACK),
  * );
  *
  * toAsciiBoard(ponnuki);
@@ -464,28 +442,27 @@ export function libertyCount(board, coordinate) {
  * //    O+O
  * //    +O+
  *
- * isLegalMove(ponnuki, new Coordinate(1, 1), BLACK)
+ * isLegalMove(ponnuki, new Move(new Coordinate(1, 1), BLACK))
  * // => true
  *
- * isLegalMove(ponnuki, new Coordinate(1, 1), WHITE)
+ * isLegalMove(ponnuki, new Move(new Coordinate(1, 1), WHITE))
  * // => false
  *
  * @param {Board} board - Board to inspect.
- * @param {Coordinate} coordinate - Location to check.
- * @param {string} color - Color to check - `BLACK` or `WHITE`.
+ * @param {Move} move - Move to check.
  * @return {boolean} Whether the move is legal.
  */
-export function isLegalMove(board, coordinate, color) {
-  const will_have_liberties = libertyCount(
-    board.setIn(['moves', coordinate], color),
-    coordinate,
+export function isLegalMove(board, move) {
+  const willHaveLiberties = libertyCount(
+    board.setIn(['moves', move.coordinate], move.color),
+    move.coordinate,
   ) > 0;
 
-  const will_kill_something = matchingAdjacentCoordinates(
-    board, coordinate, oppositeColor(color)
+  const willKillSomething = matchingAdjacentCoordinates(
+    board, move.coordinate, oppositeColor(move.color)
   ).some(coord => libertyCount(board, coord) === 1);
 
-  return will_have_liberties || will_kill_something;
+  return willHaveLiberties || willKillSomething;
 }
 
 /**
@@ -496,7 +473,7 @@ export function isLegalMove(board, coordinate, color) {
  * @return {boolean} Whether the move is legal.
  */
 export function isLegalBlackMove(board, coordinate) {
-  return isLegalMove(board, coordinate, BLACK);
+  return isLegalMove(board, new Move(coordinate, BLACK));
 }
 
 /**
@@ -507,14 +484,14 @@ export function isLegalBlackMove(board, coordinate) {
  * @return {boolean} Whether the move is legal.
  */
 export function isLegalWhiteMove(board, coordinate) {
-  return isLegalMove(board, coordinate, WHITE);
+  return isLegalMove(board, new Move(coordinate, WHITE));
 }
 
 /**
  * Make a given coordinate empty on the board.
  *
  * @example
- * var board = new Board(3, new Coordinate(1, 1), WHITE);
+ * var board = new Board(3, new Move(new Coordinate(1, 1), WHITE));
  *
  * toAsciiBoard(board);
  * // => +++
@@ -541,9 +518,9 @@ export function removeStone(board, coordinate) {
  *
  * @example
  * var board = new Board(3,
- *     new Coordinate(1, 0), WHITE,
- *     new Coordinate(1, 1), WHITE,
- *     new Coordinate(1, 2), BLACK
+ *     new Move(new Coordinate(1, 0), WHITE),
+ *     new Move(new Coordinate(1, 1), WHITE),
+ *     new Move(new Coordinate(1, 2), BLACK),
  * );
  *
  * toAsciiBoard(board);
@@ -584,10 +561,10 @@ export function removeStones(board, coordinates) {
  *
  * @example
  * var atari = new Board(3,
- *     [new Coordinate(1, 0), BLACK],
- *     [new Coordinate(0, 1), BLACK],
- *     [new Coordinate(1, 2), BLACK],
- *     [new Coordinate(1, 1), WHITE],
+ *     new Move(new Coordinate(1, 0), BLACK),
+ *     new Move(new Coordinate(0, 1), BLACK),
+ *     new Move(new Coordinate(1, 2), BLACK),
+ *     new Move(new Coordinate(1, 1), WHITE),
  * );
  *
  * toAsciiBoard(atari);
@@ -597,8 +574,7 @@ export function removeStones(board, coordinates) {
  *
  * var killed = addMove(
  *     atari,
- *     new Coordinate(2, 1),
- *     BLACK
+ *     new Move(new Coordinate(2, 1), BLACK)
  * );
  *
  * toAsciiBoard(killed);
@@ -607,34 +583,24 @@ export function removeStones(board, coordinates) {
  * //    +O+
  *
  * @param {Board} board - Board from which to add the move.
- * @param {Coordinate|Move} coordinateOrMove - Move or location of the move.
- * @param {string} color? - Color of the move.  Not needed if first coordinate
- * is a `Move`.
+ * @param {Move} move - Move or location of the move.
  * @return {Board} New board with the move played.
  */
-export function addMove(board, coordinateOrMove, color) {
-  let coordinate;
-  if (coordinateOrMove instanceof Move) {
-    color = coordinateOrMove.color;
-    coordinate = coordinateOrMove.coordinate;
-  } else {
-    coordinate = coordinateOrMove;
-  }
-
-  if (!isLegalMove(board, coordinate, color)) {
+export function addMove(board, move) {
+  if (!isLegalMove(board, move)) {
     throw 'Not a valid position';
   }
 
-  if (board.moves.has(coordinate)) {
+  if (board.moves.has(move.coordinate)) {
     throw 'There is already a stone there';
   }
 
-  const killed = matchingAdjacentCoordinates(board, coordinate, oppositeColor(color)).reduce(
+  const killed = matchingAdjacentCoordinates(board, move.coordinate, oppositeColor(move.color)).reduce(
     (acc, coord) => acc.union(libertyCount(board, coord) === 1 ? group(board, coord) : Set()),
     Set()
   );
 
-  return removeStones(board, killed).setIn(['moves', coordinate], color);
+  return removeStones(board, killed).setIn(['moves', move.coordinate], move.color);
 }
 
 /**
@@ -642,10 +608,10 @@ export function addMove(board, coordinateOrMove, color) {
  *
  * @example
  * var ponnuki = new Board(3,
- *     new Coordinate(1, 0), BLACK,
- *     new Coordinate(0, 1), BLACK,
- *     new Coordinate(1, 2), BLACK,
- *     new Coordinate(2, 1), BLACK
+ *     new Move(new Coordinate(1, 0), BLACK),
+ *     new Move(new Coordinate(0, 1), BLACK),
+ *     new Move(new Coordinate(1, 2), BLACK),
+ *     new Move(new Coordinate(2, 1), BLACK),
  * );
  *
  * toAsciiBoard(ponnuki);
@@ -761,9 +727,9 @@ export function toAsciiBoard(board) {
  *
  * @example
  * var tigersMouth = new Board(3,
- *     new Coordinate(1, 0), BLACK,
- *     new Coordinate(0, 1), BLACK,
- *     new Coordinate(1, 2), BLACK
+ *     new Move(new Coordinate(1, 0), BLACK),
+ *     new Move(new Coordinate(0, 1), BLACK),
+ *     new Move(new Coordinate(1, 2), BLACK),
  * );
  *
  * toAsciiBoard(tigersMouth);
@@ -810,8 +776,8 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
         coordinate : new Coordinate(coordinate.x, coordinate.y);
 
       return addMove(
-        acc, checkedCoordinate,
-        index % 2 === 0 ? startColor : opposite,
+        acc,
+        new Move(checkedCoordinate, index % 2 === 0 ? startColor : opposite),
       );
     },
     board,
