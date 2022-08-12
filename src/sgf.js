@@ -54,7 +54,7 @@ export function sgfPointToCoordinate(sgfPoint) {
       sgfPoint.charCodeAt(1) - 97,
     );
   } else {
-    throw TypeError('Must pass a string of length 2');
+    throw new TypeError('Must pass a string of length 2');
   }
 }
 
@@ -131,7 +131,7 @@ export function sgfToJS(sgf) {
   }
 
   if (variationStack.length > 0) {
-    throw 'broken thing with too few ENDs';
+    throw new Error('broken thing with too few ENDs');
   }
 
   return mainLine;
@@ -195,7 +195,7 @@ export function nextToken(partialSgf) {
       return [first, partialSgf.substr(1)];
     default:
       if (partialSgf.match(keyPattern) === null) {
-        throw 'Invalid SGF';
+        throw new Error('Invalid SGF');
       }
 
       const key = partialSgf.match(keyPattern)[0];
@@ -203,7 +203,7 @@ export function nextToken(partialSgf) {
       const valueMatch = rest.match(valuePattern);
 
       if (!startsWith(rest, '[') || valueMatch === null) {
-        throw 'Invalid SGF';
+        throw new Error('Invalid SGF');
       }
 
       const backslashSentinel = '@@BACKSLASH@@';

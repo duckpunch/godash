@@ -235,7 +235,7 @@ export function adjacentCoordinates(board, coordinate) {
  */
 export function difference(board1, board2) {
   if (board1.dimensions !== board2.dimensions) {
-    throw 'board sizes do not match';
+    throw new Error('board sizes do not match');
   }
 
   const board1Set = Set(board1.moves.entrySeq().map(a => List(a)));
@@ -588,11 +588,11 @@ export function removeStones(board, coordinates) {
  */
 export function addMove(board, move) {
   if (!isLegalMove(board, move)) {
-    throw 'Not a valid position';
+    throw new Error('Not a valid position');
   }
 
   if (board.moves.has(move.coordinate)) {
-    throw 'There is already a stone there';
+    throw new Error('There is already a stone there');
   }
 
   const killed = matchingAdjacentCoordinates(board, move.coordinate, oppositeColor(move.color)).reduce(
@@ -636,7 +636,7 @@ export function placeStone(board, coordinate, color, force = false) {
   const currentColor = board.moves.get(coordinate, EMPTY);
 
   if ((!force) && oppositeColor(currentColor) === color) {
-    throw 'There is already a stone there.  Pass force=true to override.';
+    throw new Error('There is already a stone there.  Pass force=true to override.');
   } else {
     return board.setIn(['moves', coordinate], color);
   }
@@ -769,7 +769,7 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
       const hasXY = hasIn(coordinate, 'x') && hasIn(coordinate, 'y');
 
       if (!(isCoordinate || hasXY)) {
-        throw 'You must pass coordinates or coordinate-like objects.';
+        throw new Error('You must pass coordinates or coordinate-like objects.');
       }
 
       const checkedCoordinate = isCoordinate ?
@@ -808,10 +808,10 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
  */
 export function handicapBoard(size, handicap) {
   if (size !== 9 && size !== 13 && size !== 19) {
-    throw 'Only 9, 13, 19 allowed - use placeStone for non standard sizes';
+    throw new Error('Only 9, 13, 19 allowed - use placeStone for non standard sizes');
   }
   if (!inRange(handicap, 0, 10) || !isInteger(handicap)) {
-    throw 'Handicap must be an integer between 0 and 9';
+    throw new Error('Handicap must be an integer between 0 and 9');
   }
 
   const nonTengenHandicap = {
