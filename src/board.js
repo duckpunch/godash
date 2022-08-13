@@ -91,7 +91,7 @@ export const EMPTY = null;
  *
  * @extends Record
  */
-export class Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
+class _Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
   constructor(dimensions = 19, ...moves) {
     super({
       dimensions,
@@ -101,6 +101,11 @@ export class Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
     });
   }
 }
+
+export function Board(...args) {
+  return Reflect.construct(_Board, args);
+}
+Board.prototype = _Board.prototype;
 
 /**
  * ```javascript
@@ -134,11 +139,16 @@ export class Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
  *
  * @extends Record
  */
-export class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
+class _Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
   constructor(x, y) {
     super({x, y});
   }
 }
+
+export function Coordinate(...args) {
+  return Reflect.construct(_Coordinate, args);
+}
+Coordinate.prototype = _Coordinate.prototype;
 
 /**
  * ```javascript
@@ -168,11 +178,16 @@ export class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
  *
  * @extends Record
  */
-export class Move extends Record({coordinate: new Coordinate(), color: EMPTY}, 'Move') {
+class _Move extends Record({coordinate: Coordinate(), color: EMPTY}, 'Move') {
   constructor(coordinate, color) {
     super({coordinate, color});
   }
 }
+
+export function Move(...args) {
+  return Reflect.construct(_Move, args);
+}
+Move.prototype = _Move.prototype;
 
 /**
  * Center point on a 9x9 board.
@@ -765,7 +780,7 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
 
   return coordinates.reduce(
     (acc, coordinate, index) => {
-      const isCoordinate = coordinate.constructor.name === 'Coordinate';
+      const isCoordinate = coordinate instanceof Coordinate;
       const hasXY = hasIn(coordinate, 'x') && hasIn(coordinate, 'y');
 
       if (!(isCoordinate || hasXY)) {
@@ -773,7 +788,7 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
       }
 
       const checkedCoordinate = isCoordinate ?
-        coordinate : new Coordinate(coordinate.x, coordinate.y);
+        coordinate : Coordinate(coordinate.x, coordinate.y);
 
       return addMove(
         acc,
