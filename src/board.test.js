@@ -37,14 +37,14 @@ describe('Board constructor', function() {
   it('can take Move as parameters', function() {
     const board = Board(
       19,
-      new Move(new Coordinate(2, 2), BLACK),
-      new Move(new Coordinate(2, 5), WHITE),
+      Move(Coordinate(2, 2), BLACK),
+      Move(Coordinate(2, 5), WHITE),
     );
 
-    assert.ok(board.moves.has(new Coordinate(2, 2)));
-    assert.ok(board.moves.has(new Coordinate(2, 5)));
-    assert.ok(board.moves.get(new Coordinate(2, 2)) === BLACK);
-    assert.ok(board.moves.get(new Coordinate(2, 5)) === WHITE);
+    assert.ok(board.moves.has(Coordinate(2, 2)));
+    assert.ok(board.moves.has(Coordinate(2, 5)));
+    assert.ok(board.moves.get(Coordinate(2, 2)) === BLACK);
+    assert.ok(board.moves.get(Coordinate(2, 5)) === WHITE);
   });
 });
 
@@ -64,45 +64,45 @@ describe('Move constructor', function() {
 
 describe('adjacentCoordinates', function() {
   it('yields the correct 4 when coordinate is in center', function() {
-    const coordinate = new Coordinate(9, 9);
-    const board = new Board();
+    const coordinate = Coordinate(9, 9);
+    const board = Board();
 
     assert.ok(
       adjacentCoordinates(board, coordinate).equals(
         Set.of(
-          new Coordinate(9, 8),
-          new Coordinate(9, 10),
-          new Coordinate(8, 9),
-          new Coordinate(10, 9),
+          Coordinate(9, 8),
+          Coordinate(9, 10),
+          Coordinate(8, 9),
+          Coordinate(10, 9),
         )
       )
     );
   });
 
   it('yields the correct 3 when coordinate is on side', function() {
-    const coordinate = new Coordinate(0, 9);
-    const board = new Board();
+    const coordinate = Coordinate(0, 9);
+    const board = Board();
 
     assert.ok(
       adjacentCoordinates(board, coordinate).equals(
         Set.of(
-          new Coordinate(0, 8),
-          new Coordinate(0, 10),
-          new Coordinate(1, 9),
+          Coordinate(0, 8),
+          Coordinate(0, 10),
+          Coordinate(1, 9),
         )
       )
     );
   });
 
   it('yields the correct 2 when coordinate is corner', function() {
-    const coordinate = new Coordinate(18, 18);
-    const board = new Board();
+    const coordinate = Coordinate(18, 18);
+    const board = Board();
 
     assert.ok(
       adjacentCoordinates(board, coordinate).equals(
         Set.of(
-          new Coordinate(18, 17),
-          new Coordinate(17, 18),
+          Coordinate(18, 17),
+          Coordinate(17, 18),
         )
       )
     );
@@ -110,19 +110,19 @@ describe('adjacentCoordinates', function() {
 });
 
 describe('matchingAdjacentCoordinates', function() {
-  const coordinate = new Coordinate(9, 9);
-  const board = new Board(19,
-    new Move(new Coordinate(9, 8), BLACK),
-    new Move(new Coordinate(9, 10), WHITE),
-    new Move(new Coordinate(8, 9), WHITE),
+  const coordinate = Coordinate(9, 9);
+  const board = Board(19,
+    Move(Coordinate(9, 8), BLACK),
+    Move(Coordinate(9, 10), WHITE),
+    Move(Coordinate(8, 9), WHITE),
   );
 
   it('yields correct matches for white', function() {
     assert.ok(
       matchingAdjacentCoordinates(board, coordinate, WHITE).equals(
         Set.of(
-          new Coordinate(9, 10),
-          new Coordinate(8, 9),
+          Coordinate(9, 10),
+          Coordinate(8, 9),
         )
       )
     );
@@ -132,7 +132,7 @@ describe('matchingAdjacentCoordinates', function() {
     assert.ok(
       matchingAdjacentCoordinates(board, coordinate, BLACK).equals(
         Set.of(
-          new Coordinate(9, 8),
+          Coordinate(9, 8),
         )
       )
     );
@@ -142,7 +142,7 @@ describe('matchingAdjacentCoordinates', function() {
     assert.ok(
       matchingAdjacentCoordinates(board, coordinate, EMPTY).equals(
         Set.of(
-          new Coordinate(10, 9),
+          Coordinate(10, 9),
         )
       )
     );
@@ -151,67 +151,67 @@ describe('matchingAdjacentCoordinates', function() {
 
 describe('group', function() {
   it('finds a group of 1', function() {
-    const coordinate = new Coordinate(2, 2);
-    const board = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
+    const coordinate = Coordinate(2, 2);
+    const board = Board(5,
+      Move(Coordinate(2, 2), BLACK),
     );
 
     assert.ok(
       group(board, coordinate).equals(
         Set.of(
-          new Coordinate(2, 2),
+          Coordinate(2, 2),
         )
       )
     );
   });
 
   it('finds a group of 2', function() {
-    const coordinate = new Coordinate(2, 2);
-    const board = new Board(5,
-       new Move(new Coordinate(2, 2), BLACK),
-       new Move(new Coordinate(2, 1), BLACK),
+    const coordinate = Coordinate(2, 2);
+    const board = Board(5,
+       Move(Coordinate(2, 2), BLACK),
+       Move(Coordinate(2, 1), BLACK),
     );
 
     assert.ok(
       group(board, coordinate).equals(
         Set.of(
-          new Coordinate(2, 2),
-          new Coordinate(2, 1),
+          Coordinate(2, 2),
+          Coordinate(2, 1),
         )
       )
     );
   });
 
   it('finds a group of 1 with adjacent opposite color', function() {
-    const coordinate = new Coordinate(2, 2);
-    const board = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
-      new Move(new Coordinate(2, 1), WHITE),
+    const coordinate = Coordinate(2, 2);
+    const board = Board(5,
+      Move(Coordinate(2, 2), BLACK),
+      Move(Coordinate(2, 1), WHITE),
     );
 
     assert.ok(
       group(board, coordinate).equals(
         Set.of(
-          new Coordinate(2, 2),
+          Coordinate(2, 2),
         )
       )
     );
   });
 
   it('finds empty triangle', function() {
-    const coordinate = new Coordinate(2, 2);
-    const board = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
+    const coordinate = Coordinate(2, 2);
+    const board = Board(5,
+      Move(Coordinate(2, 2), BLACK),
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
     );
 
     assert.ok(
       group(board, coordinate).equals(
         Set.of(
-          new Coordinate(2, 2),
-          new Coordinate(2, 1),
-          new Coordinate(1, 2),
+          Coordinate(2, 2),
+          Coordinate(2, 1),
+          Coordinate(1, 2),
         )
       )
     );
@@ -243,147 +243,147 @@ describe('oppositeColor', function() {
 
 describe('liberties and libertyCount', function() {
   it('find values for 1 stone', function() {
-    const board = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
+    const board = Board(5,
+      Move(Coordinate(2, 2), BLACK),
     );
 
-    assert.ok(liberties(board, new Coordinate(2, 2)).equals(
+    assert.ok(liberties(board, Coordinate(2, 2)).equals(
       Set.of(
-        new Coordinate(2, 1),
-        new Coordinate(1, 2),
-        new Coordinate(2, 3),
-        new Coordinate(3, 2),
+        Coordinate(2, 1),
+        Coordinate(1, 2),
+        Coordinate(2, 3),
+        Coordinate(3, 2),
       )
     ));
-    assert.equal(libertyCount(board, new Coordinate(2, 2)), 4);
+    assert.equal(libertyCount(board, Coordinate(2, 2)), 4);
   });
 
   it('find values for group of 2', function() {
-    const board = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
+    const board = Board(5,
+      Move(Coordinate(2, 2), BLACK),
+      Move(Coordinate(2, 1), BLACK),
     );
 
-    assert.ok(liberties(board, new Coordinate(2, 2)).equals(
+    assert.ok(liberties(board, Coordinate(2, 2)).equals(
       Set.of(
-        new Coordinate(1, 2),
-        new Coordinate(2, 3),
-        new Coordinate(3, 2),
-        new Coordinate(2, 0),
-        new Coordinate(1, 1),
-        new Coordinate(3, 1),
+        Coordinate(1, 2),
+        Coordinate(2, 3),
+        Coordinate(3, 2),
+        Coordinate(2, 0),
+        Coordinate(1, 1),
+        Coordinate(3, 1),
       )
     ));
-    assert.equal(libertyCount(board, new Coordinate(2, 2)), 6);
+    assert.equal(libertyCount(board, Coordinate(2, 2)), 6);
   });
 
   it('properly decrement liberty with opposite color adjacent', function() {
-    const board = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
-      new Move(new Coordinate(2, 1), WHITE),
+    const board = Board(5,
+      Move(Coordinate(2, 2), BLACK),
+      Move(Coordinate(2, 1), WHITE),
     );
 
-    assert.ok(liberties(board, new Coordinate(2, 2)).equals(
+    assert.ok(liberties(board, Coordinate(2, 2)).equals(
       Set.of(
-        new Coordinate(1, 2),
-        new Coordinate(2, 3),
-        new Coordinate(3, 2),
+        Coordinate(1, 2),
+        Coordinate(2, 3),
+        Coordinate(3, 2),
       )
     ));
-    assert.equal(libertyCount(board, new Coordinate(2, 2)), 3);
+    assert.equal(libertyCount(board, Coordinate(2, 2)), 3);
   });
 
   it('count shared liberties in empty triangle', function() {
-    const board = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(3, 2), BLACK),
+    const board = Board(5,
+      Move(Coordinate(2, 2), BLACK),
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(3, 2), BLACK),
     );
 
-    assert.ok(liberties(board, new Coordinate(2, 2)).equals(
+    assert.ok(liberties(board, Coordinate(2, 2)).equals(
       Set.of(
-        new Coordinate(1, 2),
-        new Coordinate(2, 3),
-        new Coordinate(4, 2),
-        new Coordinate(2, 0),
-        new Coordinate(1, 1),
-        new Coordinate(3, 1),
-        new Coordinate(3, 3),
+        Coordinate(1, 2),
+        Coordinate(2, 3),
+        Coordinate(4, 2),
+        Coordinate(2, 0),
+        Coordinate(1, 1),
+        Coordinate(3, 1),
+        Coordinate(3, 3),
       )
     ));
-    assert.equal(libertyCount(board, new Coordinate(2, 2)), 7);
+    assert.equal(libertyCount(board, Coordinate(2, 2)), 7);
   });
 });
 
 describe('isLegalMove', function() {
   it('identifies suicide moves as invalid', function() {
-    const board = new Board(3,
-      new Move(new Coordinate(1, 0), BLACK),
-      new Move(new Coordinate(0, 1), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
+    const board = Board(3,
+      Move(Coordinate(1, 0), BLACK),
+      Move(Coordinate(0, 1), BLACK),
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
     );
 
-    assert.ok(!isLegalMove(board, new Move(new Coordinate(1, 1), WHITE)));
-    assert.ok(!isLegalWhiteMove(board, new Coordinate(1, 1)));
+    assert.ok(!isLegalMove(board, Move(Coordinate(1, 1), WHITE)));
+    assert.ok(!isLegalWhiteMove(board, Coordinate(1, 1)));
   });
 
   it('allows filling in a ponnuki', function() {
-    const board = new Board(3,
-      new Move(new Coordinate(1, 0), BLACK),
-      new Move(new Coordinate(0, 1), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
+    const board = Board(3,
+      Move(Coordinate(1, 0), BLACK),
+      Move(Coordinate(0, 1), BLACK),
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
     );
 
-    assert.ok(isLegalMove(board, new Move(new Coordinate(1, 1), BLACK)));
-    assert.ok(isLegalBlackMove(board, new Coordinate(1, 1)));
+    assert.ok(isLegalMove(board, Move(Coordinate(1, 1), BLACK)));
+    assert.ok(isLegalBlackMove(board, Coordinate(1, 1)));
   });
 
   it('marks suicide in corner as invalid', function() {
-    const board = new Board(3,
-      new Move(new Coordinate(2, 0), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
+    const board = Board(3,
+      Move(Coordinate(2, 0), BLACK),
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
     );
 
-    assert.ok(!isLegalMove(board, new Move(new Coordinate(2, 2), WHITE)));
+    assert.ok(!isLegalMove(board, Move(Coordinate(2, 2), WHITE)));
   });
 
   it('marks suicide in corner that kills first as valid', function() {
-    const board = new Board(3,
-      new Move(new Coordinate(2, 0), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
-      new Move(new Coordinate(1, 0), WHITE),
-      new Move(new Coordinate(1, 1), WHITE),
+    const board = Board(3,
+      Move(Coordinate(2, 0), BLACK),
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
+      Move(Coordinate(1, 0), WHITE),
+      Move(Coordinate(1, 1), WHITE),
     );
 
-    assert.ok(isLegalMove(board, new Move(new Coordinate(2, 2), WHITE)));
+    assert.ok(isLegalMove(board, Move(Coordinate(2, 2), WHITE)));
   });
 });
 
 describe('removeStone', function() {
   it('can remove a specified stone', function() {
-    const board = new Board(19,
-      new Move(new Coordinate(9, 9), BLACK),
+    const board = Board(19,
+      Move(Coordinate(9, 9), BLACK),
     );
 
-    const updatedBoard = removeStone(board, new Coordinate(9,9));
+    const updatedBoard = removeStone(board, Coordinate(9,9));
 
     assert.equal(
-      updatedBoard.moves.get(new Coordinate(9, 9)),
+      updatedBoard.moves.get(Coordinate(9, 9)),
       EMPTY,
     );
   });
 
   it('does not blow up even if a coordinate is not there', function() {
-    const board = new Board();
+    const board = Board();
 
-    const updatedBoard = removeStone(board, new Coordinate(9,9));
+    const updatedBoard = removeStone(board, Coordinate(9,9));
 
     assert.equal(
-      updatedBoard.moves.get(new Coordinate(9, 9)),
+      updatedBoard.moves.get(Coordinate(9, 9)),
       EMPTY,
     );
   });
@@ -391,115 +391,115 @@ describe('removeStone', function() {
 
 describe('removeStones', function() {
   it('can remove a bunch of stones', function() {
-    const board = new Board(19,
-      new Move(new Coordinate(9, 9), BLACK),
-      new Move(new Coordinate(3, 4), WHITE),
-      new Move(new Coordinate(9, 10), BLACK),
-      new Move(new Coordinate(5, 9), WHITE),
-      new Move(new Coordinate(3, 9), BLACK),
+    const board = Board(19,
+      Move(Coordinate(9, 9), BLACK),
+      Move(Coordinate(3, 4), WHITE),
+      Move(Coordinate(9, 10), BLACK),
+      Move(Coordinate(5, 9), WHITE),
+      Move(Coordinate(3, 9), BLACK),
     );
 
     const updatedBoard = removeStones(
       board,
       Set.of(
-        new Coordinate(9, 9),
-        new Coordinate(3, 9),
-        new Coordinate(5, 9),
+        Coordinate(9, 9),
+        Coordinate(3, 9),
+        Coordinate(5, 9),
       ),
     );
 
-    assert.equal(updatedBoard.moves.get(new Coordinate(9, 9)), EMPTY);
-    assert.equal(updatedBoard.moves.get(new Coordinate(3, 9)), EMPTY);
-    assert.equal(updatedBoard.moves.get(new Coordinate(5, 9)), EMPTY);
+    assert.equal(updatedBoard.moves.get(Coordinate(9, 9)), EMPTY);
+    assert.equal(updatedBoard.moves.get(Coordinate(3, 9)), EMPTY);
+    assert.equal(updatedBoard.moves.get(Coordinate(5, 9)), EMPTY);
 
-    assert.equal(updatedBoard.moves.get(new Coordinate(3, 4)), WHITE);
-    assert.equal(updatedBoard.moves.get(new Coordinate(9, 10)), BLACK);
+    assert.equal(updatedBoard.moves.get(Coordinate(3, 4)), WHITE);
+    assert.equal(updatedBoard.moves.get(Coordinate(9, 10)), BLACK);
   });
 });
 
 describe('addMove', function() {
   it('adds a Move to simple empty board', function() {
-    const board = new Board();
+    const board = Board();
 
     assert.equal(
-      addMove(board, new Move(new Coordinate(9, 9), BLACK)).moves.get(new Coordinate(9, 9)),
+      addMove(board, Move(Coordinate(9, 9), BLACK)).moves.get(Coordinate(9, 9)),
       BLACK
     );
   });
 
   it('adds a move to simple empty board', function() {
-    const board = new Board();
+    const board = Board();
 
     assert.equal(
-      addMove(board, new Move(new Coordinate(9, 9), BLACK)).moves.get(new Coordinate(9, 9)),
+      addMove(board, Move(Coordinate(9, 9), BLACK)).moves.get(Coordinate(9, 9)),
       BLACK
     );
   });
 
   it('throws if move is illegal', function() {
     assert.throws(function() {
-      addMove(new Board(5), new Move(new Coordinate(9, 9), BLACK));
+      addMove(Board(5), Move(Coordinate(9, 9), BLACK));
     });
   });
 
   it('throws if adding same move twice', function() {
-    const board = new Board();
+    const board = Board();
 
     assert.throws(function() {
-      const coordinate = new Coordinate(9, 9);
+      const coordinate = Coordinate(9, 9);
 
       addMove(
-        addMove(board, new Move(coordinate, BLACK)),
-        new Move(coordinate, WHITE),
+        addMove(board, Move(coordinate, BLACK)),
+        Move(coordinate, WHITE),
       );
     });
   });
 
   it('kills groups that run out of liberties', function() {
-    const board = new Board(3,
-      new Move(new Coordinate(1, 0), WHITE),
-      new Move(new Coordinate(1, 1), WHITE),
-      new Move(new Coordinate(2, 0), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
+    const board = Board(3,
+      Move(Coordinate(1, 0), WHITE),
+      Move(Coordinate(1, 1), WHITE),
+      Move(Coordinate(2, 0), BLACK),
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
     );
 
-    const newBoard = addMove(board, new Move(new Coordinate(2, 2), WHITE));
+    const newBoard = addMove(board, Move(Coordinate(2, 2), WHITE));
 
     assert.ok(
       Set.of(
-        new Coordinate(1, 0),
-        new Coordinate(1, 1),
-        new Coordinate(2, 2),
-        new Coordinate(1, 2),
+        Coordinate(1, 0),
+        Coordinate(1, 1),
+        Coordinate(2, 2),
+        Coordinate(1, 2),
       ).equals(Set(newBoard.moves.keys()))
     );
   });
 
   it('can kill 3 stone groups', function() {
-    const board = new Board(5,
-      new Move(new Coordinate(0, 0), BLACK),
-      new Move(new Coordinate(0, 1), BLACK),
-      new Move(new Coordinate(0, 2), BLACK),
-      new Move(new Coordinate(1, 0), WHITE),
-      new Move(new Coordinate(1, 1), WHITE),
-      new Move(new Coordinate(1, 2), WHITE),
-      new Move(new Coordinate(2, 0), BLACK),
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(2, 2), BLACK),
+    const board = Board(5,
+      Move(Coordinate(0, 0), BLACK),
+      Move(Coordinate(0, 1), BLACK),
+      Move(Coordinate(0, 2), BLACK),
+      Move(Coordinate(1, 0), WHITE),
+      Move(Coordinate(1, 1), WHITE),
+      Move(Coordinate(1, 2), WHITE),
+      Move(Coordinate(2, 0), BLACK),
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(2, 2), BLACK),
     );
 
-    const newBoard = addMove(board, new Move(new Coordinate(1, 3), BLACK));
+    const newBoard = addMove(board, Move(Coordinate(1, 3), BLACK));
 
     assert.ok(
       Set.of(
-        new Coordinate(0, 0),
-        new Coordinate(0, 1),
-        new Coordinate(0, 2),
-        new Coordinate(2, 0),
-        new Coordinate(2, 1),
-        new Coordinate(2, 2),
-        new Coordinate(1, 3),
+        Coordinate(0, 0),
+        Coordinate(0, 1),
+        Coordinate(0, 2),
+        Coordinate(2, 0),
+        Coordinate(2, 1),
+        Coordinate(2, 2),
+        Coordinate(1, 3),
       ).equals(Set(newBoard.moves.keys()))
     );
   });
@@ -507,19 +507,19 @@ describe('addMove', function() {
 
 describe('placeStone', function() {
   it('can place a stone on an empty board', function() {
-    const board = new Board();
+    const board = Board();
 
     assert.equal(
-      placeStone(board, new Coordinate(9, 9), BLACK).moves.get(new Coordinate(9, 9)),
+      placeStone(board, Coordinate(9, 9), BLACK).moves.get(Coordinate(9, 9)),
       BLACK
     );
   });
 
   it('throws if placing onto a coordinate with an opposite stone color', function() {
-    const board = new Board();
+    const board = Board();
 
     assert.throws(function() {
-      const coordinate = new Coordinate(9, 9);
+      const coordinate = Coordinate(9, 9);
 
       placeStone(
         placeStone(board, coordinate, BLACK),
@@ -530,8 +530,8 @@ describe('placeStone', function() {
   });
 
   it('can force an existing opposite color stone placement', function() {
-    const board = new Board();
-    const coordinate = new Coordinate(9, 9);
+    const board = Board();
+    const coordinate = Coordinate(9, 9);
 
     const blackStoneBoard = placeStone(board, coordinate, BLACK);
     const whiteStoneBoard = placeStone(blackStoneBoard, coordinate, WHITE, true);
@@ -540,13 +540,13 @@ describe('placeStone', function() {
   });
 
   it('can place a stone that breaks the rules', function() {
-    const board = new Board(5,
-      new Move(new Coordinate(2, 1), BLACK),
-      new Move(new Coordinate(2, 3), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
-      new Move(new Coordinate(3, 2), BLACK),
+    const board = Board(5,
+      Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(2, 3), BLACK),
+      Move(Coordinate(1, 2), BLACK),
+      Move(Coordinate(3, 2), BLACK),
     );
-    const coordinate = new Coordinate(2, 2);
+    const coordinate = Coordinate(2, 2);
 
     const newBoard = placeStone(board, coordinate, WHITE);
 
@@ -557,19 +557,19 @@ describe('placeStone', function() {
 describe('placeStones', function() {
   it('can place a bunch of stones', function() {
     const coordinates = Set.of(
-      new Coordinate(2, 1),
-      new Coordinate(2, 3),
-      new Coordinate(1, 2),
-      new Coordinate(3, 2),
+      Coordinate(2, 1),
+      Coordinate(2, 3),
+      Coordinate(1, 2),
+      Coordinate(3, 2),
     );
-    const board = placeStones(new Board(), coordinates, BLACK);
+    const board = placeStones(Board(), coordinates, BLACK);
 
     assert.ok(
       Set.of(
-        new Coordinate(2, 1),
-        new Coordinate(2, 3),
-        new Coordinate(1, 2),
-        new Coordinate(3, 2),
+        Coordinate(2, 1),
+        Coordinate(2, 3),
+        Coordinate(1, 2),
+        Coordinate(3, 2),
       ).equals(
         Set(board.moves.keys())
       )
@@ -580,7 +580,7 @@ describe('placeStones', function() {
 describe('toAsciiBoard', function() {
   it('can produce a simple empty board', function() {
     assert.equal(
-      toAsciiBoard(new Board(3)),
+      toAsciiBoard(Board(3)),
       '+++\n' +
       '+++\n' +
       '+++\n'
@@ -589,8 +589,8 @@ describe('toAsciiBoard', function() {
 
   it('can produce a board with one white move', function() {
     assert.equal(
-      toAsciiBoard(new Board(3,
-        new Move(new Coordinate(1, 1), WHITE),
+      toAsciiBoard(Board(3,
+        Move(Coordinate(1, 1), WHITE),
       )),
       '+++\n' +
       '+X+\n' +
@@ -600,8 +600,8 @@ describe('toAsciiBoard', function() {
 
   it('can produce a board with one black move', function() {
     assert.equal(
-      toAsciiBoard(new Board(3,
-        new Move(new Coordinate(1, 1), BLACK),
+      toAsciiBoard(Board(3,
+        Move(Coordinate(1, 1), BLACK),
       )),
       '+++\n' +
       '+O+\n' +
@@ -612,17 +612,17 @@ describe('toAsciiBoard', function() {
 
 describe('constructBoard', function() {
   it('can be created with a board passed', function() {
-    constructBoard([new Coordinate(9, 9)], new Board());
+    constructBoard([Coordinate(9, 9)], Board());
   });
 
   it('can add a single stone', function() {
     const board = constructBoard([
-      new Coordinate(9, 9)
+      Coordinate(9, 9)
     ]);
 
     assert.ok(
       Set.of(
-        new Coordinate(9, 9),
+        Coordinate(9, 9),
       ).equals(
         Set(board.moves.keys())
       )
@@ -630,25 +630,25 @@ describe('constructBoard', function() {
   });
 
   it('can kill a stone', function() {
-    const stoneToKill = new Coordinate(8, 9);
+    const stoneToKill = Coordinate(8, 9);
     const board = constructBoard([
-      new Coordinate(9, 9),
-      new Coordinate(9, 10),
-      new Coordinate(8, 10),
+      Coordinate(9, 9),
+      Coordinate(9, 10),
+      Coordinate(8, 10),
       stoneToKill,
-      new Coordinate(8, 8),
-      new Coordinate(9, 8),
-      new Coordinate(7, 9),
+      Coordinate(8, 8),
+      Coordinate(9, 8),
+      Coordinate(7, 9),
     ]);
 
     assert.ok(
       Set.of(
-        new Coordinate(9, 9),
-        new Coordinate(9, 10),
-        new Coordinate(8, 10),
-        new Coordinate(8, 8),
-        new Coordinate(9, 8),
-        new Coordinate(7, 9),
+        Coordinate(9, 9),
+        Coordinate(9, 10),
+        Coordinate(8, 10),
+        Coordinate(8, 8),
+        Coordinate(9, 8),
+        Coordinate(7, 9),
       ).equals(
         Set(board.moves.keys())
       )
@@ -669,12 +669,12 @@ describe('constructBoard', function() {
 
     assert.ok(
       Set.of(
-        new Coordinate(9, 9),
-        new Coordinate(9, 10),
-        new Coordinate(8, 10),
-        new Coordinate(8, 8),
-        new Coordinate(9, 8),
-        new Coordinate(7, 9),
+        Coordinate(9, 9),
+        Coordinate(9, 10),
+        Coordinate(8, 10),
+        Coordinate(8, 8),
+        Coordinate(9, 8),
+        Coordinate(7, 9),
       ).equals(
         Set(board.moves.keys())
       )
@@ -684,8 +684,8 @@ describe('constructBoard', function() {
   it('throws when coordinates are not parseable', function() {
     assert.throws(function() {
       constructBoard([
-        new Coordinate(9, 9),
-        new Coordinate(9, 10),
+        Coordinate(9, 9),
+        Coordinate(9, 10),
         {x: 5},
       ]);
     });
@@ -695,37 +695,37 @@ describe('constructBoard', function() {
 
 describe('difference', function() {
   it('can produce a simple difference', function() {
-    const board1 = new Board(5,
-      new Move(new Coordinate(3, 2), BLACK),
-      new Move(new Coordinate(4, 2), BLACK),
+    const board1 = Board(5,
+      Move(Coordinate(3, 2), BLACK),
+      Move(Coordinate(4, 2), BLACK),
     );
 
-    const board2 = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
+    const board2 = Board(5,
+      Move(Coordinate(2, 2), BLACK),
     );
 
     assert.ok(
       difference(board1, board2)
         .equals(Set.of(
-          List.of(new Coordinate(3, 2), BLACK),
-          List.of(new Coordinate(4, 2), BLACK),
+          List.of(Coordinate(3, 2), BLACK),
+          List.of(Coordinate(4, 2), BLACK),
         ))
     );
   });
 
   it('throws when board sizes are different', function() {
     assert.throws(function() {
-      difference(new Board(5), new Board(10));
+      difference(Board(5), Board(10));
     });
   });
 
   it('returns empty set when both boards are equal', function() {
-    const board1 = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
+    const board1 = Board(5,
+      Move(Coordinate(2, 2), BLACK),
     );
 
-    const board2 = new Board(5,
-      new Move(new Coordinate(2, 2), BLACK),
+    const board2 = Board(5,
+      Move(Coordinate(2, 2), BLACK),
     );
 
     assert.ok(
@@ -734,20 +734,20 @@ describe('difference', function() {
   });
 
   it('successfully finds the captured stone', function() {
-    const atari = new Board(3,
-      new Move(new Coordinate(1, 0), BLACK),
-      new Move(new Coordinate(0, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
-      new Move(new Coordinate(1, 1), WHITE),
+    const atari = Board(3,
+      Move(Coordinate(1, 0), BLACK),
+      Move(Coordinate(0, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
+      Move(Coordinate(1, 1), WHITE),
     );
     const captured = difference(
       atari,
-      addMove(atari, new Move(new Coordinate(2, 1), BLACK))
+      addMove(atari, Move(Coordinate(2, 1), BLACK))
     );
 
     assert.ok(
       Set.of(
-        List.of(new Coordinate(1, 1), WHITE)
+        List.of(Coordinate(1, 1), WHITE)
       ).equals(captured)
     );
   });
@@ -755,52 +755,52 @@ describe('difference', function() {
 
 describe('followupKo', function() {
   it('can detect ko with Move parameter', function() {
-    const koPosition = new Board(4,
-      new Move(new Coordinate(1, 0), BLACK),
-      new Move(new Coordinate(0, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
-      new Move(new Coordinate(1, 1), WHITE),
-      new Move(new Coordinate(2, 0), WHITE),
-      new Move(new Coordinate(2, 2), WHITE),
-      new Move(new Coordinate(3, 1), WHITE),
+    const koPosition = Board(4,
+      Move(Coordinate(1, 0), BLACK),
+      Move(Coordinate(0, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
+      Move(Coordinate(1, 1), WHITE),
+      Move(Coordinate(2, 0), WHITE),
+      Move(Coordinate(2, 2), WHITE),
+      Move(Coordinate(3, 1), WHITE),
     );
-    const koStart = new Coordinate(2, 1);
+    const koStart = Coordinate(2, 1);
 
     assert.ok(
-      (new Coordinate(1, 1)).equals(
-        followupKo(koPosition, new Move(koStart, BLACK))
+      (Coordinate(1, 1)).equals(
+        followupKo(koPosition, Move(koStart, BLACK))
       )
     );
   });
 
   it('can detect ko', function() {
-    const koPosition = new Board(4,
-      new Move(new Coordinate(1, 0), BLACK),
-      new Move(new Coordinate(0, 1), BLACK),
-      new Move(new Coordinate(1, 2), BLACK),
-      new Move(new Coordinate(1, 1), WHITE),
-      new Move(new Coordinate(2, 0), WHITE),
-      new Move(new Coordinate(2, 2), WHITE),
-      new Move(new Coordinate(3, 1), WHITE),
+    const koPosition = Board(4,
+      Move(Coordinate(1, 0), BLACK),
+      Move(Coordinate(0, 1), BLACK),
+      Move(Coordinate(1, 2), BLACK),
+      Move(Coordinate(1, 1), WHITE),
+      Move(Coordinate(2, 0), WHITE),
+      Move(Coordinate(2, 2), WHITE),
+      Move(Coordinate(3, 1), WHITE),
     );
-    const koStart = new Coordinate(2, 1);
+    const koStart = Coordinate(2, 1);
 
     assert.ok(
-      (new Coordinate(1, 1)).equals(
-        followupKo(koPosition, new Move(koStart, BLACK))
+      (Coordinate(1, 1)).equals(
+        followupKo(koPosition, Move(koStart, BLACK))
       )
     );
   });
 
   it('returns null when the move is purely additive', function() {
     assert.ok(
-      followupKo(new Board(3), new Move(new Coordinate(1, 1), BLACK)) === null
+      followupKo(Board(3), Move(Coordinate(1, 1), BLACK)) === null
     );
   });
 
-  it('returns null when the new move is out of bounds', function() {
+  it('returns null when the move is out of bounds', function() {
     assert.ok(
-      followupKo(new Board(3), new Move(new Coordinate(10, 10), BLACK)) === null
+      followupKo(Board(3), Move(Coordinate(10, 10), BLACK)) === null
     );
   });
 
@@ -812,27 +812,27 @@ describe('followupKo', function() {
     // o++++
     const board = placeStones(
       placeStones(
-        new Board(5),
+        Board(5),
         [
-          new Coordinate(0, 0),
-          new Coordinate(1, 1),
-          new Coordinate(1, 2),
+          Coordinate(0, 0),
+          Coordinate(1, 1),
+          Coordinate(1, 2),
         ],
         BLACK,
       ),
       [
-        new Coordinate(0, 1),
-        new Coordinate(0, 2),
-        new Coordinate(1, 3),
-        new Coordinate(0, 4),
+        Coordinate(0, 1),
+        Coordinate(0, 2),
+        Coordinate(1, 3),
+        Coordinate(0, 4),
       ],
       WHITE,
     );
 
-    const captureCoordinate = new Coordinate(0, 3);
+    const captureCoordinate = Coordinate(0, 3);
 
     assert.ok(
-      followupKo(board, new Move(captureCoordinate, BLACK)) === null
+      followupKo(board, Move(captureCoordinate, BLACK)) === null
     );
   });
 
@@ -844,26 +844,26 @@ describe('followupKo', function() {
     // +++++
     const board = placeStones(
       placeStones(
-        new Board(5),
+        Board(5),
         [
-          new Coordinate(0, 1),
-          new Coordinate(2, 0),
+          Coordinate(0, 1),
+          Coordinate(2, 0),
         ],
         BLACK,
       ),
       [
-        new Coordinate(0, 0),
-        new Coordinate(1, 1),
-        new Coordinate(2, 1),
-        new Coordinate(3, 0),
+        Coordinate(0, 0),
+        Coordinate(1, 1),
+        Coordinate(2, 1),
+        Coordinate(3, 0),
       ],
       WHITE,
     );
 
-    const captureCoordinate = new Coordinate(1, 0);
+    const captureCoordinate = Coordinate(1, 0);
 
     assert.ok(
-      followupKo(board, new Move(captureCoordinate, BLACK)) === null
+      followupKo(board, Move(captureCoordinate, BLACK)) === null
     );
   });
 
@@ -875,30 +875,30 @@ describe('followupKo', function() {
     // +++++
     const board = placeStones(
       placeStones(
-        new Board(5),
+        Board(5),
         [
-          new Coordinate(0, 0),
-          new Coordinate(1, 1),
+          Coordinate(0, 0),
+          Coordinate(1, 1),
         ],
         BLACK,
       ),
       [
-        new Coordinate(0, 1),
+        Coordinate(0, 1),
       ],
       WHITE,
     );
 
-    const captureCoordinate = new Coordinate(0, 2);
+    const captureCoordinate = Coordinate(0, 2);
 
     assert.ok(
-      followupKo(board, new Move(captureCoordinate, BLACK)) === null
+      followupKo(board, Move(captureCoordinate, BLACK)) === null
     );
   });
 });
 
 describe('Move', function() {
   it('can be instantiated', function() {
-    new Move(new Coordinate(), BLACK);
+    Move(Coordinate(), BLACK);
   });
 });
 

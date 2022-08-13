@@ -15,8 +15,8 @@ Install `godash` via [npm][npm].
 
 ```javascript
 var godash = require('godash');
-var board = new godash.Board(19);
-var tengen = new godash.Coordinate(9, 9); // 0-based
+var board = godash.Board(19);
+var tengen = godash.Coordinate(9, 9); // 0-based
 
 board.moves.has(tengen); // false
 

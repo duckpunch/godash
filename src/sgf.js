@@ -25,7 +25,7 @@ export const END = ')';
  * [sgf-point]: http://www.red-bean.com/sgf/go.html
  *
  * @example
- * coordinateToSgfPoint(new Coordinate(0, 0))
+ * coordinateToSgfPoint(Coordinate(0, 0))
  * // => "aa"
  *
  * @param {Coordinate} coordinate - Coordinate to convert.
@@ -49,7 +49,7 @@ export function coordinateToSgfPoint(coordinate) {
  */
 export function sgfPointToCoordinate(sgfPoint) {
   if (isString(sgfPoint) && sgfPoint.length === 2) {
-    return new Coordinate(
+    return Coordinate(
       sgfPoint.charCodeAt(0) - 97,
       sgfPoint.charCodeAt(1) - 97,
     );
