@@ -46,7 +46,7 @@ export const EMPTY = null;
 
 /**
  * ```javascript
- * new godash.Board(dimensions = 19, ...moves)
+ * godash.Board(dimensions = 19, ...moves)
  * ```
  *
  * Representation of a board position.
@@ -69,21 +69,21 @@ export const EMPTY = null;
  *
  * ??? example "Examples"
  *     ```javascript
- *     var board = new Board();
+ *     var board = Board();
  *
  *     board.toString();
  *     // => Board { "dimensions": 19, "moves": Map {} }
  *     ```
  *
  *     ```javascript
- *     var smallBoard = new Board(5, new Move(new Coordinate(2, 2), BLACK));
+ *     var smallBoard = Board(5, Move(Coordinate(2, 2), BLACK));
  *
  *     smallBoard.toString();
  *     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
  *     ```
  *
  *     ```javascript
- *     var smallBoard = new Board(5, new Move(new Coordinate(2, 2), BLACK));
+ *     var smallBoard = Board(5, Move(Coordinate(2, 2), BLACK));
  *
  *     smallBoard.toString();
  *     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
@@ -109,7 +109,7 @@ Board.prototype = _Board.prototype;
 
 /**
  * ```javascript
- * new godash.Coordinate(x, y)
+ * godash.Coordinate(x, y)
  * ```
  *
  * A zero-based tuple representing a single location on a Go board.
@@ -128,7 +128,7 @@ Board.prototype = _Board.prototype;
  *
  * ??? example "Examples"
  *     ```javascript
- *     var tengen = new Coordinate(9, 9);
+ *     var tengen = Coordinate(9, 9);
  *
  *     tengen.toString();
  *     // => Coordinate { "x": 9, "y": 9 }
@@ -152,7 +152,7 @@ Coordinate.prototype = _Coordinate.prototype;
 
 /**
  * ```javascript
- * new godash.Move(coordinate, color)
+ * godash.Move(coordinate, color)
  * ```
  *
  * Representation of a move, composed of a [`Coordinate`](#coordinate) and a color.
@@ -173,7 +173,7 @@ Coordinate.prototype = _Coordinate.prototype;
  *
  * ??? example "Examples"
  *     ```javascript
- *     var tengen = new Move(new Coordinate(9, 9), BLACK);
+ *     var tengen = Move(Coordinate(9, 9), BLACK);
  *     ```
  *
  * @extends Record
@@ -194,31 +194,31 @@ Move.prototype = _Move.prototype;
  *
  * @type {Coordinate}
  */
-export const TENGEN_9 = new Coordinate(4, 4);
+export const TENGEN_9 = Coordinate(4, 4);
 
 /**
  * Center point on a 13x13 board.
  *
  * @type {Coordinate}
  */
-export const TENGEN_13 = new Coordinate(6, 6);
+export const TENGEN_13 = Coordinate(6, 6);
 
 /**
  * Center point on a 19x19 board.
  *
  * @type {Coordinate}
  */
-export const TENGEN_19 = new Coordinate(9, 9);
+export const TENGEN_19 = Coordinate(9, 9);
 
 export function adjacentCoordinates(board, coordinate) {
   const {x, y} = coordinate;
   const validRange = n => inRange(n, board.dimensions);
 
   return Set.of(
-    new Coordinate(x, y + 1),
-    new Coordinate(x, y - 1),
-    new Coordinate(x + 1, y),
-    new Coordinate(x - 1, y),
+    Coordinate(x, y + 1),
+    Coordinate(x, y - 1),
+    Coordinate(x + 1, y),
+    Coordinate(x - 1, y),
   ).filter(c => validRange(c.x) && validRange(c.y));
 }
 
@@ -226,11 +226,11 @@ export function adjacentCoordinates(board, coordinate) {
  * Finds the moves on the first board that are not on the second board.
  *
  * @example
- * var atari = new Board(3,
- *     new Move(new Coordinate(1, 0), BLACK),
- *     new Move(new Coordinate(0, 1), BLACK),
- *     new Move(new Coordinate(1, 2), BLACK),
- *     new Move(new Coordinate(1, 1), WHITE),
+ * var atari = Board(3,
+ *     Move(Coordinate(1, 0), BLACK),
+ *     Move(Coordinate(0, 1), BLACK),
+ *     Move(Coordinate(1, 2), BLACK),
+ *     Move(Coordinate(1, 1), WHITE),
  * );
  *
  * toAsciiBoard(atari);
@@ -238,7 +238,7 @@ export function adjacentCoordinates(board, coordinate) {
  * //    OXO
  * //    +++
  *
- * var captured = difference(atari, addMove(atari, new Move(new Coordinate(2, 1), BLACK)));
+ * var captured = difference(atari, addMove(atari, Move(Coordinate(2, 1), BLACK)));
  *
  * captured.toString();
  * // 'Set { List [ Coordinate { "x": 1, "y": 1 }, "white" ] }'
@@ -264,14 +264,14 @@ export function difference(board1, board2) {
  * rule](https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko)
  *
  * @example
- * const koPosition = new Board(4,
- *     new Move(new Coordinate(1, 0), BLACK),
- *     new Move(new Coordinate(0, 1), BLACK),
- *     new Move(new Coordinate(1, 2), BLACK),
- *     new Move(new Coordinate(1, 1), WHITE),
- *     new Move(new Coordinate(2, 0), WHITE),
- *     new Move(new Coordinate(2, 2), WHITE),
- *     new Move(new Coordinate(3, 1), WHITE),
+ * const koPosition = Board(4,
+ *     Move(Coordinate(1, 0), BLACK),
+ *     Move(Coordinate(0, 1), BLACK),
+ *     Move(Coordinate(1, 2), BLACK),
+ *     Move(Coordinate(1, 1), WHITE),
+ *     Move(Coordinate(2, 0), WHITE),
+ *     Move(Coordinate(2, 2), WHITE),
+ *     Move(Coordinate(3, 1), WHITE),
  * );
  *
  * toAsciiBoard(koPosition);
@@ -280,7 +280,7 @@ export function difference(board1, board2) {
  * //    X+X+
  * //    +X++
  *
- * const koStart = new Coordinate(2, 1);
+ * const koStart = Coordinate(2, 1);
  *
  * followupKo(koPosition, koStart, BLACK).toString();
  * // => 'Coordinate { "x": 1, "y": 1 }'
@@ -308,8 +308,8 @@ export function followupKo(board, move) {
 
   // The situation is ko if the board returns to the original state.
 
-  if (isLegalMove(postMoveBoard, new Move(capturedCoordinate, capturedColor))) {
-    if (board.equals(addMove(postMoveBoard, new Move(capturedCoordinate, capturedColor)))) {
+  if (isLegalMove(postMoveBoard, Move(capturedCoordinate, capturedColor))) {
+    if (board.equals(addMove(postMoveBoard, Move(capturedCoordinate, capturedColor)))) {
       return capturedCoordinate;
     }
   }
@@ -329,12 +329,12 @@ export function matchingAdjacentCoordinates(board, coordinate, color) {
  * the given location.
  *
  * @example
- * var board = new Board(3,
- *     new Move(new Coordinate(1, 0), WHITE),
- *     new Move(new Coordinate(0, 2), WHITE),
- *     new Move(new Coordinate(1, 2), BLACK),
- *     new Move(new Coordinate(2, 2), BLACK),
- *     new Move(new Coordinate(2, 1), BLACK),
+ * var board = Board(3,
+ *     Move(Coordinate(1, 0), WHITE),
+ *     Move(Coordinate(0, 2), WHITE),
+ *     Move(Coordinate(1, 2), BLACK),
+ *     Move(Coordinate(2, 2), BLACK),
+ *     Move(Coordinate(2, 1), BLACK),
  * );
  *
  * toAsciiBoard(board);
@@ -342,7 +342,7 @@ export function matchingAdjacentCoordinates(board, coordinate, color) {
  * //    X+O
  * //    +OO
  *
- * group(board, new Coordinate(2, 1)).toString();
+ * group(board, Coordinate(2, 1)).toString();
  * // => Set {
  * //      Coordinate { "x": 2, "y": 1 },
  * //      Coordinate { "x": 2, "y": 2 },
@@ -396,14 +396,14 @@ export function oppositeColor(color) {
  * is part of a group, the set of liberties are the liberties for that group.
  *
  * @example
- * var board = new Board(3, new Move(new Coordinate(1, 1), BLACK));
- * var collectedLiberties = liberties(board, new Coordinate(1, 1));
+ * var board = Board(3, Move(Coordinate(1, 1), BLACK));
+ * var collectedLiberties = liberties(board, Coordinate(1, 1));
  *
  * Immutable.Set.of(
- *     new Coordinate(1, 0),
- *     new Coordinate(0, 1),
- *     new Coordinate(1, 2),
- *     new Coordinate(2, 1)
+ *     Coordinate(1, 0),
+ *     Coordinate(0, 1),
+ *     Coordinate(1, 2),
+ *     Coordinate(2, 1)
  * ).equals(collectedLiberties);
  * // => true
  *
@@ -424,9 +424,9 @@ export function liberties(board, coordinate) {
  * a group, liberties for the entire group is counted.
  *
  * @example
- * var board = new Board(3, new Coordinate(1, 1), BLACK);
+ * var board = Board(3, Coordinate(1, 1), BLACK);
  *
- * libertyCount(board, new Coordinate(1, 1)) === 4;
+ * libertyCount(board, Coordinate(1, 1)) === 4;
  * // => true
  *
  * @param {Board} board - Board to inspect.
@@ -445,11 +445,11 @@ export function libertyCount(board, coordinate) {
  * [ko-rule]: https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko
  *
  * @example
- * var ponnuki = new Board(3,
- *     new Move(new Coordinate(1, 0), BLACK),
- *     new Move(new Coordinate(0, 1), BLACK),
- *     new Move(new Coordinate(1, 2), BLACK),
- *     new Move(new Coordinate(2, 1), BLACK),
+ * var ponnuki = Board(3,
+ *     Move(Coordinate(1, 0), BLACK),
+ *     Move(Coordinate(0, 1), BLACK),
+ *     Move(Coordinate(1, 2), BLACK),
+ *     Move(Coordinate(2, 1), BLACK),
  * );
  *
  * toAsciiBoard(ponnuki);
@@ -457,10 +457,10 @@ export function libertyCount(board, coordinate) {
  * //    O+O
  * //    +O+
  *
- * isLegalMove(ponnuki, new Move(new Coordinate(1, 1), BLACK))
+ * isLegalMove(ponnuki, Move(Coordinate(1, 1), BLACK))
  * // => true
  *
- * isLegalMove(ponnuki, new Move(new Coordinate(1, 1), WHITE))
+ * isLegalMove(ponnuki, Move(Coordinate(1, 1), WHITE))
  * // => false
  *
  * @param {Board} board - Board to inspect.
@@ -488,7 +488,7 @@ export function isLegalMove(board, move) {
  * @return {boolean} Whether the move is legal.
  */
 export function isLegalBlackMove(board, coordinate) {
-  return isLegalMove(board, new Move(coordinate, BLACK));
+  return isLegalMove(board, Move(coordinate, BLACK));
 }
 
 /**
@@ -499,14 +499,14 @@ export function isLegalBlackMove(board, coordinate) {
  * @return {boolean} Whether the move is legal.
  */
 export function isLegalWhiteMove(board, coordinate) {
-  return isLegalMove(board, new Move(coordinate, WHITE));
+  return isLegalMove(board, Move(coordinate, WHITE));
 }
 
 /**
  * Make a given coordinate empty on the board.
  *
  * @example
- * var board = new Board(3, new Move(new Coordinate(1, 1), WHITE));
+ * var board = Board(3, Move(Coordinate(1, 1), WHITE));
  *
  * toAsciiBoard(board);
  * // => +++
@@ -514,7 +514,7 @@ export function isLegalWhiteMove(board, coordinate) {
  * //    +++
  *
  * toAsciiBoard(
- *     removeStone(board, new Coordinate(1, 1))
+ *     removeStone(board, Coordinate(1, 1))
  * );
  * // => +++
  * //    +++
@@ -532,10 +532,10 @@ export function removeStone(board, coordinate) {
  * Makes several coordinates empty on the board.
  *
  * @example
- * var board = new Board(3,
- *     new Move(new Coordinate(1, 0), WHITE),
- *     new Move(new Coordinate(1, 1), WHITE),
- *     new Move(new Coordinate(1, 2), BLACK),
+ * var board = Board(3,
+ *     Move(Coordinate(1, 0), WHITE),
+ *     Move(Coordinate(1, 1), WHITE),
+ *     Move(Coordinate(1, 2), BLACK),
  * );
  *
  * toAsciiBoard(board);
@@ -545,8 +545,8 @@ export function removeStone(board, coordinate) {
  *
  * toAsciiBoard(
  *     removeStones(board, [
- *         new Coordinate(1, 1),
- *         new Coordinate(1, 2)
+ *         Coordinate(1, 1),
+ *         Coordinate(1, 2)
  *     ])
  * );
  * // => +++
@@ -575,11 +575,11 @@ export function removeStones(board, coordinates) {
  * [ko-rule]: https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko
  *
  * @example
- * var atari = new Board(3,
- *     new Move(new Coordinate(1, 0), BLACK),
- *     new Move(new Coordinate(0, 1), BLACK),
- *     new Move(new Coordinate(1, 2), BLACK),
- *     new Move(new Coordinate(1, 1), WHITE),
+ * var atari = Board(3,
+ *     Move(Coordinate(1, 0), BLACK),
+ *     Move(Coordinate(0, 1), BLACK),
+ *     Move(Coordinate(1, 2), BLACK),
+ *     Move(Coordinate(1, 1), WHITE),
  * );
  *
  * toAsciiBoard(atari);
@@ -589,7 +589,7 @@ export function removeStones(board, coordinates) {
  *
  * var killed = addMove(
  *     atari,
- *     new Move(new Coordinate(2, 1), BLACK)
+ *     Move(Coordinate(2, 1), BLACK)
  * );
  *
  * toAsciiBoard(killed);
@@ -622,11 +622,11 @@ export function addMove(board, move) {
  * Places a stone on the board, ignoring the rules of Go.
  *
  * @example
- * var ponnuki = new Board(3,
- *     new Move(new Coordinate(1, 0), BLACK),
- *     new Move(new Coordinate(0, 1), BLACK),
- *     new Move(new Coordinate(1, 2), BLACK),
- *     new Move(new Coordinate(2, 1), BLACK),
+ * var ponnuki = Board(3,
+ *     Move(Coordinate(1, 0), BLACK),
+ *     Move(Coordinate(0, 1), BLACK),
+ *     Move(Coordinate(1, 2), BLACK),
+ *     Move(Coordinate(2, 1), BLACK),
  * );
  *
  * toAsciiBoard(ponnuki);
@@ -635,7 +635,7 @@ export function addMove(board, move) {
  * //    +O+
  *
  * toAsciiBoard(
- *     placeStone(ponnuki, new Coordinate(1, 1), WHITE)
+ *     placeStone(ponnuki, Coordinate(1, 1), WHITE)
  * );
  * // => +O+
  * //    OXO
@@ -661,7 +661,7 @@ export function placeStone(board, coordinate, color, force = false) {
  * Places a set of stones onto the board, ignoring the rules of Go.
  *
  * @example
- * var board = new Board(3, new Coordinate(1, 1), WHITE);
+ * var board = Board(3, Coordinate(1, 1), WHITE);
  *
  * toAsciiBoard(board);
  * // => +++
@@ -670,10 +670,10 @@ export function placeStone(board, coordinate, color, force = false) {
  *
  * toAsciiBoard(
  *     placeStones(board, [
- *         new Coordinate(1, 0),
- *         new Coordinate(0, 1),
- *         new Coordinate(1, 2),
- *         new Coordinate(2, 1)
+ *         Coordinate(1, 0),
+ *         Coordinate(0, 1),
+ *         Coordinate(1, 2),
+ *         Coordinate(2, 1)
  *     ], BLACK)
  * );
  * // => +O+
@@ -697,11 +697,11 @@ export function placeStones(board, coordinates, color, force = false) {
  * Constructs an ASCII representation of the board.
  *
  * @example
- * var board = new Board(3,
- *     new Coordinate(1, 0), BLACK,
- *     new Coordinate(0, 1), BLACK,
- *     new Coordinate(1, 2), BLACK,
- *     new Coordinate(1, 1), WHITE
+ * var board = Board(3,
+ *     Coordinate(1, 0), BLACK,
+ *     Coordinate(0, 1), BLACK,
+ *     Coordinate(1, 2), BLACK,
+ *     Coordinate(1, 1), WHITE
  * );
  *
  * toAsciiBoard(board);
@@ -718,7 +718,7 @@ export function toAsciiBoard(board) {
 
   for (var i = 0; i < dimensions; i++) {
     for (var j = 0; j < dimensions; j++) {
-      let color = board.moves.get(new Coordinate(i, j), EMPTY);
+      let color = board.moves.get(Coordinate(i, j), EMPTY);
       switch(color) {
         case BLACK:
           pretty_string += 'O';
@@ -741,10 +741,10 @@ export function toAsciiBoard(board) {
  * calls `addMove` while alternating colors.
  *
  * @example
- * var tigersMouth = new Board(3,
- *     new Move(new Coordinate(1, 0), BLACK),
- *     new Move(new Coordinate(0, 1), BLACK),
- *     new Move(new Coordinate(1, 2), BLACK),
+ * var tigersMouth = Board(3,
+ *     Move(Coordinate(1, 0), BLACK),
+ *     Move(Coordinate(0, 1), BLACK),
+ *     Move(Coordinate(1, 2), BLACK),
  * );
  *
  * toAsciiBoard(tigersMouth);
@@ -752,8 +752,8 @@ export function toAsciiBoard(board) {
  * //    O+O
  * //    +++
  *
- * var selfAtari = new Coordinate(1, 1);
- * var killingMove = new Coordinate(2, 1);
+ * var selfAtari = Coordinate(1, 1);
+ * var killingMove = Coordinate(2, 1);
  *
  * var ponnuki = constructBoard(
  *     [selfAtari, killingMove],
@@ -773,7 +773,7 @@ export function toAsciiBoard(board) {
  */
 export function constructBoard(coordinates, board = null, startColor = BLACK) {
   if (!board) {
-    board = new Board();
+    board = Board();
   }
 
   const opposite = oppositeColor(startColor);
@@ -792,7 +792,7 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
 
       return addMove(
         acc,
-        new Move(checkedCoordinate, index % 2 === 0 ? startColor : opposite),
+        Move(checkedCoordinate, index % 2 === 0 ? startColor : opposite),
       );
     },
     board,
@@ -800,7 +800,7 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
 }
 
 /**
- * Creates a new `Board` with the correct number of handicap stones placed.
+ * Creates a `Board` with the correct number of handicap stones placed.
  * Only standard board sizes (9, 13, 19) are allowed.
  *
  * @example
@@ -831,34 +831,34 @@ export function handicapBoard(size, handicap) {
 
   const nonTengenHandicap = {
     9: [
-      new Coordinate(2, 2),
-      new Coordinate(6, 6),
-      new Coordinate(2, 6),
-      new Coordinate(6, 2),
-      new Coordinate(6, 4),
-      new Coordinate(2, 4),
-      new Coordinate(4, 2),
-      new Coordinate(4, 6),
+      Coordinate(2, 2),
+      Coordinate(6, 6),
+      Coordinate(2, 6),
+      Coordinate(6, 2),
+      Coordinate(6, 4),
+      Coordinate(2, 4),
+      Coordinate(4, 2),
+      Coordinate(4, 6),
     ],
     13: [
-      new Coordinate(3, 3),
-      new Coordinate(9, 9),
-      new Coordinate(3, 9),
-      new Coordinate(9, 3),
-      new Coordinate(9, 6),
-      new Coordinate(3, 6),
-      new Coordinate(6, 3),
-      new Coordinate(6, 9),
+      Coordinate(3, 3),
+      Coordinate(9, 9),
+      Coordinate(3, 9),
+      Coordinate(9, 3),
+      Coordinate(9, 6),
+      Coordinate(3, 6),
+      Coordinate(6, 3),
+      Coordinate(6, 9),
     ],
     19: [
-      new Coordinate(3, 3),
-      new Coordinate(15, 15),
-      new Coordinate(15, 3),
-      new Coordinate(3, 15),
-      new Coordinate(15, 9),
-      new Coordinate(3, 9),
-      new Coordinate(9, 3),
-      new Coordinate(9, 15),
+      Coordinate(3, 3),
+      Coordinate(15, 15),
+      Coordinate(15, 3),
+      Coordinate(3, 15),
+      Coordinate(15, 9),
+      Coordinate(3, 9),
+      Coordinate(9, 3),
+      Coordinate(9, 15),
     ],
   }[size];
   const tengen = {
@@ -866,7 +866,7 @@ export function handicapBoard(size, handicap) {
     13: TENGEN_13,
     19: TENGEN_19,
   }[size];
-  const board = new Board(size);
+  const board = Board(size);
 
   if (handicap < 5) {
     return placeStones(board, take(nonTengenHandicap, handicap), BLACK);

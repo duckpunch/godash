@@ -15,7 +15,7 @@ describe('coordinateToSgfPoint', function() {
   it('converts (0, 0) to "aa"', function() {
     assert.equal(
       coordinateToSgfPoint(
-        new Coordinate(0, 0)
+        Coordinate(0, 0)
       ), 'aa'
     );
   });
@@ -24,7 +24,7 @@ describe('coordinateToSgfPoint', function() {
 describe('sgfPointToCoordinate', function() {
   it('converts "aa" to (0, 0)', function() {
     assert.ok(
-      (new Coordinate(0, 0)).equals(
+      Coordinate(0, 0).equals(
         sgfPointToCoordinate('aa')
       )
     );
@@ -32,7 +32,7 @@ describe('sgfPointToCoordinate', function() {
 
   it('converts "hi" to (7, 8)', function() {
     assert.ok(
-      (new Coordinate(7, 8)).equals(
+      Coordinate(7, 8).equals(
         sgfPointToCoordinate('hi')
       )
     );
