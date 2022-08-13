@@ -710,30 +710,28 @@ export function placeStones(board, coordinates, color, force = false) {
  * //    +++
  *
  * @param {Board} board - Board to represent.
+ * @param {Object} overrides - Overrides print characters, indexed by color
+ * constants..
  * @return {string} ASCII representation of the board.
  */
-export function toAsciiBoard(board) {
+export function toAsciiBoard(board, overrides = null) {
   const dimensions = board.dimensions;
-  let pretty_string = '';
+  const defaultMap = {
+    [BLACK]: 'O',
+    [WHITE]: 'X',
+    [EMPTY]: '+',
+  };
+  const colorMap = overrides || defaultMap;
+  let prettyString = '';
 
   for (var i = 0; i < dimensions; i++) {
     for (var j = 0; j < dimensions; j++) {
-      let color = board.moves.get(Coordinate(i, j), EMPTY);
-      switch(color) {
-        case BLACK:
-          pretty_string += 'O';
-          break;
-        case WHITE:
-          pretty_string += 'X';
-          break;
-        case EMPTY:
-          pretty_string += '+';
-          break;
-      }
+      const color = board.moves.get(Coordinate(i, j), EMPTY);
+      prettyString += colorMap[color] || defaultMap[color];
     }
-    pretty_string += '\n';
+    prettyString += '\n';
   }
-  return pretty_string;
+  return prettyString;
 }
 
 /**
