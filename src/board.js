@@ -710,11 +710,34 @@ export function placeStones(board, coordinates, color, force = false) {
  * //    +++
  *
  * @param {Board} board - Board to represent.
- * @param {Object} overrides - Overrides print characters, indexed by color
- * constants..
  * @return {string} ASCII representation of the board.
  */
-export function toAsciiBoard(board, overrides = null) {
+export function toAsciiBoard(board) {
+  return toString(board);
+}
+
+/**
+ * Constructs a string representation of the board.
+ *
+ * @example
+ * var board = Board(3,
+ *     Coordinate(1, 0), BLACK,
+ *     Coordinate(0, 1), BLACK,
+ *     Coordinate(1, 2), BLACK,
+ *     Coordinate(1, 1), WHITE
+ * );
+ *
+ * toString(board);
+ * // => +O+
+ * //    OXO
+ * //    +++
+ *
+ * @param {Board} board - Board to represent.
+ * @param {Object} overrides - Overrides print characters, indexed by color
+ * constants.
+ * @return {string} String representation of the board.
+ */
+export function toString(board, overrides = null) {
   const dimensions = board.dimensions;
   const defaultMap = {
     [BLACK]: 'O',
@@ -904,4 +927,5 @@ export default {
   removeStone,
   removeStones,
   toAsciiBoard,
+  toString,
 };
