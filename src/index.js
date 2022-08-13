@@ -28,6 +28,7 @@ export const removeStones = board.removeStones;
 export const sgfPointToCoordinate = sgf.sgfPointToCoordinate;
 export const sgfToJS = sgf.sgfToJS;
 export const toAsciiBoard = board.toAsciiBoard;
+export const toString = board.toString;
 
 export default {
   BLACK,
@@ -57,4 +58,5 @@ export default {
   sgfPointToCoordinate,
   sgfToJS,
   toAsciiBoard,
+  toString,
 };

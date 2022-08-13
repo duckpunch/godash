@@ -26,6 +26,7 @@ import {
   removeStone,
   removeStones,
   toAsciiBoard,
+  toString,
 } from './board';
 
 describe('Board constructor', function() {
@@ -608,15 +609,17 @@ describe('toAsciiBoard', function() {
       '+++\n'
     );
   });
+});
 
+describe('toString', function() {
   it('can produce a board with overrides', function() {
     assert.equal(
-      toAsciiBoard(
+      toString(
         Board(3,
           Move(Coordinate(1, 1), BLACK),
           Move(Coordinate(1, 2), WHITE),
         ),
-        {[BLACK]: 'Q'}
+        {[BLACK]: 'Q'},
       ),
       '+++\n' +
       '+QX\n' +
