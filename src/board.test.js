@@ -608,6 +608,21 @@ describe('toAsciiBoard', function() {
       '+++\n'
     );
   });
+
+  it('can produce a board with overrides', function() {
+    assert.equal(
+      toAsciiBoard(
+        Board(3,
+          Move(Coordinate(1, 1), BLACK),
+          Move(Coordinate(1, 2), WHITE),
+        ),
+        {[BLACK]: 'Q'}
+      ),
+      '+++\n' +
+      '+QX\n' +
+      '+++\n'
+    );
+  });
 });
 
 describe('constructBoard', function() {
