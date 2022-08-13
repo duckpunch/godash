@@ -727,9 +727,9 @@ export function toAsciiBoard(board) {
  *     Coordinate(1, 1), WHITE
  * );
  *
- * toString(board);
- * // => +O+
- * //    OXO
+ * toString(board, {[BLACK]: 'B', [WHITE]: 'W"});
+ * // => +B+
+ * //    BWB
  * //    +++
  *
  * @param {Board} board - Board to represent.
