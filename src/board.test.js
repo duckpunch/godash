@@ -29,8 +29,13 @@ import {
 } from './board';
 
 describe('Board constructor', function() {
+  it('can be constructed with and without new', function() {
+    assert.ok(new Board() instanceof Board);
+    assert.ok(Board() instanceof Board);
+  });
+
   it('can take Move as parameters', function() {
-    const board = new Board(
+    const board = Board(
       19,
       new Move(new Coordinate(2, 2), BLACK),
       new Move(new Coordinate(2, 5), WHITE),
@@ -40,6 +45,20 @@ describe('Board constructor', function() {
     assert.ok(board.moves.has(new Coordinate(2, 5)));
     assert.ok(board.moves.get(new Coordinate(2, 2)) === BLACK);
     assert.ok(board.moves.get(new Coordinate(2, 5)) === WHITE);
+  });
+});
+
+describe('Coordinate constructor', function() {
+  it('can be constructed with and without new', function() {
+    assert.ok(new Coordinate() instanceof Coordinate);
+    assert.ok(Coordinate() instanceof Coordinate);
+  });
+});
+
+describe('Move constructor', function() {
+  it('can be constructed with and without new', function() {
+    assert.ok(new Move() instanceof Move);
+    assert.ok(Move() instanceof Move);
   });
 });
 
