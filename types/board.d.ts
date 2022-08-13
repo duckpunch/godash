@@ -12,7 +12,7 @@ export declare const WHITE: Color;
 export declare const EMPTY: Color;
 
 export declare class Board extends Record({dimensions: 19, moves: Map<Coordinate, Color>()}, 'Board') {
-    constructor(dimensions: number, ...moves: (Coordinate | Color | Move)[]);
+    constructor(dimensions: number, ...moves: Move[]);
 }
 
 export declare class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
@@ -33,8 +33,6 @@ export declare function difference(board1: Board, board2: Board): Set<List<Coord
 
 export declare function followupKo(board: Board, move: Move): Coordinate | null;
 
-export declare function followupKo(board: Board, coordinate: Coordinate, color: Color): Coordinate | null;
-
 export declare function matchingAdjacentCoordinates(board: Board, coordinate: Coordinate, color: Color): Set<Coordinate>;
 
 export declare function group(board: Board, coordinate: Coordinate): Set<Coordinate>;
@@ -45,7 +43,7 @@ export declare function liberties(board: Board, coordinate: Coordinate): Set<Coo
 
 export declare function libertyCount(board: Board, coordinate: Coordinate): number;
 
-export declare function isLegalMove(board: Board, coordinate: Coordinate, color: Color): boolean;
+export declare function isLegalMove(board: Board, move: Move): boolean;
 
 export declare function isLegalBlackMove(board: Board, coordinate: Coordinate): boolean;
 
@@ -56,8 +54,6 @@ export declare function removeStone(board: Board, coordinate: Coordinate): Board
 export declare function removeStones(board: Board, coordinates: Coordinate[]): Board;
 
 export declare function addMove(board: Board, move: Move): Board;
-
-export declare function addMove(board: Board, coordinate: Coordinate, color: Color): Board;
 
 export declare function placeStone(board: Board, coordinate: Coordinate, color: Color, force?: boolean): Board;
 
