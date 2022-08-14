@@ -1,6 +1,6 @@
 {
   "name": "godash",
-  "version": "1.7.4",
+  "version": "2.0.0",
   "description": "Data structures and utilities to represent the game of Go",
   "homepage": "https://github.com/duckpunch/godash",
   "repository": {
