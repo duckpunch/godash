@@ -49,6 +49,32 @@ describe('Board constructor', () => {
   });
 });
 
+describe('Board toMap', () => {
+  it('can generate an empty map', () => {
+    assert.deepEqual(
+      Board().toMap(),
+      Array(19).fill(null).map(() => Array(19).fill(EMPTY)),
+    );
+  });
+
+  it('can generate from a board with stones', () => {
+    assert.deepEqual(
+      Board(
+        5,
+        Move(Coordinate(2, 2), BLACK),
+        Move(Coordinate(1, 2), WHITE),
+      ).toMap(),
+      [
+        [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+        [EMPTY, WHITE, BLACK, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+      ]
+    );
+  });
+});
+
 describe('Coordinate constructor', () => {
   it('can be constructed with and without new', () => {
     assert.ok(new Coordinate() instanceof Coordinate);
