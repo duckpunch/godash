@@ -155,7 +155,8 @@ Coordinate.prototype = _Coordinate.prototype;
  * godash.Move(coordinate, color)
  * ```
  *
- * Representation of a move, composed of a [`Coordinate`](#coordinate) and a color.
+ * Representation of a move, composed of a [`Coordinate`](#coordinate) and a
+ * color.
  *
  * Extends [`Immutable.Record`][imm-record].
  *
@@ -238,7 +239,9 @@ export function adjacentCoordinates(board, coordinate) {
  * //    OXO
  * //    +++
  *
- * var captured = difference(atari, addMove(atari, Move(Coordinate(2, 1), BLACK)));
+ * var captured = difference(
+ *     atari, addMove(atari, Move(Coordinate(2, 1), BLACK))
+ * );
  *
  * captured.toString();
  * // 'Set { List [ Coordinate { "x": 1, "y": 1 }, "white" ] }'
@@ -309,7 +312,9 @@ export function followupKo(board, move) {
   // The situation is ko if the board returns to the original state.
 
   if (isLegalMove(postMoveBoard, Move(capturedCoordinate, capturedColor))) {
-    if (board.equals(addMove(postMoveBoard, Move(capturedCoordinate, capturedColor)))) {
+    if (board.equals(
+        addMove(postMoveBoard, Move(capturedCoordinate, capturedColor))
+    )) {
       return capturedCoordinate;
     }
   }
@@ -318,7 +323,8 @@ export function followupKo(board, move) {
 }
 
 export function matchingAdjacentCoordinates(board, coordinate, color) {
-  const colorToMatch = color === undefined ? board.moves.get(coordinate, EMPTY) : color;
+  const colorToMatch = color === undefined ?
+    board.moves.get(coordinate, EMPTY) : color;
 
   return adjacentCoordinates(board, coordinate)
     .filter(c => board.moves.get(c, EMPTY) === colorToMatch);
@@ -414,7 +420,9 @@ export function oppositeColor(color) {
  */
 export function liberties(board, coordinate) {
   return group(board, coordinate).reduce(
-    (acc, coord) => acc.union(matchingAdjacentCoordinates(board, coord, EMPTY)),
+    (acc, coord) => acc.union(
+      matchingAdjacentCoordinates(board, coord, EMPTY),
+    ),
     Set(),
   );
 }
@@ -610,12 +618,18 @@ export function addMove(board, move) {
     throw new Error('There is already a stone there');
   }
 
-  const killed = matchingAdjacentCoordinates(board, move.coordinate, oppositeColor(move.color)).reduce(
-    (acc, coord) => acc.union(libertyCount(board, coord) === 1 ? group(board, coord) : Set()),
-    Set()
+  const killed = matchingAdjacentCoordinates(
+    board, move.coordinate, oppositeColor(move.color)
+  ).reduce(
+    (acc, coord) => acc.union(
+      libertyCount(board, coord) === 1 ? group(board, coord) : Set()
+    ),
+    Set(),
   );
 
-  return removeStones(board, killed).setIn(['moves', move.coordinate], move.color);
+  return removeStones(board, killed).setIn(
+    ['moves', move.coordinate], move.color,
+  );
 }
 
 /**
@@ -651,7 +665,9 @@ export function placeStone(board, coordinate, color, force = false) {
   const currentColor = board.moves.get(coordinate, EMPTY);
 
   if ((!force) && oppositeColor(currentColor) === color) {
-    throw new Error('There is already a stone there.  Pass force=true to override.');
+    throw new Error(
+      'There is already a stone there.  Pass force=true to override.'
+    );
   } else {
     return board.setIn(['moves', coordinate], color);
   }
@@ -805,7 +821,9 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
       const hasXY = hasIn(coordinate, 'x') && hasIn(coordinate, 'y');
 
       if (!(isCoordinate || hasXY)) {
-        throw new Error('You must pass coordinates or coordinate-like objects.');
+        throw new Error(
+          'You must pass coordinates or coordinate-like objects.'
+        );
       }
 
       const checkedCoordinate = isCoordinate ?
@@ -844,7 +862,9 @@ export function constructBoard(coordinates, board = null, startColor = BLACK) {
  */
 export function handicapBoard(size, handicap) {
   if (size !== 9 && size !== 13 && size !== 19) {
-    throw new Error('Only 9, 13, 19 allowed - use placeStone for non standard sizes');
+    throw new Error(
+      'Only 9, 13, 19 allowed - use placeStone for non standard sizes'
+    );
   }
   if (!inRange(handicap, 0, 10) || !isInteger(handicap)) {
     throw new Error('Handicap must be an integer between 0 and 9');
@@ -892,13 +912,17 @@ export function handicapBoard(size, handicap) {
   if (handicap < 5) {
     return placeStones(board, take(nonTengenHandicap, handicap), BLACK);
   } else if (handicap === 5) {
-    return placeStones(board, concat(take(nonTengenHandicap, 4), tengen), BLACK);
+    return placeStones(
+      board, concat(take(nonTengenHandicap, 4), tengen), BLACK,
+    );
   } else if (handicap === 6) {
     return placeStones(board, take(nonTengenHandicap, 6), BLACK);
   } else if (handicap === 8) {
     return placeStones(board, nonTengenHandicap, BLACK);
   } else {
-    return placeStones(board, concat(take(nonTengenHandicap, handicap - 1), tengen), BLACK);
+    return placeStones(
+      board, concat(take(nonTengenHandicap, handicap - 1), tengen), BLACK,
+    );
   }
 }
 

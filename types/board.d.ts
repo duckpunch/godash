@@ -19,7 +19,7 @@ export declare class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
     constructor(x: number, y: number);
 }
 
-export declare class Move extends Record({coordinate: new Coordinate(), color: EMPTY}, 'Move') {
+export declare class Move extends Record({coordinate: Coordinate(), color: EMPTY}, 'Move') {
     constructor(coordinate: Coordinate, color: Color);
 }
 
