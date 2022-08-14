@@ -100,6 +100,14 @@ class _Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
       )),
     });
   }
+
+  toMap() {
+    return Array(this.dimensions).fill(EMPTY).map(
+      (_, row) => Array(this.dimensions).fill(EMPTY).map(
+        (_, col) => this.moves.get(Coordinate(col, row), EMPTY)
+      )
+    );
+  }
 }
 
 export function Board(...args) {
