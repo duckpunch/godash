@@ -29,13 +29,13 @@ import {
   toString,
 } from './board';
 
-describe('Board constructor', function() {
-  it('can be constructed with and without new', function() {
+describe('Board constructor', () => {
+  it('can be constructed with and without new', () => {
     assert.ok(new Board() instanceof Board);
     assert.ok(Board() instanceof Board);
   });
 
-  it('can take Move as parameters', function() {
+  it('can take Move as parameters', () => {
     const board = Board(
       19,
       Move(Coordinate(2, 2), BLACK),
@@ -49,22 +49,22 @@ describe('Board constructor', function() {
   });
 });
 
-describe('Coordinate constructor', function() {
-  it('can be constructed with and without new', function() {
+describe('Coordinate constructor', () => {
+  it('can be constructed with and without new', () => {
     assert.ok(new Coordinate() instanceof Coordinate);
     assert.ok(Coordinate() instanceof Coordinate);
   });
 });
 
-describe('Move constructor', function() {
-  it('can be constructed with and without new', function() {
+describe('Move constructor', () => {
+  it('can be constructed with and without new', () => {
     assert.ok(new Move() instanceof Move);
     assert.ok(Move() instanceof Move);
   });
 });
 
-describe('adjacentCoordinates', function() {
-  it('yields the correct 4 when coordinate is in center', function() {
+describe('adjacentCoordinates', () => {
+  it('yields the correct 4 when coordinate is in center', () => {
     const coordinate = Coordinate(9, 9);
     const board = Board();
 
@@ -80,7 +80,7 @@ describe('adjacentCoordinates', function() {
     );
   });
 
-  it('yields the correct 3 when coordinate is on side', function() {
+  it('yields the correct 3 when coordinate is on side', () => {
     const coordinate = Coordinate(0, 9);
     const board = Board();
 
@@ -95,7 +95,7 @@ describe('adjacentCoordinates', function() {
     );
   });
 
-  it('yields the correct 2 when coordinate is corner', function() {
+  it('yields the correct 2 when coordinate is corner', () => {
     const coordinate = Coordinate(18, 18);
     const board = Board();
 
@@ -110,7 +110,7 @@ describe('adjacentCoordinates', function() {
   });
 });
 
-describe('matchingAdjacentCoordinates', function() {
+describe('matchingAdjacentCoordinates', () => {
   const coordinate = Coordinate(9, 9);
   const board = Board(19,
     Move(Coordinate(9, 8), BLACK),
@@ -118,7 +118,7 @@ describe('matchingAdjacentCoordinates', function() {
     Move(Coordinate(8, 9), WHITE),
   );
 
-  it('yields correct matches for white', function() {
+  it('yields correct matches for white', () => {
     assert.ok(
       matchingAdjacentCoordinates(board, coordinate, WHITE).equals(
         Set.of(
@@ -129,7 +129,7 @@ describe('matchingAdjacentCoordinates', function() {
     );
   });
 
-  it('yields correct matches for black', function() {
+  it('yields correct matches for black', () => {
     assert.ok(
       matchingAdjacentCoordinates(board, coordinate, BLACK).equals(
         Set.of(
@@ -139,7 +139,7 @@ describe('matchingAdjacentCoordinates', function() {
     );
   });
 
-  it('yields correct matches for empty', function() {
+  it('yields correct matches for empty', () => {
     assert.ok(
       matchingAdjacentCoordinates(board, coordinate, EMPTY).equals(
         Set.of(
@@ -150,8 +150,8 @@ describe('matchingAdjacentCoordinates', function() {
   });
 });
 
-describe('group', function() {
-  it('finds a group of 1', function() {
+describe('group', () => {
+  it('finds a group of 1', () => {
     const coordinate = Coordinate(2, 2);
     const board = Board(5,
       Move(Coordinate(2, 2), BLACK),
@@ -166,11 +166,11 @@ describe('group', function() {
     );
   });
 
-  it('finds a group of 2', function() {
+  it('finds a group of 2', () => {
     const coordinate = Coordinate(2, 2);
     const board = Board(5,
-       Move(Coordinate(2, 2), BLACK),
-       Move(Coordinate(2, 1), BLACK),
+      Move(Coordinate(2, 2), BLACK),
+      Move(Coordinate(2, 1), BLACK),
     );
 
     assert.ok(
@@ -183,7 +183,7 @@ describe('group', function() {
     );
   });
 
-  it('finds a group of 1 with adjacent opposite color', function() {
+  it('finds a group of 1 with adjacent opposite color', () => {
     const coordinate = Coordinate(2, 2);
     const board = Board(5,
       Move(Coordinate(2, 2), BLACK),
@@ -199,7 +199,7 @@ describe('group', function() {
     );
   });
 
-  it('finds empty triangle', function() {
+  it('finds empty triangle', () => {
     const coordinate = Coordinate(2, 2);
     const board = Board(5,
       Move(Coordinate(2, 2), BLACK),
@@ -219,22 +219,22 @@ describe('group', function() {
   });
 });
 
-describe('oppositeColor', function() {
-  it('returns opposite of black', function() {
+describe('oppositeColor', () => {
+  it('returns opposite of black', () => {
     assert.equal(
       oppositeColor(BLACK),
       WHITE,
     );
   });
 
-  it('returns opposite of white', function() {
+  it('returns opposite of white', () => {
     assert.equal(
       oppositeColor(WHITE),
       BLACK,
     );
   });
 
-  it('returns empty for random strings', function() {
+  it('returns empty for random strings', () => {
     assert.equal(
       oppositeColor('derp'),
       EMPTY,
@@ -242,8 +242,8 @@ describe('oppositeColor', function() {
   });
 });
 
-describe('liberties and libertyCount', function() {
-  it('find values for 1 stone', function() {
+describe('liberties and libertyCount', () => {
+  it('find values for 1 stone', () => {
     const board = Board(5,
       Move(Coordinate(2, 2), BLACK),
     );
@@ -259,7 +259,7 @@ describe('liberties and libertyCount', function() {
     assert.equal(libertyCount(board, Coordinate(2, 2)), 4);
   });
 
-  it('find values for group of 2', function() {
+  it('find values for group of 2', () => {
     const board = Board(5,
       Move(Coordinate(2, 2), BLACK),
       Move(Coordinate(2, 1), BLACK),
@@ -278,7 +278,7 @@ describe('liberties and libertyCount', function() {
     assert.equal(libertyCount(board, Coordinate(2, 2)), 6);
   });
 
-  it('properly decrement liberty with opposite color adjacent', function() {
+  it('properly decrement liberty with opposite color adjacent', () => {
     const board = Board(5,
       Move(Coordinate(2, 2), BLACK),
       Move(Coordinate(2, 1), WHITE),
@@ -294,7 +294,7 @@ describe('liberties and libertyCount', function() {
     assert.equal(libertyCount(board, Coordinate(2, 2)), 3);
   });
 
-  it('count shared liberties in empty triangle', function() {
+  it('count shared liberties in empty triangle', () => {
     const board = Board(5,
       Move(Coordinate(2, 2), BLACK),
       Move(Coordinate(2, 1), BLACK),
@@ -316,8 +316,8 @@ describe('liberties and libertyCount', function() {
   });
 });
 
-describe('isLegalMove', function() {
-  it('identifies suicide moves as invalid', function() {
+describe('isLegalMove', () => {
+  it('identifies suicide moves as invalid', () => {
     const board = Board(3,
       Move(Coordinate(1, 0), BLACK),
       Move(Coordinate(0, 1), BLACK),
@@ -329,7 +329,7 @@ describe('isLegalMove', function() {
     assert.ok(!isLegalWhiteMove(board, Coordinate(1, 1)));
   });
 
-  it('allows filling in a ponnuki', function() {
+  it('allows filling in a ponnuki', () => {
     const board = Board(3,
       Move(Coordinate(1, 0), BLACK),
       Move(Coordinate(0, 1), BLACK),
@@ -341,7 +341,7 @@ describe('isLegalMove', function() {
     assert.ok(isLegalBlackMove(board, Coordinate(1, 1)));
   });
 
-  it('marks suicide in corner as invalid', function() {
+  it('marks suicide in corner as invalid', () => {
     const board = Board(3,
       Move(Coordinate(2, 0), BLACK),
       Move(Coordinate(2, 1), BLACK),
@@ -351,7 +351,7 @@ describe('isLegalMove', function() {
     assert.ok(!isLegalMove(board, Move(Coordinate(2, 2), WHITE)));
   });
 
-  it('marks suicide in corner that kills first as valid', function() {
+  it('marks suicide in corner that kills first as valid', () => {
     const board = Board(3,
       Move(Coordinate(2, 0), BLACK),
       Move(Coordinate(2, 1), BLACK),
@@ -364,8 +364,8 @@ describe('isLegalMove', function() {
   });
 });
 
-describe('removeStone', function() {
-  it('can remove a specified stone', function() {
+describe('removeStone', () => {
+  it('can remove a specified stone', () => {
     const board = Board(19,
       Move(Coordinate(9, 9), BLACK),
     );
@@ -378,7 +378,7 @@ describe('removeStone', function() {
     );
   });
 
-  it('does not blow up even if a coordinate is not there', function() {
+  it('does not blow up even if a coordinate is not there', () => {
     const board = Board();
 
     const updatedBoard = removeStone(board, Coordinate(9,9));
@@ -390,8 +390,8 @@ describe('removeStone', function() {
   });
 });
 
-describe('removeStones', function() {
-  it('can remove a bunch of stones', function() {
+describe('removeStones', () => {
+  it('can remove a bunch of stones', () => {
     const board = Board(19,
       Move(Coordinate(9, 9), BLACK),
       Move(Coordinate(3, 4), WHITE),
@@ -418,35 +418,39 @@ describe('removeStones', function() {
   });
 });
 
-describe('addMove', function() {
-  it('adds a Move to simple empty board', function() {
+describe('addMove', () => {
+  it('adds a Move to simple empty board', () => {
     const board = Board();
 
     assert.equal(
-      addMove(board, Move(Coordinate(9, 9), BLACK)).moves.get(Coordinate(9, 9)),
+      addMove(board, Move(Coordinate(9, 9), BLACK))
+        .moves
+        .get(Coordinate(9, 9)),
       BLACK
     );
   });
 
-  it('adds a move to simple empty board', function() {
+  it('adds a move to simple empty board', () => {
     const board = Board();
 
     assert.equal(
-      addMove(board, Move(Coordinate(9, 9), BLACK)).moves.get(Coordinate(9, 9)),
+      addMove(board, Move(Coordinate(9, 9), BLACK))
+        .moves
+        .get(Coordinate(9, 9)),
       BLACK
     );
   });
 
-  it('throws if move is illegal', function() {
-    assert.throws(function() {
+  it('throws if move is illegal', () => {
+    assert.throws(() => {
       addMove(Board(5), Move(Coordinate(9, 9), BLACK));
     });
   });
 
-  it('throws if adding same move twice', function() {
+  it('throws if adding same move twice', () => {
     const board = Board();
 
-    assert.throws(function() {
+    assert.throws(() => {
       const coordinate = Coordinate(9, 9);
 
       addMove(
@@ -456,7 +460,7 @@ describe('addMove', function() {
     });
   });
 
-  it('kills groups that run out of liberties', function() {
+  it('kills groups that run out of liberties', () => {
     const board = Board(3,
       Move(Coordinate(1, 0), WHITE),
       Move(Coordinate(1, 1), WHITE),
@@ -477,7 +481,7 @@ describe('addMove', function() {
     );
   });
 
-  it('can kill 3 stone groups', function() {
+  it('can kill 3 stone groups', () => {
     const board = Board(5,
       Move(Coordinate(0, 0), BLACK),
       Move(Coordinate(0, 1), BLACK),
@@ -506,8 +510,8 @@ describe('addMove', function() {
   });
 });
 
-describe('placeStone', function() {
-  it('can place a stone on an empty board', function() {
+describe('placeStone', () => {
+  it('can place a stone on an empty board', () => {
     const board = Board();
 
     assert.equal(
@@ -516,10 +520,10 @@ describe('placeStone', function() {
     );
   });
 
-  it('throws if placing onto a coordinate with an opposite stone color', function() {
+  it('throws if placing onto a coordinate with opposite stone color', () => {
     const board = Board();
 
-    assert.throws(function() {
+    assert.throws(() => {
       const coordinate = Coordinate(9, 9);
 
       placeStone(
@@ -530,17 +534,19 @@ describe('placeStone', function() {
     });
   });
 
-  it('can force an existing opposite color stone placement', function() {
+  it('can force an existing opposite color stone placement', () => {
     const board = Board();
     const coordinate = Coordinate(9, 9);
 
     const blackStoneBoard = placeStone(board, coordinate, BLACK);
-    const whiteStoneBoard = placeStone(blackStoneBoard, coordinate, WHITE, true);
+    const whiteStoneBoard = placeStone(
+      blackStoneBoard, coordinate, WHITE, true,
+    );
 
     assert.equal(whiteStoneBoard.moves.get(coordinate), WHITE);
   });
 
-  it('can place a stone that breaks the rules', function() {
+  it('can place a stone that breaks the rules', () => {
     const board = Board(5,
       Move(Coordinate(2, 1), BLACK),
       Move(Coordinate(2, 3), BLACK),
@@ -555,8 +561,8 @@ describe('placeStone', function() {
   });
 });
 
-describe('placeStones', function() {
-  it('can place a bunch of stones', function() {
+describe('placeStones', () => {
+  it('can place a bunch of stones', () => {
     const coordinates = Set.of(
       Coordinate(2, 1),
       Coordinate(2, 3),
@@ -578,8 +584,8 @@ describe('placeStones', function() {
   });
 });
 
-describe('toAsciiBoard', function() {
-  it('can produce a simple empty board', function() {
+describe('toAsciiBoard', () => {
+  it('can produce a simple empty board', () => {
     assert.equal(
       toAsciiBoard(Board(3)),
       '+++\n' +
@@ -588,7 +594,7 @@ describe('toAsciiBoard', function() {
     );
   });
 
-  it('can produce a board with one white move', function() {
+  it('can produce a board with one white move', () => {
     assert.equal(
       toAsciiBoard(Board(3,
         Move(Coordinate(1, 1), WHITE),
@@ -599,7 +605,7 @@ describe('toAsciiBoard', function() {
     );
   });
 
-  it('can produce a board with one black move', function() {
+  it('can produce a board with one black move', () => {
     assert.equal(
       toAsciiBoard(Board(3,
         Move(Coordinate(1, 1), BLACK),
@@ -611,8 +617,8 @@ describe('toAsciiBoard', function() {
   });
 });
 
-describe('toString', function() {
-  it('can produce a board with overrides', function() {
+describe('toString', () => {
+  it('can produce a board with overrides', () => {
     assert.equal(
       toString(
         Board(3,
@@ -628,12 +634,12 @@ describe('toString', function() {
   });
 });
 
-describe('constructBoard', function() {
-  it('can be created with a board passed', function() {
+describe('constructBoard', () => {
+  it('can be created with a board passed', () => {
     constructBoard([Coordinate(9, 9)], Board());
   });
 
-  it('can add a single stone', function() {
+  it('can add a single stone', () => {
     const board = constructBoard([
       Coordinate(9, 9)
     ]);
@@ -647,7 +653,7 @@ describe('constructBoard', function() {
     );
   });
 
-  it('can kill a stone', function() {
+  it('can kill a stone', () => {
     const stoneToKill = Coordinate(8, 9);
     const board = constructBoard([
       Coordinate(9, 9),
@@ -673,7 +679,7 @@ describe('constructBoard', function() {
     );
   });
 
-  it('can kill a stone without actual Coordinate', function() {
+  it('can kill a stone without actual Coordinate', () => {
     const stoneToKill = {x: 8, y: 9};
     const board = constructBoard([
       {x: 9, y: 9},
@@ -699,8 +705,8 @@ describe('constructBoard', function() {
     );
   });
 
-  it('throws when coordinates are not parseable', function() {
-    assert.throws(function() {
+  it('throws when coordinates are not parseable', () => {
+    assert.throws(() => {
       constructBoard([
         Coordinate(9, 9),
         Coordinate(9, 10),
@@ -711,8 +717,8 @@ describe('constructBoard', function() {
   });
 });
 
-describe('difference', function() {
-  it('can produce a simple difference', function() {
+describe('difference', () => {
+  it('can produce a simple difference', () => {
     const board1 = Board(5,
       Move(Coordinate(3, 2), BLACK),
       Move(Coordinate(4, 2), BLACK),
@@ -731,13 +737,13 @@ describe('difference', function() {
     );
   });
 
-  it('throws when board sizes are different', function() {
-    assert.throws(function() {
+  it('throws when board sizes are different', () => {
+    assert.throws(() => {
       difference(Board(5), Board(10));
     });
   });
 
-  it('returns empty set when both boards are equal', function() {
+  it('returns empty set when both boards are equal', () => {
     const board1 = Board(5,
       Move(Coordinate(2, 2), BLACK),
     );
@@ -751,7 +757,7 @@ describe('difference', function() {
     );
   });
 
-  it('successfully finds the captured stone', function() {
+  it('successfully finds the captured stone', () => {
     const atari = Board(3,
       Move(Coordinate(1, 0), BLACK),
       Move(Coordinate(0, 1), BLACK),
@@ -771,8 +777,8 @@ describe('difference', function() {
   });
 });
 
-describe('followupKo', function() {
-  it('can detect ko with Move parameter', function() {
+describe('followupKo', () => {
+  it('can detect ko with Move parameter', () => {
     const koPosition = Board(4,
       Move(Coordinate(1, 0), BLACK),
       Move(Coordinate(0, 1), BLACK),
@@ -791,7 +797,7 @@ describe('followupKo', function() {
     );
   });
 
-  it('can detect ko', function() {
+  it('can detect ko', () => {
     const koPosition = Board(4,
       Move(Coordinate(1, 0), BLACK),
       Move(Coordinate(0, 1), BLACK),
@@ -810,19 +816,19 @@ describe('followupKo', function() {
     );
   });
 
-  it('returns null when the move is purely additive', function() {
+  it('returns null when the move is purely additive', () => {
     assert.ok(
       followupKo(Board(3), Move(Coordinate(1, 1), BLACK)) === null
     );
   });
 
-  it('returns null when the move is out of bounds', function() {
+  it('returns null when the move is out of bounds', () => {
     assert.ok(
       followupKo(Board(3), Move(Coordinate(10, 10), BLACK)) === null
     );
   });
 
-  it('returns null when snapback happens', function() {
+  it('returns null when snapback happens', () => {
     // x++++
     // ox+++
     // ox+++
@@ -854,7 +860,7 @@ describe('followupKo', function() {
     );
   });
 
-  it('returns null when move gets snapped back', function() {
+  it('returns null when move gets snapped back', () => {
     // ox+++
     // +o+++
     // xo+++
@@ -885,7 +891,7 @@ describe('followupKo', function() {
     );
   });
 
-  it('returns null recapture move is illegal', function() {
+  it('returns null recapture move is illegal', () => {
     // x++++
     // ox+++
     // +++++
@@ -914,26 +920,26 @@ describe('followupKo', function() {
   });
 });
 
-describe('Move', function() {
-  it('can be instantiated', function() {
+describe('Move', () => {
+  it('can be instantiated', () => {
     Move(Coordinate(), BLACK);
   });
 });
 
-describe('handicapBoard', function() {
-  it('disallows non 9, 13, 19 board sizes', function() {
-    assert.throws(function() {
+describe('handicapBoard', () => {
+  it('disallows non 9, 13, 19 board sizes', () => {
+    assert.throws(() => {
       handicapBoard(10, 5);
     });
   });
 
-  it('disallows very high handicaps', function() {
-    assert.throws(function() {
+  it('disallows very high handicaps', () => {
+    assert.throws(() => {
       handicapBoard(9, 15);
     });
   });
 
-  it('can create various handicap boards', function() {
+  it('can create various handicap boards', () => {
     const oneToNine = Array(9).fill(0).map((_, i) => i + 1);
     for (const size of [9, 13, 19]) {
       for (const handicaps of oneToNine) {
