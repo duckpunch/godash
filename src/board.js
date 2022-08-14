@@ -313,7 +313,7 @@ export function followupKo(board, move) {
 
   if (isLegalMove(postMoveBoard, Move(capturedCoordinate, capturedColor))) {
     if (board.equals(
-        addMove(postMoveBoard, Move(capturedCoordinate, capturedColor))
+      addMove(postMoveBoard, Move(capturedCoordinate, capturedColor))
     )) {
       return capturedCoordinate;
     }

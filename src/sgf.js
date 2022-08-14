@@ -32,7 +32,9 @@ export const END = ')';
  * @return {string} 2-character string representing an [SGF Point][sgf-point]
  */
 export function coordinateToSgfPoint(coordinate) {
-  return String.fromCharCode(97 + coordinate.x) + String.fromCharCode(97 + coordinate.y);
+  return String.fromCharCode(97 + coordinate.x) + String.fromCharCode(
+    97 + coordinate.y,
+  );
 }
 
 /**
@@ -44,7 +46,8 @@ export function coordinateToSgfPoint(coordinate) {
  * sgfPointToCoordinate('hi').toString();
  * // => Coordinate { "x": 7, "y": 8 }
  *
- * @param {string} sgfPoint - 2-character string representing an [SGF Point][sgf-point]
+ * @param {string} sgfPoint - 2-character string representing an [SGF
+ * Point][sgf-point]
  * @return {Coordinate} Corresponding [`Coordinate`](#coordinate).
  */
 export function sgfPointToCoordinate(sgfPoint) {
