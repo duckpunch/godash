@@ -101,10 +101,19 @@ class _Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
     });
   }
 
-  toMap() {
+  toMap(overrides = null) {
+    const defaultMap = {
+      [BLACK]: BLACK,
+      [WHITE]: WHITE,
+      [EMPTY]: EMPTY,
+    };
+    const stoneMap = overrides || defaultMap;
     return Array(this.dimensions).fill(EMPTY).map(
       (_, row) => Array(this.dimensions).fill(EMPTY).map(
-        (_, col) => this.moves.get(Coordinate(col, row), EMPTY)
+        (_, col) => {
+          const color = this.moves.get(Coordinate(col, row), EMPTY);
+          return stoneMap[color] || defaultMap[color];
+        }
       )
     );
   }

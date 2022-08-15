@@ -73,6 +73,23 @@ describe('Board toMap', () => {
       ]
     );
   });
+
+  it('can generate from a board with stone overrides', () => {
+    assert.deepEqual(
+      Board(
+        5,
+        Move(Coordinate(2, 2), BLACK),
+        Move(Coordinate(1, 2), WHITE),
+      ).toMap({[BLACK]: 1, [WHITE]: -1}),
+      [
+        [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+        [EMPTY, -1, 1, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+      ]
+    );
+  });
 });
 
 describe('Coordinate constructor', () => {
