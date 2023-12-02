@@ -64,3 +64,7 @@ export declare function toAsciiBoard(board: Board): string;
 export declare function constructBoard(coordinates: Coordinate[], board?: Board, startColor?: Color): Board;
 
 export declare function handicapBoard(size: number, handicap: number): Board;
+
+export declare function toA1Coordinate(coordinate: Coordinate): string;
+
+export declare function fromA1Coordinate(raw: string): Coordinate;

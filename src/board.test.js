@@ -12,10 +12,11 @@ import {
   constructBoard,
   difference,
   followupKo,
+  fromA1Coordinate,
   group,
   handicapBoard,
-  isLegalMove,
   isLegalBlackMove,
+  isLegalMove,
   isLegalWhiteMove,
   liberties,
   libertyCount,
@@ -25,6 +26,7 @@ import {
   placeStones,
   removeStone,
   removeStones,
+  toA1Coordinate,
   toAsciiBoard,
   toString,
 } from './board';
@@ -674,6 +676,71 @@ describe('toString', () => {
       '+QX\n' +
       '+++\n'
     );
+  });
+});
+
+describe('toA1Coordinate', () => {
+  it('maps coordinates appropriately', () => {
+    assert.deepEqual(
+      [
+        [0, 0],
+        [1, 1],
+        [2, 2],
+        [3, 3],
+        [8, 5],
+      ].map(coord => toA1Coordinate(Coordinate(...coord))),
+      [ 'A1', 'B2', 'C3', 'D4', 'J6' ],
+    );
+  });
+
+  it('throws with out of range coordinates', () => {
+    assert.throws(() => {
+      toA1Coordinate(Coordinate(20, 26));
+    });
+    assert.throws(() => {
+      toA1Coordinate(Coordinate(26, 20));
+    });
+    assert.throws(() => {
+      toA1Coordinate(Coordinate(-1, 0));
+    });
+    assert.throws(() => {
+      toA1Coordinate(Coordinate(0, -1));
+    });
+  });
+});
+
+describe('fromA1Coordinate', () => {
+  it('maps coordinates appropriately', () => {
+    assert.deepEqual(
+      [
+        'A1', 'B2', 'C3', 'D4', 'J6'
+      ].map(fromA1Coordinate),
+      [
+        [0, 0],
+        [1, 1],
+        [2, 2],
+        [3, 3],
+        [8, 5],
+      ].map(coord => Coordinate(...coord)),
+    );
+  });
+
+  it('throws with out of range coordinates', () => {
+    assert.throws(() => {
+      fromA1Coordinate('AA1');
+    });
+    assert.throws(() => {
+      fromA1Coordinate('gibberish');
+    });
+    assert.throws(() => {
+      fromA1Coordinate('12');
+    });
+    assert.throws(() => {
+      fromA1Coordinate('A');
+    });
+    assert.throws(() => {
+      fromA1Coordinate('A99');
+    });
   });
 });
 

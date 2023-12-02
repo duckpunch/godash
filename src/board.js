@@ -790,6 +790,64 @@ export function toString(board, overrides = null) {
   return prettyString;
 }
 
+const A1_PREFIXES = [
+  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+  'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+];
+
+/**
+ * Construct an A1-style coordinate string from a Coordinate.
+ *
+ * An [A1-style coordinate][a1-style] is given in the form A1 to T19 with I
+ * omitted to avoid confusion with J.
+ *
+ * This function accepts coordinates in the range 0-24, mapping from A-Z.
+ *
+ * [a1-style]: https://senseis.xmp.net/?Coordinates#toc2
+ *
+ * @param {Coordinate} coordinate - Coordinate to convert.
+ * @return {string} String A1-style coordinate.
+ */
+export function toA1Coordinate(coordinate) {
+  if (
+    coordinate.x < 0
+    || coordinate.x > 24
+    || coordinate.y < 0
+    || coordinate.y > 24
+  ) {
+    throw new Error('Coordinates must be in [0-24] range');
+  }
+  return A1_PREFIXES[coordinate.x] + (coordinate.y + 1);
+}
+
+/**
+ * Construct a Coordinate from an A1-style coordinate string.
+ *
+ * An [A1-style coordinate][a1-style] is given in the form A1 to T19 with I
+ * omitted to avoid confusion with J.
+ *
+ * This function accepts raw coordinates from A-Z.
+ *
+ * [a1-style]: https://senseis.xmp.net/?Coordinates#toc2
+ *
+ * @param {string} raw - A1-style coordinate to convert.
+ * @return {Coordinate} Coordinate representation of A1-style input.
+ */
+export function fromA1Coordinate(raw) {
+  if (raw.length >= 2) {
+    const xValue = A1_PREFIXES.indexOf(raw.charAt(0));
+    const y = raw.slice(1);
+    const validY = /^\d{1,2}$/;
+    if (validY.test(y) && xValue >= 0) {
+      const yValue = parseInt(y);
+      if (yValue > 0 && yValue <= 25) {
+        return Coordinate(xValue, yValue - 1);
+      }
+    }
+  }
+  throw new Error('Invalid A1 coordinate');
+}
+
 /**
  * Constructs a board for an array of coordinates.  This function iteratively
  * calls `addMove` while alternating colors.
@@ -957,6 +1015,7 @@ export default {
   constructBoard,
   difference,
   followupKo,
+  fromA1Coordinate,
   group,
   handicapBoard,
   isLegalMove,
@@ -967,6 +1026,7 @@ export default {
   placeStones,
   removeStone,
   removeStones,
+  toA1Coordinate,
   toAsciiBoard,
   toString,
 };

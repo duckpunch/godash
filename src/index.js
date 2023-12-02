@@ -29,6 +29,8 @@ export const sgfPointToCoordinate = sgf.sgfPointToCoordinate;
 export const sgfToJS = sgf.sgfToJS;
 export const toAsciiBoard = board.toAsciiBoard;
 export const toString = board.toString;
+export const toA1Coordinate = board.toA1Coordinate;
+export const fromA1Coordinate = board.fromA1Coordinate;
 
 export default {
   BLACK,
@@ -45,6 +47,7 @@ export default {
   coordinateToSgfPoint,
   difference,
   followupKo,
+  fromA1Coordinate,
   group,
   handicapBoard,
   isLegalMove,
@@ -57,6 +60,7 @@ export default {
   removeStones,
   sgfPointToCoordinate,
   sgfToJS,
+  toA1Coordinate,
   toAsciiBoard,
   toString,
 };
