@@ -262,6 +262,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#move" class="md-nav__link">
+    Move
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -359,6 +366,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#froma1coordinate" class="md-nav__link">
+    fromA1Coordinate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#group" class="md-nav__link">
     group
   </a>
@@ -443,8 +457,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#toa1coordinate" class="md-nav__link">
+    toA1Coordinate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#toasciiboard" class="md-nav__link">
     toAsciiBoard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tostring" class="md-nav__link">
+    toString
   </a>
   
 </li>
@@ -515,7 +543,7 @@
                 <h1 id="api-documentation">API Documentation<a class="headerlink" href="#api-documentation" title="Permanent link">&para;</a></h1>
 <h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
 <h3 id="board">Board<a class="headerlink" href="#board" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">new</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">Board</span><span class="p">(</span><span class="nx">dimensions</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span> <span class="p">...</span><span class="nx">moves</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">Board</span><span class="p">(</span><span class="nx">dimensions</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span> <span class="p">...</span><span class="nx">moves</span><span class="p">)</span>
 </code></pre></div>
 <p>Representation of a board position.</p>
 <p>Extends <a href="https://immutable-js.github.io/immutable-js/docs/#/Record"><code>Immutable.Record</code></a>.</p>
@@ -523,9 +551,7 @@
 <p class="admonition-title">Constructor Arguments</p>
 <ul>
 <li><code>dimensions</code> <code>(number)</code> - Size of the board, defaulted to 19.</li>
-<li><code>...moves</code> <code>(Coordinate, string)</code> - Moves to be placed on the board.
-There should be an even number of arguments in pairs - <code>Coordinate</code> and
-color constant.</li>
+<li><code>...moves</code> <code>(Move)</code> - Moves to be placed on the board.</li>
 </ul>
 </div>
 <div class="admonition tldr">
@@ -537,19 +563,24 @@ color constant.</li>
 <a href="#white"><code>WHITE</code></a> values.</li>
 </ul>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">();</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">();</span>
 
 <span class="nx">board</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 <span class="c1">// =&gt; Board { &quot;dimensions&quot;: 19, &quot;moves&quot;: Map {} }</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">smallBoard</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">smallBoard</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">));</span>
+
+<span class="nx">smallBoard</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="c1">// =&gt; Board { &quot;dimensions&quot;: 5, &quot;moves&quot;: Map { {&quot;x&quot;:2,&quot;y&quot;:2}: &quot;black&quot; } }</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">smallBoard</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">));</span>
 
 <span class="nx">smallBoard</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 <span class="c1">// =&gt; Board { &quot;dimensions&quot;: 5, &quot;moves&quot;: Map { {&quot;x&quot;:2,&quot;y&quot;:2}: &quot;black&quot; } }</span>
 </code></pre></div>
 </details>
 <h3 id="coordinate">Coordinate<a class="headerlink" href="#coordinate" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">new</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">Coordinate</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">Coordinate</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span>
 </code></pre></div>
 <p>A zero-based tuple representing a single location on a Go board.</p>
 <p>Extends <a href="https://immutable-js.github.io/immutable-js/docs/#/Record"><code>Immutable.Record</code></a>.</p>
@@ -567,13 +598,38 @@ color constant.</li>
 <li><code>y</code> <code>(number)</code> - Location on the Y-axis.</li>
 </ul>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">tengen</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">tengen</span> <span class="o">=</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
 
 <span class="nx">tengen</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 <span class="c1">// =&gt; Coordinate { &quot;x&quot;: 9, &quot;y&quot;: 9 }</span>
 
 <span class="nx">tengen</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
 <span class="c1">// =&gt; 9</span>
+</code></pre></div>
+</details>
+<h3 id="move">Move<a class="headerlink" href="#move" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">Move</span><span class="p">(</span><span class="nx">coordinate</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span>
+</code></pre></div>
+<p>Representation of a move, composed of a <a href="#coordinate"><code>Coordinate</code></a> and a
+color.</p>
+<p>Extends <a href="https://immutable-js.github.io/immutable-js/docs/#/Record"><code>Immutable.Record</code></a>.</p>
+<div class="admonition tldr">
+<p class="admonition-title">Constructor Arguments</p>
+<ul>
+<li><code>coordinate</code> (<a href="#coordinate"><code>Coordinate</code></a>) - Location of the move.</li>
+<li><code>color</code> <code>(string)</code> - <a href="#black"><code>BLACK</code></a>, <a href="#white"><code>WHITE</code></a>, or
+<a href="#empty"><code>EMPTY</code></a>.</li>
+</ul>
+</div>
+<div class="admonition tldr">
+<p class="admonition-title">Properties</p>
+<ul>
+<li><code>coordinate</code> (<a href="#coordinate"><code>Coordinate</code></a>) - Location of the move.</li>
+<li><code>color</code> <code>(string)</code> - <a href="#black"><code>BLACK</code></a>, <a href="#white"><code>WHITE</code></a>, or
+<a href="#empty"><code>EMPTY</code></a>.</li>
+</ul>
+</div>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">tengen</span> <span class="o">=</span> <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">);</span>
 </code></pre></div>
 </details>
 <h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
@@ -603,7 +659,7 @@ color constant.</li>
 <p>The color white.</p>
 <h2 id="board-utilities">Board utilities<a class="headerlink" href="#board-utilities" title="Permanent link">&para;</a></h2>
 <h3 id="addmove">addMove<a class="headerlink" href="#addmove" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">addMove</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinates</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">addMove</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">move</span><span class="p">)</span>
 </code></pre></div>
 <p>Function to add a move onto a board while respecting the rules.  Since no
 sequence information is available, this function does not respect
@@ -616,10 +672,7 @@ things.</p>
 <p><code>board</code> <code>(Board)</code> - Board from which to add the move.</p>
 </li>
 <li>
-<p><code>coordinates</code> <code>(Coordinate)</code> - Location to add the move.</p>
-</li>
-<li>
-<p><code>color</code> <code>(string)</code> - Color of the move.</p>
+<p><code>move</code> <code>(Move)</code> - Move or location of the move.</p>
 </li>
 </ul>
 </div>
@@ -627,11 +680,11 @@ things.</p>
 <p class="admonition-title">Returns</p>
 <p><code>Board</code> - New board with the move played.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">atari</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">atari</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">atari</span><span class="p">);</span>
@@ -641,8 +694,7 @@ things.</p>
 
 <span class="kd">var</span> <span class="nx">killed</span> <span class="o">=</span> <span class="nx">addMove</span><span class="p">(</span>
     <span class="nx">atari</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="nx">BLACK</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">)</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">killed</span><span class="p">);</span>
@@ -675,10 +727,10 @@ calls <code>addMove</code> while alternating colors.</p>
 <p class="admonition-title">Returns</p>
 <p><code>Board</code> - New board constructed from the coordinates.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">tigersMouth</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">tigersMouth</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">tigersMouth</span><span class="p">);</span>
@@ -686,8 +738,8 @@ calls <code>addMove</code> while alternating colors.</p>
 <span class="c1">//    O+O</span>
 <span class="c1">//    +++</span>
 
-<span class="kd">var</span> <span class="nx">selfAtari</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">killingMove</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">selfAtari</span> <span class="o">=</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">killingMove</span> <span class="o">=</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">ponnuki</span> <span class="o">=</span> <span class="nx">constructBoard</span><span class="p">(</span>
     <span class="p">[</span><span class="nx">selfAtari</span><span class="p">,</span> <span class="nx">killingMove</span><span class="p">],</span>
@@ -722,11 +774,11 @@ calls <code>addMove</code> while alternating colors.</p>
 <p><code>Set</code> - Set containing pairs of <code>Coordinate</code> and color remaining in
 the difference.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">atari</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">atari</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">atari</span><span class="p">);</span>
@@ -734,7 +786,9 @@ the difference.</p>
 <span class="c1">//    OXO</span>
 <span class="c1">//    +++</span>
 
-<span class="kd">var</span> <span class="nx">captured</span> <span class="o">=</span> <span class="nx">difference</span><span class="p">(</span><span class="nx">atari</span><span class="p">,</span> <span class="nx">addMove</span><span class="p">(</span><span class="nx">atari</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">));</span>
+<span class="kd">var</span> <span class="nx">captured</span> <span class="o">=</span> <span class="nx">difference</span><span class="p">(</span>
+    <span class="nx">atari</span><span class="p">,</span> <span class="nx">addMove</span><span class="p">(</span><span class="nx">atari</span><span class="p">,</span> <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">))</span>
+<span class="p">);</span>
 
 <span class="nx">captured</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 <span class="c1">// &#39;Set { List [ Coordinate { &quot;x&quot;: 1, &quot;y&quot;: 1 }, &quot;white&quot; ] }&#39;</span>
@@ -742,7 +796,7 @@ the difference.</p>
 </details>
 <hr />
 <h3 id="followupko">followupKo<a class="headerlink" href="#followupko" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">followupKo</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">followupKo</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">move</span><span class="p">)</span>
 </code></pre></div>
 <p>Determines move that would be illegal under the <a href="https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko">ko
 rule</a></p>
@@ -753,10 +807,7 @@ rule</a></p>
 <p><code>board</code> <code>(Board)</code> - Starting board.</p>
 </li>
 <li>
-<p><code>coordinate</code> <code>(Coordinate)</code> - Intended placement of stone.</p>
-</li>
-<li>
-<p><code>color</code> <code>(string)</code> - Stone color.</p>
+<p><code>move</code> <code>(Move)</code> - Intended <code>Move</code>.</p>
 </li>
 </ul>
 </div>
@@ -765,14 +816,14 @@ rule</a></p>
 <p><code>Coordinate</code> - Position of illegal followup or <code>null</code> if
 none exists.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kr">const</span> <span class="nx">koPosition</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kr">const</span> <span class="nx">koPosition</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">koPosition</span><span class="p">);</span>
@@ -781,12 +832,31 @@ none exists.</p>
 <span class="c1">//    X+X+</span>
 <span class="c1">//    +X++</span>
 
-<span class="kr">const</span> <span class="nx">koStart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">koStart</span> <span class="o">=</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
 <span class="nx">followupKo</span><span class="p">(</span><span class="nx">koPosition</span><span class="p">,</span> <span class="nx">koStart</span><span class="p">,</span> <span class="nx">BLACK</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
 <span class="c1">// =&gt; &#39;Coordinate { &quot;x&quot;: 1, &quot;y&quot;: 1 }&#39;</span>
 </code></pre></div>
 </details>
+<hr />
+<h3 id="froma1coordinate">fromA1Coordinate<a class="headerlink" href="#froma1coordinate" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">fromA1Coordinate</span><span class="p">(</span><span class="nx">raw</span><span class="p">)</span>
+</code></pre></div>
+<p>Construct a Coordinate from an A1-style coordinate string.</p>
+<p>An <a href="https://senseis.xmp.net/?Coordinates#toc2">A1-style coordinate</a> is given in the form A1 to T19 with I
+omitted to avoid confusion with J.</p>
+<p>This function accepts raw coordinates from A-Z.</p>
+<div class="admonition tldr">
+<p class="admonition-title">Arguments</p>
+<ul>
+<li><code>raw</code> <code>(string)</code> - A1-style coordinate to convert.</li>
+</ul>
+</div>
+<div class="admonition tldr">
+<p class="admonition-title">Returns</p>
+<p><code>Coordinate</code> - Coordinate representation of A1-style input.</p>
+</div>
+<details class="example"><summary>Examples</summary></details>
 <hr />
 <h3 id="group">group<a class="headerlink" href="#group" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">group</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">)</span>
@@ -808,12 +878,12 @@ the given location.</p>
 <p class="admonition-title">Returns</p>
 <p><code>Set</code> - Containing <code>Coordinate</code> for the members of the group.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
@@ -821,7 +891,7 @@ the given location.</p>
 <span class="c1">//    X+O</span>
 <span class="c1">//    +OO</span>
 
-<span class="nx">group</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)).</span><span class="nx">toString</span><span class="p">();</span>
+<span class="nx">group</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)).</span><span class="nx">toString</span><span class="p">();</span>
 <span class="c1">// =&gt; Set {</span>
 <span class="c1">//      Coordinate { &quot;x&quot;: 2, &quot;y&quot;: 1 },</span>
 <span class="c1">//      Coordinate { &quot;x&quot;: 2, &quot;y&quot;: 2 },</span>
@@ -833,7 +903,7 @@ the given location.</p>
 <h3 id="handicapboard">handicapBoard<a class="headerlink" href="#handicapboard" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">handicapBoard</span><span class="p">(</span><span class="nx">size</span><span class="p">,</span> <span class="nx">handicap</span><span class="p">)</span>
 </code></pre></div>
-<p>Creates a new <code>Board</code> with the correct number of handicap stones placed.
+<p>Creates a <code>Board</code> with the correct number of handicap stones placed.
 Only standard board sizes (9, 13, 19) are allowed.</p>
 <div class="admonition tldr">
 <p class="admonition-title">Arguments</p>
@@ -887,7 +957,7 @@ Only standard board sizes (9, 13, 19) are allowed.</p>
 <details class="example"><summary>Examples</summary></details>
 <hr />
 <h3 id="islegalmove">isLegalMove<a class="headerlink" href="#islegalmove" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">coordinate</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">move</span><span class="p">)</span>
 </code></pre></div>
 <p>Determine whether the coordinate-color combination provided is a legal move
 for the board.  <a href="https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko">Ko</a> is not considered.  Use <code>followupKo</code> if you
@@ -899,10 +969,7 @@ want to do <a href="https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko">ko
 <p><code>board</code> <code>(Board)</code> - Board to inspect.</p>
 </li>
 <li>
-<p><code>coordinate</code> <code>(Coordinate)</code> - Location to check.</p>
-</li>
-<li>
-<p><code>color</code> <code>(string)</code> - Color to check - <code>BLACK</code> or <code>WHITE</code>.</p>
+<p><code>move</code> <code>(Move)</code> - Move to check.</p>
 </li>
 </ul>
 </div>
@@ -910,11 +977,11 @@ want to do <a href="https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko">ko
 <p class="admonition-title">Returns</p>
 <p><code>boolean</code> - Whether the move is legal.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">ponnuki</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">ponnuki</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">);</span>
@@ -922,10 +989,10 @@ want to do <a href="https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko">ko
 <span class="c1">//    O+O</span>
 <span class="c1">//    +O+</span>
 
-<span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">)</span>
+<span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">))</span>
 <span class="c1">// =&gt; true</span>
 
-<span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">)</span>
+<span class="nx">isLegalMove</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">))</span>
 <span class="c1">// =&gt; false</span>
 </code></pre></div>
 </details>
@@ -972,14 +1039,14 @@ is part of a group, the set of liberties are the liberties for that group.</p>
 <p><code>Set</code> - Containing <code>Coordinate</code> members for the liberties of the
 passed coordinate.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">collectedLiberties</span> <span class="o">=</span> <span class="nx">liberties</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">));</span>
+<span class="kd">var</span> <span class="nx">collectedLiberties</span> <span class="o">=</span> <span class="nx">liberties</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
 
 <span class="nx">Immutable</span><span class="p">.</span><span class="nx">Set</span><span class="p">.</span><span class="k">of</span><span class="p">(</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="p">).</span><span class="nx">equals</span><span class="p">(</span><span class="nx">collectedLiberties</span><span class="p">);</span>
 <span class="c1">// =&gt; true</span>
 </code></pre></div>
@@ -1005,9 +1072,9 @@ a group, liberties for the entire group is counted.</p>
 <p class="admonition-title">Returns</p>
 <p><code>number</code> - Count of liberties for the coordinate on the board.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">);</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">);</span>
 
-<span class="nx">libertyCount</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">===</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nx">libertyCount</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">===</span> <span class="mi">4</span><span class="p">;</span>
 <span class="c1">// =&gt; true</span>
 </code></pre></div>
 </details>
@@ -1059,11 +1126,11 @@ a group, liberties for the entire group is counted.</p>
 <p class="admonition-title">Returns</p>
 <p><code>Board</code> - New board with the move placed.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">ponnuki</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">ponnuki</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">);</span>
@@ -1072,7 +1139,7 @@ a group, liberties for the entire group is counted.</p>
 <span class="c1">//    +O+</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span>
-    <span class="nx">placeStone</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">)</span>
+    <span class="nx">placeStone</span><span class="p">(</span><span class="nx">ponnuki</span><span class="p">,</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">)</span>
 <span class="p">);</span>
 <span class="c1">// =&gt; +O+</span>
 <span class="c1">//    OXO</span>
@@ -1105,7 +1172,7 @@ a group, liberties for the entire group is counted.</p>
 <p class="admonition-title">Returns</p>
 <p><code>Board</code> - New board with the moves placed.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">);</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
 <span class="c1">// =&gt; +++</span>
@@ -1114,10 +1181,10 @@ a group, liberties for the entire group is counted.</p>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span>
     <span class="nx">placeStones</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="p">[</span>
-        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="p">],</span> <span class="nx">BLACK</span><span class="p">)</span>
 <span class="p">);</span>
 <span class="c1">// =&gt; +O+</span>
@@ -1145,7 +1212,7 @@ a group, liberties for the entire group is counted.</p>
 <p class="admonition-title">Returns</p>
 <p><code>Board</code> - New board with the stone removed.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">);</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">));</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
 <span class="c1">// =&gt; +++</span>
@@ -1153,7 +1220,7 @@ a group, liberties for the entire group is counted.</p>
 <span class="c1">//    +++</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span>
-    <span class="nx">removeStone</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="nx">removeStone</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="p">);</span>
 <span class="c1">// =&gt; +++</span>
 <span class="c1">//    +++</span>
@@ -1180,10 +1247,10 @@ a group, liberties for the entire group is counted.</p>
 <p class="admonition-title">Returns</p>
 <p><code>Board</code> - New board with the stones removed.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span><span class="p">),</span>
+    <span class="nx">Move</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">),</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
@@ -1193,8 +1260,8 @@ a group, liberties for the entire group is counted.</p>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span>
     <span class="nx">removeStones</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="p">[</span>
-        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-        <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="p">])</span>
 <span class="p">);</span>
 <span class="c1">// =&gt; +++</span>
@@ -1202,6 +1269,25 @@ a group, liberties for the entire group is counted.</p>
 <span class="c1">//    +++</span>
 </code></pre></div>
 </details>
+<hr />
+<h3 id="toa1coordinate">toA1Coordinate<a class="headerlink" href="#toa1coordinate" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">toA1Coordinate</span><span class="p">(</span><span class="nx">coordinate</span><span class="p">)</span>
+</code></pre></div>
+<p>Construct an A1-style coordinate string from a Coordinate.</p>
+<p>An <a href="https://senseis.xmp.net/?Coordinates#toc2">A1-style coordinate</a> is given in the form A1 to T19 with I
+omitted to avoid confusion with J.</p>
+<p>This function accepts coordinates in the range 0-24, mapping from A-Z.</p>
+<div class="admonition tldr">
+<p class="admonition-title">Arguments</p>
+<ul>
+<li><code>coordinate</code> <code>(Coordinate)</code> - Coordinate to convert.</li>
+</ul>
+</div>
+<div class="admonition tldr">
+<p class="admonition-title">Returns</p>
+<p><code>string</code> - String A1-style coordinate.</p>
+</div>
+<details class="example"><summary>Examples</summary></details>
 <hr />
 <h3 id="toasciiboard">toAsciiBoard<a class="headerlink" href="#toasciiboard" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">)</span>
@@ -1217,16 +1303,50 @@ a group, liberties for the entire group is counted.</p>
 <p class="admonition-title">Returns</p>
 <p><code>string</code> - ASCII representation of the board.</p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
-    <span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span>
 <span class="p">);</span>
 
 <span class="nx">toAsciiBoard</span><span class="p">(</span><span class="nx">board</span><span class="p">);</span>
 <span class="c1">// =&gt; +O+</span>
 <span class="c1">//    OXO</span>
+<span class="c1">//    +++</span>
+</code></pre></div>
+</details>
+<hr />
+<h3 id="tostring">toString<a class="headerlink" href="#tostring" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nx">godash</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="nx">overrides</span><span class="p">)</span>
+</code></pre></div>
+<p>Constructs a string representation of the board.</p>
+<div class="admonition tldr">
+<p class="admonition-title">Arguments</p>
+<ul>
+<li>
+<p><code>board</code> <code>(Board)</code> - Board to represent.</p>
+</li>
+<li>
+<p><code>overrides</code> <code>(Object)</code> - Overrides print characters, indexed by color
+constants.</p>
+</li>
+</ul>
+</div>
+<div class="admonition tldr">
+<p class="admonition-title">Returns</p>
+<p><code>string</code> - String representation of the board.</p>
+</div>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">Board</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">BLACK</span><span class="p">,</span>
+    <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">WHITE</span>
+<span class="p">);</span>
+
+<span class="nx">toString</span><span class="p">(</span><span class="nx">board</span><span class="p">,</span> <span class="p">{[</span><span class="nx">BLACK</span><span class="p">]</span><span class="o">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">WHITE</span><span class="p">]</span><span class="o">:</span> <span class="err">&#39;</span><span class="nx">W</span><span class="err">&quot;</span><span class="p">});</span>
+<span class="c1">// =&gt; +B+</span>
+<span class="c1">//    BWB</span>
 <span class="c1">//    +++</span>
 </code></pre></div>
 </details>
@@ -1247,7 +1367,7 @@ form of a Javascript <code>String</code>.</p>
 <p class="admonition-title">Returns</p>
 <p><code>string</code> - 2-character string representing an <a href="http://www.red-bean.com/sgf/go.html">SGF Point</a></p>
 </div>
-<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="nx">coordinateToSgfPoint</span><span class="p">(</span><span class="k">new</span> <span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<details class="example"><summary>Examples</summary><div class="highlight"><pre><span></span><code><span class="nx">coordinateToSgfPoint</span><span class="p">(</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 <span class="c1">// =&gt; &quot;aa&quot;</span>
 </code></pre></div>
 </details>
@@ -1259,7 +1379,8 @@ form of a Javascript <code>String</code>.</p>
 <div class="admonition tldr">
 <p class="admonition-title">Arguments</p>
 <ul>
-<li><code>sgfPoint</code> <code>(string)</code> - 2-character string representing an <a href="http://www.red-bean.com/sgf/go.html">SGF Point</a></li>
+<li><code>sgfPoint</code> <code>(string)</code> - 2-character string representing an <a href="http://www.red-bean.com/sgf/go.html">SGF
+Point</a></li>
 </ul>
 </div>
 <div class="admonition tldr">

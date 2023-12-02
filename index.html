@@ -238,8 +238,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#roadmap" class="md-nav__link">
-    Roadmap
+  <a href="#breaking-changes-from-version-1-to-2" class="md-nav__link">
+    Breaking changes from version 1 to 2
   </a>
   
 </li>
@@ -293,7 +293,7 @@
                 <p><a href="https://www.npmjs.com/package/godash"><img alt="npm" src="https://img.shields.io/npm/v/godash.svg" /></a>
 <a href="https://travis-ci.org/duckpunch/godash"><img alt="Build Status" src="https://travis-ci.org/duckpunch/godash.svg" /></a></p>
 <p>Data structures and utilities to represent the <a href="https://en.wikipedia.org/wiki/Go_%28game%29">game of Go</a>.</p>
-<p>This library depends on <a href="http://facebook.github.io/immutable-js/">Immutable.js</a> and <a href="https://lodash.com/">lodash</a>.</p>
+<p>This library depends on <a href="https://immutable-js.com/">Immutable.js</a> and <a href="https://lodash.com/">lodash</a>.</p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>Install <code>godash</code> via <a href="https://www.npmjs.com/package/godash">npm</a>.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">npm install godash</span>
@@ -301,8 +301,8 @@
 
 <p><code>require</code> and use it in your modules.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">godash</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;godash&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">Board</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">tengen</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span> <span class="c1">// 0-based</span>
+<span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">Board</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">tengen</span> <span class="o">=</span> <span class="nx">godash</span><span class="p">.</span><span class="nx">Coordinate</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span> <span class="c1">// 0-based</span>
 
 <span class="nx">board</span><span class="p">.</span><span class="nx">moves</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">tengen</span><span class="p">);</span> <span class="c1">// false</span>
 
@@ -318,12 +318,12 @@
 beyond a simple SGF player.  You can create whatever UI you want without having
 to reinvent the wheel every time.</p>
 <p>Check out the <a href="https://duckpunch.github.io/godash/api/">documentation</a> to see what Godash provides.</p>
-<h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
-<p>Godash doesn't currently do very much parameter checking.  It'd probably be
-nice to add that.</p>
-<p>There also isn't much support for writing SGFs.  This, too, might be added in
-the future.  Further, reading SGFs is a bit brittle at the moment since the
-full SGF spec is not implemented.</p>
+<h2 id="breaking-changes-from-version-1-to-2">Breaking changes from version 1 to 2<a class="headerlink" href="#breaking-changes-from-version-1-to-2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Due to upgrading to <code>immutable@4</code>, <code>Board</code> and <code>Coordinate</code> are <a href="https://github.com/immutable-js/immutable-js/releases/tag/v4.0.0">no longer
+  subclasses of <code>Seq</code></a>.</li>
+<li><code>Board</code> constructor changed to take <code>Move</code>.</li>
+</ul>
 <h2 id="related-projects">Related Projects<a class="headerlink" href="#related-projects" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/kokolegorille/go">Elixir port</a> - port to <a href="https://elixir-lang.org/">Elixir</a> by <a href="https://github.com/kokolegorille/">kokolegorille</a></li>
