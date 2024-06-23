@@ -140,15 +140,6 @@ export function sgfToJS(sgf) {
   return mainLine;
 }
 
-const chessLikePattern = /^([a-zA-Z]+)(\d+)$/;
-const validChessLike = 'abcdefghjklmnopqrstuvwxyz';
-const letterMapping = Object.assign(
-  {},
-  ...Object.entries(
-    Object.assign({}, validChessLike)
-  ).map(([k, v]) => ({ [v]: parseInt(k) }))
-);
-
 export function compactMoves(tokens) {
   const compacted = [];
   let current = null;
