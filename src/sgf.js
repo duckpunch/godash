@@ -149,58 +149,6 @@ const letterMapping = Object.assign(
   ).map(([k, v]) => ({ [v]: parseInt(k) }))
 );
 
-/**
- * Converts "chess-like" notation to [`Coordinate`](#coordinate).
- *
- * @example
- * chessLikeToCoordinate("A1")
- * // => Coordinate(0, 0)
- *
- * @return {string} Represents coordinate in chess notation.
- * @return {Coordinate} Converted coordinate.
- */
-export function chessLikeToCoordinate(chessLike) {
-  const parsed = chessLikePattern.exec(chessLike.toLowerCase());
-  if (parsed === null) {
-    throw new TypeError('Invalid format');
-  }
-  const [_, letter, number] = parsed;
-  if (letter.includes('i')) {
-    throw new TypeError('Letter part should not contain "i"');
-  }
-  if (parseInt(number) === 0) {
-    throw new TypeError('Number part should be non-zero and positive');
-  }
-  const firstCoord = letter.split('').reverse().reduce(
-    (acc, ch, index) => acc + index * 25 + letterMapping[ch],
-    0,
-  );
-
-  return Coordinate(firstCoord, parseInt(number) - 1);
-}
-
-/**
- * Converts [`Coordinate`](#coordinate) to "chess-like" notation.  Note "I" is
- * omitted from the notation.
- *
- * @example
- * coordinateToChessLike(Coordinate(0, 0))
- * // => "A1"
- *
- * @param {Coordinate} coordinate - Coordinate to convert.
- * @return {string} String representing passed coordinate in Chess notation.
- */
-export function coordinateToChessLike(coordinate) {
-  let remaining = coordinate.x;
-  let letter = "";
-  do {
-    const smallPart = remaining % 25;
-    remaining = parseInt(remaining / 25);
-    letter = letter + validChessLike.charAt(smallPart);
-  } while (remaining > 0)
-  return `${letter}${coordinate.y + 1}`.toUpperCase();
-}
-
 export function compactMoves(tokens) {
   const compacted = [];
   let current = null;
@@ -284,8 +232,6 @@ export function nextToken(partialSgf) {
 }
 
 export default {
-  chessLikeToCoordinate,
-  coordinateToChessLike,
   coordinateToSgfPoint,
   sgfPointToCoordinate,
   sgfToJS,
