@@ -151,13 +151,21 @@ const letterMapping = Object.assign(
 export function chessLikeToCoordinate(chessLike) {
   const parsed = chessLikePattern.exec(chessLike.toLowerCase());
   if (parsed === null) {
-    return null;
+    throw new TypeError('Invalid format');
   }
   const [_, letter, number] = parsed;
   if (letter.includes('i')) {
-    return null;
+    throw new TypeError('Letter part should not contain "i"');
   }
-  return letterMapping;
+  if (parseInt(number) === 0) {
+    throw new TypeError('Number part should be non-zero and positive');
+  }
+  const firstCoord = letter.split('').reverse().reduce(
+    (acc, ch, index) => acc + index * 25 + letterMapping[ch],
+    0,
+  );
+
+  return Coordinate(firstCoord, parseInt(number) - 1);
 }
 
 export function coordinateToChessLike(coordinate) {

@@ -202,10 +202,24 @@ describe('sgfToJS', () => {
 });
 
 describe('chessLikeToCoordinate', () => {
-  it('converts "a1" to (0, 0)', () => {
-    assert.equal(
-      chessLikeToCoordinate('a1'),
-      Coordinate(0, 0)
-    );
+  it('converts valid coordinates', () => {
+    assert.ok(Coordinate(0, 0).equals(chessLikeToCoordinate('a1')));
+    assert.ok(Coordinate(5, 4).equals(chessLikeToCoordinate('f5')));
+    assert.ok(Coordinate(0, 12).equals(chessLikeToCoordinate('A13')));
+    assert.ok(Coordinate(25, 9).equals(chessLikeToCoordinate('aa10')));
+    assert.ok(Coordinate(28, 19).equals(chessLikeToCoordinate('AD20')));
+  });
+
+  it('throws on invalid format', () => {
+    assert.throws(() => chessLikeToCoordinate('WTF'));
+  });
+
+  it('throws on letter "I"', () => {
+    assert.throws(() => chessLikeToCoordinate('I9'));
+  });
+
+  it('throws on zero', () => {
+    assert.throws(() => chessLikeToCoordinate('A0'));
+    assert.throws(() => chessLikeToCoordinate('A00'));
   });
 });
