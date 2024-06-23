@@ -713,13 +713,14 @@ describe('fromA1Coordinate', () => {
   it('maps coordinates appropriately', () => {
     assert.deepEqual(
       [
-        'A1', 'B2', 'C3', 'D4', 'J6'
+        'A1', 'B2', 'C3', 'D4', 'J6', 'j6'
       ].map(fromA1Coordinate),
       [
         [0, 0],
         [1, 1],
         [2, 2],
         [3, 3],
+        [8, 5],
         [8, 5],
       ].map(coord => Coordinate(...coord)),
     );
@@ -740,6 +741,9 @@ describe('fromA1Coordinate', () => {
     });
     assert.throws(() => {
       fromA1Coordinate('A99');
+    });
+    assert.throws(() => {
+      fromA1Coordinate('I9');
     });
   });
 });

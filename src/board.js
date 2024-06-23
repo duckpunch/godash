@@ -834,6 +834,7 @@ export function toA1Coordinate(coordinate) {
  * @return {Coordinate} Coordinate representation of A1-style input.
  */
 export function fromA1Coordinate(raw) {
+  raw = raw.toUpperCase();
   if (raw.length >= 2) {
     const xValue = A1_PREFIXES.indexOf(raw.charAt(0));
     const y = raw.slice(1);
