@@ -140,6 +140,29 @@ export function sgfToJS(sgf) {
   return mainLine;
 }
 
+const chessLikePattern = /^([a-zA-Z]+)(\d+)$/;
+const letterMapping = Object.assign(
+  {},
+  ...Object.entries(
+    Object.assign({}, 'abcdefghjklmnopqrstuvwxyz')
+  ).map(([k, v]) => ({ [v]: parseInt(k) }))
+);
+
+export function chessLikeToCoordinate(chessLike) {
+  const parsed = chessLikePattern.exec(chessLike.toLowerCase());
+  if (parsed === null) {
+    return null;
+  }
+  const [_, letter, number] = parsed;
+  if (letter.includes('i')) {
+    return null;
+  }
+  return letterMapping;
+}
+
+export function coordinateToChessLike(coordinate) {
+}
+
 export function compactMoves(tokens) {
   const compacted = [];
   let current = null;
@@ -223,6 +246,8 @@ export function nextToken(partialSgf) {
 }
 
 export default {
+  chessLikeToCoordinate,
+  coordinateToChessLike,
   coordinateToSgfPoint,
   sgfPointToCoordinate,
   sgfToJS,

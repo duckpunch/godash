@@ -3,7 +3,9 @@ import {
   Coordinate,
 } from '../src/board';
 import {
+  chessLikeToCoordinate,
   compactMoves,
+  coordinateToChessLike,
   coordinateToSgfPoint,
   nextToken,
   sgfPointToCoordinate,
@@ -196,5 +198,14 @@ describe('sgfToJS', () => {
     assert.throws(() => {
       nextToken(brokenToken);
     });
+  });
+});
+
+describe('chessLikeToCoordinate', () => {
+  it('converts "a1" to (0, 0)', () => {
+    assert.equal(
+      chessLikeToCoordinate('a1'),
+      Coordinate(0, 0)
+    );
   });
 });
