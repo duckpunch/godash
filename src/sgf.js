@@ -141,13 +141,24 @@ export function sgfToJS(sgf) {
 }
 
 const chessLikePattern = /^([a-zA-Z]+)(\d+)$/;
+const validChessLike = 'abcdefghjklmnopqrstuvwxyz';
 const letterMapping = Object.assign(
   {},
   ...Object.entries(
-    Object.assign({}, 'abcdefghjklmnopqrstuvwxyz')
+    Object.assign({}, validChessLike)
   ).map(([k, v]) => ({ [v]: parseInt(k) }))
 );
 
+/**
+ * Converts "chess-like" notation to [`Coordinate`](#coordinate).
+ *
+ * @example
+ * chessLikeToCoordinate("A1")
+ * // => Coordinate(0, 0)
+ *
+ * @return {string} Represents coordinate in chess notation.
+ * @return {Coordinate} Converted coordinate.
+ */
 export function chessLikeToCoordinate(chessLike) {
   const parsed = chessLikePattern.exec(chessLike.toLowerCase());
   if (parsed === null) {
@@ -168,7 +179,26 @@ export function chessLikeToCoordinate(chessLike) {
   return Coordinate(firstCoord, parseInt(number) - 1);
 }
 
+/**
+ * Converts [`Coordinate`](#coordinate) to "chess-like" notation.  Note "I" is
+ * omitted from the notation.
+ *
+ * @example
+ * coordinateToChessLike(Coordinate(0, 0))
+ * // => "A1"
+ *
+ * @param {Coordinate} coordinate - Coordinate to convert.
+ * @return {string} String representing passed coordinate in Chess notation.
+ */
 export function coordinateToChessLike(coordinate) {
+  let remaining = coordinate.x;
+  let letter = "";
+  do {
+    const smallPart = remaining % 25;
+    remaining = parseInt(remaining / 25);
+    letter = letter + validChessLike.charAt(smallPart);
+  } while (remaining > 0)
+  return `${letter}${coordinate.y + 1}`.toUpperCase();
 }
 
 export function compactMoves(tokens) {

@@ -223,3 +223,11 @@ describe('chessLikeToCoordinate', () => {
     assert.throws(() => chessLikeToCoordinate('A00'));
   });
 });
+
+describe('coordinateToChessLike', () => {
+  it('converts valid coordinates', () => {
+    assert.equal(coordinateToChessLike(Coordinate(0, 0)), 'A1');
+    assert.equal(coordinateToChessLike(Coordinate(1, 9)), 'B10');
+    assert.equal(coordinateToChessLike(Coordinate(104, 99)), 'EE100');
+  });
+});
