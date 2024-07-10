@@ -18,14 +18,12 @@ import {
   List,
   Record,
 } from 'immutable';
-import {
-  concat,
-  flatMap,
-  inRange,
-  isInteger,
-  take,
-  hasIn,
-} from 'lodash';
+import concat from 'lodash/concat';
+import flatMap from 'lodash/flatMap';
+import hasIn from 'lodash/hasIn';
+import inRange from 'lodash/inRange';
+import isInteger from 'lodash/isInteger';
+import take from 'lodash/take';
 
 /**
  * The color black.

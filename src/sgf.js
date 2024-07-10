@@ -5,14 +5,12 @@
 import {
   Coordinate,
 } from './board';
-import {
-  fromPairs,
-  isArray,
-  isString,
-  last,
-  startsWith,
-  trimStart,
-} from 'lodash';
+import fromPairs from 'lodash/fromPairs';
+import isArray from 'lodash/isArray';
+import isString from 'lodash/isString';
+import last from 'lodash/last';
+import startsWith from 'lodash/startsWith';
+import trimStart from 'lodash/trimStart';
 
 export const START_MOVE = ';';
 export const START = '(';
