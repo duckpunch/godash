@@ -2,6 +2,7 @@ import {
     BLACK,
     Board,
     Coordinate,
+    Move,
     EMPTY,
     WHITE,
     TENGEN_9,
@@ -36,6 +37,7 @@ declare const godash: {
     EMPTY: typeof EMPTY;
     Board: typeof Board;
     Coordinate: typeof Coordinate;
+    Move: typeof Move;
     TENGEN_13: typeof TENGEN_13;
     TENGEN_19: typeof TENGEN_19;
     TENGEN_9: typeof TENGEN_9;
