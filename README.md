@@ -1,5 +1,5 @@
 [![npm](https://img.shields.io/npm/v/godash.svg)][npm]
-[![Build Status](https://travis-ci.org/duckpunch/godash.svg)][ci]
+[![CI](https://github.com/duckpunch/godash/actions/workflows/ci.yml/badge.svg)][ci]
 
 Data structures and utilities to represent the [game of Go][go].
 
@@ -49,7 +49,7 @@ Check out the [documentation][godash-docs] to see what Godash provides.
 * [react-go-board][rgb] - a simple go board component for [React][react]
 * [Way to Go][wtg] - a rewrite of Hiroki Mori's [Interactive Way to Go][iwtg]
 
-[ci]: https://travis-ci.org/duckpunch/godash
+[ci]: https://github.com/duckpunch/godash/actions
 [elixir]: https://elixir-lang.org/
 [go]: https://en.wikipedia.org/wiki/Go_%28game%29
 [godash-docs]: https://duckpunch.github.io/godash/api/
