@@ -42,6 +42,11 @@ Check out the [documentation][godash-docs] to see what Godash provides.
   subclasses of `Seq`][immutable-4].
 * `Board` constructor changed to take `Move`.
 
+## Version 2.5.0 - Immutable v5 upgrade
+
+* Upgraded to `immutable@5` with no breaking changes to the Godash API.
+* All existing code remains compatible - no changes required.
+
 ## Related Projects
 
 * [Elixir port][port] - port to [Elixir][elixir] by [kokolegorille][koko]
