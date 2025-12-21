@@ -21,7 +21,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "immutable": "^4.1.0",
+    "immutable": "^5.1.4",
     "lodash": "^4.17.20"
   },
   "devDependencies": {

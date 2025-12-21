@@ -19,7 +19,6 @@ import {
   Record,
 } from 'immutable';
 import concat from 'lodash/concat';
-import flatMap from 'lodash/flatMap';
 import hasIn from 'lodash/hasIn';
 import inRange from 'lodash/inRange';
 import isInteger from 'lodash/isInteger';
@@ -93,9 +92,9 @@ class _Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
   constructor(dimensions = 19, ...moves) {
     super({
       dimensions,
-      moves: Map.of(...flatMap(
+      moves: Map(
         moves.map(move => [move.coordinate, move.color])
-      )),
+      ),
     });
   }
 
