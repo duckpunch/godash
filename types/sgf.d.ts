@@ -1,3 +1,9 @@
+/**
+ * SGF module type definitions
+ *
+ * NOTE: Manually maintained. See types/index.d.ts for details.
+ */
+
 import {Coordinate} from './board'
 
 type JSr = {[key: string]: string} | JSr[];

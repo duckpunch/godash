@@ -1,3 +1,9 @@
+/**
+ * Board module type definitions
+ *
+ * NOTE: Manually maintained. See types/index.d.ts for details.
+ */
+
 import {
     Set,
     Map,

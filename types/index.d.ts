@@ -1,3 +1,14 @@
+/**
+ * TypeScript definitions for godash
+ *
+ * NOTE: These type definitions are manually maintained.
+ * Auto-generation from JSDoc doesn't work well with:
+ * - Factory function patterns (Board, Coordinate, Move)
+ * - Immutable.js Record types
+ *
+ * When adding new exports to src/, remember to update these files.
+ */
+
 // Export all board types and functions
 export {
     BLACK,
