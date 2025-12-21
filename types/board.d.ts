@@ -2,26 +2,42 @@ import {
     Set,
     Map,
     List,
-    Record,
+    RecordOf,
+    RecordFactory,
 } from 'immutable';
 
-type Color = string | null;
+export type Color = string | null;
 
 export declare const BLACK: Color;
 export declare const WHITE: Color;
 export declare const EMPTY: Color;
 
-export declare class Board extends Record({dimensions: 19, moves: Map<Coordinate, Color>()}, 'Board') {
-    constructor(dimensions: number, ...moves: Move[]);
+// Board is a Record with these properties
+interface BoardProps {
+    dimensions: number;
+    moves: Map<Coordinate, Color>;
 }
 
-export declare class Coordinate extends Record({x: 0, y: 0}, 'Coordinate') {
-    constructor(x: number, y: number);
+export type Board = RecordOf<BoardProps>;
+export declare const Board: RecordFactory<BoardProps> & ((dimensions?: number, ...moves: Move[]) => Board);
+
+// Coordinate is a Record with these properties
+interface CoordinateProps {
+    x: number;
+    y: number;
 }
 
-export declare class Move extends Record({coordinate: Coordinate(), color: EMPTY}, 'Move') {
-    constructor(coordinate: Coordinate, color: Color);
+export type Coordinate = RecordOf<CoordinateProps>;
+export declare const Coordinate: RecordFactory<CoordinateProps> & ((x: number, y: number) => Coordinate);
+
+// Move is a Record with these properties
+interface MoveProps {
+    coordinate: Coordinate;
+    color: Color;
 }
+
+export type Move = RecordOf<MoveProps>;
+export declare const Move: RecordFactory<MoveProps> & ((coordinate: Coordinate, color: Color) => Move);
 
 export declare const TENGEN_13: Coordinate;
 export declare const TENGEN_19: Coordinate;
@@ -61,10 +77,12 @@ export declare function placeStones(board: Board, coordinates: Coordinate[], col
 
 export declare function toAsciiBoard(board: Board): string;
 
-export declare function constructBoard(coordinates: Coordinate[], board?: Board, startColor?: Color): Board;
-
-export declare function handicapBoard(size: number, handicap: number): Board;
+export declare function toString(board: Board, overrides?: {[color: string]: string} | null): string;
 
 export declare function toA1Coordinate(coordinate: Coordinate): string;
 
 export declare function fromA1Coordinate(raw: string): Coordinate;
+
+export declare function constructBoard(coordinates: Coordinate[], board?: Board | null, startColor?: Color): Board;
+
+export declare function handicapBoard(size: number, handicap: number): Board;
