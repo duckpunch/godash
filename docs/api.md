@@ -2,10 +2,10 @@
 
 ## Classes
 
-### Board
+### _Board
 
 ```javascript
-new godash.Board(dimensions = 19, ...moves)
+godash.Board(dimensions = 19, ...moves)
 ```
 
 Representation of a board position.
@@ -16,9 +16,7 @@ Extends [`Immutable.Record`][imm-record].
 
 !!! tldr "Constructor Arguments"
     * `dimensions` `(number)` - Size of the board, defaulted to 19.
-    * `...moves` `(Move|[Coordinate, string])` - Moves to be placed on the
-    board. This can either be [`Move`](#move) or ordered pairs -
-    `Coordinate` and color constant.
+    * `...moves` `(Move)` - Moves to be placed on the board.
 
 !!! tldr "Properties"
     * `dimensions` `(number)` - Size of the board.
@@ -30,30 +28,30 @@ Extends [`Immutable.Record`][imm-record].
 
 ??? example "Examples"
     ```javascript
-    var board = new Board();
+    var board = Board();
 
     board.toString();
     // => Board { "dimensions": 19, "moves": Map {} }
     ```
 
     ```javascript
-    var smallBoard = new Board(5, [new Coordinate(2, 2), BLACK]);
+    var smallBoard = Board(5, Move(Coordinate(2, 2), BLACK));
 
     smallBoard.toString();
     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
     ```
 
     ```javascript
-    var smallBoard = new Board(5, new Move(new Coordinate(2, 2), BLACK));
+    var smallBoard = Board(5, Move(Coordinate(2, 2), BLACK));
 
     smallBoard.toString();
     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
     ```
 
-### Coordinate
+### _Coordinate
 
 ```javascript
-new godash.Coordinate(x, y)
+godash.Coordinate(x, y)
 ```
 
 A zero-based tuple representing a single location on a Go board.
@@ -72,7 +70,7 @@ Extends [`Immutable.Record`][imm-record].
 
 ??? example "Examples"
     ```javascript
-    var tengen = new Coordinate(9, 9);
+    var tengen = Coordinate(9, 9);
 
     tengen.toString();
     // => Coordinate { "x": 9, "y": 9 }
@@ -81,13 +79,14 @@ Extends [`Immutable.Record`][imm-record].
     // => 9
     ```
 
-### Move
+### _Move
 
 ```javascript
-new godash.Move(coordinate, color)
+godash.Move(coordinate, color)
 ```
 
-Representation of a move, composed of a [`Coordinate`](#coordinate) and a color.
+Representation of a move, composed of a [`Coordinate`](#coordinate) and a
+color.
 
 Extends [`Immutable.Record`][imm-record].
 
@@ -105,7 +104,7 @@ Extends [`Immutable.Record`][imm-record].
 
 ??? example "Examples"
     ```javascript
-    var tengen = new Move(new Coordinate(9, 9), BLACK);
+    var tengen = Move(Coordinate(9, 9), BLACK);
     ```
 
 
@@ -166,7 +165,7 @@ The color white.
 ### addMove
 
 ```javascript
-godash.addMove(board, coordinates, color)
+godash.addMove(board, move)
 ```
 
 Function to add a move onto a board while respecting the rules.  Since no
@@ -179,9 +178,7 @@ things.
 !!! tldr "Arguments"
     * `board` `(Board)` - Board from which to add the move.
 
-    * `coordinates` `(Coordinate)` - Location to add the move.
-
-    * `color` `(string)` - Color of the move.
+    * `move` `(Move)` - Move or location of the move.
 
 
 !!! tldr "Returns"
@@ -190,11 +187,11 @@ things.
 
 ??? example "Examples"
     ```javascript
-    var atari = new Board(3,
-        [new Coordinate(1, 0), BLACK],
-        [new Coordinate(0, 1), BLACK],
-        [new Coordinate(1, 2), BLACK],
-        [new Coordinate(1, 1), WHITE],
+    var atari = Board(3,
+        Move(Coordinate(1, 0), BLACK),
+        Move(Coordinate(0, 1), BLACK),
+        Move(Coordinate(1, 2), BLACK),
+        Move(Coordinate(1, 1), WHITE),
     );
     
     toAsciiBoard(atari);
@@ -204,8 +201,7 @@ things.
     
     var killed = addMove(
         atari,
-        new Coordinate(2, 1),
-        BLACK
+        Move(Coordinate(2, 1), BLACK)
     );
     
     toAsciiBoard(killed);
@@ -239,10 +235,10 @@ calls `addMove` while alternating colors.
 
 ??? example "Examples"
     ```javascript
-    var tigersMouth = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK
+    var tigersMouth = Board(3,
+        Move(Coordinate(1, 0), BLACK),
+        Move(Coordinate(0, 1), BLACK),
+        Move(Coordinate(1, 2), BLACK),
     );
     
     toAsciiBoard(tigersMouth);
@@ -250,8 +246,8 @@ calls `addMove` while alternating colors.
     //    O+O
     //    +++
     
-    var selfAtari = new Coordinate(1, 1);
-    var killingMove = new Coordinate(2, 1);
+    var selfAtari = Coordinate(1, 1);
+    var killingMove = Coordinate(2, 1);
     
     var ponnuki = constructBoard(
         [selfAtari, killingMove],
@@ -287,11 +283,11 @@ Finds the moves on the first board that are not on the second board.
 
 ??? example "Examples"
     ```javascript
-    var atari = new Board(3,
-        [new Coordinate(1, 0), BLACK],
-        [new Coordinate(0, 1), BLACK],
-        [new Coordinate(1, 2), BLACK],
-        [new Coordinate(1, 1), WHITE],
+    var atari = Board(3,
+        Move(Coordinate(1, 0), BLACK),
+        Move(Coordinate(0, 1), BLACK),
+        Move(Coordinate(1, 2), BLACK),
+        Move(Coordinate(1, 1), WHITE),
     );
     
     toAsciiBoard(atari);
@@ -299,7 +295,9 @@ Finds the moves on the first board that are not on the second board.
     //    OXO
     //    +++
     
-    var captured = difference(atari, addMove(atari, new Coordinate(2, 1), BLACK));
+    var captured = difference(
+        atari, addMove(atari, Move(Coordinate(2, 1), BLACK))
+    );
     
     captured.toString();
     // 'Set { List [ Coordinate { "x": 1, "y": 1 }, "white" ] }'
@@ -310,7 +308,7 @@ Finds the moves on the first board that are not on the second board.
 ### followupKo
 
 ```javascript
-godash.followupKo(board, coordinate, color)
+godash.followupKo(board, move)
 ```
 
 Determines move that would be illegal under the [ko
@@ -319,9 +317,7 @@ rule](https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko)
 !!! tldr "Arguments"
     * `board` `(Board)` - Starting board.
 
-    * `coordinate` `(Coordinate)` - Intended placement of stone.
-
-    * `color` `(string)` - Stone color.
+    * `move` `(Move)` - Intended `Move`.
 
 
 !!! tldr "Returns"
@@ -330,14 +326,14 @@ rule](https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko)
 
 ??? example "Examples"
     ```javascript
-    const koPosition = new Board(4,
-        [new Coordinate(1, 0), BLACK],
-        [new Coordinate(0, 1), BLACK],
-        [new Coordinate(1, 2), BLACK],
-        [new Coordinate(1, 1), WHITE],
-        [new Coordinate(2, 0), WHITE],
-        [new Coordinate(2, 2), WHITE],
-        [new Coordinate(3, 1), WHITE],
+    const koPosition = Board(4,
+        Move(Coordinate(1, 0), BLACK),
+        Move(Coordinate(0, 1), BLACK),
+        Move(Coordinate(1, 2), BLACK),
+        Move(Coordinate(1, 1), WHITE),
+        Move(Coordinate(2, 0), WHITE),
+        Move(Coordinate(2, 2), WHITE),
+        Move(Coordinate(3, 1), WHITE),
     );
     
     toAsciiBoard(koPosition);
@@ -346,11 +342,38 @@ rule](https://en.wikipedia.org/wiki/Rules_of_go#Ko_and_Superko)
     //    X+X+
     //    +X++
     
-    const koStart = new Coordinate(2, 1);
+    const koStart = Coordinate(2, 1);
     
     followupKo(koPosition, koStart, BLACK).toString();
     // => 'Coordinate { "x": 1, "y": 1 }'
     ```
+
+---
+
+### fromA1Coordinate
+
+```javascript
+godash.fromA1Coordinate(raw)
+```
+
+Construct a Coordinate from an A1-style coordinate string.
+
+An [A1-style coordinate][a1-style] is given in the form A1 to T19 with I
+omitted to avoid confusion with J.
+
+This function accepts raw coordinates from A-Z.
+
+[a1-style]: https://senseis.xmp.net/?Coordinates#toc2
+
+!!! tldr "Arguments"
+    * `raw` `(string)` - A1-style coordinate to convert.
+
+
+!!! tldr "Returns"
+    `Coordinate` - Coordinate representation of A1-style input.
+
+
+??? example "Examples"
 
 ---
 
@@ -375,12 +398,12 @@ the given location.
 
 ??? example "Examples"
     ```javascript
-    var board = new Board(3,
-        new Coordinate(1, 0), WHITE,
-        new Coordinate(0, 2), WHITE,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(2, 2), BLACK,
-        new Coordinate(2, 1), BLACK
+    var board = Board(3,
+        Move(Coordinate(1, 0), WHITE),
+        Move(Coordinate(0, 2), WHITE),
+        Move(Coordinate(1, 2), BLACK),
+        Move(Coordinate(2, 2), BLACK),
+        Move(Coordinate(2, 1), BLACK),
     );
     
     toAsciiBoard(board);
@@ -388,7 +411,7 @@ the given location.
     //    X+O
     //    +OO
     
-    group(board, new Coordinate(2, 1)).toString();
+    group(board, Coordinate(2, 1)).toString();
     // => Set {
     //      Coordinate { "x": 2, "y": 1 },
     //      Coordinate { "x": 2, "y": 2 },
@@ -404,7 +427,7 @@ the given location.
 godash.handicapBoard(size, handicap)
 ```
 
-Creates a new `Board` with the correct number of handicap stones placed.
+Creates a `Board` with the correct number of handicap stones placed.
 Only standard board sizes (9, 13, 19) are allowed.
 
 !!! tldr "Arguments"
@@ -460,7 +483,7 @@ Partial application of `isLegalMove`, fixing the color to `BLACK`.
 ### isLegalMove
 
 ```javascript
-godash.isLegalMove(board, coordinate, color)
+godash.isLegalMove(board, move)
 ```
 
 Determine whether the coordinate-color combination provided is a legal move
@@ -472,9 +495,7 @@ want to do [ko][ko-rule]-related things.
 !!! tldr "Arguments"
     * `board` `(Board)` - Board to inspect.
 
-    * `coordinate` `(Coordinate)` - Location to check.
-
-    * `color` `(string)` - Color to check - `BLACK` or `WHITE`.
+    * `move` `(Move)` - Move to check.
 
 
 !!! tldr "Returns"
@@ -483,11 +504,11 @@ want to do [ko][ko-rule]-related things.
 
 ??? example "Examples"
     ```javascript
-    var ponnuki = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(2, 1), BLACK
+    var ponnuki = Board(3,
+        Move(Coordinate(1, 0), BLACK),
+        Move(Coordinate(0, 1), BLACK),
+        Move(Coordinate(1, 2), BLACK),
+        Move(Coordinate(2, 1), BLACK),
     );
     
     toAsciiBoard(ponnuki);
@@ -495,10 +516,10 @@ want to do [ko][ko-rule]-related things.
     //    O+O
     //    +O+
     
-    isLegalMove(ponnuki, new Coordinate(1, 1), BLACK)
+    isLegalMove(ponnuki, Move(Coordinate(1, 1), BLACK))
     // => true
     
-    isLegalMove(ponnuki, new Coordinate(1, 1), WHITE)
+    isLegalMove(ponnuki, Move(Coordinate(1, 1), WHITE))
     // => false
     ```
 
@@ -547,14 +568,14 @@ is part of a group, the set of liberties are the liberties for that group.
 
 ??? example "Examples"
     ```javascript
-    var board = new Board(3, new Coordinate(1, 1), BLACK);
-    var collectedLiberties = liberties(board, new Coordinate(1, 1));
+    var board = Board(3, Move(Coordinate(1, 1), BLACK));
+    var collectedLiberties = liberties(board, Coordinate(1, 1));
     
     Immutable.Set.of(
-        new Coordinate(1, 0),
-        new Coordinate(0, 1),
-        new Coordinate(1, 2),
-        new Coordinate(2, 1)
+        Coordinate(1, 0),
+        Coordinate(0, 1),
+        Coordinate(1, 2),
+        Coordinate(2, 1)
     ).equals(collectedLiberties);
     // => true
     ```
@@ -582,9 +603,9 @@ a group, liberties for the entire group is counted.
 
 ??? example "Examples"
     ```javascript
-    var board = new Board(3, new Coordinate(1, 1), BLACK);
+    var board = Board(3, Coordinate(1, 1), BLACK);
     
-    libertyCount(board, new Coordinate(1, 1)) === 4;
+    libertyCount(board, Coordinate(1, 1)) === 4;
     // => true
     ```
 
@@ -641,11 +662,11 @@ Places a stone on the board, ignoring the rules of Go.
 
 ??? example "Examples"
     ```javascript
-    var ponnuki = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(2, 1), BLACK
+    var ponnuki = Board(3,
+        Move(Coordinate(1, 0), BLACK),
+        Move(Coordinate(0, 1), BLACK),
+        Move(Coordinate(1, 2), BLACK),
+        Move(Coordinate(2, 1), BLACK),
     );
     
     toAsciiBoard(ponnuki);
@@ -654,7 +675,7 @@ Places a stone on the board, ignoring the rules of Go.
     //    +O+
     
     toAsciiBoard(
-        placeStone(ponnuki, new Coordinate(1, 1), WHITE)
+        placeStone(ponnuki, Coordinate(1, 1), WHITE)
     );
     // => +O+
     //    OXO
@@ -687,7 +708,7 @@ Places a set of stones onto the board, ignoring the rules of Go.
 
 ??? example "Examples"
     ```javascript
-    var board = new Board(3, new Coordinate(1, 1), WHITE);
+    var board = Board(3, Coordinate(1, 1), WHITE);
     
     toAsciiBoard(board);
     // => +++
@@ -696,10 +717,10 @@ Places a set of stones onto the board, ignoring the rules of Go.
     
     toAsciiBoard(
         placeStones(board, [
-            new Coordinate(1, 0),
-            new Coordinate(0, 1),
-            new Coordinate(1, 2),
-            new Coordinate(2, 1)
+            Coordinate(1, 0),
+            Coordinate(0, 1),
+            Coordinate(1, 2),
+            Coordinate(2, 1)
         ], BLACK)
     );
     // => +O+
@@ -729,7 +750,7 @@ Make a given coordinate empty on the board.
 
 ??? example "Examples"
     ```javascript
-    var board = new Board(3, new Coordinate(1, 1), WHITE);
+    var board = Board(3, Move(Coordinate(1, 1), WHITE));
     
     toAsciiBoard(board);
     // => +++
@@ -737,7 +758,7 @@ Make a given coordinate empty on the board.
     //    +++
     
     toAsciiBoard(
-        removeStone(board, new Coordinate(1, 1))
+        removeStone(board, Coordinate(1, 1))
     );
     // => +++
     //    +++
@@ -766,10 +787,10 @@ Makes several coordinates empty on the board.
 
 ??? example "Examples"
     ```javascript
-    var board = new Board(3,
-        new Coordinate(1, 0), WHITE,
-        new Coordinate(1, 1), WHITE,
-        new Coordinate(1, 2), BLACK
+    var board = Board(3,
+        Move(Coordinate(1, 0), WHITE),
+        Move(Coordinate(1, 1), WHITE),
+        Move(Coordinate(1, 2), BLACK),
     );
     
     toAsciiBoard(board);
@@ -779,14 +800,41 @@ Makes several coordinates empty on the board.
     
     toAsciiBoard(
         removeStones(board, [
-            new Coordinate(1, 1),
-            new Coordinate(1, 2)
+            Coordinate(1, 1),
+            Coordinate(1, 2)
         ])
     );
     // => +++
     //    X++
     //    +++
     ```
+
+---
+
+### toA1Coordinate
+
+```javascript
+godash.toA1Coordinate(coordinate)
+```
+
+Construct an A1-style coordinate string from a Coordinate.
+
+An [A1-style coordinate][a1-style] is given in the form A1 to T19 with I
+omitted to avoid confusion with J.
+
+This function accepts coordinates in the range 0-24, mapping from A-Z.
+
+[a1-style]: https://senseis.xmp.net/?Coordinates#toc2
+
+!!! tldr "Arguments"
+    * `coordinate` `(Coordinate)` - Coordinate to convert.
+
+
+!!! tldr "Returns"
+    `string` - String A1-style coordinate.
+
+
+??? example "Examples"
 
 ---
 
@@ -808,16 +856,51 @@ Constructs an ASCII representation of the board.
 
 ??? example "Examples"
     ```javascript
-    var board = new Board(3,
-        new Coordinate(1, 0), BLACK,
-        new Coordinate(0, 1), BLACK,
-        new Coordinate(1, 2), BLACK,
-        new Coordinate(1, 1), WHITE
+    var board = Board(3,
+        Coordinate(1, 0), BLACK,
+        Coordinate(0, 1), BLACK,
+        Coordinate(1, 2), BLACK,
+        Coordinate(1, 1), WHITE
     );
     
     toAsciiBoard(board);
     // => +O+
     //    OXO
+    //    +++
+    ```
+
+---
+
+### toString
+
+```javascript
+godash.toString(board, overrides)
+```
+
+Constructs a string representation of the board.
+
+!!! tldr "Arguments"
+    * `board` `(Board)` - Board to represent.
+
+    * `overrides` `(Object)` - Overrides print characters, indexed by color
+    constants.
+
+!!! tldr "Returns"
+    `string` - String representation of the board.
+
+
+??? example "Examples"
+    ```javascript
+    var board = Board(3,
+        Coordinate(1, 0), BLACK,
+        Coordinate(0, 1), BLACK,
+        Coordinate(1, 2), BLACK,
+        Coordinate(1, 1), WHITE
+    );
+    
+    toString(board, {[BLACK]: 'B', [WHITE]: 'W"});
+    // => +B+
+    //    BWB
     //    +++
     ```
 
@@ -847,7 +930,7 @@ form of a Javascript `String`.
 
 ??? example "Examples"
     ```javascript
-    coordinateToSgfPoint(new Coordinate(0, 0))
+    coordinateToSgfPoint(Coordinate(0, 0))
     // => "aa"
     ```
 
@@ -864,8 +947,8 @@ Converts an [SGF Point][sgf-point] to a [`Coordinate`](#coordinate).
 [sgf-point]: http://www.red-bean.com/sgf/go.html
 
 !!! tldr "Arguments"
-    * `sgfPoint` `(string)` - 2-character string representing an [SGF Point][sgf-point]
-
+    * `sgfPoint` `(string)` - 2-character string representing an [SGF
+    Point][sgf-point]
 
 !!! tldr "Returns"
     `Coordinate` - Corresponding [`Coordinate`](#coordinate).
