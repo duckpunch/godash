@@ -1,2 +1,3 @@
 - Validate sequence of moves against a board.
 - Fast sequence application to a board.
+- Fix up API docs.
