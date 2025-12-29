@@ -50,8 +50,7 @@ Check out the [documentation][godash-docs] to see what Godash provides.
 ## Related Projects
 
 * [Elixir port][port] - port to [Elixir][elixir] by [kokolegorille][koko]
-* [pizza][pizza] - an anonymous go server ([source][pizza-code])
-* [react-go-board][rgb] - a simple go board component for [React][react]
+* [Godash Diagrams][godash-diagrams] - a diagramming library inspired by [Mermaid][mermaid]
 * [Way to Go][wtg] - a rewrite of Hiroki Mori's [Interactive Way to Go][iwtg]
 
 [ci]: https://github.com/duckpunch/godash/actions
@@ -63,6 +62,7 @@ Check out the [documentation][godash-docs] to see what Godash provides.
 [iwtg]: http://playgo.to/iwtg/en/
 [koko]: https://github.com/kokolegorille/
 [lodash]: https://lodash.com/
+[mermaid]: https://mermaid.js.org/
 [npm]: https://www.npmjs.com/package/godash
 [pizza]: https://pizza.duckpun.ch/
 [pizza-code]: https://gitlab.com/duckpunch/pizza
