@@ -56,6 +56,7 @@ Check out the [documentation][godash-docs] to see what Godash provides.
 [ci]: https://github.com/duckpunch/godash/actions
 [elixir]: https://elixir-lang.org/
 [go]: https://en.wikipedia.org/wiki/Go_%28game%29
+[godash-diagrams]: https://duckpunch.github.io/godash-diagrams/
 [godash-docs]: https://duckpunch.github.io/godash/api/
 [immutable]: https://immutable-js.com/
 [immutable-4]: https://github.com/immutable-js/immutable-js/releases/tag/v4.0.0
@@ -64,9 +65,5 @@ Check out the [documentation][godash-docs] to see what Godash provides.
 [lodash]: https://lodash.com/
 [mermaid]: https://mermaid.js.org/
 [npm]: https://www.npmjs.com/package/godash
-[pizza]: https://pizza.duckpun.ch/
-[pizza-code]: https://gitlab.com/duckpunch/pizza
 [port]: https://github.com/kokolegorille/go
-[react]: https://reactjs.org/
-[rgb]: https://github.com/duckpunch/react-go-board
 [wtg]: https://way-to-go.gitlab.io
