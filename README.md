@@ -50,7 +50,7 @@ Check out the [documentation][godash-docs] to see what Godash provides.
 ## Related Projects
 
 * [Elixir port][port] - port to [Elixir][elixir] by [kokolegorille][koko]
-* [Godash Diagrams][godash-diagrams] - a diagramming library inspired by [Mermaid][mermaid]
+* [godash-diagrams][godash-diagrams] - a diagramming library inspired by [Mermaid][mermaid]
 * [Way to Go][wtg] - a rewrite of Hiroki Mori's [Interactive Way to Go][iwtg]
 
 [ci]: https://github.com/duckpunch/godash/actions
