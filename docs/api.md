@@ -41,13 +41,6 @@ Extends [`Immutable.Record`][imm-record].
     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
     ```
 
-    ```javascript
-    var smallBoard = Board(5, Move(Coordinate(2, 2), BLACK));
-
-    smallBoard.toString();
-    // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
-    ```
-
 ### _Coordinate
 
 ```javascript
@@ -603,7 +596,7 @@ a group, liberties for the entire group is counted.
 
 ??? example "Examples"
     ```javascript
-    var board = Board(3, Coordinate(1, 1), BLACK);
+    var board = Board(3, Move(Coordinate(1, 1), BLACK));
     
     libertyCount(board, Coordinate(1, 1)) === 4;
     // => true
@@ -708,7 +701,7 @@ Places a set of stones onto the board, ignoring the rules of Go.
 
 ??? example "Examples"
     ```javascript
-    var board = Board(3, Coordinate(1, 1), WHITE);
+    var board = Board(3, Move(Coordinate(1, 1), WHITE));
     
     toAsciiBoard(board);
     // => +++

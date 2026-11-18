@@ -79,13 +79,6 @@ export const EMPTY = null;
  *     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
  *     ```
  *
- *     ```javascript
- *     var smallBoard = Board(5, Move(Coordinate(2, 2), BLACK));
- *
- *     smallBoard.toString();
- *     // => Board { "dimensions": 5, "moves": Map { {"x":2,"y":2}: "black" } }
- *     ```
- *
  * @extends Record
  */
 class _Board extends Record({dimensions: 19, moves: Map()}, 'Board') {
@@ -446,7 +439,7 @@ export function liberties(board, coordinate) {
  * a group, liberties for the entire group is counted.
  *
  * @example
- * var board = Board(3, Coordinate(1, 1), BLACK);
+ * var board = Board(3, Move(Coordinate(1, 1), BLACK));
  *
  * libertyCount(board, Coordinate(1, 1)) === 4;
  * // => true
@@ -691,7 +684,7 @@ export function placeStone(board, coordinate, color, force = false) {
  * Places a set of stones onto the board, ignoring the rules of Go.
  *
  * @example
- * var board = Board(3, Coordinate(1, 1), WHITE);
+ * var board = Board(3, Move(Coordinate(1, 1), WHITE));
  *
  * toAsciiBoard(board);
  * // => +++
